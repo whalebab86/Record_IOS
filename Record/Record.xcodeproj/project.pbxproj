@@ -15,6 +15,10 @@
 		3930C6481E88FBC7009F457E /* Member.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3930C6471E88FBC7009F457E /* Member.storyboard */; };
 		3930C64A1E88FBD0009F457E /* Diary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3930C6491E88FBD0009F457E /* Diary.storyboard */; };
 		39959FC51E891C91006ACF7A /* RCDiaryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39959FC41E891C91006ACF7A /* RCDiaryListViewController.m */; };
+		44D61A181E89314C0088FA2B /* RCSplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D61A171E89314C0088FA2B /* RCSplashViewController.m */; };
+		44D61A1B1E893BC70088FA2B /* SourceSansPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 44D61A191E893BC70088FA2B /* SourceSansPro-Bold.otf */; };
+		44D61A1C1E893BC70088FA2B /* SourceSansPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 44D61A1A1E893BC70088FA2B /* SourceSansPro-Regular.otf */; };
+		44D61A1E1E893C4E0088FA2B /* SourceSansPro-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 44D61A1D1E893C4E0088FA2B /* SourceSansPro-Semibold.otf */; };
 		A912FF3531A493E3A1ED367E /* libPods-Record.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84204659D1372BB76B27C5E6 /* libPods-Record.a */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +37,11 @@
 		3930C64E1E88FF5A009F457E /* Record-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Record-Prefix.pch"; sourceTree = "<group>"; };
 		39959FC31E891C91006ACF7A /* RCDiaryListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCDiaryListViewController.h; sourceTree = "<group>"; };
 		39959FC41E891C91006ACF7A /* RCDiaryListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCDiaryListViewController.m; sourceTree = "<group>"; };
+		44D61A161E89314C0088FA2B /* RCSplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCSplashViewController.h; sourceTree = "<group>"; };
+		44D61A171E89314C0088FA2B /* RCSplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCSplashViewController.m; sourceTree = "<group>"; };
+		44D61A191E893BC70088FA2B /* SourceSansPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Bold.otf"; sourceTree = "<group>"; };
+		44D61A1A1E893BC70088FA2B /* SourceSansPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Regular.otf"; sourceTree = "<group>"; };
+		44D61A1D1E893C4E0088FA2B /* SourceSansPro-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Semibold.otf"; sourceTree = "<group>"; };
 		84204659D1372BB76B27C5E6 /* libPods-Record.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Record.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8E10F661C41DA25751724C5 /* Pods-Record.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Record.release.xcconfig"; path = "Pods/Target Support Files/Pods-Record/Pods-Record.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -147,6 +156,8 @@
 		3930C6441E88FB52009F457E /* Member */ = {
 			isa = PBXGroup;
 			children = (
+				44D61A161E89314C0088FA2B /* RCSplashViewController.h */,
+				44D61A171E89314C0088FA2B /* RCSplashViewController.m */,
 			);
 			name = Member;
 			sourceTree = "<group>";
@@ -210,6 +221,9 @@
 		3930C6531E8902F5009F457E /* Temp */ = {
 			isa = PBXGroup;
 			children = (
+				44D61A191E893BC70088FA2B /* SourceSansPro-Bold.otf */,
+				44D61A1A1E893BC70088FA2B /* SourceSansPro-Regular.otf */,
+				44D61A1D1E893C4E0088FA2B /* SourceSansPro-Semibold.otf */,
 			);
 			name = Temp;
 			sourceTree = "<group>";
@@ -297,7 +311,10 @@
 				3930C62E1E88F21C009F457E /* Assets.xcassets in Resources */,
 				3930C64A1E88FBD0009F457E /* Diary.storyboard in Resources */,
 				3930C6481E88FBC7009F457E /* Member.storyboard in Resources */,
+				44D61A1E1E893C4E0088FA2B /* SourceSansPro-Semibold.otf in Resources */,
+				44D61A1B1E893BC70088FA2B /* SourceSansPro-Bold.otf in Resources */,
 				3930C62C1E88F21C009F457E /* Main.storyboard in Resources */,
+				44D61A1C1E893BC70088FA2B /* SourceSansPro-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +375,7 @@
 			files = (
 				39959FC51E891C91006ACF7A /* RCDiaryListViewController.m in Sources */,
 				3930C6261E88F21C009F457E /* AppDelegate.m in Sources */,
+				44D61A181E89314C0088FA2B /* RCSplashViewController.m in Sources */,
 				3930C6231E88F21C009F457E /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
