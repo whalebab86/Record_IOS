@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Storyboard Reference-->
+        <!--Member-->
         <scene sceneID="K1f-BE-uox">
             <objects>
-                <viewControllerPlaceholder id="vxF-PA-eOE" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Member" id="vxF-PA-eOE" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wgB-A5-nJw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="268" y="-570"/>
@@ -36,10 +36,10 @@
             </objects>
             <point key="canvasLocation" x="-350" y="37"/>
         </scene>
-        <!--Storyboard Reference-->
+        <!--Diary-->
         <scene sceneID="idR-La-5AL">
             <objects>
-                <viewControllerPlaceholder id="Wr1-63-yKi" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Diary" id="Wr1-63-yKi" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="cWO-LZ-r1o"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u8s-tE-fC9" userLabel="First Responder" sceneMemberID="firstResponder"/>
