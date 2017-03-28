@@ -15,6 +15,13 @@
 		3930C6481E88FBC7009F457E /* Member.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3930C6471E88FBC7009F457E /* Member.storyboard */; };
 		3930C64A1E88FBD0009F457E /* Diary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3930C6491E88FBD0009F457E /* Diary.storyboard */; };
 		39959FC51E891C91006ACF7A /* RCDiaryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39959FC41E891C91006ACF7A /* RCDiaryListViewController.m */; };
+<<<<<<< HEAD
+		39959FD61E89349F006ACF7A /* RCDiaryTableViewHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39959FD51E89349F006ACF7A /* RCDiaryTableViewHeaderView.m */; };
+		39959FD81E8934B8006ACF7A /* RCDiaryTableViewHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39959FD71E8934B8006ACF7A /* RCDiaryTableViewHeaderView.xib */; };
+		39959FDB1E8951EB006ACF7A /* RCDiaryTableViewFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39959FDA1E8951EB006ACF7A /* RCDiaryTableViewFooterView.m */; };
+		39959FDD1E8951F3006ACF7A /* RCDiaryTableViewFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39959FDC1E8951F3006ACF7A /* RCDiaryTableViewFooterView.xib */; };
+		39959FE11E895B0A006ACF7A /* RCDiaryTableViewFooterEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39959FE01E895B0A006ACF7A /* RCDiaryTableViewFooterEmptyView.xib */; };
+=======
 		44D61A181E89314C0088FA2B /* RCSplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D61A171E89314C0088FA2B /* RCSplashViewController.m */; };
 		44D61A1B1E893BC70088FA2B /* SourceSansPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 44D61A191E893BC70088FA2B /* SourceSansPro-Bold.otf */; };
 		44D61A1C1E893BC70088FA2B /* SourceSansPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 44D61A1A1E893BC70088FA2B /* SourceSansPro-Regular.otf */; };
@@ -22,6 +29,7 @@
 		44D61A211E896E070088FA2B /* RCSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D61A201E896E070088FA2B /* RCSignInViewController.m */; };
 		44D61A241E896E1F0088FA2B /* RCSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D61A231E896E1F0088FA2B /* RCSignUpViewController.m */; };
 		44D61A271E8972410088FA2B /* RCSignConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D61A261E8972410088FA2B /* RCSignConfigViewController.m */; };
+>>>>>>> 408c31be83a2889f18ddc69a7d7a0ba3450ea91a
 		A912FF3531A493E3A1ED367E /* libPods-Record.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84204659D1372BB76B27C5E6 /* libPods-Record.a */; };
 /* End PBXBuildFile section */
 
@@ -39,7 +47,17 @@
 		3930C6491E88FBD0009F457E /* Diary.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Diary.storyboard; sourceTree = "<group>"; };
 		3930C64E1E88FF5A009F457E /* Record-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Record-Prefix.pch"; sourceTree = "<group>"; };
 		39959FC31E891C91006ACF7A /* RCDiaryListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCDiaryListViewController.h; sourceTree = "<group>"; };
-		39959FC41E891C91006ACF7A /* RCDiaryListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCDiaryListViewController.m; sourceTree = "<group>"; };		44D61A161E89314C0088FA2B /* RCSplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCSplashViewController.h; sourceTree = "<group>"; };
+		39959FC41E891C91006ACF7A /* RCDiaryListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCDiaryListViewController.m; sourceTree = "<group>"; };
+<<<<<<< HEAD
+		39959FD41E89349F006ACF7A /* RCDiaryTableViewHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCDiaryTableViewHeaderView.h; sourceTree = "<group>"; };
+		39959FD51E89349F006ACF7A /* RCDiaryTableViewHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCDiaryTableViewHeaderView.m; sourceTree = "<group>"; };
+		39959FD71E8934B8006ACF7A /* RCDiaryTableViewHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RCDiaryTableViewHeaderView.xib; sourceTree = "<group>"; };
+		39959FD91E8951EB006ACF7A /* RCDiaryTableViewFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCDiaryTableViewFooterView.h; sourceTree = "<group>"; };
+		39959FDA1E8951EB006ACF7A /* RCDiaryTableViewFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCDiaryTableViewFooterView.m; sourceTree = "<group>"; };
+		39959FDC1E8951F3006ACF7A /* RCDiaryTableViewFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RCDiaryTableViewFooterView.xib; sourceTree = "<group>"; };
+		39959FE01E895B0A006ACF7A /* RCDiaryTableViewFooterEmptyView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RCDiaryTableViewFooterEmptyView.xib; sourceTree = "<group>"; };
+=======
+		44D61A161E89314C0088FA2B /* RCSplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCSplashViewController.h; sourceTree = "<group>"; };
 		44D61A171E89314C0088FA2B /* RCSplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCSplashViewController.m; sourceTree = "<group>"; };
 		44D61A191E893BC70088FA2B /* SourceSansPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Bold.otf"; sourceTree = "<group>"; };
 		44D61A1A1E893BC70088FA2B /* SourceSansPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Regular.otf"; sourceTree = "<group>"; };
@@ -50,6 +68,7 @@
 		44D61A231E896E1F0088FA2B /* RCSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCSignUpViewController.m; sourceTree = "<group>"; };
 		44D61A251E8972410088FA2B /* RCSignConfigViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCSignConfigViewController.h; sourceTree = "<group>"; };
 		44D61A261E8972410088FA2B /* RCSignConfigViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCSignConfigViewController.m; sourceTree = "<group>"; };
+>>>>>>> 408c31be83a2889f18ddc69a7d7a0ba3450ea91a
 		84204659D1372BB76B27C5E6 /* libPods-Record.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Record.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8E10F661C41DA25751724C5 /* Pods-Record.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Record.release.xcconfig"; path = "Pods/Target Support Files/Pods-Record/Pods-Record.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -340,10 +359,17 @@
 				3930C62E1E88F21C009F457E /* Assets.xcassets in Resources */,
 				3930C64A1E88FBD0009F457E /* Diary.storyboard in Resources */,
 				3930C6481E88FBC7009F457E /* Member.storyboard in Resources */,
+<<<<<<< HEAD
+				39959FD81E8934B8006ACF7A /* RCDiaryTableViewHeaderView.xib in Resources */,
+				3930C62C1E88F21C009F457E /* Main.storyboard in Resources */,
+				39959FE11E895B0A006ACF7A /* RCDiaryTableViewFooterEmptyView.xib in Resources */,
+				39959FDD1E8951F3006ACF7A /* RCDiaryTableViewFooterView.xib in Resources */,
+=======
 				44D61A1E1E893C4E0088FA2B /* SourceSansPro-Semibold.otf in Resources */,
 				44D61A1B1E893BC70088FA2B /* SourceSansPro-Bold.otf in Resources */,
 				3930C62C1E88F21C009F457E /* Main.storyboard in Resources */,
 				44D61A1C1E893BC70088FA2B /* SourceSansPro-Regular.otf in Resources */,
+>>>>>>> 408c31be83a2889f18ddc69a7d7a0ba3450ea91a
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
