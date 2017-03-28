@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Diary List View Controller-->
+        <!--Record-->
         <scene sceneID="B4s-Tq-Mlb">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="GAj-ps-ltx" customClass="RCDiaryListViewController" sceneMemberID="viewController">
@@ -18,26 +18,70 @@
                         <viewControllerLayoutGuide type="bottom" id="f7r-HU-z09"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="1qS-1r-bP4">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="95" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="o6i-Xe-jul">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SectionCell" id="NaS-ZT-xXG">
+                                        <rect key="frame" x="0.0" y="56" width="375" height="95"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NaS-ZT-xXG" id="D2N-Ah-VwO">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="94"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="GAj-ps-ltx" id="oik-Rl-sBL"/>
+                                    <outlet property="delegate" destination="GAj-ps-ltx" id="paN-bx-Twu"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="o6i-Xe-jul" firstAttribute="top" secondItem="xeL-CB-7d2" secondAttribute="bottom" id="0Pz-WX-Oxy"/>
+                            <constraint firstAttribute="trailing" secondItem="o6i-Xe-jul" secondAttribute="trailing" id="5yc-pm-hJc"/>
+                            <constraint firstItem="f7r-HU-z09" firstAttribute="top" secondItem="o6i-Xe-jul" secondAttribute="bottom" id="Iqe-lC-w0w"/>
+                            <constraint firstItem="o6i-Xe-jul" firstAttribute="leading" secondItem="1qS-1r-bP4" secondAttribute="leading" id="cJV-8f-FqV"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="VTM-vV-7Fk"/>
+                    <navigationItem key="navigationItem" title="Record" id="VTM-vV-7Fk">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="j7K-Y9-1RO">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="DiaryTableView" destination="o6i-Xe-jul" id="bJD-mp-tg9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GUh-r1-QDs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1247" y="-268"/>
+            <point key="canvasLocation" x="1245.5999999999999" y="-268.51574212893553"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ORe-sE-4Tu">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sEL-GO-uMh" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" systemItem="history" id="1SC-u6-oxu"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Pda-IQ-yGl">
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="Pda-IQ-yGl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.1369989812374115" green="0.62372845411300659" blue="0.98503011465072632" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" id="5UH-vP-isq">
+                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="GAj-ps-ltx" kind="relationship" relationship="rootViewController" id="eL4-Af-Kg2"/>
                     </connections>

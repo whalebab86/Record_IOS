@@ -15,17 +15,18 @@
                 <viewControllerPlaceholder storyboardName="Member" id="vxF-PA-eOE" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wgB-A5-nJw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="268" y="-570"/>
+            <point key="canvasLocation" x="199" y="-566"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="pVM-li-caP">
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="jha-OZ-FwI" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="r9w-Gi-HFx">
+                    <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="r9w-Gi-HFx">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="0.13271617889404297" green="0.14825978875160217" blue="0.18977418541908264" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
                         <segue destination="vxF-PA-eOE" kind="presentation" id="Bkr-UX-KwB"/>

@@ -15,6 +15,11 @@
 		3930C6481E88FBC7009F457E /* Member.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3930C6471E88FBC7009F457E /* Member.storyboard */; };
 		3930C64A1E88FBD0009F457E /* Diary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3930C6491E88FBD0009F457E /* Diary.storyboard */; };
 		39959FC51E891C91006ACF7A /* RCDiaryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39959FC41E891C91006ACF7A /* RCDiaryListViewController.m */; };
+		39959FD61E89349F006ACF7A /* RCDiaryTableViewHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39959FD51E89349F006ACF7A /* RCDiaryTableViewHeaderView.m */; };
+		39959FD81E8934B8006ACF7A /* RCDiaryTableViewHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39959FD71E8934B8006ACF7A /* RCDiaryTableViewHeaderView.xib */; };
+		39959FDB1E8951EB006ACF7A /* RCDiaryTableViewFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39959FDA1E8951EB006ACF7A /* RCDiaryTableViewFooterView.m */; };
+		39959FDD1E8951F3006ACF7A /* RCDiaryTableViewFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39959FDC1E8951F3006ACF7A /* RCDiaryTableViewFooterView.xib */; };
+		39959FE11E895B0A006ACF7A /* RCDiaryTableViewFooterEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39959FE01E895B0A006ACF7A /* RCDiaryTableViewFooterEmptyView.xib */; };
 		A912FF3531A493E3A1ED367E /* libPods-Record.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84204659D1372BB76B27C5E6 /* libPods-Record.a */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +38,13 @@
 		3930C64E1E88FF5A009F457E /* Record-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Record-Prefix.pch"; sourceTree = "<group>"; };
 		39959FC31E891C91006ACF7A /* RCDiaryListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCDiaryListViewController.h; sourceTree = "<group>"; };
 		39959FC41E891C91006ACF7A /* RCDiaryListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCDiaryListViewController.m; sourceTree = "<group>"; };
+		39959FD41E89349F006ACF7A /* RCDiaryTableViewHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCDiaryTableViewHeaderView.h; sourceTree = "<group>"; };
+		39959FD51E89349F006ACF7A /* RCDiaryTableViewHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCDiaryTableViewHeaderView.m; sourceTree = "<group>"; };
+		39959FD71E8934B8006ACF7A /* RCDiaryTableViewHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RCDiaryTableViewHeaderView.xib; sourceTree = "<group>"; };
+		39959FD91E8951EB006ACF7A /* RCDiaryTableViewFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCDiaryTableViewFooterView.h; sourceTree = "<group>"; };
+		39959FDA1E8951EB006ACF7A /* RCDiaryTableViewFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCDiaryTableViewFooterView.m; sourceTree = "<group>"; };
+		39959FDC1E8951F3006ACF7A /* RCDiaryTableViewFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RCDiaryTableViewFooterView.xib; sourceTree = "<group>"; };
+		39959FE01E895B0A006ACF7A /* RCDiaryTableViewFooterEmptyView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RCDiaryTableViewFooterEmptyView.xib; sourceTree = "<group>"; };
 		84204659D1372BB76B27C5E6 /* libPods-Record.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Record.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8E10F661C41DA25751724C5 /* Pods-Record.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Record.release.xcconfig"; path = "Pods/Target Support Files/Pods-Record/Pods-Record.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -138,8 +150,7 @@
 		3930C6431E88FB4C009F457E /* Diary */ = {
 			isa = PBXGroup;
 			children = (
-				39959FC31E891C91006ACF7A /* RCDiaryListViewController.h */,
-				39959FC41E891C91006ACF7A /* RCDiaryListViewController.m */,
+				39959FE21E895CFC006ACF7A /* Diary list */,
 			);
 			name = Diary;
 			sourceTree = "<group>";
@@ -212,6 +223,22 @@
 			children = (
 			);
 			name = Temp;
+			sourceTree = "<group>";
+		};
+		39959FE21E895CFC006ACF7A /* Diary list */ = {
+			isa = PBXGroup;
+			children = (
+				39959FD41E89349F006ACF7A /* RCDiaryTableViewHeaderView.h */,
+				39959FD51E89349F006ACF7A /* RCDiaryTableViewHeaderView.m */,
+				39959FD71E8934B8006ACF7A /* RCDiaryTableViewHeaderView.xib */,
+				39959FC31E891C91006ACF7A /* RCDiaryListViewController.h */,
+				39959FC41E891C91006ACF7A /* RCDiaryListViewController.m */,
+				39959FD91E8951EB006ACF7A /* RCDiaryTableViewFooterView.h */,
+				39959FDA1E8951EB006ACF7A /* RCDiaryTableViewFooterView.m */,
+				39959FDC1E8951F3006ACF7A /* RCDiaryTableViewFooterView.xib */,
+				39959FE01E895B0A006ACF7A /* RCDiaryTableViewFooterEmptyView.xib */,
+			);
+			name = "Diary list";
 			sourceTree = "<group>";
 		};
 		3E3BF19256C50CAD345F803E /* Pods */ = {
@@ -297,7 +324,10 @@
 				3930C62E1E88F21C009F457E /* Assets.xcassets in Resources */,
 				3930C64A1E88FBD0009F457E /* Diary.storyboard in Resources */,
 				3930C6481E88FBC7009F457E /* Member.storyboard in Resources */,
+				39959FD81E8934B8006ACF7A /* RCDiaryTableViewHeaderView.xib in Resources */,
 				3930C62C1E88F21C009F457E /* Main.storyboard in Resources */,
+				39959FE11E895B0A006ACF7A /* RCDiaryTableViewFooterEmptyView.xib in Resources */,
+				39959FDD1E8951F3006ACF7A /* RCDiaryTableViewFooterView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,6 +386,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39959FD61E89349F006ACF7A /* RCDiaryTableViewHeaderView.m in Sources */,
+				39959FDB1E8951EB006ACF7A /* RCDiaryTableViewFooterView.m in Sources */,
 				39959FC51E891C91006ACF7A /* RCDiaryListViewController.m in Sources */,
 				3930C6261E88F21C009F457E /* AppDelegate.m in Sources */,
 				3930C6231E88F21C009F457E /* main.m in Sources */,

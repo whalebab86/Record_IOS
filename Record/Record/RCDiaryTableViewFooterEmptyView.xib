@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="RCDiaryTableViewFooterEmptyView" id="mqJ-YC-IXO" customClass="RCDiaryTableViewFooterView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fai-PI-Wgn">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cbd-XP-eUL">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
+                            <state key="normal" title="+ Empty"/>
+                            <connections>
+                                <action selector="didClickButton:" destination="mqJ-YC-IXO" eventType="touchUpInside" id="vNt-9z-OQW"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="Cbd-XP-eUL" firstAttribute="top" secondItem="fai-PI-Wgn" secondAttribute="top" id="7Ne-7r-FPL"/>
+                        <constraint firstItem="Cbd-XP-eUL" firstAttribute="leading" secondItem="fai-PI-Wgn" secondAttribute="leading" id="HrM-S5-m4a"/>
+                        <constraint firstAttribute="bottom" secondItem="Cbd-XP-eUL" secondAttribute="bottom" id="TV5-n4-JGc"/>
+                        <constraint firstAttribute="trailing" secondItem="Cbd-XP-eUL" secondAttribute="trailing" id="boA-yO-yxN"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="fai-PI-Wgn" firstAttribute="leading" secondItem="mqJ-YC-IXO" secondAttribute="leading" id="4dc-kd-pLa"/>
+                <constraint firstAttribute="trailing" secondItem="fai-PI-Wgn" secondAttribute="trailing" id="7be-1Z-q4m"/>
+                <constraint firstItem="fai-PI-Wgn" firstAttribute="top" secondItem="mqJ-YC-IXO" secondAttribute="top" id="B20-zf-wyP"/>
+                <constraint firstAttribute="bottom" secondItem="fai-PI-Wgn" secondAttribute="bottom" id="Np3-D9-KoP"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+    </objects>
+</document>
