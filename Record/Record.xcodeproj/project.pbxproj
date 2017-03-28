@@ -19,6 +19,9 @@
 		44D61A1B1E893BC70088FA2B /* SourceSansPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 44D61A191E893BC70088FA2B /* SourceSansPro-Bold.otf */; };
 		44D61A1C1E893BC70088FA2B /* SourceSansPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 44D61A1A1E893BC70088FA2B /* SourceSansPro-Regular.otf */; };
 		44D61A1E1E893C4E0088FA2B /* SourceSansPro-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 44D61A1D1E893C4E0088FA2B /* SourceSansPro-Semibold.otf */; };
+		44D61A211E896E070088FA2B /* RCSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D61A201E896E070088FA2B /* RCSignInViewController.m */; };
+		44D61A241E896E1F0088FA2B /* RCSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D61A231E896E1F0088FA2B /* RCSignUpViewController.m */; };
+		44D61A271E8972410088FA2B /* RCSignConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D61A261E8972410088FA2B /* RCSignConfigViewController.m */; };
 		A912FF3531A493E3A1ED367E /* libPods-Record.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84204659D1372BB76B27C5E6 /* libPods-Record.a */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +45,12 @@
 		44D61A191E893BC70088FA2B /* SourceSansPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Bold.otf"; sourceTree = "<group>"; };
 		44D61A1A1E893BC70088FA2B /* SourceSansPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Regular.otf"; sourceTree = "<group>"; };
 		44D61A1D1E893C4E0088FA2B /* SourceSansPro-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Semibold.otf"; sourceTree = "<group>"; };
+		44D61A1F1E896E070088FA2B /* RCSignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCSignInViewController.h; sourceTree = "<group>"; };
+		44D61A201E896E070088FA2B /* RCSignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCSignInViewController.m; sourceTree = "<group>"; };
+		44D61A221E896E1F0088FA2B /* RCSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCSignUpViewController.h; sourceTree = "<group>"; };
+		44D61A231E896E1F0088FA2B /* RCSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCSignUpViewController.m; sourceTree = "<group>"; };
+		44D61A251E8972410088FA2B /* RCSignConfigViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCSignConfigViewController.h; sourceTree = "<group>"; };
+		44D61A261E8972410088FA2B /* RCSignConfigViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCSignConfigViewController.m; sourceTree = "<group>"; };
 		84204659D1372BB76B27C5E6 /* libPods-Record.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Record.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8E10F661C41DA25751724C5 /* Pods-Record.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Record.release.xcconfig"; path = "Pods/Target Support Files/Pods-Record/Pods-Record.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -158,6 +167,12 @@
 			children = (
 				44D61A161E89314C0088FA2B /* RCSplashViewController.h */,
 				44D61A171E89314C0088FA2B /* RCSplashViewController.m */,
+				44D61A251E8972410088FA2B /* RCSignConfigViewController.h */,
+				44D61A261E8972410088FA2B /* RCSignConfigViewController.m */,
+				44D61A1F1E896E070088FA2B /* RCSignInViewController.h */,
+				44D61A201E896E070088FA2B /* RCSignInViewController.m */,
+				44D61A221E896E1F0088FA2B /* RCSignUpViewController.h */,
+				44D61A231E896E1F0088FA2B /* RCSignUpViewController.m */,
 			);
 			name = Member;
 			sourceTree = "<group>";
@@ -374,9 +389,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				39959FC51E891C91006ACF7A /* RCDiaryListViewController.m in Sources */,
+				44D61A211E896E070088FA2B /* RCSignInViewController.m in Sources */,
+				44D61A271E8972410088FA2B /* RCSignConfigViewController.m in Sources */,
 				3930C6261E88F21C009F457E /* AppDelegate.m in Sources */,
 				44D61A181E89314C0088FA2B /* RCSplashViewController.m in Sources */,
 				3930C6231E88F21C009F457E /* main.m in Sources */,
+				44D61A241E896E1F0088FA2B /* RCSignUpViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

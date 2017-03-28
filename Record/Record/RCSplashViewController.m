@@ -8,6 +8,7 @@
 
 #import "RCSplashViewController.h"
 
+
 @interface RCSplashViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *signUpBtn;
 @property (weak, nonatomic) IBOutlet UIButton *signInBtn;
@@ -26,6 +27,9 @@
     
     //회원가입 페이지 이동 버튼의 레이어와 색 설정
     [self setBtnLayerAndColor:self.signInBtn];
+    
+    
+    
 
 }
 
