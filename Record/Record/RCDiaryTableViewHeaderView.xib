@@ -31,7 +31,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XFO-mj-L66">
                                     <rect key="frame" x="112" y="63" width="150" height="128"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KDK-nX-ddN">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RCSplashBGImage" translatesAutoresizingMaskIntoConstraints="NO" id="KDK-nX-ddN">
                                             <rect key="frame" x="42" y="31" width="65" height="65"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="65" id="S6f-8G-aY6"/>
@@ -117,7 +117,8 @@
             </connections>
             <point key="canvasLocation" x="34.5" y="54"/>
         </view>
-        <navigationItem title="Title" id="SwU-9U-N3q"/>
-        <navigationItem title="Title" id="UhH-HM-grI"/>
     </objects>
+    <resources>
+        <image name="RCSplashBGImage" width="375" height="667"/>
+    </resources>
 </document>

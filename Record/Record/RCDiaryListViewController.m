@@ -9,11 +9,14 @@
 #import "RCDiaryListViewController.h"
 #import "RCDiaryTableViewHeaderView.h"
 #import "RCDiaryTableViewFooterView.h"
+#import "RCDiaryListCustomTableViewCell.h"
 
 @interface RCDiaryListViewController ()
-<UITableViewDataSource, UITableViewDelegate, RCDiaryTableViewFooterDelegate>
+<UITableViewDataSource, UITableViewDelegate, RCDiaryTableViewFooterDelegate, UISearchBarDelegate>
 
-@property (weak, nonatomic) IBOutlet UITableView *DiaryTableView;
+@property (weak, nonatomic) IBOutlet UITableView *diaryTableView;
+
+@property (nonatomic) UISearchController *searchController;
 
 @end
 
@@ -23,6 +26,27 @@
     [super viewDidLoad];
     
     // Do any additional setup after loading the view.
+    
+    /* Table view custom cell - xib */
+    UINib *cellNib = [UINib nibWithNibName:@"RCDiaryListCustomTableViewCell" bundle:nil];
+    [self.diaryTableView registerNib:cellNib forCellReuseIdentifier:@"RCDiaryListCustomTableViewCell"];
+    
+    /* Search controller custom */
+    UISearchController *searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
+    //    searchController.searchResultsUpdater = self;
+    
+    searchController.hidesNavigationBarDuringPresentation = NO;
+    searchController.searchBar.delegate        = self;
+    searchController.searchBar.backgroundImage = [UIImage new];
+    searchController.searchBar.tintColor       = [UIColor colorWithRed:0/255.0f
+                                                                 green:122/255.0f
+                                                                  blue:255/255.0f
+                                                                 alpha:1];
+    
+    self.searchController = searchController;
+    
+    self.diaryTableView.tableHeaderView = searchController.searchBar;
+    self.diaryTableView.contentOffset   = CGPointMake(0, searchController.searchBar.frame.size.height);
 }
 
 
@@ -31,35 +55,45 @@
 /* Tableview numberOfRowsInSection */
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 1;
+    return 5;
 }
 
 
 /* Tableview cellForRowAtIndexPath */
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SectionCell" forIndexPath:indexPath];
-    
+    RCDiaryListCustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RCDiaryListCustomTableViewCell"
+                                                                           forIndexPath:indexPath];
     
     return cell;
 }
 
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return (self.view.frame.size.width * 0.6);
+}
+
+
 /* Tableview viewForHeaderInSection */
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
+    /* Table view header view - xib */
     UINib *nib = [UINib nibWithNibName:@"RCDiaryTableViewHeaderView" bundle: nil];
-    [self.DiaryTableView registerNib:nib forHeaderFooterViewReuseIdentifier:@"RCDiaryTableViewHeaderView"];
+    [self.diaryTableView registerNib:nib forHeaderFooterViewReuseIdentifier:@"RCDiaryTableViewHeaderView"];
     
     RCDiaryTableViewHeaderView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"RCDiaryTableViewHeaderView"];
     
     return headerView;
 }
 
+
 /* Tableview heightForHeaderInSection */
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     
     return (self.view.frame.size.width * 0.8);
 }
+
 
 /* Tableview viewForFooterInSection */
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
@@ -76,27 +110,48 @@
         footerNibIdentifier = @"RCDiaryTableViewFooterView";
     }
     
+    /* Table view footer view - xib */
     UINib *nib = [UINib nibWithNibName:footerNibIdentifier bundle: nil];
-    [self.DiaryTableView registerNib:nib forHeaderFooterViewReuseIdentifier:footerNibIdentifier];
+    [self.diaryTableView registerNib:nib forHeaderFooterViewReuseIdentifier:footerNibIdentifier];
     
     RCDiaryTableViewFooterView *footerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:footerNibIdentifier];
     
+    /* Footerview button click delegate */
     [footerView setDelegate:self];
     
     return footerView;
 }
 
+
 /* Tableview heightForFooterInSection */
--(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     
     return 80;
 }
 
+
 #pragma mark - RCDiaryTableViewFooter Delegate
--(void)didClickAddButton {
+- (void)tableViewFooterButton:(UIButton *)button {
     
     NSLog(@"Click Add Button");
 }
+
+//#pragma mark - UISearchController Delegate
+//- (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
+//    
+//}
+
+#pragma mark - UISearchBar Delegate
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    
+//    [searchBar resignFirstResponder];
+}
+
+#pragma mark - Custom Segue
+- (IBAction)unwindSegue:(UIStoryboardSegue *)sender {
+    
+}
+
 
 #pragma mark - Custom method
 

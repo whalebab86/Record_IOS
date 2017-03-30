@@ -10,7 +10,7 @@
 
 @protocol RCDiaryTableViewFooterDelegate <NSObject>
 
-- tableViewFooterButton:(UIButton *)button;
+- (void)tableViewFooterButton:(UIButton *)button;
 
 @end
 

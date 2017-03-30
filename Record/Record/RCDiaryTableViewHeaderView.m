@@ -36,7 +36,6 @@
     
     /* Google map */
     [self showGoogleMap];
-
 }
 
 -(void)layoutSubviews {
@@ -57,8 +56,8 @@
 - (void)showGoogleMap {
     
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:37.86
-                                                            longitude:151.20
-                                                                 zoom:0];
+                                                            longitude:135.20
+                                                                 zoom:4];
     
     self.googleMapView = [GMSMapView mapWithFrame:CGRectZero camera:camera];
 //    self.googleMapView.myLocationEnabled = YES;
