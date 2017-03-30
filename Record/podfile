@@ -9,4 +9,7 @@ target 'Record' do
   pod 'AFNetworking', '~> 3.0'
   pod 'SDWebImage', '~>3.8'
   pod 'GoogleMaps'
+  pod 'FBSDKCoreKit'
+  pod 'FBSDKLoginKit'
+  pod 'FBSDKShareKit'
 end
