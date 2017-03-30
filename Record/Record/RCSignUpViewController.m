@@ -8,7 +8,20 @@
 
 #import "RCSignUpViewController.h"
 
+typedef NS_ENUM(NSInteger, texfFieldSelectied) {
+    
+    emailTFSelectied = 0,
+    passwordTFSelectied,
+    confirmPasswordTFSelectied
+};
+
 @interface RCSignUpViewController ()
+<UITextFieldDelegate>
+@property (weak, nonatomic) IBOutlet UIScrollView *signUpMainScroll;
+@property (weak, nonatomic) IBOutlet UITextField *signUpEmailTF;
+@property (weak, nonatomic) IBOutlet UITextField *signUpPasswordTF;
+@property (weak, nonatomic) IBOutlet UITextField *signUpConfirmPasswordTF;
+@property (weak, nonatomic) IBOutlet UIButton *signUpCreatAccountBtn;
 
 @end
 
@@ -17,6 +30,48 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.signUpCreatAccountBtn.layer.cornerRadius = 3.0f;
+    
+    self.signUpEmailTF.tag = emailTFSelectied;
+    self.signUpPasswordTF.tag = passwordTFSelectied;
+    self.signUpConfirmPasswordTF.tag = confirmPasswordTFSelectied;
+    
+    self.signUpEmailTF.delegate = self;
+    self.signUpPasswordTF.delegate = self;
+    self.signUpConfirmPasswordTF.delegate = self;
+}
+
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    
+    switch (textField.tag) {
+        case emailTFSelectied:
+            [self.signUpEmailTF resignFirstResponder];
+            [self.signUpPasswordTF becomeFirstResponder];
+            break;
+            
+        case passwordTFSelectied:
+            [self.signUpPasswordTF resignFirstResponder];
+            [self.signUpConfirmPasswordTF becomeFirstResponder];
+            break;
+            
+        case confirmPasswordTFSelectied:
+            [self.signUpConfirmPasswordTF resignFirstResponder];
+            self.signUpMainScroll.contentOffset = CGPointMake(0, 0);
+            break;
+        default:
+            break;
+    }
+    
+    return YES;
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    CGFloat offsetY = self.signUpConfirmPasswordTF.frame.size.height;
+    self.signUpMainScroll.contentOffset = CGPointMake(0, offsetY);
+    
+    return YES;
 }
 
 - (void)didReceiveMemoryWarning {

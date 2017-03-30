@@ -15,6 +15,11 @@
 		3930C6481E88FBC7009F457E /* Member.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3930C6471E88FBC7009F457E /* Member.storyboard */; };
 		3930C64A1E88FBD0009F457E /* Diary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3930C6491E88FBD0009F457E /* Diary.storyboard */; };
 		39959FC51E891C91006ACF7A /* RCDiaryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39959FC41E891C91006ACF7A /* RCDiaryListViewController.m */; };
+		4458ECE01E8B790800EDC792 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4458ECDF1E8B790800EDC792 /* Setting.storyboard */; };
+		4458ECE31E8B796D00EDC792 /* RCSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4458ECE21E8B796D00EDC792 /* RCSettingViewController.m */; };
+		4458ECE61E8B7EF300EDC792 /* RCSettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4458ECE51E8B7EF300EDC792 /* RCSettingTableViewCell.m */; };
+		4458ECE81E8B821700EDC792 /* RCSettingTable.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4458ECE71E8B821700EDC792 /* RCSettingTable.plist */; };
+		4458ECEB1E8B83D200EDC792 /* RCSettingTableInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4458ECEA1E8B83D200EDC792 /* RCSettingTableInfo.m */; };
 		44D61A181E89314C0088FA2B /* RCSplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D61A171E89314C0088FA2B /* RCSplashViewController.m */; };
 		44D61A1B1E893BC70088FA2B /* SourceSansPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 44D61A191E893BC70088FA2B /* SourceSansPro-Bold.otf */; };
 		44D61A1C1E893BC70088FA2B /* SourceSansPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 44D61A1A1E893BC70088FA2B /* SourceSansPro-Regular.otf */; };
@@ -39,7 +44,16 @@
 		3930C6491E88FBD0009F457E /* Diary.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Diary.storyboard; sourceTree = "<group>"; };
 		3930C64E1E88FF5A009F457E /* Record-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Record-Prefix.pch"; sourceTree = "<group>"; };
 		39959FC31E891C91006ACF7A /* RCDiaryListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCDiaryListViewController.h; sourceTree = "<group>"; };
-		39959FC41E891C91006ACF7A /* RCDiaryListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCDiaryListViewController.m; sourceTree = "<group>"; };		44D61A161E89314C0088FA2B /* RCSplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCSplashViewController.h; sourceTree = "<group>"; };
+		39959FC41E891C91006ACF7A /* RCDiaryListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCDiaryListViewController.m; sourceTree = "<group>"; };
+		4458ECDF1E8B790800EDC792 /* Setting.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
+		4458ECE11E8B796D00EDC792 /* RCSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCSettingViewController.h; sourceTree = "<group>"; };
+		4458ECE21E8B796D00EDC792 /* RCSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCSettingViewController.m; sourceTree = "<group>"; };
+		4458ECE41E8B7EF300EDC792 /* RCSettingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCSettingTableViewCell.h; sourceTree = "<group>"; };
+		4458ECE51E8B7EF300EDC792 /* RCSettingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCSettingTableViewCell.m; sourceTree = "<group>"; };
+		4458ECE71E8B821700EDC792 /* RCSettingTable.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = RCSettingTable.plist; sourceTree = "<group>"; };
+		4458ECE91E8B83D200EDC792 /* RCSettingTableInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCSettingTableInfo.h; sourceTree = "<group>"; };
+		4458ECEA1E8B83D200EDC792 /* RCSettingTableInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCSettingTableInfo.m; sourceTree = "<group>"; };
+		44D61A161E89314C0088FA2B /* RCSplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCSplashViewController.h; sourceTree = "<group>"; };
 		44D61A171E89314C0088FA2B /* RCSplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCSplashViewController.m; sourceTree = "<group>"; };
 		44D61A191E893BC70088FA2B /* SourceSansPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Bold.otf"; sourceTree = "<group>"; };
 		44D61A1A1E893BC70088FA2B /* SourceSansPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Regular.otf"; sourceTree = "<group>"; };
@@ -141,6 +155,10 @@
 		3930C6411E88FB40009F457E /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				4458ECE11E8B796D00EDC792 /* RCSettingViewController.h */,
+				4458ECE21E8B796D00EDC792 /* RCSettingViewController.m */,
+				4458ECE41E8B7EF300EDC792 /* RCSettingTableViewCell.h */,
+				4458ECE51E8B7EF300EDC792 /* RCSettingTableViewCell.m */,
 			);
 			name = Setting;
 			sourceTree = "<group>";
@@ -189,6 +207,7 @@
 				3930C62A1E88F21C009F457E /* Main.storyboard */,
 				3930C6471E88FBC7009F457E /* Member.storyboard */,
 				3930C6491E88FBD0009F457E /* Diary.storyboard */,
+				4458ECDF1E8B790800EDC792 /* Setting.storyboard */,
 			);
 			name = Storyboard;
 			sourceTree = "<group>";
@@ -220,6 +239,8 @@
 		3930C6511E8901C5009F457E /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				4458ECE91E8B83D200EDC792 /* RCSettingTableInfo.h */,
+				4458ECEA1E8B83D200EDC792 /* RCSettingTableInfo.m */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -227,6 +248,7 @@
 		3930C6521E8901D3009F457E /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				4458ECE71E8B821700EDC792 /* RCSettingTable.plist */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -244,15 +266,8 @@
 		39959FE21E895CFC006ACF7A /* Diary list */ = {
 			isa = PBXGroup;
 			children = (
-				39959FD41E89349F006ACF7A /* RCDiaryTableViewHeaderView.h */,
-				39959FD51E89349F006ACF7A /* RCDiaryTableViewHeaderView.m */,
-				39959FD71E8934B8006ACF7A /* RCDiaryTableViewHeaderView.xib */,
 				39959FC31E891C91006ACF7A /* RCDiaryListViewController.h */,
 				39959FC41E891C91006ACF7A /* RCDiaryListViewController.m */,
-				39959FD91E8951EB006ACF7A /* RCDiaryTableViewFooterView.h */,
-				39959FDA1E8951EB006ACF7A /* RCDiaryTableViewFooterView.m */,
-				39959FDC1E8951F3006ACF7A /* RCDiaryTableViewFooterView.xib */,
-				39959FE01E895B0A006ACF7A /* RCDiaryTableViewFooterEmptyView.xib */,
 			);
 			name = "Diary list";
 			sourceTree = "<group>";
@@ -341,8 +356,10 @@
 				3930C64A1E88FBD0009F457E /* Diary.storyboard in Resources */,
 				3930C6481E88FBC7009F457E /* Member.storyboard in Resources */,
 				44D61A1E1E893C4E0088FA2B /* SourceSansPro-Semibold.otf in Resources */,
+				4458ECE01E8B790800EDC792 /* Setting.storyboard in Resources */,
 				44D61A1B1E893BC70088FA2B /* SourceSansPro-Bold.otf in Resources */,
 				3930C62C1E88F21C009F457E /* Main.storyboard in Resources */,
+				4458ECE81E8B821700EDC792 /* RCSettingTable.plist in Resources */,
 				44D61A1C1E893BC70088FA2B /* SourceSansPro-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -402,14 +419,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39959FD61E89349F006ACF7A /* RCDiaryTableViewHeaderView.m in Sources */,
-				39959FDB1E8951EB006ACF7A /* RCDiaryTableViewFooterView.m in Sources */,
 				39959FC51E891C91006ACF7A /* RCDiaryListViewController.m in Sources */,
 				44D61A211E896E070088FA2B /* RCSignInViewController.m in Sources */,
+				4458ECE61E8B7EF300EDC792 /* RCSettingTableViewCell.m in Sources */,
 				44D61A271E8972410088FA2B /* RCSignConfigViewController.m in Sources */,
+				4458ECEB1E8B83D200EDC792 /* RCSettingTableInfo.m in Sources */,
 				3930C6261E88F21C009F457E /* AppDelegate.m in Sources */,
 				44D61A181E89314C0088FA2B /* RCSplashViewController.m in Sources */,
 				3930C6231E88F21C009F457E /* main.m in Sources */,
+				4458ECE31E8B796D00EDC792 /* RCSettingViewController.m in Sources */,
 				44D61A241E896E1F0088FA2B /* RCSignUpViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,7 +8,18 @@
 
 #import "RCSignInViewController.h"
 
+typedef NS_ENUM(NSInteger, texfFieldSelectied) {
+    
+    emailTFSelectied = 0,
+    passwordTFSelectied
+    
+};
+
 @interface RCSignInViewController ()
+<UITextFieldDelegate>
+@property (weak, nonatomic) IBOutlet UITextField *signInEmailTF;
+@property (weak, nonatomic) IBOutlet UITextField *signInPasswordTF;
+@property (weak, nonatomic) IBOutlet UIButton *signInLoginBtn;
 
 @end
 
@@ -17,7 +28,43 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.signInLoginBtn.layer.cornerRadius = 3.0f;
+
+    self.signInEmailTF.tag = emailTFSelectied;
+    self.signInPasswordTF.tag = passwordTFSelectied;
+    
+    self.signInEmailTF.delegate = self;
+    self.signInPasswordTF.delegate = self;
+    
 }
+
+
+
+
+- (IBAction)loginBtnAction:(id)sender {
+    
+    NSLog(@"로그인 버튼이 눌렸습니다.");
+    
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    
+    switch (textField.tag) {
+        case emailTFSelectied:
+            [self.signInEmailTF resignFirstResponder];
+            [self.signInPasswordTF becomeFirstResponder];
+            break;
+            
+        case passwordTFSelectied:
+            [self.signInPasswordTF resignFirstResponder];
+            break;
+        default:
+            break;
+    }
+    return YES;
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
