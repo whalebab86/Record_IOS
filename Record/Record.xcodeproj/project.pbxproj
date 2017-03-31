@@ -23,7 +23,6 @@
 		39959FF51E8A24BB006ACF7A /* RCDiaryListCustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39959FF31E8A24BB006ACF7A /* RCDiaryListCustomTableViewCell.m */; };
 		39959FF61E8A24BB006ACF7A /* RCDiaryListCustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39959FF41E8A24BB006ACF7A /* RCDiaryListCustomTableViewCell.xib */; };
 		39959FFA1E8A712F006ACF7A /* RCDiaryDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39959FF91E8A712F006ACF7A /* RCDiaryDetailViewController.m */; };
-		39959FFC1E8A866A006ACF7A /* DumyLoginInformation.plist in Resources */ = {isa = PBXBuildFile; fileRef = 39959FFB1E8A866A006ACF7A /* DumyLoginInformation.plist */; };
 		39959FFE1E8A8688006ACF7A /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = 39959FFD1E8A8688006ACF7A /* test.json */; };
 		3995A00A1E8BC4DF006ACF7A /* DateSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3995A0091E8BC4DF006ACF7A /* DateSource.m */; };
 		3995A0101E8CCE61006ACF7A /* RCDiaryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3995A00F1E8CCE61006ACF7A /* RCDiaryManager.m */; };
@@ -32,6 +31,7 @@
 		4458ECE61E8B7EF300EDC792 /* RCSettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4458ECE51E8B7EF300EDC792 /* RCSettingTableViewCell.m */; };
 		4458ECE81E8B821700EDC792 /* RCSettingTable.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4458ECE71E8B821700EDC792 /* RCSettingTable.plist */; };
 		4458ECEB1E8B83D200EDC792 /* RCSettingTableInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4458ECEA1E8B83D200EDC792 /* RCSettingTableInfo.m */; };
+		44929F471E8CD700005B6C3B /* RCLoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 44929F461E8CD700005B6C3B /* RCLoginManager.m */; };
 		44D61A181E89314C0088FA2B /* RCSplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D61A171E89314C0088FA2B /* RCSplashViewController.m */; };
 		44D61A1B1E893BC70088FA2B /* SourceSansPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 44D61A191E893BC70088FA2B /* SourceSansPro-Bold.otf */; };
 		44D61A1C1E893BC70088FA2B /* SourceSansPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 44D61A1A1E893BC70088FA2B /* SourceSansPro-Regular.otf */; };
@@ -39,6 +39,10 @@
 		44D61A211E896E070088FA2B /* RCSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D61A201E896E070088FA2B /* RCSignInViewController.m */; };
 		44D61A241E896E1F0088FA2B /* RCSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D61A231E896E1F0088FA2B /* RCSignUpViewController.m */; };
 		44D61A271E8972410088FA2B /* RCSignConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D61A261E8972410088FA2B /* RCSignConfigViewController.m */; };
+		44F4FE471E8CF023008CED9B /* TempLogoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44F4FE461E8CF023008CED9B /* TempLogoutViewController.m */; };
+		44F4FE491E8D0EA5008CED9B /* userInfoDummy.json in Resources */ = {isa = PBXBuildFile; fileRef = 44F4FE481E8D0EA5008CED9B /* userInfoDummy.json */; };
+		44F4FE4D1E8E25E0008CED9B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44F4FE4C1E8E25E0008CED9B /* GoogleService-Info.plist */; };
+		44F4FE501E8E75E7008CED9B /* RCMemberValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 44F4FE4F1E8E75E7008CED9B /* RCMemberValidation.m */; };
 		A912FF3531A493E3A1ED367E /* libPods-Record.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84204659D1372BB76B27C5E6 /* libPods-Record.a */; };
 /* End PBXBuildFile section */
 
@@ -69,7 +73,6 @@
 		39959FF41E8A24BB006ACF7A /* RCDiaryListCustomTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RCDiaryListCustomTableViewCell.xib; sourceTree = "<group>"; };
 		39959FF81E8A712F006ACF7A /* RCDiaryDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCDiaryDetailViewController.h; sourceTree = "<group>"; };
 		39959FF91E8A712F006ACF7A /* RCDiaryDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCDiaryDetailViewController.m; sourceTree = "<group>"; };
-		39959FFB1E8A866A006ACF7A /* DumyLoginInformation.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DumyLoginInformation.plist; sourceTree = "<group>"; };
 		39959FFD1E8A8688006ACF7A /* test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test.json; sourceTree = "<group>"; };
 		3995A0081E8BC4DF006ACF7A /* DateSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateSource.h; sourceTree = "<group>"; };
 		3995A0091E8BC4DF006ACF7A /* DateSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateSource.m; sourceTree = "<group>"; };
@@ -83,6 +86,8 @@
 		4458ECE71E8B821700EDC792 /* RCSettingTable.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = RCSettingTable.plist; sourceTree = "<group>"; };
 		4458ECE91E8B83D200EDC792 /* RCSettingTableInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCSettingTableInfo.h; sourceTree = "<group>"; };
 		4458ECEA1E8B83D200EDC792 /* RCSettingTableInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCSettingTableInfo.m; sourceTree = "<group>"; };
+		44929F451E8CD700005B6C3B /* RCLoginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCLoginManager.h; sourceTree = "<group>"; };
+		44929F461E8CD700005B6C3B /* RCLoginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCLoginManager.m; sourceTree = "<group>"; };
 		44D61A161E89314C0088FA2B /* RCSplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCSplashViewController.h; sourceTree = "<group>"; };
 		44D61A171E89314C0088FA2B /* RCSplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCSplashViewController.m; sourceTree = "<group>"; };
 		44D61A191E893BC70088FA2B /* SourceSansPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Bold.otf"; sourceTree = "<group>"; };
@@ -94,6 +99,12 @@
 		44D61A231E896E1F0088FA2B /* RCSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCSignUpViewController.m; sourceTree = "<group>"; };
 		44D61A251E8972410088FA2B /* RCSignConfigViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCSignConfigViewController.h; sourceTree = "<group>"; };
 		44D61A261E8972410088FA2B /* RCSignConfigViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCSignConfigViewController.m; sourceTree = "<group>"; };
+		44F4FE451E8CF023008CED9B /* TempLogoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TempLogoutViewController.h; sourceTree = "<group>"; };
+		44F4FE461E8CF023008CED9B /* TempLogoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TempLogoutViewController.m; sourceTree = "<group>"; };
+		44F4FE481E8D0EA5008CED9B /* userInfoDummy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = userInfoDummy.json; sourceTree = "<group>"; };
+		44F4FE4C1E8E25E0008CED9B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		44F4FE4E1E8E75E7008CED9B /* RCMemberValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCMemberValidation.h; sourceTree = "<group>"; };
+		44F4FE4F1E8E75E7008CED9B /* RCMemberValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCMemberValidation.m; sourceTree = "<group>"; };
 		84204659D1372BB76B27C5E6 /* libPods-Record.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Record.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8E10F661C41DA25751724C5 /* Pods-Record.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Record.release.xcconfig"; path = "Pods/Target Support Files/Pods-Record/Pods-Record.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -140,8 +151,8 @@
 				3930C6211E88F21B009F457E /* Supporting Files */,
 				3930C62D1E88F21C009F457E /* Assets.xcassets */,
 				3930C6321E88F21C009F457E /* Info.plist */,
-				39959FFB1E8A866A006ACF7A /* DumyLoginInformation.plist */,
 				39959FFD1E8A8688006ACF7A /* test.json */,
+				44F4FE4C1E8E25E0008CED9B /* GoogleService-Info.plist */,
 			);
 			path = Record;
 			sourceTree = "<group>";
@@ -279,6 +290,10 @@
 				3995A0091E8BC4DF006ACF7A /* DateSource.m */,
 				3995A00E1E8CCE61006ACF7A /* RCDiaryManager.h */,
 				3995A00F1E8CCE61006ACF7A /* RCDiaryManager.m */,
+				44929F451E8CD700005B6C3B /* RCLoginManager.h */,
+				44929F461E8CD700005B6C3B /* RCLoginManager.m */,
+				44F4FE4E1E8E75E7008CED9B /* RCMemberValidation.h */,
+				44F4FE4F1E8E75E7008CED9B /* RCMemberValidation.m */,
 				4458ECE91E8B83D200EDC792 /* RCSettingTableInfo.h */,
 				4458ECEA1E8B83D200EDC792 /* RCSettingTableInfo.m */,
 			);
@@ -296,9 +311,12 @@
 		3930C6531E8902F5009F457E /* Temp */ = {
 			isa = PBXGroup;
 			children = (
+				44F4FE451E8CF023008CED9B /* TempLogoutViewController.h */,
+				44F4FE461E8CF023008CED9B /* TempLogoutViewController.m */,
 				44D61A191E893BC70088FA2B /* SourceSansPro-Bold.otf */,
 				44D61A1A1E893BC70088FA2B /* SourceSansPro-Regular.otf */,
 				44D61A1D1E893C4E0088FA2B /* SourceSansPro-Semibold.otf */,
+				44F4FE481E8D0EA5008CED9B /* userInfoDummy.json */,
 			);
 			name = Temp;
 			sourceTree = "<group>";
@@ -316,8 +334,6 @@
 				39959FF21E8A24BB006ACF7A /* RCDiaryListCustomTableViewCell.h */,
 				39959FF31E8A24BB006ACF7A /* RCDiaryListCustomTableViewCell.m */,
 				39959FF41E8A24BB006ACF7A /* RCDiaryListCustomTableViewCell.xib */,
-				39959FC31E891C91006ACF7A /* RCDiaryListViewController.h */,
-				39959FC41E891C91006ACF7A /* RCDiaryListViewController.m */,
 			);
 			name = Diary;
 			sourceTree = "<group>";
@@ -411,12 +427,13 @@
 				44D61A1E1E893C4E0088FA2B /* SourceSansPro-Semibold.otf in Resources */,
 				4458ECE01E8B790800EDC792 /* Setting.storyboard in Resources */,
 				44D61A1B1E893BC70088FA2B /* SourceSansPro-Bold.otf in Resources */,
-				39959FFC1E8A866A006ACF7A /* DumyLoginInformation.plist in Resources */,
 				3930C62C1E88F21C009F457E /* Main.storyboard in Resources */,
 				39959FEC1E8A0B36006ACF7A /* RCDiaryTableViewFooterView.xib in Resources */,
+				44F4FE4D1E8E25E0008CED9B /* GoogleService-Info.plist in Resources */,
 				39959FEE1E8A0B36006ACF7A /* RCDiaryTableViewHeaderView.xib in Resources */,
 				4458ECE81E8B821700EDC792 /* RCSettingTable.plist in Resources */,
 				44D61A1C1E893BC70088FA2B /* SourceSansPro-Regular.otf in Resources */,
+				44F4FE491E8D0EA5008CED9B /* userInfoDummy.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,6 +493,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3995A0101E8CCE61006ACF7A /* RCDiaryManager.m in Sources */,
+				44929F471E8CD700005B6C3B /* RCLoginManager.m in Sources */,
 				39959FFA1E8A712F006ACF7A /* RCDiaryDetailViewController.m in Sources */,
 				39959FC51E891C91006ACF7A /* RCDiaryListViewController.m in Sources */,
 				39959FED1E8A0B36006ACF7A /* RCDiaryTableViewHeaderView.m in Sources */,
@@ -486,8 +504,10 @@
 				44D61A271E8972410088FA2B /* RCSignConfigViewController.m in Sources */,
 				4458ECEB1E8B83D200EDC792 /* RCSettingTableInfo.m in Sources */,
 				3930C6261E88F21C009F457E /* AppDelegate.m in Sources */,
+				44F4FE501E8E75E7008CED9B /* RCMemberValidation.m in Sources */,
 				44D61A181E89314C0088FA2B /* RCSplashViewController.m in Sources */,
 				3930C6231E88F21C009F457E /* main.m in Sources */,
+				44F4FE471E8CF023008CED9B /* TempLogoutViewController.m in Sources */,
 				3995A00A1E8BC4DF006ACF7A /* DateSource.m in Sources */,
 				4458ECE31E8B796D00EDC792 /* RCSettingViewController.m in Sources */,
 				44D61A241E896E1F0088FA2B /* RCSignUpViewController.m in Sources */,

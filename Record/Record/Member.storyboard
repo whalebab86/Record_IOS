@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Dqd-dQ-t3Z">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Dqd-dQ-t3Z">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -58,7 +58,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="facebookLoginButtonAction:" destination="ZHh-Z3-Vr9" eventType="touchUpInside" id="SBz-Q3-yeq"/>
+                                    <action selector="facebookLoginButtonAction:" destination="ZHh-Z3-Vr9" eventType="touchUpInside" id="Bn2-Pu-uNW"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Si6-t4-nfc">
@@ -90,9 +90,23 @@
                                     <constraint firstItem="p6x-Yh-i4W" firstAttribute="centerX" secondItem="Si6-t4-nfc" secondAttribute="centerX" id="cWP-4R-wfr"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bCw-Zt-uzX">
+                                <rect key="frame" x="15" y="489" width="345" height="44"/>
+                                <color key="backgroundColor" red="0.8666666666666667" green="0.29411764705882354" blue="0.22352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="eLJ-qD-p7o"/>
+                                </constraints>
+                                <state key="normal" title="Create account with Google">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="googleLoginButtonAction:" destination="ZHh-Z3-Vr9" eventType="touchUpInside" id="sag-0g-Qj2"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="1Lg-4i-1na" firstAttribute="top" secondItem="bCw-Zt-uzX" secondAttribute="bottom" constant="10" id="0JA-Yd-w84"/>
                             <constraint firstItem="xW4-Ch-Ufu" firstAttribute="top" secondItem="1Lg-4i-1na" secondAttribute="bottom" constant="10" id="2gQ-80-26F"/>
                             <constraint firstItem="tkg-dt-LIO" firstAttribute="top" secondItem="qpC-5M-VlZ" secondAttribute="bottom" constant="-20" id="67i-j7-hF1"/>
                             <constraint firstAttribute="trailing" secondItem="Si6-t4-nfc" secondAttribute="trailing" constant="105" id="8n4-cT-55r"/>
@@ -102,8 +116,10 @@
                             <constraint firstItem="Si6-t4-nfc" firstAttribute="centerY" secondItem="wSk-1D-wct" secondAttribute="centerY" multiplier="0.75" id="Ryc-rA-cDz"/>
                             <constraint firstItem="tkg-dt-LIO" firstAttribute="leading" secondItem="wSk-1D-wct" secondAttribute="leading" id="Srx-Qw-5GT"/>
                             <constraint firstItem="Si6-t4-nfc" firstAttribute="height" secondItem="wSk-1D-wct" secondAttribute="height" multiplier="0.068" id="aTy-42-TQx"/>
+                            <constraint firstAttribute="trailing" secondItem="bCw-Zt-uzX" secondAttribute="trailing" constant="15" id="eKI-0C-qEl"/>
                             <constraint firstAttribute="trailing" secondItem="xW4-Ch-Ufu" secondAttribute="trailing" constant="15" id="gq2-M9-V4t"/>
                             <constraint firstItem="1Lg-4i-1na" firstAttribute="leading" secondItem="wSk-1D-wct" secondAttribute="leading" constant="15" id="hqz-IH-6C6"/>
+                            <constraint firstItem="bCw-Zt-uzX" firstAttribute="leading" secondItem="wSk-1D-wct" secondAttribute="leading" constant="15" id="ibC-Lf-Uvv"/>
                             <constraint firstAttribute="trailing" secondItem="1Lg-4i-1na" secondAttribute="trailing" constant="15" id="nrq-17-HRc"/>
                             <constraint firstItem="xW4-Ch-Ufu" firstAttribute="centerX" secondItem="wSk-1D-wct" secondAttribute="centerX" id="w2O-d3-a23"/>
                             <constraint firstItem="Si6-t4-nfc" firstAttribute="leading" secondItem="wSk-1D-wct" secondAttribute="leading" constant="105" id="x6J-1u-0ka"/>
@@ -117,13 +133,14 @@
                     <size key="freeformSize" width="375" height="667"/>
                     <connections>
                         <outlet property="facebookBtn" destination="1Lg-4i-1na" id="gMX-ti-mY6"/>
+                        <outlet property="googleBtn" destination="bCw-Zt-uzX" id="11n-Pn-ZdG"/>
                         <outlet property="signInBtn" destination="xW4-Ch-Ufu" id="1S2-WP-HVl"/>
-                        <segue destination="MlX-sQ-eQI" kind="push" identifier="OtherSegue" id="Vfu-bO-KCH"/>
+                        <segue destination="MlX-sQ-eQI" kind="show" identifier="OtherSegue" id="Vfu-bO-KCH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nMj-xd-cAm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1104.8" y="163.26836581709148"/>
+            <point key="canvasLocation" x="1974" y="-66"/>
         </scene>
         <!--Sign Config View Controller-->
         <scene sceneID="KMk-hf-ToU">
@@ -271,7 +288,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1855.2" y="163.26836581709148"/>
+            <point key="canvasLocation" x="2876" y="-66"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fZg-Xj-YcA">
@@ -289,7 +306,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uS2-cz-KYE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="165.59999999999999" y="163.26836581709148"/>
+            <point key="canvasLocation" x="1134" y="-66"/>
         </scene>
         <!--Sign In View Controller-->
         <scene sceneID="ReV-kM-pcZ">
@@ -377,7 +394,7 @@
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="loginBtnAction:" destination="I6E-Ya-cl6" eventType="touchUpInside" id="Sbb-na-Rla"/>
+                                            <action selector="emailLoginButtonAction:" destination="I6E-Ya-cl6" eventType="touchUpInside" id="n6f-n7-HRK"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9bb-lb-VRr">
@@ -397,9 +414,27 @@
                                         <state key="normal" title="Login with Facebook">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="facebookLoginButtonAction:" destination="I6E-Ya-cl6" eventType="touchUpInside" id="2ZV-Uk-aDB"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xVm-lS-BuB">
+                                        <rect key="frame" x="20" y="267" width="345" height="44"/>
+                                        <color key="backgroundColor" red="0.86666666670000003" green="0.29411764709999999" blue="0.22352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="K9j-wV-86m"/>
+                                        </constraints>
+                                        <state key="normal" title="Login with Google">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="googleLoginButtonAction:" destination="I6E-Ya-cl6" eventType="touchUpInside" id="XMh-ld-wmx"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="xVm-lS-BuB" firstAttribute="leading" secondItem="y1K-s3-4bh" secondAttribute="leading" constant="20" id="6YW-mj-Fj9"/>
+                                    <constraint firstAttribute="trailing" secondItem="xVm-lS-BuB" secondAttribute="trailing" constant="20" id="7Nx-c7-Vau"/>
                                     <constraint firstAttribute="trailing" secondItem="rbG-rQ-Wyk" secondAttribute="trailing" constant="20" id="9Tc-wY-SNi"/>
                                     <constraint firstAttribute="bottom" secondItem="9bb-lb-VRr" secondAttribute="bottom" constant="20" id="APV-g7-GU1"/>
                                     <constraint firstAttribute="trailing" secondItem="YPA-9l-xbw" secondAttribute="trailing" constant="20" id="Jto-iv-arY"/>
@@ -411,6 +446,7 @@
                                     <constraint firstItem="YPA-9l-xbw" firstAttribute="top" secondItem="rbG-rQ-Wyk" secondAttribute="bottom" constant="10" id="cao-U2-n0a"/>
                                     <constraint firstItem="WW6-EW-qjm" firstAttribute="leading" secondItem="y1K-s3-4bh" secondAttribute="leading" constant="23.5" id="edc-Pn-vei"/>
                                     <constraint firstItem="YPA-9l-xbw" firstAttribute="leading" secondItem="y1K-s3-4bh" secondAttribute="leading" constant="20" id="gim-if-7xN"/>
+                                    <constraint firstItem="xVm-lS-BuB" firstAttribute="top" secondItem="YPA-9l-xbw" secondAttribute="bottom" constant="10" id="ncD-kP-B5h"/>
                                     <constraint firstItem="rbG-rQ-Wyk" firstAttribute="top" secondItem="WW6-EW-qjm" secondAttribute="bottom" constant="37.5" id="qbZ-NS-B1I"/>
                                     <constraint firstItem="WW6-EW-qjm" firstAttribute="top" secondItem="y1K-s3-4bh" secondAttribute="top" constant="36.5" id="rWo-Bc-2Nl"/>
                                 </constraints>
@@ -429,17 +465,19 @@
                     <connections>
                         <outlet property="signInEmailTF" destination="EFj-wf-xsU" id="cu0-q4-Vvi"/>
                         <outlet property="signInLoginBtn" destination="rbG-rQ-Wyk" id="pdW-MC-eAo"/>
+                        <outlet property="signInLoginFacebook" destination="YPA-9l-xbw" id="OcI-bI-6Av"/>
+                        <outlet property="signInLoginGoogle" destination="xVm-lS-BuB" id="4X8-Dl-xe9"/>
                         <outlet property="signInPasswordTF" destination="WBh-r4-4Cr" id="Bvt-iA-MOh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eNu-Uw-QBl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2813.5999999999999" y="-116.04197901049476"/>
+            <point key="canvasLocation" x="3996" y="-343"/>
         </scene>
-        <!--View Controller-->
+        <!--Temp Logout View Controller-->
         <scene sceneID="fP8-Iz-f53">
             <objects>
-                <viewController id="MlX-sQ-eQI" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TempLogoutViewController" id="MlX-sQ-eQI" customClass="TempLogoutViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rZM-EB-NbR"/>
                         <viewControllerLayoutGuide type="bottom" id="hTX-Vl-GhR"/>
@@ -455,6 +493,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1h7-oL-n9v">
+                                <rect key="frame" x="161" y="384" width="48" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="logoutaction:" destination="MlX-sQ-eQI" eventType="touchUpInside" id="x6K-LG-ath"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -462,7 +508,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SFj-Fa-YGy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1866" y="909"/>
+            <point key="canvasLocation" x="2876" y="787"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="bBV-rC-2A9">
@@ -576,6 +622,9 @@
                                         <state key="normal" title="Create Your Account">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="signUpCreatAccountButtonAction:" destination="zWH-lN-D2I" eventType="touchUpInside" id="TaJ-bp-gUx"/>
+                                        </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RQ8-Ed-pUR">
                                         <rect key="frame" x="116" y="543" width="152" height="43"/>
@@ -594,11 +643,29 @@
                                         <state key="normal" title="Create account with Facebook">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="signUpFacebookButtonAction:" destination="zWH-lN-D2I" eventType="touchUpInside" id="vv9-fF-LEq"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0C0-Uw-t8Y">
+                                        <rect key="frame" x="20" y="312" width="345" height="44"/>
+                                        <color key="backgroundColor" red="0.86666666670000003" green="0.29411764709999999" blue="0.22352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="csg-Nt-qDb"/>
+                                        </constraints>
+                                        <state key="normal" title="Create account with Google">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="signUpGoogleButtonAction:" destination="zWH-lN-D2I" eventType="touchUpInside" id="4nZ-ZC-S1K"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="tub-h5-Vko" firstAttribute="top" secondItem="RRa-ay-4ck" secondAttribute="bottom" constant="10" id="3eE-xF-p3n"/>
                                     <constraint firstItem="RRa-ay-4ck" firstAttribute="top" secondItem="JrB-jb-03N" secondAttribute="bottom" constant="37.5" id="54V-T6-fTb"/>
+                                    <constraint firstAttribute="trailing" secondItem="0C0-Uw-t8Y" secondAttribute="trailing" constant="20" id="9go-Sk-tBq"/>
+                                    <constraint firstItem="0C0-Uw-t8Y" firstAttribute="top" secondItem="tub-h5-Vko" secondAttribute="bottom" constant="10" id="CcH-Ff-y28"/>
                                     <constraint firstItem="RQ8-Ed-pUR" firstAttribute="centerX" secondItem="RwR-lh-6VH" secondAttribute="centerX" id="IHO-C1-T6x"/>
                                     <constraint firstAttribute="trailing" secondItem="JrB-jb-03N" secondAttribute="trailing" constant="23.5" id="Ihv-nW-nF1"/>
                                     <constraint firstItem="tub-h5-Vko" firstAttribute="leading" secondItem="RwR-lh-6VH" secondAttribute="leading" constant="20" id="Kwg-Jg-tJ9"/>
@@ -608,6 +675,7 @@
                                     <constraint firstAttribute="bottom" secondItem="RQ8-Ed-pUR" secondAttribute="bottom" constant="20" id="Tb5-0y-CQh"/>
                                     <constraint firstAttribute="trailing" secondItem="tub-h5-Vko" secondAttribute="trailing" constant="20" id="XR6-D9-A5J"/>
                                     <constraint firstAttribute="trailing" secondItem="RRa-ay-4ck" secondAttribute="trailing" constant="20" id="qTQ-aK-eFi"/>
+                                    <constraint firstItem="0C0-Uw-t8Y" firstAttribute="leading" secondItem="RwR-lh-6VH" secondAttribute="leading" constant="20" id="wIv-fv-J7G"/>
                                     <constraint firstItem="JrB-jb-03N" firstAttribute="leading" secondItem="RwR-lh-6VH" secondAttribute="leading" constant="23.5" id="wNN-Iq-HX1"/>
                                     <constraint firstItem="RRa-ay-4ck" firstAttribute="centerX" secondItem="RQ8-Ed-pUR" secondAttribute="centerX" id="yzG-eZ-jHW"/>
                                 </constraints>
@@ -627,13 +695,15 @@
                         <outlet property="signUpConfirmPasswordTF" destination="yTM-N2-wB2" id="lgE-Hi-vm9"/>
                         <outlet property="signUpCreatAccountBtn" destination="RRa-ay-4ck" id="mG4-Wi-L5e"/>
                         <outlet property="signUpEmailTF" destination="WKa-Rp-YXH" id="v8d-Yu-hNC"/>
+                        <outlet property="signUpFacebookBtn" destination="tub-h5-Vko" id="kJN-C8-NqV"/>
+                        <outlet property="signUpGoogleBtn" destination="0C0-Uw-t8Y" id="Je3-QI-Pce"/>
                         <outlet property="signUpMainScroll" destination="RwR-lh-6VH" id="ObF-sX-LiT"/>
                         <outlet property="signUpPasswordTF" destination="Kep-yF-z8p" id="Xc4-7g-i6F"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rhp-RK-Jqv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2814" y="501"/>
+            <point key="canvasLocation" x="3996" y="276"/>
         </scene>
     </scenes>
     <resources>
