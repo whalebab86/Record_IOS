@@ -20,6 +20,9 @@
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @property (weak, nonatomic) IBOutlet UILabel     *profileUserNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel     *profileUserLocationLabel;
+@property (weak, nonatomic) IBOutlet UIView      *profileUserNameIconView;
+@property (weak, nonatomic) IBOutlet UILabel     *profileUserNameIconLabel;
+@property (weak, nonatomic) IBOutlet UILabel     *profileUserDescription;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *profileConstraintsY;
 
@@ -41,7 +44,7 @@
 -(void)layoutSubviews {
     
     /* Google map frame 조정 */
-    [self.googleMapView setFrame:CGRectMake(0, 0, self.frame.size.width, (self.frame.size.width * 0.8))];
+    [self.googleMapView setFrame:CGRectMake(0, 0, self.frame.size.width, (self.frame.size.width * 0.8)-5)];
 }
 
 /* 사용자 프로필정보 세팅 */
@@ -50,6 +53,12 @@
     /* profileImageView */
     [self.profileImageView.layer setCornerRadius:(self.profileImageView.frame.size.height/2.0f)];
     [self.profileImageView setBackgroundColor:[UIColor lightGrayColor]];
+    
+    /* profile username icon view */
+    [self.profileUserNameIconView setClipsToBounds:YES];
+    [self.profileUserNameIconView.layer setCornerRadius:self.profileUserNameIconView.frame.size.height / 2];
+    [self.profileUserNameIconView.layer setBorderColor:[UIColor whiteColor].CGColor];
+    [self.profileUserNameIconView.layer setBorderWidth:1];
 }
 
 /* Google Map Load */
@@ -74,10 +83,20 @@
     if(constant > 0) {
         self.profileConstraintsY.constant = 0;
     } else {
-        self.profileConstraintsY.constant = 30;
+        self.profileConstraintsY.constant = self.profileUserDescription.frame.size.height + 20;
     }
     
-    [UIView animateWithDuration:0.6 animations:^{
+    [UIView animateWithDuration:0.3 animations:^{
+        
+        if(self.profileConstraintsY.constant == 0) {
+            
+            self.profileUserNameIconLabel.text = @"▽";
+            self.profileUserDescription.alpha  = 0;
+        } else {
+            
+            self.profileUserNameIconLabel.text = @"△";
+            self.profileUserDescription.alpha  = 1;
+        }
         
         [self layoutIfNeeded];
     }];

@@ -8,9 +8,16 @@
 
 #import "RCDiaryDetailViewController.h"
 #import "RCDiaryListViewController.h"
+#import "RCDiaryManager.h"
 
 #import "DateSource.h"
 
+#import <SDWebImage/UIImageView+WebCache.h>
+
+typedef NS_ENUM(NSInteger, RCDiaryStatusMode) {
+    RCDiaryStatusModeInsert,
+    RCDiaryStatusModeUpdate
+};
 
 @interface RCDiaryDetailViewController ()
 <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UIScrollViewDelegate>
@@ -19,17 +26,27 @@
 @property (weak, nonatomic) IBOutlet UIButton     *diaryCoverButton;
 @property (weak, nonatomic) IBOutlet UILabel      *diaryPrivateSettingLabel;
 
-@property (weak, nonatomic) IBOutlet UIDatePicker *diaryKeyboardDatePicker;
-
 @property (weak, nonatomic) IBOutlet UITextField  *diaryNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField  *diaryStartDateTextField;
 @property (weak, nonatomic) IBOutlet UITextField  *diaryEndDateTextField;
 
+@property (weak, nonatomic) IBOutlet UIView       *diaryDeleteView;
 
-@property (weak, nonatomic) IBOutlet UIView      *diaryDeleteView;
+@property (nonatomic)       UIImagePickerControllerSourceType diaryImagePickerControllerSourceType;
+
+@property (weak, nonatomic) UIDatePicker                     *diaryKeyboardDatePicker;
+@property (nonatomic)       RCDiaryStatusMode                 diaryModifyMode;
+
+@property (weak, nonatomic) IBOutlet UIView *diaryMaskView;
+
+/* diary delete view constraint */
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *diaryDeleteViewBottomConstraints;
 
-@property (nonatomic) UIImagePickerControllerSourceType diaryImagePickerControllerSourceType;
+/* diary stack view top constraint */
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *diaryStackViewTopConstraint;
+
+@property (nonatomic) NSDate *diaryStartDate;
+@property (nonatomic) NSDate *diaryEndDate;
 
 @end
 
@@ -39,6 +56,28 @@
     [super viewDidLoad];
     
     // Do any additional setup after loading the view.
+    
+    if(self.diaryData == nil) {
+        
+        /* page status insert */
+        self.diaryModifyMode = RCDiaryStatusModeInsert;
+        self.diaryData = [[RCDiaryData alloc] init];
+        
+        [self.diaryDeleteView setHidden:YES];
+    } else {
+        
+        /* page status update */
+        self.diaryModifyMode = RCDiaryStatusModeUpdate;
+        
+        self.diaryNameTextField.text      = self.diaryData.diaryName;
+        self.diaryStartDateTextField.text = self.diaryData.diaryStartDate;
+        self.diaryEndDateTextField.text   = self.diaryData.diaryEndDate;
+        
+        [self.diaryCoverImageView sd_setImageWithURL:[NSURL URLWithString:self.diaryData.diaryCoverImageUrl]
+                                    placeholderImage:[UIImage imageNamed:@"RCSignInUpTopImage"]];
+        
+        
+    }
     
     /* diary cover imageview custom */
     [self.diaryCoverImageView.layer setCornerRadius:(self.diaryCoverImageView.frame.size.height / 2.0f)];
@@ -64,8 +103,6 @@
                                              selector:@selector(didChangeKeyboardPosition:)
                                                  name:UIKeyboardWillHideNotification object:nil];
     
-    
-    
     /* Textfield Placeholder font color custom */
     UIColor *color = [UIColor lightTextColor];
     self.diaryNameTextField.attributedPlaceholder      = [[NSAttributedString alloc] initWithString:@"Diary name"
@@ -75,7 +112,6 @@
     self.diaryEndDateTextField.attributedPlaceholder   = [[NSAttributedString alloc] initWithString:@"Diary end date"
                                                                                          attributes:@{NSForegroundColorAttributeName: color}];
 
-    
     /* Textfield datepicker custom */
     UIDatePicker *datePicker = [[UIDatePicker alloc] init];
     [datePicker setDatePickerMode:UIDatePickerModeDate];
@@ -83,13 +119,20 @@
     
     UIToolbar* keyboardToolbar = [[UIToolbar alloc] init];
     [keyboardToolbar sizeToFit];
+    
+    UIBarButtonItem *cancelBarButton = [[UIBarButtonItem alloc]
+                                        initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+                                        target:self action:@selector(clickDiaryKeyboardDoneButton:)];
+    
     UIBarButtonItem *flexBarButton = [[UIBarButtonItem alloc]
                                       initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
                                       target:nil action:nil];
+    
     UIBarButtonItem *doneBarButton = [[UIBarButtonItem alloc]
                                       initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                       target:self action:@selector(clickDiaryKeyboardDoneButton:)];
-    keyboardToolbar.items = @[flexBarButton, doneBarButton];
+    
+    keyboardToolbar.items = @[cancelBarButton, flexBarButton, doneBarButton];
     
     [self.diaryStartDateTextField setInputView:datePicker];
     [self.diaryEndDateTextField   setInputView:datePicker];
@@ -141,12 +184,12 @@
     
     if([textField isEqual:self.diaryNameTextField]) {
         
-        [textField resignFirstResponder];
-//        [self.diaryStartDateTextField becomeFirstResponder];
+//        [textField resignFirstResponder];
+        [self.diaryStartDateTextField becomeFirstResponder];
     } else if([textField isEqual:self.diaryStartDateTextField]) {
         
-        [textField resignFirstResponder];
-//        [self.diaryEndDateTextField becomeFirstResponder];
+//        [textField resignFirstResponder];
+        [self.diaryEndDateTextField becomeFirstResponder];
     } else if([textField isEqual:self.diaryEndDateTextField]) {
         
         [textField resignFirstResponder];
@@ -161,8 +204,7 @@
     
 }
 
-#pragma mark - Custom Method
-
+#pragma mark - Custom button click Method
 /* Diary cover button click method*/
 - (IBAction)clickDiaryCoverButton:(UIButton *)sender {
     
@@ -258,56 +300,207 @@
     [self presentViewController:privateSettingAction animated:YES completion:nil];
 }
 
-/* Notification show & hide method */
+/* Diary done button click method */
 - (IBAction)clickDiaryDoneButton:(UIBarButtonItem *)sender {
     
-    [self dismissViewControllerAnimated:YES completion:nil];
+    /* diary data setting */
+    if(![self settingDiaryDataInfo]) {
+        NSLog(@"fail");
+        return;
+    };
+    
+    if(self.diaryModifyMode == RCDiaryStatusModeInsert) {
+        /* page insert mode */
+        
+        [[RCDiaryManager diaryManager] insertDiaryItemwithDiaryObject:self.diaryData];
+        
+        [[RCDiaryManager diaryManager] requestDiaryInsertWithCompletionHandler:^(BOOL isSuccess, id responseData) {
+            
+            if(isSuccess) {
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                   [self dismissViewControllerAnimated:YES completion:nil];
+                });
+            } else {
+                
+                NSLog(@"fail");
+            }
+        }];
+        
+    } else if(self.diaryModifyMode == RCDiaryStatusModeUpdate) {
+        /* page update mode */
+        
+        [[RCDiaryManager diaryManager] updateDiaryItemAtIndexPaths:self.indexPath withDiaryObject:self.diaryData];
+        
+        [[RCDiaryManager diaryManager] requestDiaryUpdateWithCompletionHandler:^(BOOL isSuccess, id responseData) {
+            
+            if(isSuccess) {
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.navigationController popViewControllerAnimated:YES];
+                });
+            } else {
+                
+                NSLog(@"fail");
+            }
+        }];
+    }
 }
 
 /* Diary keyboard done button click method*/
 - (void)clickDiaryKeyboardDoneButton:(id)sender{
     
     
+    if([sender isKindOfClass:[UIBarButtonItem class]]) {
+        
+        if(((UIBarButtonItem *)sender).style == UIBarButtonItemStylePlain) {
+            
+            if(self.diaryStartDateTextField.isFirstResponder) {
+                
+                [self.diaryStartDateTextField setText:@""];
+                [self.diaryStartDateTextField resignFirstResponder];
+                
+            } else if(self.diaryEndDateTextField.isFirstResponder) {
+                
+                [self.diaryEndDateTextField setText:@""];
+                [self.diaryEndDateTextField resignFirstResponder];
+            }
+        } else if(((UIBarButtonItem *)sender).style == UIBarButtonItemStyleDone){
+            
+            [self settingDateInfoIsEnd:YES];
+        }
+        
+    } else {
+        
+        [self settingDateInfoIsEnd:NO];
+    }
+}
+
+- (void)settingDateInfoIsEnd:(BOOL)result {
+    
     if(self.diaryStartDateTextField.isFirstResponder) {
         
-        self.diaryStartDateTextField.text = [DateSource dateFormatWithDate:self.diaryKeyboardDatePicker.date];
+        self.diaryStartDateTextField.text = [DateSource convertDateToString:self.diaryKeyboardDatePicker.date];
+        
+        if(result)  [self.diaryEndDateTextField becomeFirstResponder];
         
     } else if(self.diaryEndDateTextField.isFirstResponder) {
         
-        self.diaryEndDateTextField.text = [DateSource dateFormatWithDate:self.diaryKeyboardDatePicker.date];
+        self.diaryEndDateTextField.text = [DateSource convertDateToString:self.diaryKeyboardDatePicker.date];
         
-    }
-    
-    if([sender isKindOfClass:[UIBarButtonItem class]]) {
-        
-        [self.diaryStartDateTextField endEditing:YES];
-        [self.diaryEndDateTextField   endEditing:YES];
+        if(result)  [self.diaryEndDateTextField resignFirstResponder];
     }
 }
 
+- (IBAction)clickDiaryDeleteButton:(UIButton *)sender {
+    
+    [[RCDiaryManager diaryManager] deleteDiaryItemAtIndexPaths:self.indexPath];
+    
+    [[RCDiaryManager diaryManager] requestDiaryDeleteWithCompletionHandler:^(BOOL isSuccess, id responseData) {
+        
+        if(isSuccess) {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.navigationController popViewControllerAnimated:YES];
+            });
+        } else {
+            
+            NSLog(@"fail");
+        }
+    }];
+    
+}
+
+#pragma mark - Custom method
+- (BOOL)settingDiaryDataInfo {
+    
+    NSString *msg = @"";
+    BOOL result = NO;
+    
+    NSComparisonResult dateCompareResult = [DateSource comparWithFromDate:self.diaryStartDateTextField.text
+                                                               withToDate:self.diaryEndDateTextField.text];
+    
+    if([self.diaryNameTextField.text isEqualToString:@""]) {
+        
+        msg = @"Diary name is empty";
+    } else if([self.diaryStartDateTextField.text isEqualToString:@""]) {
+        
+        msg = @"Diary start date is empty";
+    } else if([self.diaryEndDateTextField.text isEqualToString:@""]) {
+        
+        msg = @"Diary end date is empty";
+    } else if(dateCompareResult == NSOrderedDescending) {
+        
+        msg = @"Diary date error";
+    } else {
+        
+        result = YES;
+    }
+    
+    if(result) {
+        
+        self.diaryData.diaryName          = self.diaryNameTextField.text;
+        self.diaryData.diaryStartDate     = self.diaryStartDateTextField.text;
+        self.diaryData.diaryEndDate       = self.diaryEndDateTextField.text;
+        self.diaryData.diaryCoverImageUrl = @"";
+        self.diaryData.inDiaryCount       = 0;
+        
+    } else {
+        
+        /* vaildate alert */
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:msg
+                                                                                 message:nil
+                                                                          preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"확인" style:UIAlertActionStyleDefault handler:nil];
+        
+        [alertController addAction:okAction];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+        
+    }
+    
+    
+    return result;
+}
+
+
+#pragma mark - Custom segue Method
+/* */
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
+    
 }
 
+#pragma mark - Custom notification Method
 /* Notification show & hide method */
 - (void)didChangeKeyboardPosition:(NSNotification *)notification {
 
     CGRect keyboardInfo = [[notification.userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue];
     
-    if([notification.name isEqualToString:UIKeyboardWillShowNotification]) {
+    CGFloat topConstant = self.diaryDeleteViewBottomConstraints.constant;
+    
+    if([notification.name isEqualToString:UIKeyboardWillShowNotification] && topConstant == 8) {
         
-        self.diaryDeleteViewBottomConstraints.constant += keyboardInfo.size.height;
+        self.diaryDeleteViewBottomConstraints.constant += (keyboardInfo.size.height - 45);
+        self.diaryStackViewTopConstraint.constant = -100;
         
-    } else if([notification.name isEqualToString:UIKeyboardWillHideNotification]) {
+    } else if([notification.name isEqualToString:UIKeyboardWillHideNotification]  && topConstant != 8) {
         
-        self.diaryDeleteViewBottomConstraints.constant -= keyboardInfo.size.height;
+        self.diaryMaskView.alpha = 0;
+        self.diaryDeleteViewBottomConstraints.constant = 8;
+        self.diaryStackViewTopConstraint.constant = 0;
+    }
+    
+    /*  */
+    if([notification.name isEqualToString:UIKeyboardWillShowNotification] && ![self.diaryNameTextField isFirstResponder]) {
+        self.diaryMaskView.alpha = 0.4;
     }
     
     [UIView animateWithDuration:1 animations:^{
         
         [self.view layoutIfNeeded];
     }];
-  
 }
 
 

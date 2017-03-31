@@ -24,9 +24,10 @@
 		39959FF61E8A24BB006ACF7A /* RCDiaryListCustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39959FF41E8A24BB006ACF7A /* RCDiaryListCustomTableViewCell.xib */; };
 		39959FFA1E8A712F006ACF7A /* RCDiaryDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39959FF91E8A712F006ACF7A /* RCDiaryDetailViewController.m */; };
 		39959FFC1E8A866A006ACF7A /* DumyLoginInformation.plist in Resources */ = {isa = PBXBuildFile; fileRef = 39959FFB1E8A866A006ACF7A /* DumyLoginInformation.plist */; };
-		39959FFE1E8A8688006ACF7A /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = 39959FFD1E8A8688006ACF7A /* test.json */; };
+		39959FFE1E8A8688006ACF7A /* diary.json in Resources */ = {isa = PBXBuildFile; fileRef = 39959FFD1E8A8688006ACF7A /* diary.json */; };
 		3995A00A1E8BC4DF006ACF7A /* DateSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3995A0091E8BC4DF006ACF7A /* DateSource.m */; };
 		3995A0101E8CCE61006ACF7A /* RCDiaryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3995A00F1E8CCE61006ACF7A /* RCDiaryManager.m */; };
+		39FB37AF1E8CE671006D299F /* RCDiaryData.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FB37AE1E8CE671006D299F /* RCDiaryData.m */; };
 		4458ECE01E8B790800EDC792 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4458ECDF1E8B790800EDC792 /* Setting.storyboard */; };
 		4458ECE31E8B796D00EDC792 /* RCSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4458ECE21E8B796D00EDC792 /* RCSettingViewController.m */; };
 		4458ECE61E8B7EF300EDC792 /* RCSettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4458ECE51E8B7EF300EDC792 /* RCSettingTableViewCell.m */; };
@@ -70,11 +71,13 @@
 		39959FF81E8A712F006ACF7A /* RCDiaryDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCDiaryDetailViewController.h; sourceTree = "<group>"; };
 		39959FF91E8A712F006ACF7A /* RCDiaryDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCDiaryDetailViewController.m; sourceTree = "<group>"; };
 		39959FFB1E8A866A006ACF7A /* DumyLoginInformation.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DumyLoginInformation.plist; sourceTree = "<group>"; };
-		39959FFD1E8A8688006ACF7A /* test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test.json; sourceTree = "<group>"; };
+		39959FFD1E8A8688006ACF7A /* diary.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = diary.json; sourceTree = "<group>"; };
 		3995A0081E8BC4DF006ACF7A /* DateSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateSource.h; sourceTree = "<group>"; };
 		3995A0091E8BC4DF006ACF7A /* DateSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateSource.m; sourceTree = "<group>"; };
 		3995A00E1E8CCE61006ACF7A /* RCDiaryManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCDiaryManager.h; sourceTree = "<group>"; };
 		3995A00F1E8CCE61006ACF7A /* RCDiaryManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCDiaryManager.m; sourceTree = "<group>"; };
+		39FB37AD1E8CE671006D299F /* RCDiaryData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCDiaryData.h; sourceTree = "<group>"; };
+		39FB37AE1E8CE671006D299F /* RCDiaryData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCDiaryData.m; sourceTree = "<group>"; };
 		4458ECDF1E8B790800EDC792 /* Setting.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		4458ECE11E8B796D00EDC792 /* RCSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCSettingViewController.h; sourceTree = "<group>"; };
 		4458ECE21E8B796D00EDC792 /* RCSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCSettingViewController.m; sourceTree = "<group>"; };
@@ -141,7 +144,7 @@
 				3930C62D1E88F21C009F457E /* Assets.xcassets */,
 				3930C6321E88F21C009F457E /* Info.plist */,
 				39959FFB1E8A866A006ACF7A /* DumyLoginInformation.plist */,
-				39959FFD1E8A8688006ACF7A /* test.json */,
+				39959FFD1E8A8688006ACF7A /* diary.json */,
 			);
 			path = Record;
 			sourceTree = "<group>";
@@ -289,6 +292,8 @@
 			isa = PBXGroup;
 			children = (
 				4458ECE71E8B821700EDC792 /* RCSettingTable.plist */,
+				39FB37AD1E8CE671006D299F /* RCDiaryData.h */,
+				39FB37AE1E8CE671006D299F /* RCDiaryData.m */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -316,8 +321,6 @@
 				39959FF21E8A24BB006ACF7A /* RCDiaryListCustomTableViewCell.h */,
 				39959FF31E8A24BB006ACF7A /* RCDiaryListCustomTableViewCell.m */,
 				39959FF41E8A24BB006ACF7A /* RCDiaryListCustomTableViewCell.xib */,
-				39959FC31E891C91006ACF7A /* RCDiaryListViewController.h */,
-				39959FC41E891C91006ACF7A /* RCDiaryListViewController.m */,
 			);
 			name = Diary;
 			sourceTree = "<group>";
@@ -406,7 +409,7 @@
 				3930C64A1E88FBD0009F457E /* Diary.storyboard in Resources */,
 				39959FF61E8A24BB006ACF7A /* RCDiaryListCustomTableViewCell.xib in Resources */,
 				3930C6481E88FBC7009F457E /* Member.storyboard in Resources */,
-				39959FFE1E8A8688006ACF7A /* test.json in Resources */,
+				39959FFE1E8A8688006ACF7A /* diary.json in Resources */,
 				39959FEA1E8A0B36006ACF7A /* RCDiaryTableViewFooterEmptyView.xib in Resources */,
 				44D61A1E1E893C4E0088FA2B /* SourceSansPro-Semibold.otf in Resources */,
 				4458ECE01E8B790800EDC792 /* Setting.storyboard in Resources */,
@@ -491,6 +494,7 @@
 				3995A00A1E8BC4DF006ACF7A /* DateSource.m in Sources */,
 				4458ECE31E8B796D00EDC792 /* RCSettingViewController.m in Sources */,
 				44D61A241E896E1F0088FA2B /* RCSignUpViewController.m in Sources */,
+				39FB37AF1E8CE671006D299F /* RCDiaryData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

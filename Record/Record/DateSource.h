@@ -10,6 +10,11 @@
 
 @interface DateSource : NSObject
 
-+ (NSString *)dateFormatWithDate:(NSDate *)date;
++ (NSDate *)dateOfToday;
++ (NSString *)convertDateToString:(NSDate *)date;
++ (NSDate *)convertStringToDate:(NSString *)dateString;
++ (NSComparisonResult)comparWithFromDate:(NSString *)fromDate withToDate:(NSString *)toDate;
++ (NSString *)calculateWithFromDate:(NSString *)fromDate withToDate:(NSString *)toDate;
++ (NSString *)formattedDateToMonth:(NSString *)date;
 
 @end

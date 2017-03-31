@@ -7,9 +7,17 @@
 //
 
 #import "RCDiaryListViewController.h"
+#import "RCDiaryDetailViewController.h"
+
 #import "RCDiaryTableViewHeaderView.h"
 #import "RCDiaryTableViewFooterView.h"
 #import "RCDiaryListCustomTableViewCell.h"
+
+#import "RCDiaryManager.h"
+
+#import "DateSource.h"
+
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface RCDiaryListViewController ()
 <UITableViewDataSource, UITableViewDelegate, RCDiaryTableViewFooterDelegate, UISearchBarDelegate>
@@ -18,9 +26,18 @@
 
 @property (nonatomic) UISearchController *searchController;
 
+@property (nonatomic) NSMutableArray *diaryListArray;
+
 @end
 
 @implementation RCDiaryListViewController
+
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
+    
+    [self.diaryTableView reloadData];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -33,7 +50,6 @@
     
     /* Search controller custom */
     UISearchController *searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
-    //    searchController.searchResultsUpdater = self;
     
     searchController.hidesNavigationBarDuringPresentation = NO;
     searchController.searchBar.delegate        = self;
@@ -47,6 +63,14 @@
     
     self.diaryTableView.tableHeaderView = searchController.searchBar;
     self.diaryTableView.contentOffset   = CGPointMake(0, searchController.searchBar.frame.size.height);
+    
+    [[RCDiaryManager diaryManager] requestDiaryListWithCompletionHandler:^(BOOL isSuccess, id responseData) {
+        
+        if(isSuccess) {
+            
+            [self.diaryTableView reloadData];
+        }
+    }];
 }
 
 
@@ -55,7 +79,7 @@
 /* Tableview numberOfRowsInSection */
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 5;
+    return [[RCDiaryManager diaryManager] diaryNumberOfItems];
 }
 
 
@@ -65,10 +89,34 @@
     RCDiaryListCustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RCDiaryListCustomTableViewCell"
                                                                            forIndexPath:indexPath];
     
+    /* Tableview cell data */
+    RCDiaryData *diaryData = [[RCDiaryManager diaryManager] diaryDataAtIndexPath:indexPath];
+    
+    cell.diaryTitleLabel.text      = diaryData.diaryName;
+    cell.diaryYearLabel.text       = @"2017";
+    cell.diaryMonthLabel.text      = @"merch";
+    cell.diaryDaysLabel.text       = [NSString stringWithFormat:@"%ld", indexPath.row];
+    cell.inDiaryCountLabel.text    = [NSString stringWithFormat:@"%ld", diaryData.inDiaryCount];
+    
+    cell.diaryYearLabel.text       = [[diaryData.diaryStartDate componentsSeparatedByString:@"-"] objectAtIndex:0];
+    cell.diaryMonthLabel.text      = [DateSource formattedDateToMonth:diaryData.diaryStartDate];
+    
+    cell.diaryBottomDaysLabel.text = [DateSource calculateWithFromDate:diaryData.diaryStartDate withToDate:diaryData.diaryEndDate];
+    
+    /* Tableview cell image[SDWebImage] */
+    [cell.diaryMainImageView sd_setImageWithURL:[NSURL URLWithString:diaryData.diaryCoverImageUrl]
+                               placeholderImage:[UIImage imageNamed:@"RCSignInUpTopImage"]];
+    
     return cell;
 }
 
+/* Tableview didSelectRowAtIndexPath */
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [self performSegueWithIdentifier:@"DiaryDetailSegue" sender:indexPath];
+}
 
+/* Tableview heightForRowAtIndexPath */
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     return (self.view.frame.size.width * 0.6);
@@ -129,11 +177,23 @@
     return 80;
 }
 
+#pragma mark - Manual segue
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if([segue.identifier isEqualToString:@"DiaryDetailSegue"]) {
+        
+        RCDiaryData *diaryData = [[RCDiaryManager diaryManager] diaryDataAtIndexPath:(NSIndexPath *)sender];
+        RCDiaryDetailViewController *vc = [segue destinationViewController];
+        
+        vc.diaryData = diaryData;
+        vc.indexPath = (NSIndexPath *)sender;
+    }
+}
 
 #pragma mark - RCDiaryTableViewFooter Delegate
 - (void)tableViewFooterButton:(UIButton *)button {
     
-    NSLog(@"Click Add Button");
+    [self performSegueWithIdentifier:@"DiaryDetailAddSegue" sender:nil];
 }
 
 //#pragma mark - UISearchController Delegate

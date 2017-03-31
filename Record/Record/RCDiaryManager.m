@@ -7,20 +7,21 @@
 //
 
 #import "RCDiaryManager.h"
-
 #import <AFNetworking.h>
 
 @interface RCDiaryManager ()
 
-@property (nonatomic) NSURLSessionDataTask *dataTask;
+@property (nonatomic) AFURLSessionManager *sessionManager;
 @property (nonatomic) AFHTTPRequestSerializer *serializer;
-@property (nonatomic) AFHTTPSessionManager *manager;
+@property (nonatomic) NSURLSessionDataTask *dataTask;
+
+@property NSMutableArray *diaryDataArray;
 
 @end
 
 @implementation RCDiaryManager
 
-+ (instancetype)movieManager {
++ (instancetype)diaryManager {
     
     static RCDiaryManager *manager = nil;
     static dispatch_once_t onceToken;
@@ -34,13 +35,185 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
         
-        self.manager    = [[AFHTTPSessionManager manager] initWithSessionConfiguration:configuration];
+        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+        self.sessionManager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
         self.serializer = [AFHTTPRequestSerializer serializer];
+        
+        self.diaryDataArray = [[NSMutableArray alloc] init];
         
     }
     return self;
 }
+
+//#pragma mark - Pass Request Form (Common Method)
+//- (void)passRequestFormWithMethod:(NSString *)method URLString:(NSString *)urlString andHandler:(NetworkTaskHandler)completionHandler {
+//    
+//    NSURLRequest *request = [_serializer requestWithMethod:method
+//                                                 URLString:urlString
+//                                                parameters:nil
+//                                                     error:nil];
+//    
+//    [self resumeDataTaskWithRequest:request andCompletionHandler:completionHandler];
+//}
+//
+//#pragma mark - Execute DataTask and CompletionHandler
+//- (void)resumeDataTaskWithRequest:(NSURLRequest *)request andCompletionHandler:(NetworkTaskHandler)completionHandler {
+//    
+//    self.dataTask = [_sessionManager dataTaskWithRequest:request
+//                                   completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+//                                       
+//                                       BOOL result = NO;
+//                                       
+//                                       if (error) {
+//                                           NSLog(@"에러 발생. %@", error);
+//                                       }
+//                                       else {
+//                                           result = YES;
+//                                       }
+//                                       
+//                                       dispatch_async(dispatch_get_main_queue(), ^{
+//                                           
+//                                           completionHandler(result, responseObject);
+//                                       });
+//                                   }];
+//    [self.dataTask resume];
+//}
+
+
+#pragma mark - Configure Request
+/* Diary list select */
+- (void)requestDiaryListWithCompletionHandler:(NetworkTaskHandler)completionHandler {
+    
+    [self readDictionaryFromWithFilepath:@"diary" andHandler:^(BOOL isSuccess, id responseData) {
+        
+        if(isSuccess) {
+            
+            NSDictionary *resultInfo = (NSDictionary *)responseData;
+            NSArray *diayList        = [resultInfo objectForKey:@"results"];
+            
+            for (NSDictionary *diatyInfo in diayList) {
+                
+                RCDiaryData *data = [[RCDiaryData alloc] initDiatyDataWithNSDictionary:diatyInfo];
+                [self.diaryDataArray addObject:data];
+            }
+            
+            completionHandler(isSuccess, responseData);
+        } else {
+            
+            completionHandler(isSuccess, nil);
+        }
+    }];
+}
+
+/* Diary info insert */
+- (void)requestDiaryInsertWithCompletionHandler:(NetworkTaskHandler)completionHandler {
+    
+    [self writeDictionaryFromWithFilepath:@"diary" andHandler:^(BOOL isSuccess, id responseData) {
+        
+        [self readDictionaryFromWithFilepath:@"diary" andHandler:^(BOOL isSuccess, id responseData) {
+            
+            completionHandler(isSuccess, responseData);
+        }];
+    }];
+}
+
+
+/* Diary info update */
+- (void)requestDiaryUpdateWithCompletionHandler:(NetworkTaskHandler)completionHandler {
+    
+    [self writeDictionaryFromWithFilepath:@"diary" andHandler:^(BOOL isSuccess, id responseData) {
+        
+        [self readDictionaryFromWithFilepath:@"diary" andHandler:^(BOOL isSuccess, id responseData) {
+            
+            completionHandler(isSuccess, responseData);
+        }];
+    }];
+}
+
+/* Diary info delete */
+- (void)requestDiaryDeleteWithCompletionHandler:(NetworkTaskHandler)completionHandler {
+    
+    [self writeDictionaryFromWithFilepath:@"diary" andHandler:^(BOOL isSuccess, id responseData) {
+        
+        [self readDictionaryFromWithFilepath:@"diary" andHandler:^(BOOL isSuccess, id responseData) {
+            
+            completionHandler(isSuccess, responseData);
+        }];
+    }];
+}
+
+/* json data read */
+- (void)readDictionaryFromWithFilepath:(NSString *)filePathString andHandler:(NetworkTaskHandler)completionHandler {
+    
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:filePathString ofType:@"json"];
+    
+    NSData *partyData = [[NSData alloc] initWithContentsOfFile:filePath];
+    
+    //convert JSON NSData to a usable NSDictionary
+    NSError *error;
+    NSDictionary *responseData = [NSJSONSerialization JSONObjectWithData:partyData
+                                                                 options:0
+                                                                   error:&error];
+    completionHandler(YES, responseData);
+}
+
+/* json data wirte */
+- (void)writeDictionaryFromWithFilepath:(NSString *)filePathString andHandler:(NetworkTaskHandler)completionHandler {
+    
+    NSMutableArray *tempArray = [[NSMutableArray alloc] init];
+    
+    for (RCDiaryData *diary in self.diaryDataArray) {
+        
+        NSDictionary *dic = @{@"diaryName":diary.diaryName, @"diaryStartDate":diary.diaryStartDate
+            , @"diaryEndDate":diary.diaryEndDate, @"inDiaryCount":[NSString stringWithFormat:@"%ld", diary.inDiaryCount]
+            , @"diaryCoverImageUrl":@"http://www.city.kr/files/attach/images/1326/542/186/010/9bbd68054422876eb730b296963d0e82.jpg"
+        };
+        
+        [tempArray addObject:dic];
+    }
+    
+    NSDictionary *temp = @{
+        @"count":@"10",
+        @"results":tempArray
+        };
+
+    NSData *data       = [NSJSONSerialization dataWithJSONObject:temp options:kNilOptions error:nil];
+
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:filePathString ofType:@"json"];
+    
+    [data writeToFile:filePath atomically:YES];
+    
+    completionHandler(YES, nil);
+}
+
+
+
+#pragma mark - Provide Diary Data to TableView
+- (NSInteger)diaryNumberOfItems {
+    
+    return self.diaryDataArray.count;
+}
+
+- (RCDiaryData *)diaryDataAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return self.diaryDataArray[indexPath.item];
+}
+
+- (void)insertDiaryItemwithDiaryObject:(RCDiaryData *)diary {
+    
+    [self.diaryDataArray insertObject:diary atIndex:0];
+}
+
+- (void)updateDiaryItemAtIndexPaths:(NSIndexPath *)indexPath withDiaryObject:(RCDiaryData *)diary {
+    
+    [self.diaryDataArray replaceObjectAtIndex:indexPath.row withObject:diary];
+}
+
+- (void)deleteDiaryItemAtIndexPaths:(NSIndexPath *)indexPath {
+    
+    [self.diaryDataArray removeObjectAtIndex:indexPath.row];
+}
+
 
 @end

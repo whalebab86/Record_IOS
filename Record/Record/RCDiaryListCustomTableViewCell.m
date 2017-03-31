@@ -11,7 +11,6 @@
 @interface RCDiaryListCustomTableViewCell ()
 
 @property (weak, nonatomic) IBOutlet UIView      *diaryAccessoryView;
-@property (weak, nonatomic) IBOutlet UIImageView *diaryMainImageView;
 
 @end
 
