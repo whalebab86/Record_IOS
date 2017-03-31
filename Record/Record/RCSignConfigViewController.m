@@ -41,6 +41,7 @@ typedef NS_ENUM(NSInteger, selectedButton) {
     
 }
 
+#pragma mark - Transition of reverse triangle UIImageView
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
     
@@ -50,6 +51,7 @@ typedef NS_ENUM(NSInteger, selectedButton) {
     self.signMarkImageView.center = self.offsetCenterSignInBtn;
 }
 
+#pragma mark - Switching Contrainer View
 - (IBAction)showSignInContrainer:(UIButton *)sender {
     if (sender.tag == selectedSignInButton) {
         [UIView animateWithDuration:0.3f animations:^{
@@ -74,10 +76,10 @@ typedef NS_ENUM(NSInteger, selectedButton) {
     }
 }
 
+
+#pragma mark - For TapGesture
 - (IBAction)endEditingTapGesture:(UITapGestureRecognizer *)sender {
-    
     [self.view endEditing:YES];
-    
 }
 
 
