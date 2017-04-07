@@ -1,45 +1,13 @@
 {
     "count":"10",
-    "results":[
-               {"diaryName":"1 diary name", "diaryStartDate":"2017-03-01"
-               , "diaryEndDate":"2017-03-30", "inDiaryCount":"11"
-               , "diaryCoverImageUrl":"http://www.city.kr/files/attach/images/1326/542/186/010/9bbd68054422876eb730b296963d0e82.jpg"
-               },
-               {"diaryName":"2 diary name", "diaryStartDate":"2017-03-02"
-               , "diaryEndDate":"2017-03-30", "inDiaryCount":"12"
-               , "diaryCoverImageUrl":"http://www.city.kr/files/attach/images/1326/542/186/010/9bbd68054422876eb730b296963d0e83.jpg"
-               },
-               {"diaryName":"3 diary name", "diaryStartDate":"2017-03-03"
-               , "diaryEndDate":"2017-03-30", "inDiaryCount":"13"
-               , "diaryCoverImageUrl":"http://www.city.kr/files/attach/images/1326/542/186/010/9bbd68054422876eb730b296963d0e82.jpg"
-               },
-               {"diaryName":"4 diary name", "diaryStartDate":"2017-03-04"
-               , "diaryEndDate":"2017-03-30", "inDiaryCount":"14"
-               , "diaryCoverImageUrl":"http://www.city.kr/files/attach/images/1326/542/186/010/9bbd68054422876eb730b296963d0e82.jpg"
-               },
-               {"diaryName":"5 diary name", "diaryStartDate":"2017-03-05"
-               , "diaryEndDate":"2017-03-30", "inDiaryCount":"15"
-               , "diaryCoverImageUrl":"http://www.city.kr/files/attach/images/1326/542/186/010/9bbd68054422876eb730b296963d0e82.jpg"
-               },
-               {"diaryName":"6 diary name", "diaryStartDate":"2017-03-06"
-               , "diaryEndDate":"2017-03-30", "inDiaryCount":"16"
-               , "diaryCoverImageUrl":"http://www.city.kr/files/attach/images/1326/542/186/010/9bbd68054422876eb730b296963d0e82.jpg"
-               },
-               {"diaryName":"7 diary name", "diaryStartDate":"2017-03-07"
-               , "diaryEndDate":"2017-03-30", "inDiaryCount":"17"
-               , "diaryCoverImageUrl":"http://www.city.kr/files/attach/images/1326/542/186/010/9bbd68054422876eb730b296963d0e82.jpg"
-               },
-               {"diaryName":"8 diary name", "diaryStartDate":"2017-03-08"
-               , "diaryEndDate":"2017-03-30", "inDiaryCount":"18"
-               , "diaryCoverImageUrl":"http://www.city.kr/files/attach/images/1326/542/186/010/9bbd68054422876eb730b296963d0e82.jpg"
-               },
-               {"diaryName":"9 diary name", "diaryStartDate":"2017-03-09"
-               , "diaryEndDate":"2017-03-30", "inDiaryCount":"19"
-               , "diaryCoverImageUrl":"http://www.city.kr/files/attach/images/1326/542/186/010/9bbd68054422876eb730b296963d0e82.jpg"
-               },
-               {"diaryName":"10 diary name", "diaryStartDate":"2017-03-10"
-               , "diaryEndDate":"2017-03-30", "inDiaryCount":"20"
-               , "diaryCoverImageUrl":"http://www.city.kr/files/attach/images/1326/542/186/010/9bbd68054422876eb730b296963d0e82.jpg"
-               },
-    ]
+    "results":
+    [{
+                   "diaryCoverImageUrl" : "",
+                   "diaryName"          : "Diary title",
+                   "diaryStartDate"     : "2017-01-01",
+                   "diaryEndDate"       : "2017-12-31",
+                   "diaryDays"          : "36/51",
+                   "countries"          : "1",
+                   "inDiaryCount"       : "10"
+                }]
 }

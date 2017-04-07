@@ -1,4 +1,4 @@
-//
+    //
 //  RCDiaryListViewController.m
 //  Record
 //
@@ -50,7 +50,7 @@
     
     /* Search controller custom */
     UISearchController *searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
-    
+   
     searchController.hidesNavigationBarDuringPresentation = NO;
     searchController.searchBar.delegate        = self;
     searchController.searchBar.backgroundImage = [UIImage new];
@@ -101,7 +101,8 @@
     cell.diaryYearLabel.text       = [[diaryData.diaryStartDate componentsSeparatedByString:@"-"] objectAtIndex:0];
     cell.diaryMonthLabel.text      = [DateSource formattedDateToMonth:diaryData.diaryStartDate];
     
-    cell.diaryBottomDaysLabel.text = [DateSource calculateWithFromDate:diaryData.diaryStartDate withToDate:diaryData.diaryEndDate];
+    cell.diaryBottomDaysLabel.text = [DateSource calculateWithFromDate:diaryData.diaryStartDate
+                                                            withToDate:diaryData.diaryEndDate];
     
     /* Tableview cell image[SDWebImage] */
     [cell.diaryMainImageView sd_setImageWithURL:[NSURL URLWithString:diaryData.diaryCoverImageUrl]
@@ -113,7 +114,7 @@
 /* Tableview didSelectRowAtIndexPath */
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    [self performSegueWithIdentifier:@"DiaryDetailSegue" sender:indexPath];
+    [self performSegueWithIdentifier:@"InDiaryListSegue" sender:indexPath];
 }
 
 /* Tableview heightForRowAtIndexPath */
@@ -177,6 +178,15 @@
     return 80;
 }
 
+#pragma mark - UISearchBar Delegate
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    
+    [self.searchController.searchBar setText:@""];
+    [self.searchController.searchBar resignFirstResponder];
+    
+//    self.diaryListArray
+}
+
 #pragma mark - Manual segue
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
@@ -187,6 +197,16 @@
         
         vc.diaryData = diaryData;
         vc.indexPath = (NSIndexPath *)sender;
+        
+    } else if([segue.identifier isEqualToString:@"InDiaryListSegue"]) {
+        
+//        RCDiaryData *diaryData = [[RCDiaryManager diaryManager] diaryDataAtIndexPath:(NSIndexPath *)sender];
+//        RCInDiaryDetailViewController *vc = [segue destinationViewController];
+//        
+//        vc.diaryData = diaryData;
+//        vc.indexPath = (NSIndexPath *)sender;
+        
+        NSLog(@"InDiaryListSegue");
     }
 }
 
@@ -201,19 +221,10 @@
 //    
 //}
 
-#pragma mark - UISearchBar Delegate
-- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
-    
-//    [searchBar resignFirstResponder];
-}
 
 #pragma mark - Custom Segue
 - (IBAction)unwindSegue:(UIStoryboardSegue *)sender {
     
 }
-
-
-#pragma mark - Custom method
-
 
 @end

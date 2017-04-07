@@ -18,17 +18,34 @@ typedef void (^NetworkTaskHandler)(BOOL isSuccess, id responseData);
 
 /* Request diary list */
 - (void)requestDiaryListWithCompletionHandler:(NetworkTaskHandler)completionHandler;
-
-/* Request diary modify */
 - (void)requestDiaryInsertWithCompletionHandler:(NetworkTaskHandler)completionHandler;
 - (void)requestDiaryUpdateWithCompletionHandler:(NetworkTaskHandler)completionHandler;
 - (void)requestDiaryDeleteWithCompletionHandler:(NetworkTaskHandler)completionHandler;
 
+/* Diary method */
 - (NSInteger)diaryNumberOfItems;
 - (RCDiaryData *)diaryDataAtIndexPath:(NSIndexPath *)indexPath;
 
 - (void)insertDiaryItemwithDiaryObject:(RCDiaryData *)diary;
 - (void)updateDiaryItemAtIndexPaths:(NSIndexPath *)indexPath withDiaryObject:(RCDiaryData *)diary;
 - (void)deleteDiaryItemAtIndexPaths:(NSIndexPath *)indexPath;
+
+
+
+/* In diary method */
+- (NSInteger)inDiaryNumberOfItems;
+- (NSInteger)inDiaryNumberOfCoverItemsAtIndexPath:(NSIndexPath *)indexPath;
+- (RCInDiaryData *)inDiaryDataAtIndexPath:(NSIndexPath *)indexPath;
+
+- (void)insertInDiaryItemwithDiaryObject:(RCInDiaryData *)inDiary;
+- (void)updateInDiaryItemAtIndexPaths:(NSIndexPath *)indexPath withDiaryObject:(RCInDiaryData *)inDiary;
+- (void)deleteInDiaryItemAtIndexPaths:(NSIndexPath *)indexPath;
+- (void)clearInDiaryItemAtIndexPaths;
+
+/* Request in diary list */
+- (void)requestInDiaryListWithCompletionHandler:(NetworkTaskHandler)completionHandler;
+//- (void)requestInDiaryInsertWithCompletionHandler:(NetworkTaskHandler)completionHandler;
+//- (void)requestDiaryUpdateWithCompletionHandler:(NetworkTaskHandler)completionHandler;
+//- (void)requestDiaryDeleteWithCompletionHandler:(NetworkTaskHandler)completionHandler;
 
 @end

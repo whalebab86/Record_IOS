@@ -15,7 +15,10 @@
 @property (nonatomic) AFHTTPRequestSerializer *serializer;
 @property (nonatomic) NSURLSessionDataTask *dataTask;
 
-@property NSMutableArray *diaryDataArray;
+@property NSMutableArray      *diaryDataArray;
+
+@property NSMutableDictionary *inDiaryInfo;
+@property NSMutableArray      *inDiaryDataArray;
 
 @end
 
@@ -40,7 +43,10 @@
         self.sessionManager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
         self.serializer = [AFHTTPRequestSerializer serializer];
         
-        self.diaryDataArray = [[NSMutableArray alloc] init];
+        self.diaryDataArray   = [[NSMutableArray alloc] init];
+        self.inDiaryDataArray = [[NSMutableArray alloc] init];
+        
+        self.inDiaryInfo      = [[NSMutableDictionary alloc] init];
         
     }
     return self;
@@ -81,7 +87,7 @@
 //}
 
 
-#pragma mark - Configure Request
+#pragma mark - Configure Request [ Diary ]
 /* Diary list select */
 - (void)requestDiaryListWithCompletionHandler:(NetworkTaskHandler)completionHandler {
     
@@ -92,9 +98,9 @@
             NSDictionary *resultInfo = (NSDictionary *)responseData;
             NSArray *diayList        = [resultInfo objectForKey:@"results"];
             
-            for (NSDictionary *diatyInfo in diayList) {
+            for (NSDictionary *diaryInfo in diayList) {
                 
-                RCDiaryData *data = [[RCDiaryData alloc] initDiatyDataWithNSDictionary:diatyInfo];
+                RCDiaryData *data = [[RCDiaryData alloc] initDiatyDataWithNSDictionary:diaryInfo];
                 [self.diaryDataArray addObject:data];
             }
             
@@ -189,7 +195,39 @@
 
 
 
-#pragma mark - Provide Diary Data to TableView
+#pragma mark - Configure Request [ In diary ]
+/* In diary list select */
+- (void)requestInDiaryListWithCompletionHandler:(NetworkTaskHandler)completionHandler {
+    
+    [self readDictionaryFromWithFilepath:@"inDiary" andHandler:^(BOOL isSuccess, id responseData) {
+        
+        if(isSuccess) {
+            
+            NSDictionary *resultInfo = (NSDictionary *)responseData;
+            
+            NSDictionary *inDiaryInfo   = [resultInfo objectForKey:@"diaryResult"];
+            NSArray      *inDiaryArray  = [resultInfo objectForKey:@"inDiaryResults"];
+            
+            self.inDiaryInfo      = [inDiaryInfo mutableCopy];
+            
+            for (NSDictionary *diaryInfo in inDiaryArray) {
+                
+                RCInDiaryData *data = [[RCInDiaryData alloc] initInDiatyDataWithNSDictionary:diaryInfo];
+                [self.inDiaryDataArray addObject:data];
+            }
+            
+            completionHandler(isSuccess, responseData);
+        } else {
+            
+            completionHandler(isSuccess, nil);
+        }
+        
+    }];
+}
+
+
+
+#pragma mark - Provide Diary Data
 - (NSInteger)diaryNumberOfItems {
     
     return self.diaryDataArray.count;
@@ -213,6 +251,43 @@
 - (void)deleteDiaryItemAtIndexPaths:(NSIndexPath *)indexPath {
     
     [self.diaryDataArray removeObjectAtIndex:indexPath.row];
+}
+
+
+#pragma mark - Provide In Diary Data
+- (NSInteger)inDiaryNumberOfItems {
+    
+    return self.inDiaryDataArray.count;
+}
+
+- (NSInteger)inDiaryNumberOfCoverItemsAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return [((RCInDiaryData*)self.inDiaryDataArray[indexPath.row]).inDiaryCoverImgUrl count] ;
+}
+
+- (RCInDiaryData *)inDiaryDataAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return self.inDiaryDataArray[indexPath.item];
+}
+
+- (void)insertInDiaryItemwithDiaryObject:(RCDiaryData *)diary {
+    
+    [self.inDiaryDataArray insertObject:diary atIndex:0];
+}
+
+- (void)updateInDiaryItemAtIndexPaths:(NSIndexPath *)indexPath withDiaryObject:(RCDiaryData *)diary {
+    
+    [self.inDiaryDataArray replaceObjectAtIndex:indexPath.row withObject:diary];
+}
+
+- (void)deleteInDiaryItemAtIndexPaths:(NSIndexPath *)indexPath {
+    
+    [self.inDiaryDataArray removeObjectAtIndex:indexPath.row];
+}
+
+- (void)clearInDiaryItemAtIndexPaths {
+    
+    [self.inDiaryDataArray removeAllObjects];
 }
 
 

@@ -48,6 +48,9 @@ typedef NS_ENUM(NSInteger, RCDiaryStatusMode) {
 @property (nonatomic) NSDate *diaryStartDate;
 @property (nonatomic) NSDate *diaryEndDate;
 
+
+@property (nonatomic, weak) UIDatePicker *diaryDatePicker;
+
 @end
 
 @implementation RCDiaryDetailViewController
@@ -117,6 +120,8 @@ typedef NS_ENUM(NSInteger, RCDiaryStatusMode) {
     [datePicker setDatePickerMode:UIDatePickerModeDate];
     [datePicker addTarget:self action:@selector(clickDiaryKeyboardDoneButton:) forControlEvents:UIControlEventValueChanged];
     
+    self.diaryDatePicker = datePicker;
+    
     UIToolbar* keyboardToolbar = [[UIToolbar alloc] init];
     [keyboardToolbar sizeToFit];
     
@@ -179,17 +184,30 @@ typedef NS_ENUM(NSInteger, RCDiaryStatusMode) {
 }
 
 #pragma mark - UITextField Delegate
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    
+    if(textField == self.diaryStartDateTextField) {
+        
+        self.diaryDatePicker.date = [DateSource convertStringToDate:textField.text];
+    } else if(textField == self.diaryEndDateTextField) {
+        
+        self.diaryDatePicker.date = [DateSource convertStringToDate:textField.text];
+    }
+    
+    return YES;
+}
+
 /* textField should return delegate */
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
     
     if([textField isEqual:self.diaryNameTextField]) {
         
-//        [textField resignFirstResponder];
-        [self.diaryStartDateTextField becomeFirstResponder];
+        [textField resignFirstResponder];
+//        [self.diaryStartDateTextField becomeFirstResponder];
     } else if([textField isEqual:self.diaryStartDateTextField]) {
         
-//        [textField resignFirstResponder];
-        [self.diaryEndDateTextField becomeFirstResponder];
+        [textField resignFirstResponder];
+//        [self.diaryEndDateTextField becomeFirstResponder];
     } else if([textField isEqual:self.diaryEndDateTextField]) {
         
         [textField resignFirstResponder];
@@ -299,6 +317,16 @@ typedef NS_ENUM(NSInteger, RCDiaryStatusMode) {
     
     [self presentViewController:privateSettingAction animated:YES completion:nil];
 }
+- (IBAction)clickDiaryCancelButton:(id)sender {
+    
+    if(self.diaryModifyMode == RCDiaryStatusModeInsert) {
+        
+        [self dismissViewControllerAnimated:YES completion:nil];
+    } else if(self.diaryModifyMode == RCDiaryStatusModeUpdate) {
+        
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+}
 
 /* Diary done button click method */
 - (IBAction)clickDiaryDoneButton:(UIBarButtonItem *)sender {
@@ -347,6 +375,7 @@ typedef NS_ENUM(NSInteger, RCDiaryStatusMode) {
     }
 }
 
+
 /* Diary keyboard done button click method*/
 - (void)clickDiaryKeyboardDoneButton:(id)sender{
     
@@ -376,21 +405,6 @@ typedef NS_ENUM(NSInteger, RCDiaryStatusMode) {
     }
 }
 
-- (void)settingDateInfoIsEnd:(BOOL)result {
-    
-    if(self.diaryStartDateTextField.isFirstResponder) {
-        
-        self.diaryStartDateTextField.text = [DateSource convertDateToString:self.diaryKeyboardDatePicker.date];
-        
-        if(result)  [self.diaryEndDateTextField becomeFirstResponder];
-        
-    } else if(self.diaryEndDateTextField.isFirstResponder) {
-        
-        self.diaryEndDateTextField.text = [DateSource convertDateToString:self.diaryKeyboardDatePicker.date];
-        
-        if(result)  [self.diaryEndDateTextField resignFirstResponder];
-    }
-}
 
 - (IBAction)clickDiaryDeleteButton:(UIButton *)sender {
     
@@ -411,7 +425,27 @@ typedef NS_ENUM(NSInteger, RCDiaryStatusMode) {
     
 }
 
+
 #pragma mark - Custom method
+
+- (void)settingDateInfoIsEnd:(BOOL)result {
+    
+    if(self.diaryStartDateTextField.isFirstResponder) {
+        
+        self.diaryStartDateTextField.text = [DateSource convertDateToString:self.diaryKeyboardDatePicker.date];
+        if(result) [self.diaryStartDateTextField resignFirstResponder];
+        //        if(result)  [self.diaryEndDateTextField becomeFirstResponder];
+        
+    } else if(self.diaryEndDateTextField.isFirstResponder) {
+        
+        self.diaryEndDateTextField.text = [DateSource convertDateToString:self.diaryKeyboardDatePicker.date];
+        if(result) [self.diaryEndDateTextField resignFirstResponder];
+        
+        //        if(result)  [self.diaryEndDateTextField resignFirstResponder];
+    }
+}
+
+
 - (BOOL)settingDiaryDataInfo {
     
     NSString *msg = @"";
@@ -420,7 +454,11 @@ typedef NS_ENUM(NSInteger, RCDiaryStatusMode) {
     NSComparisonResult dateCompareResult = [DateSource comparWithFromDate:self.diaryStartDateTextField.text
                                                                withToDate:self.diaryEndDateTextField.text];
     
-    if([self.diaryNameTextField.text isEqualToString:@""]) {
+    /* 공백 제거 */
+    NSString *diaryName = [self.diaryNameTextField.text
+                           stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceCharacterSet]];
+    
+    if([diaryName isEqualToString:@""]) {
         
         msg = @"Diary name is empty";
     } else if([self.diaryStartDateTextField.text isEqualToString:@""]) {
@@ -472,6 +510,7 @@ typedef NS_ENUM(NSInteger, RCDiaryStatusMode) {
     
 }
 
+
 #pragma mark - Custom notification Method
 /* Notification show & hide method */
 - (void)didChangeKeyboardPosition:(NSNotification *)notification {
@@ -508,4 +547,5 @@ typedef NS_ENUM(NSInteger, RCDiaryStatusMode) {
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+
 @end

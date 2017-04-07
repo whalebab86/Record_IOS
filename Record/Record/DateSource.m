@@ -31,12 +31,17 @@
 + (NSDate *)convertStringToDate:(NSString *)dateString {
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    
     [dateFormatter setDateStyle:NSDateFormatterShortStyle];
     
     //    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     
     NSDate *formattedDate = [dateFormatter dateFromString:dateString];
+    
+    if([dateString isEqualToString:@""]) {
+        formattedDate = [NSDate date];
+    }
     
     return formattedDate;
 }

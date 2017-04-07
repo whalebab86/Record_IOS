@@ -19,10 +19,28 @@
         self.diaryName          = [diaryInfo objectForKey:@"diaryName"];
         self.diaryStartDate     = [diaryInfo objectForKey:@"diaryStartDate"];
         self.diaryEndDate       = [diaryInfo objectForKey:@"diaryEndDate"];
-        self.inDiaryCount       = [[diaryInfo objectForKey:@"inDiaryCount"] integerValue];
-        
+        self.inDiaryCount       = [[diaryInfo objectForKey:@"inDiaryCount"] integerValue];        
 //        self.diaryStartDateOriginal = [[diaryInfo objectForKey:@"diaryStartDateOriginal"] date];
 //        self.diaryEndDateOriginal   = [[diaryInfo objectForKey:@"diaryEndDateOriginal"] date];
+    }
+    return self;
+}
+
+@end
+
+
+@implementation RCInDiaryData
+
+- (instancetype)initInDiatyDataWithNSDictionary:(NSDictionary *)diaryInfo {
+    
+    self = [super init];
+    if (self) {
+        self.inDiaryMainLoacation = [diaryInfo objectForKey:@"inDiaryMainLoacation"];
+        self.inDiarySubLocation   = [diaryInfo objectForKey:@"inDiarySubLocation"];
+        self.inDiaryDay           = [diaryInfo objectForKey:@"inDiaryDay"];
+        self.inDiaryWriteDate     = [diaryInfo objectForKey:@"inDaryWriteDate"];
+        self.inDiaryContent       = [diaryInfo objectForKey:@"inDaryContent"];
+        self.inDiaryCoverImgUrl   = [diaryInfo objectForKey:@"inDiaryCoverImgUrl"];
     }
     return self;
 }

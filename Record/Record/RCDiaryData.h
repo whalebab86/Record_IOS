@@ -22,3 +22,17 @@
 - (instancetype)initDiatyDataWithNSDictionary:(NSDictionary *)diaryInfo;
 
 @end
+
+
+@interface RCInDiaryData : NSObject
+
+@property (nonatomic) NSString *inDiaryMainLoacation;
+@property (nonatomic) NSString *inDiarySubLocation;
+@property (nonatomic) NSString *inDiaryDay;
+@property (nonatomic) NSString *inDiaryWriteDate;
+@property (nonatomic) NSString *inDiaryContent;
+@property (nonatomic) NSArray  *inDiaryCoverImgUrl;
+
+- (instancetype)initInDiatyDataWithNSDictionary:(NSDictionary *)diaryInfo;
+
+@end
