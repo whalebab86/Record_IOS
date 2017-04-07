@@ -22,7 +22,7 @@
     // Override point for customization after application launch.
     
     /* Google place API KEY */
-    [GMSPlacesClient provideAPIKey:@"AIzaSyDJTIU7fSJLhunuqvsrlhTfk_Lmr_7FfNQ"];
+    [GMSPlacesClient provideAPIKey:@"AIzaSyCd9jyZZeVGSF37S1xuOkDD7u6AnhbWwS4"];
     
     /* Google Map API KEY */
     [GMSServices provideAPIKey:@"AIzaSyBBIXMp7GSsaAKovvSE747vDqYf7EdOZvc"];
@@ -36,8 +36,6 @@
     NSAssert(!configureError, @"Error configuring Google services: %@", configureError);
     
     [GIDSignIn sharedInstance].delegate = self;
-    
-    
     
     return YES;
 }
