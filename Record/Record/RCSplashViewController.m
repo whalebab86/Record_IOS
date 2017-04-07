@@ -46,11 +46,12 @@
 /* create account with facebook */
 - (IBAction)facebookLoginButtonAction:(UIButton *)sender {
     
-    if(sender == self.signInBtn) {
+    if(sender == self.facebookBtn) {
         NSLog(@"facebookLoginButtonAction");
         [[RCLoginManager loginManager] confirmFacebookLoginfromViewController:self complition:^(BOOL isSucceess, NSInteger code) {
             if (isSucceess) {
                 [self performSegueWithIdentifier:@"OtherSegue" sender:nil];
+                NSLog(@"confirmFacebookLoginfromViewController");
             } else {
                 NSString *alertTitle = [@"facebook login error (code " stringByAppendingString:[NSString stringWithFormat:@"%ld )", code]];
                 [self addAlertViewWithTile:alertTitle actionTitle:@"Done" handler:nil];

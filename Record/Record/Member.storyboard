@@ -709,7 +709,7 @@
     <resources>
         <image name="RCSignInUpTopImage" width="374" height="241"/>
         <image name="RCSplashBGImage" width="375" height="667"/>
-        <image name="RecordLogoWithoutWord" width="46" height="46"/>
+        <image name="RecordLogoWithoutWord" width="92" height="92"/>
         <image name="SignInMark" width="22" height="12"/>
     </resources>
 </document>
