@@ -8,6 +8,8 @@
 	<string></string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleGetInfoString</key>
+	<string></string>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -31,7 +33,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>467940752848-7fdgc4478a3ui0qpk99skncestcpf0ot.apps.googleusercontent.com</string>
+				<string>709198122091-kbd6vn5htturp3kahivs9ggdurbe2410.apps.googleusercontent.com</string>
 			</array>
 		</dict>
 		<dict>
@@ -45,7 +47,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.467940752848-7fdgc4478a3ui0qpk99skncestcpf0ot</string>
+				<string>com.googleusercontent.apps.709198122091-kbd6vn5htturp3kahivs9ggdurbe2410</string>
 			</array>
 		</dict>
 	</array>
@@ -86,7 +88,7 @@
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
-	<string>Main</string>
+	<string>Member</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
@@ -97,7 +99,5 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
-	<key>CFBundleGetInfoString</key>
-	<string></string>
 </dict>
 </plist>

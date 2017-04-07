@@ -15,6 +15,7 @@
 		3903FAAF1E936F5300C5B792 /* RCInDiaryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3903FAAD1E936F5300C5B792 /* RCInDiaryCollectionViewCell.xib */; };
 		3903FAB11E94B67500C5B792 /* inDiary.json in Resources */ = {isa = PBXBuildFile; fileRef = 3903FAB01E94B67500C5B792 /* inDiary.json */; };
 		390BBB571E9220D500BBB8B5 /* RCInDiaryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 390BBB561E9220D500BBB8B5 /* RCInDiaryListViewController.m */; };
+		391E8BFC1E977097000CC82E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 391E8BFB1E977097000CC82E /* GoogleService-Info.plist */; };
 		3930C6231E88F21C009F457E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3930C6221E88F21C009F457E /* main.m */; };
 		3930C6261E88F21C009F457E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3930C6251E88F21C009F457E /* AppDelegate.m */; };
 		3930C62C1E88F21C009F457E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3930C62A1E88F21C009F457E /* Main.storyboard */; };
@@ -55,7 +56,6 @@
 		44D61A271E8972410088FA2B /* RCSignConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D61A261E8972410088FA2B /* RCSignConfigViewController.m */; };
 		44F4FE471E8CF023008CED9B /* TempLogoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44F4FE461E8CF023008CED9B /* TempLogoutViewController.m */; };
 		44F4FE491E8D0EA5008CED9B /* userInfoDummy.json in Resources */ = {isa = PBXBuildFile; fileRef = 44F4FE481E8D0EA5008CED9B /* userInfoDummy.json */; };
-		44F4FE4D1E8E25E0008CED9B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44F4FE4C1E8E25E0008CED9B /* GoogleService-Info.plist */; };
 		A912FF3531A493E3A1ED367E /* libPods-Record.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84204659D1372BB76B27C5E6 /* libPods-Record.a */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +73,7 @@
 		3903FAB01E94B67500C5B792 /* inDiary.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = inDiary.json; sourceTree = "<group>"; };
 		390BBB551E9220D500BBB8B5 /* RCInDiaryListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCInDiaryListViewController.h; sourceTree = "<group>"; };
 		390BBB561E9220D500BBB8B5 /* RCInDiaryListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCInDiaryListViewController.m; sourceTree = "<group>"; };
+		391E8BFB1E977097000CC82E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3930C61E1E88F21B009F457E /* Record.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Record.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3930C6221E88F21C009F457E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3930C6241E88F21C009F457E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -140,7 +141,6 @@
 		44F4FE451E8CF023008CED9B /* TempLogoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TempLogoutViewController.h; sourceTree = "<group>"; };
 		44F4FE461E8CF023008CED9B /* TempLogoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TempLogoutViewController.m; sourceTree = "<group>"; };
 		44F4FE481E8D0EA5008CED9B /* userInfoDummy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = userInfoDummy.json; sourceTree = "<group>"; };
-		44F4FE4C1E8E25E0008CED9B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		84204659D1372BB76B27C5E6 /* libPods-Record.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Record.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8E10F661C41DA25751724C5 /* Pods-Record.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Record.release.xcconfig"; path = "Pods/Target Support Files/Pods-Record/Pods-Record.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -202,7 +202,7 @@
 				3930C6531E8902F5009F457E /* Temp */,
 				3930C6211E88F21B009F457E /* Supporting Files */,
 				3930C6321E88F21C009F457E /* Info.plist */,
-				44F4FE4C1E8E25E0008CED9B /* GoogleService-Info.plist */,
+				391E8BFB1E977097000CC82E /* GoogleService-Info.plist */,
 				39FB37B41E8EBC4B006D299F /* diary.json */,
 				3903FAB01E94B67500C5B792 /* inDiary.json */,
 				398FA9E71E9685CC0030CE1A /* Assets.xcassets */,
@@ -509,7 +509,7 @@
 				3930C62C1E88F21C009F457E /* Main.storyboard in Resources */,
 				39959FEC1E8A0B36006ACF7A /* RCDiaryTableViewFooterView.xib in Resources */,
 				44CE787A1E91F549004A3ED3 /* RCSettingHeaderView.xib in Resources */,
-				44F4FE4D1E8E25E0008CED9B /* GoogleService-Info.plist in Resources */,
+				391E8BFC1E977097000CC82E /* GoogleService-Info.plist in Resources */,
 				39959FEE1E8A0B36006ACF7A /* RCDiaryTableViewHeaderView.xib in Resources */,
 				44D61A1C1E893BC70088FA2B /* SourceSansPro-Regular.otf in Resources */,
 				44F4FE491E8D0EA5008CED9B /* userInfoDummy.json in Resources */,
@@ -591,7 +591,6 @@
 				4458ECEB1E8B83D200EDC792 /* RCSettingTableInfo.m in Sources */,
 				3930C6261E88F21C009F457E /* AppDelegate.m in Sources */,
 				398FA9EB1E96AD310030CE1A /* RCInDiaryDetailViewController.m in Sources */,
-				44F4FE501E8E75E7008CED9B /* RCMemberValidation.m in Sources */,
 				44D61A181E89314C0088FA2B /* RCSplashViewController.m in Sources */,
 				3930C6231E88F21C009F457E /* main.m in Sources */,
 				44F4FE471E8CF023008CED9B /* TempLogoutViewController.m in Sources */,
