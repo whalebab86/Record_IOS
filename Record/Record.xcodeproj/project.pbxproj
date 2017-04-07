@@ -591,7 +591,6 @@
 				4458ECEB1E8B83D200EDC792 /* RCSettingTableInfo.m in Sources */,
 				3930C6261E88F21C009F457E /* AppDelegate.m in Sources */,
 				398FA9EB1E96AD310030CE1A /* RCInDiaryDetailViewController.m in Sources */,
-				44F4FE501E8E75E7008CED9B /* RCMemberValidation.m in Sources */,
 				44D61A181E89314C0088FA2B /* RCSplashViewController.m in Sources */,
 				3930C6231E88F21C009F457E /* main.m in Sources */,
 				44F4FE471E8CF023008CED9B /* TempLogoutViewController.m in Sources */,

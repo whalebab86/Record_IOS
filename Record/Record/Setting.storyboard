@@ -39,10 +39,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ahT-Kx-WmA">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="C9o-00-js4">
-                                                            <rect key="frame" x="10" y="0.0" width="355" height="40"/>
+                                                            <rect key="frame" x="10" y="0.0" width="300" height="40"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EeY-I5-Jl6">
                                                                     <rect key="frame" x="0.0" y="10.5" width="34.5" height="19"/>
@@ -51,7 +51,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RC_arrow_icon" translatesAutoresizingMaskIntoConstraints="NO" id="c47-h3-nlk">
-                                                                    <rect key="frame" x="345" y="10" width="10" height="20"/>
+                                                                    <rect key="frame" x="290" y="10" width="10" height="20"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="20" id="8pX-iH-5Wn"/>
                                                                         <constraint firstAttribute="width" constant="10" id="vgm-va-rOP"/>
@@ -286,7 +286,7 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s8v-nr-bls">
                                                                 <rect key="frame" x="99" y="0.0" width="198.5" height="49.5"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aDn-bE-BfV">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Touch here or icon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aDn-bE-BfV">
                                                                         <rect key="frame" x="0.0" y="0.0" width="198.5" height="49.5"/>
                                                                         <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
                                                                         <color key="textColor" red="0.77254901960784317" green="0.81568627450980391" blue="0.87058823529411766" alpha="1" colorSpace="calibratedRGB"/>
@@ -310,9 +310,9 @@
                                                                     <constraint firstItem="dbY-aG-fWc" firstAttribute="width" secondItem="s8v-nr-bls" secondAttribute="width" id="xwH-cH-Iym"/>
                                                                 </constraints>
                                                             </view>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IX4-b0-izP">
-                                                                <rect key="frame" x="309" y="10" width="46" height="30"/>
-                                                                <state key="normal" title="Button"/>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IX4-b0-izP">
+                                                                <rect key="frame" x="331" y="9" width="24" height="32"/>
+                                                                <state key="normal" image="RC_placeholder_icon"/>
                                                                 <connections>
                                                                     <action selector="googleCurrentPlaceButtonAction:" destination="fvz-Jv-8XG" eventType="touchUpInside" id="wDK-pW-oN4"/>
                                                                 </connections>
@@ -325,7 +325,7 @@
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.10980392156862745" green="0.12156862745098039" blue="0.15294117647058825" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="IX4-b0-izP" secondAttribute="trailing" constant="10" id="0gj-xg-ZMi"/>
+                                                    <constraint firstAttribute="trailing" secondItem="IX4-b0-izP" secondAttribute="trailing" constant="10" id="45G-4P-TG1"/>
                                                     <constraint firstAttribute="trailing" secondItem="qkQ-qZ-P55" secondAttribute="trailing" constant="10" id="A11-BO-Q9P"/>
                                                     <constraint firstItem="s8v-nr-bls" firstAttribute="width" secondItem="OAf-Ww-Tk3" secondAttribute="width" multiplier="5/9" constant="-10" id="ANu-tq-yND"/>
                                                     <constraint firstItem="qkQ-qZ-P55" firstAttribute="top" secondItem="OAf-Ww-Tk3" secondAttribute="top" id="Qqv-42-RGv"/>
@@ -506,7 +506,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BUc-fj-mlW" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Ny4-AM-IKg">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ny4-AM-IKg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -527,5 +527,6 @@
     <resources>
         <image name="RCSignInUpTopImage" width="374" height="241"/>
         <image name="RC_arrow_icon" width="21" height="39"/>
+        <image name="RC_placeholder_icon" width="24" height="32"/>
     </resources>
 </document>
