@@ -8,8 +8,8 @@
 
 #import "AppDelegate.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
-
 @import GoogleMaps;
+@import GooglePlaces;
 
 @interface AppDelegate ()
 
@@ -20,6 +20,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    /* Google place API KEY */
+    [GMSPlacesClient provideAPIKey:@"AIzaSyDJTIU7fSJLhunuqvsrlhTfk_Lmr_7FfNQ"];
     
     /* Google Map API KEY */
     [GMSServices provideAPIKey:@"AIzaSyBBIXMp7GSsaAKovvSE747vDqYf7EdOZvc"];
@@ -34,7 +37,7 @@
     
     [GIDSignIn sharedInstance].delegate = self;
     
-    return YES;
+    
     
     return YES;
 }

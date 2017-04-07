@@ -19,4 +19,7 @@
 @property NSInteger supportSectionRowCount;
 @property NSArray *supportSectionTitleArray;
 
+@property NSString *supportContentString;
+
+
 @end

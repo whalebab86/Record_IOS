@@ -241,7 +241,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l7g-fZ-dgK">
                                 <rect key="frame" x="0.0" y="200" width="375" height="467"/>
                                 <connections>
-                                    <segue destination="zWH-lN-D2I" kind="embed" id="Prq-9F-CFD"/>
+                                    <segue destination="zWH-lN-D2I" kind="embed" identifier="RCSignUpViewSegue" id="Prq-9F-CFD"/>
                                 </connections>
                             </containerView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="SignInMark" translatesAutoresizingMaskIntoConstraints="NO" id="CUn-aB-NfP">
@@ -249,7 +249,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.13333333333333333" green="0.14901960784313725" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="CKW-lL-N1z" firstAttribute="centerX" secondItem="7uq-uM-2Jk" secondAttribute="centerX" multiplier="0.5" id="7MQ-xt-jhf"/>
@@ -697,7 +697,7 @@
                         <outlet property="signUpEmailTF" destination="WKa-Rp-YXH" id="v8d-Yu-hNC"/>
                         <outlet property="signUpFacebookBtn" destination="tub-h5-Vko" id="kJN-C8-NqV"/>
                         <outlet property="signUpGoogleBtn" destination="0C0-Uw-t8Y" id="Je3-QI-Pce"/>
-                        <outlet property="signUpMainScroll" destination="RwR-lh-6VH" id="ObF-sX-LiT"/>
+                        <outlet property="signUpMainScroll" destination="RwR-lh-6VH" id="gIt-PB-XfE"/>
                         <outlet property="signUpPasswordTF" destination="Kep-yF-z8p" id="Xc4-7g-i6F"/>
                     </connections>
                 </viewController>

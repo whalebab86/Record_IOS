@@ -9,13 +9,17 @@
 #import "RCSettingViewController.h"
 #import "RCSettingTableInfo.h"
 #import "RCSettingTableViewCell.h"
-
+#import "RCSettingHeaderView.h"
+#import "RCProfileViewController.h"
+@import GooglePlaces;
 
 @interface RCSettingViewController ()
 <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *settingMainTableView;
 @property (nonatomic) RCSettingTableInfo *settingTableInfo;
+@property (weak, nonatomic) IBOutlet UIButton *logoutButton;
+
 
 @end
 
@@ -31,26 +35,33 @@
     self.settingMainTableView.delegate = self;
     self.settingMainTableView.dataSource = self;
     
+    UINib *headerNib = [UINib nibWithNibName:@"RCSettingHeaderView" bundle:[NSBundle mainBundle]];
+    [self.settingMainTableView registerNib:headerNib forHeaderFooterViewReuseIdentifier:@"RCSettingHeaderView"];
     
+    self.logoutButton.layer.cornerRadius = 3.0f;
+    self.logoutButton.layer.borderWidth = 1.0f;
+    self.logoutButton.layer.borderColor = [UIColor colorWithRed:197/255.0f green:208/255.0f blue:222/255.0f alpha:1.0f].CGColor;
+
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.settingTableInfo.sectionCount;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    switch (section) {
-        case 0:
-            return self.settingTableInfo.sectionTitleArray[0];
-            break;
-            
-        case 1:
-            return self.settingTableInfo.sectionTitleArray[1];
-            
-        default:
-            return @"";
-            break;
-            
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    
+    return 50.0f;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    RCSettingHeaderView *headerView =[tableView dequeueReusableHeaderFooterViewWithIdentifier:@"RCSettingHeaderView"];
+    if (section == 0 ) {
+        headerView.sectionHeaderTitle.text = self.settingTableInfo.sectionTitleArray[section];
+        return headerView;
+    } else {
+        headerView.sectionHeaderTitle.text = self.settingTableInfo.sectionTitleArray[section];
+        return headerView;
     }
 }
 
@@ -65,24 +76,23 @@
             return self.settingTableInfo.supportSectionRowCount;
             
         default:
-            return 0;
+            return 1;
             break;
     }
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"cellForRowAtIndexPath");
-    NSString *reuseCellID = @"RCSettingTableViewCell";
-    RCSettingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseCellID forIndexPath:indexPath];
+    
+    RCSettingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RCSettingTableViewCell" forIndexPath:indexPath];
     
     switch (indexPath.section) {
         case 0:
-            cell.textLabel.text = self.settingTableInfo.accountSectionTitleArray[indexPath.row];
+            cell.settingCellTitleLB.text = self.settingTableInfo.accountSectionTitleArray[indexPath.row];
             return cell;
             break;
             
         case 1:
-            cell.textLabel.text = self.settingTableInfo.sectionTitleArray[indexPath.row];
+            cell.settingCellTitleLB.text = self.settingTableInfo.supportSectionTitleArray[indexPath.row];
             return cell;
         default:
             return nil;
@@ -90,11 +100,31 @@
     }
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+        if (indexPath.section == 0) {
+            if (indexPath.row == 0) {
+                [self performSegueWithIdentifier:@"ProfileChangeSegue" sender:tableView];
+            }
+        } else if (indexPath.section == 1) {
+            if (indexPath.row == 0) {
+                [self performSegueWithIdentifier:@"SupportContentSegue" sender:tableView];
+            }
+        }
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - logout action
+- (IBAction)logoutButtonAction:(UIButton *)sender {
+    
+    NSLog(@"logoutButtonAction");
+    
+}
+
 
 /*
 #pragma mark - Navigation

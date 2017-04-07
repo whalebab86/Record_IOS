@@ -9,9 +9,11 @@ target 'Record' do
   pod 'AFNetworking', '~> 3.0'
   pod 'SDWebImage', '~>3.8'
   pod 'GoogleMaps'
+  pod 'GooglePlaces'
+  pod 'GooglePlacePicker'
+  pod 'GoogleSignIn'
+  pod 'Google/SignIn'
   pod 'FBSDKCoreKit'
   pod 'FBSDKLoginKit'
   pod 'FBSDKShareKit'
-  pod 'GoogleSignIn'
-  pod 'Google/SignIn'
 end
