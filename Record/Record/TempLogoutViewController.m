@@ -27,13 +27,13 @@
 
 - (IBAction)logoutaction:(id)sender {
     
-    [[RCLoginManager loginManager] facebookLogoutComplition:^(BOOL isSucceess) {
-        if (isSucceess) {
-            [self.navigationController popViewControllerAnimated:YES];
-        } else {
-            NSLog(@"currentToken이 nill이 아니다.");
-        }
-    }];
+//    [[RCLoginManager loginManager] facebookLogoutComplition:^(BOOL isSucceess) {
+//        if (isSucceess) {
+//            [self.navigationController popViewControllerAnimated:YES];
+//        } else {
+//            NSLog(@"currentToken이 nill이 아니다.");
+//        }
+//    }];
     
 }
 

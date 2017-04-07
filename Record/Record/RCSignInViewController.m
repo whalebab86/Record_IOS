@@ -9,17 +9,9 @@
 #import <Google/SignIn.h>
 #import "RCSignInViewController.h"
 #import "RCLoginManager.h"
-#import "RCMemberValidation.h"
+#import "RCUtilyValidation.h"
 
-typedef NS_ENUM(NSInteger, texfFieldSelected) {
-    emailTFSelectied = 0,
-    passwordTFSelectied
-};
-typedef NS_ENUM(NSInteger, selectedBtn) {
-    selectedLoginBtn = 0,
-    selectedFacebookBtn,
-    selectedGoogleBtn
-};
+#import "RCSignConfigViewController.h"
 
 @interface RCSignInViewController ()
 <UITextFieldDelegate, GIDSignInDelegate, GIDSignInUIDelegate>
@@ -38,66 +30,63 @@ typedef NS_ENUM(NSInteger, selectedBtn) {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    //버튼 코너 둥글게 하는 곳
+    /* button cornerRadius */
     self.signInLoginBtn.layer.cornerRadius = 3.0f;
     self.signInLoginFacebook.layer.cornerRadius = 3.0f;
     self.signInLoginGoogle.layer.cornerRadius = 3.0f;
     
-    //텍스트필트와 버튼의 tag설정
-    self.signInEmailTF.tag = emailTFSelectied;
-    self.signInPasswordTF.tag = passwordTFSelectied;
-    self.signInLoginBtn.tag = selectedLoginBtn;
-    self.signInLoginFacebook.tag = selectedFacebookBtn;
-    self.signInLoginGoogle.tag = selectedGoogleBtn;
-    
-    //델리게이트 설정
+    /* tectfield delegate */
     self.signInEmailTF.delegate = self;
     self.signInPasswordTF.delegate = self;
+    
+    /* google signin delegate */
     [GIDSignIn sharedInstance].delegate = self;
     [GIDSignIn sharedInstance].uiDelegate= self;
+    
+    /* text field place holder color change */
+    self.signInEmailTF.attributedPlaceholder = [[NSAttributedString alloc] initWithString:self.signInEmailTF.placeholder attributes:@{ NSForegroundColorAttributeName : [UIColor colorWithRed:197/255.0 green:208/255.0 blue:222/255.0 alpha:1.0f] }];
+    self.signInPasswordTF.attributedPlaceholder = [[NSAttributedString alloc] initWithString:self.signInPasswordTF.placeholder attributes:@{ NSForegroundColorAttributeName : [UIColor colorWithRed:197/255.0 green:208/255.0 blue:222/255.0 alpha:1.0f] }];
+    
 }
 
-#pragma mark - For TextField
+#pragma mark - TextField Delegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     
-    switch (textField.tag) {
-        case emailTFSelectied:
-            [self.signInEmailTF resignFirstResponder];
-            [self.signInPasswordTF becomeFirstResponder];
-            break;
-            
-        case passwordTFSelectied:
-            [self.signInPasswordTF resignFirstResponder];
-            break;
-        default:
-            break;
+    if (textField == self.signInEmailTF) {
+        [self.signInEmailTF resignFirstResponder];
+        [self.signInPasswordTF becomeFirstResponder];
+    } else if (textField == self.signInPasswordTF) {
+        [self.signInPasswordTF resignFirstResponder];
     }
+    
     return YES;
 }
 
+//- (void)drawPlaceholderInRect:(CGRect)rect {
+//    
+//}
 
-#pragma mark - For Email login
+#pragma mark - Email login
 - (IBAction)emailLoginButtonAction:(UIButton *)sender {
     
+    __weak RCSignInViewController *signInVC = self;
     
-    __weak RCSignInViewController *vc = self;
-    
-    if (sender.tag == selectedLoginBtn) {
-        if (![RCMemberValidation isValidEmail:self.signInEmailTF.text]) {
+    if (sender == self.signInLoginBtn) {
+        if (![RCUtilyValidation isValidEmail:self.signInEmailTF.text]) {
             [self addAlertViewWithTile:@"유효한 Email이 아닙니다" actionTitle:@"확인" handler:^(UIAlertAction *action) {
-                vc.signInEmailTF.text = @"";
-                vc.signInPasswordTF.text = @"";
+                signInVC.signInEmailTF.text = @"";
+                signInVC.signInPasswordTF.text = @"";
             }];
             
         } else {
-            [[RCLoginManager loginManager] localEmailPasswordInputEmail:self.signInEmailTF.text inputPassword:self.signInPasswordTF.text isSucessComplition:^(BOOL isSucceess) {
+            [[RCLoginManager loginManager] localEmailPasswordInputEmail:self.signInEmailTF.text inputPassword:self.signInPasswordTF.text isSucessComplition:^(BOOL isSucceess, NSInteger code) {
                 if (isSucceess) {
                     NSLog(@"login success");
                 } else {
                     NSLog(@"login fail");
                     [self addAlertViewWithTile:@"로그인에 실패하였습니다." actionTitle:@"확인" handler:^(UIAlertAction *action) {
-                        vc.signInEmailTF.text = @"";
-                        vc.signInPasswordTF.text = @"";
+                        signInVC.signInEmailTF.text = @"";
+                        signInVC.signInPasswordTF.text = @"";
                     }];
                 }
             }];
@@ -106,32 +95,48 @@ typedef NS_ENUM(NSInteger, selectedBtn) {
 }
 
 #pragma mark - For facebook login
+/* facebook login button action */
 - (IBAction)facebookLoginButtonAction:(UIButton *)sender {
-    if (sender.tag == selectedFacebookBtn) {
-        [[RCLoginManager loginManager] confirmFacebookLoginfromViewController:self complition:^(BOOL isSucceess) {
+    if (sender == self.signInLoginFacebook) {
+        [[RCLoginManager loginManager] confirmFacebookLoginfromViewController:self complition:^(BOOL isSucceess, NSInteger code) {
             if (isSucceess) {
-                NSLog(@"로그인 되었습닌다.");
+//                [self performSegueWithIdentifier:@"OtherSegue" sender:nil];
+            } else {
+                NSString *alertTitle = [@"facebook login error (code " stringByAppendingString:[NSString stringWithFormat:@"%ld )", code]];
+                [self addAlertViewWithTile:alertTitle actionTitle:@"Done" handler:nil];
             }
         }];
     }
 }
 
 #pragma mark - For Google login
+/* google login button action */
 - (IBAction)googleLoginButtonAction:(UIButton *)sender {
-    if (sender.tag == selectedGoogleBtn) {
+    if (sender == self.signInLoginGoogle) {
         [[GIDSignIn sharedInstance] signIn];
     }
 }
 
+/* google sign-in flow has finished and was successful if |error| is |nil|. */
 - (void)signIn:(GIDSignIn *)signIn didSignInForUser:(GIDGoogleUser *)user withError:(NSError *)error {
-    [[RCLoginManager loginManager] recivedGoogleUserInfo:user];
+    [[RCLoginManager loginManager] recivedGoogleUserInfo:user complition:^(BOOL isSucceess, NSInteger code) {
+        if (isSucceess) {
+            NSLog(@"googleSuccess");
+        } else {
+            NSString *alertTitle = [@"google login error (code " stringByAppendingString:[NSString stringWithFormat:@"%ld )", code]];
+            [self addAlertViewWithTile:alertTitle actionTitle:@"Done" handler:nil];
+        }
+    }];
 }
 
+/**
+ * google sign-in flow has finished selecting how to proceed, and the UI should no longer display a spinner or other "please wait" element.
+ */
 - (void)signInWillDispatch:(GIDSignIn *)signIn error:(NSError *)error {
     //    NSLog(@"signInWillDispatch signIn %@", signIn);
-    
 }
 
+#pragma mark - alert method
 - (void)addAlertViewWithTile:(nullable NSString *)viewTitle actionTitle:(nullable NSString *)actionTitle handler:(void (^ __nullable)(UIAlertAction *action))handler {
     UIAlertController *alertView = [UIAlertController alertControllerWithTitle:viewTitle message:nil preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *done = [UIAlertAction actionWithTitle:actionTitle style:UIAlertActionStyleDefault handler:handler];
@@ -139,10 +144,16 @@ typedef NS_ENUM(NSInteger, selectedBtn) {
     [self presentViewController:alertView animated:YES completion:nil];
 }
 
+#pragma mark - etc
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)testDelegateMethod {
+    NSLog(@"asdasd");
+}
+
 
 /*
 #pragma mark - Navigation

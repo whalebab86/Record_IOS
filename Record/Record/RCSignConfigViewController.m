@@ -7,11 +7,7 @@
 //
 
 #import "RCSignConfigViewController.h"
-
-typedef NS_ENUM(NSInteger, selectedButton) {
-    selectedSignInButton =0,
-    selectedSingUpButton
-};
+#import "RCSignUpViewController.h"
 
 @interface RCSignConfigViewController ()
 
@@ -24,6 +20,7 @@ typedef NS_ENUM(NSInteger, selectedButton) {
 @property CGPoint offsetCenterSignInBtn;
 @property CGPoint offsetCenterSignUpBtn;
 
+@property RCSignUpViewController *testVC;
 
 @end
 
@@ -33,11 +30,11 @@ typedef NS_ENUM(NSInteger, selectedButton) {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.signInButton.tag = selectedSignInButton;
-    self.signUpButton.tag = selectedSingUpButton;
-    
+    /* Default alpha of signin contrainer */
     self.signInContrainer.alpha = 1;
     self.signUpContrainer.alpha = 0;
+    
+    
     
 }
 
@@ -45,15 +42,19 @@ typedef NS_ENUM(NSInteger, selectedButton) {
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
     
-    CGFloat h = self.signHeaderView.frame.size.height + self.signMarkImageView.frame.size.height/2;
-    self.offsetCenterSignInBtn = CGPointMake(self.signInButton.center.x, h);
-    self.offsetCenterSignUpBtn = CGPointMake(self.signUpButton.center.x, h);
+    /* Default setting center offset of reverse triangle mark  */
+    CGFloat markOffsetCenterY = self.signHeaderView.frame.size.height + self.signMarkImageView.frame.size.height/2;
+    self.offsetCenterSignInBtn = CGPointMake(self.signInButton.center.x, markOffsetCenterY);
+    self.offsetCenterSignUpBtn = CGPointMake(self.signUpButton.center.x, markOffsetCenterY);
     self.signMarkImageView.center = self.offsetCenterSignInBtn;
+    
+    
 }
 
 #pragma mark - Switching Contrainer View
+/* Show signInContrainer view at signInButton */
 - (IBAction)showSignInContrainer:(UIButton *)sender {
-    if (sender.tag == selectedSignInButton) {
+    if (sender == self.signInButton) {
         [UIView animateWithDuration:0.3f animations:^{
             self.signInContrainer.alpha = 1;
             self.signUpContrainer.alpha = 0;
@@ -62,31 +63,44 @@ typedef NS_ENUM(NSInteger, selectedButton) {
         }];
         [self.view endEditing:YES];
     }
+    
+    
 }
 
+/* Show signUpContrainer view at signUpButton */
 - (IBAction)showSignUpContrainer:(UIButton *)sender {
-    if (sender.tag == selectedSingUpButton) {
+    if (sender == self.signUpButton) {
         [UIView animateWithDuration:0.3f animations:^{
             self.signInContrainer.alpha = 0;
             self.signUpContrainer.alpha = 1;
             self.signMarkImageView.center = self.offsetCenterSignUpBtn;
             self.signMarkImageView.image = [UIImage imageNamed:@"SignUpMark"];
         }];
+        [self.testVC resetOffset];
         [self.view endEditing:YES];
     }
 }
 
 
-#pragma mark - For TapGesture
+#pragma mark - TapGesture
+/* resignFirstResponder by tap gesture */
 - (IBAction)endEditingTapGesture:(UITapGestureRecognizer *)sender {
     [self.view endEditing:YES];
 }
 
+#pragma mark - etc
+/* This method is existent for signup scrollView contentOffset */
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"RCSignUpViewSegue"]) {
+        self.testVC = [segue destinationViewController];
+    }
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 /*
 #pragma mark - Navigation

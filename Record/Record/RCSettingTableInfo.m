@@ -9,8 +9,9 @@
 #import "RCSettingTableInfo.h"
 
 static NSString * const _SETTING_SECTIONTITLE_KEY = @"SectionTitle";
-static NSString * const _SETTING_SUPPORTSECTION_KEY = @"SuportSection";
+static NSString * const _SETTING_SUPPORTSECTION_KEY = @"SupportSection";
 static NSString * const _SETTING_ACCOUNTSECTION_KEY = @"AccountSection";
+static NSString * const _SETTING_SUPPORT_CONTENT_KEY = @"SupportContent";
 
 @interface RCSettingTableInfo()
 
@@ -24,43 +25,37 @@ static NSString * const _SETTING_ACCOUNTSECTION_KEY = @"AccountSection";
 {
     self = [super init];
     if (self) {
-        [self settingRootDicWithPlist];
-        [self setSectionCountWithSettingRootDic];
-        [self accountSectionRowCountWithSettingRootDic];
-        [self accountSectionTitleArrayWithSettingRootDic];
-        [self supportSectionRowCountWithSettingRootDic];
-        [self supportSectionTitleArrayWithSettingRootDic];
+        [self settingRootDictionary];
+        [self setDefaultWithSettingRootDic];
+        [self accountSectionWithSettingRootDic];
+        [self supportSectionWithSettingRootDic];
     }
     return self;
 }
 
-- (NSString *)rcSettingPlistPath {
-    return [[NSBundle mainBundle] pathForResource:@"RCSettingTable" ofType:@"plist"];
+- (void)settingRootDictionary {
+    
+    self.settingRootDic = @{ _SETTING_SECTIONTITLE_KEY  : @[@"ACCOUNT", @"SUPPORT"],
+                             _SETTING_ACCOUNTSECTION_KEY: @[@"My profile", @"My Travel Diarys"],
+                             _SETTING_SUPPORTSECTION_KEY: @[@"Support"],
+                             _SETTING_SUPPORT_CONTENT_KEY:@"김윤서 \nhttps://github.com/KimYunseo \n\n\n조봉기 \nhttps://github.com/whalebab86"};//webview 연동!
+    
 }
 
-- (void)settingRootDicWithPlist {
-    self.settingRootDic = [NSDictionary dictionaryWithContentsOfFile:[self rcSettingPlistPath]];
-}
-
-- (void)setSectionCountWithSettingRootDic {
+- (void)setDefaultWithSettingRootDic {
     self.sectionCount = [[self.settingRootDic objectForKey:_SETTING_SECTIONTITLE_KEY] count];
     self.sectionTitleArray = [self.settingRootDic objectForKey:_SETTING_SECTIONTITLE_KEY];
 }
 
-- (void)accountSectionRowCountWithSettingRootDic {
-    self.accountSectionRowCount = [[[self.settingRootDic objectForKey:_SETTING_ACCOUNTSECTION_KEY] objectForKey:@"Title"] count];
+- (void)accountSectionWithSettingRootDic {
+    self.accountSectionRowCount = [[self.settingRootDic objectForKey:_SETTING_ACCOUNTSECTION_KEY] count];
+    self.accountSectionTitleArray = [self.settingRootDic objectForKey:_SETTING_ACCOUNTSECTION_KEY];
 }
 
-- (void)accountSectionTitleArrayWithSettingRootDic {
-    self.accountSectionTitleArray = [[self.settingRootDic objectForKey:_SETTING_ACCOUNTSECTION_KEY] objectForKey:@"Title"];
-}
-
-- (void)supportSectionRowCountWithSettingRootDic {
-    self.supportSectionRowCount = [[[self.settingRootDic objectForKey:_SETTING_SUPPORTSECTION_KEY] objectForKey:@"Title"] count];
-}
-
-- (void)supportSectionTitleArrayWithSettingRootDic {
-    self.supportSectionTitleArray = [[self.settingRootDic objectForKey:_SETTING_SUPPORTSECTION_KEY] objectForKey:@"Title"];
+- (void)supportSectionWithSettingRootDic {
+    self.supportSectionRowCount = [[self.settingRootDic objectForKey:_SETTING_SUPPORTSECTION_KEY] count];
+    self.supportSectionTitleArray = [self.settingRootDic objectForKey:_SETTING_SUPPORTSECTION_KEY];
+    self.supportContentString = [self.settingRootDic objectForKey:_SETTING_SUPPORT_CONTENT_KEY];
 }
 
 @end

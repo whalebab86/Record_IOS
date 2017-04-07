@@ -10,20 +10,13 @@
 #import "RCSplashViewController.h"
 #import "RCLoginManager.h"
 
-typedef NS_ENUM(NSInteger, selectedButton) {
-    
-    selectedFacebookBtn = 0,
-    selectedGoogleBtn
-    
-};
-
 @interface RCSplashViewController ()
 <GIDSignInDelegate, GIDSignInUIDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *signInBtn;
 @property (weak, nonatomic) IBOutlet UIButton *facebookBtn;
 @property (weak, nonatomic) IBOutlet UIButton *googleBtn;
-//@property(weak, nonatomic) IBOutlet GIDSignInButton *signInButton;
+
 @end
 
 @implementation RCSplashViewController
@@ -31,45 +24,45 @@ typedef NS_ENUM(NSInteger, selectedButton) {
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
     // Do any additional setup after loading the view.
-    //회원가입 페이지 이동 버튼의 레이어와 색 설정
-    [self setBtnLayerAndColor:self.signInBtn];
     
-    self.facebookBtn.tag = selectedFacebookBtn;
-    self.googleBtn.tag = selectedGoogleBtn;
+    /* Signin button change layer and layer color */
+    self.signInBtn.layer.borderWidth = 1.0f;
+    self.signInBtn.layer.cornerRadius = 3.0f;
+    self.signInBtn.layer.borderColor = [UIColor colorWithRed:106/255.0f green:108/255.0f blue:114/255.0f alpha:1.0f].CGColor;
     
+    /* facebook button cornerRadius */
     self.facebookBtn.layer.cornerRadius = 3.0f;
+    
+    /* google button cornerRadius */
     self.googleBtn.layer.cornerRadius = 3.0f;
     
+    /* google sign in delegate */
     [GIDSignIn sharedInstance].delegate = self;
     [GIDSignIn sharedInstance].uiDelegate= self;
 }
 
-
-
-- (void)setBtnLayerAndColor:(UIButton *)customBtn {
-    customBtn.layer.borderWidth = 1.0f;
-    customBtn.layer.cornerRadius = 3.0f;
-    customBtn.layer.borderColor = [UIColor colorWithRed:106/255.0f green:108/255.0f blue:114/255.0f alpha:1.0f].CGColor;
-}
-
 #pragma mark - Create account with Facebook
-
+/* create account with facebook */
 - (IBAction)facebookLoginButtonAction:(UIButton *)sender {
-    if (sender.tag == selectedFacebookBtn) {
+    
+    if(sender == self.signInBtn) {
         NSLog(@"facebookLoginButtonAction");
-        [[RCLoginManager loginManager] confirmFacebookLoginfromViewController:self complition:^(BOOL isSucceess) {
+        [[RCLoginManager loginManager] confirmFacebookLoginfromViewController:self complition:^(BOOL isSucceess, NSInteger code) {
             if (isSucceess) {
                 [self performSegueWithIdentifier:@"OtherSegue" sender:nil];
+            } else {
+                NSString *alertTitle = [@"facebook login error (code " stringByAppendingString:[NSString stringWithFormat:@"%ld )", code]];
+                [self addAlertViewWithTile:alertTitle actionTitle:@"Done" handler:nil];
             }
         }];
     }
 }
 
 #pragma mark - Create account with Google
+/* create account with google */
 - (IBAction)googleLoginButtonAction:(UIButton *)sender {
-    if (sender.tag == selectedGoogleBtn) {
+    if (sender == self.googleBtn) {
         [[GIDSignIn sharedInstance] signIn];
     }
 }
@@ -83,24 +76,30 @@ typedef NS_ENUM(NSInteger, selectedButton) {
     
 }
 
-
-//
-//
-//- (void)signIn:(GIDSignIn *)signIn presentViewController:(UIViewController *)viewController {
-//    [self presentViewController:viewController animated:YES completion:nil];
-//}
-//
-//- (void)signIn:(GIDSignIn *)signIn dismissViewController:(UIViewController *)viewController {
-//    [self dismissViewControllerAnimated:YES completion:nil];
-//    
-//}
-
 - (void)signIn:(GIDSignIn *)signIn didSignInForUser:(GIDGoogleUser *)user
      withError:(NSError *)error {
     //user signed in
     //get user data in "user" (GIDGoogleUser object)
-    [[RCLoginManager loginManager] recivedGoogleUserInfo:user];
+    [[RCLoginManager loginManager] recivedGoogleUserInfo:user complition:^(BOOL isSucceess, NSInteger code) {
+        if (isSucceess) {
+            NSLog(@"googleSuccess");
+        } else {
+            NSString *alertTitle = [@"google login error (code " stringByAppendingString:[NSString stringWithFormat:@"%ld )", code]];
+            [self addAlertViewWithTile:alertTitle actionTitle:@"Done" handler:nil];
+        }
+    }];
+    
 }
+
+#pragma mark - alert method
+- (void)addAlertViewWithTile:(nullable NSString *)viewTitle actionTitle:(nullable NSString *)actionTitle handler:(void (^ __nullable)(UIAlertAction *action))handler {
+    UIAlertController *alertView = [UIAlertController alertControllerWithTitle:viewTitle message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *done = [UIAlertAction actionWithTitle:actionTitle style:UIAlertActionStyleDefault handler:handler];
+    [alertView addAction:done];
+    [self presentViewController:alertView animated:YES completion:nil];
+}
+
+#pragma mark - etc
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

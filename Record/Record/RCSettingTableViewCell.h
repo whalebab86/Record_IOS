@@ -10,4 +10,6 @@
 
 @interface RCSettingTableViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *settingCellTitleLB;
+
 @end
