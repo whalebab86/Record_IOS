@@ -12,6 +12,7 @@
 @interface RCLoginManager()
 <GIDSignInUIDelegate, GIDSignInUIDelegate>
 
+@property NSString *serverAccessKey;
 @property (nonatomic) NSURLSessionDataTask *dataTask;
 @property (nonatomic) AFHTTPRequestSerializer *serializer;
 @property (nonatomic) AFHTTPSessionManager *manager;
@@ -36,21 +37,21 @@
         NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
         self.manager = [[AFHTTPSessionManager manager] initWithSessionConfiguration:configuration];
         self.serializer = [AFHTTPRequestSerializer serializer];
+        [self copyUserInfoTokenIntoLoginManager];
     }
     return self;
 }
 
-#pragma mark - Google Login Logout Method
-- (void)recivedGoogleUserInfo:(GIDGoogleUser *)user
-                    complition:(LoginSuccessBlock)complition {
-    // For client-side use only!
+#pragma mark - sign up sign in modul
+- (void)signUpInModulWithAPI:(NSString *)api
+            requestMethod:(NSString *)method
+           inputParameter:(NSDictionary *)parameters
+            setStatusCode:(NSArray *)codeArray
+                complition:(SuccessStateBlock)complition {
     
-    NSString *urlString = [_RECORD_ADDRESS stringByAppendingString:_RECORD_SIGNUP_API];
-    NSDictionary *parameters = @{_RECORD_SIGNUP_NAME_KEY:user.profile.email,
-                                 _RECORD_SIGNUP_NICKNAME_KEY:user.profile.name,
-                                 _RECORD_SIGNUP_USER_TYPE_KEY:_RECORD_SIGNUP_USER_TYPE_GOOGLE};
+    NSString *urlString = [_RECORD_ADDRESS stringByAppendingString:api];
     
-    NSURLRequest *request = [self.serializer requestWithMethod:@"POST"
+    NSURLRequest *request = [self.serializer requestWithMethod:method
                                                      URLString:urlString
                                                     parameters:parameters
                                                          error:nil];
@@ -59,14 +60,16 @@
                                                        progress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
                                                            NSHTTPURLResponse *httpRespose = (NSHTTPURLResponse *)response;
                                                            if (error) {
-                                                               NSLog(@"Email login NSError %@", error);
+                                                               NSLog(@"Email login NSError %@  statusCode %ld, responseObject %@", error, httpRespose.statusCode, responseObject);
                                                                complition(NO, httpRespose.statusCode);
                                                            } else {
-                                                               if (httpRespose.statusCode == 201) {
-                                                                   NSLog(@"Code == 201 %@", responseObject);
+                                                               if (httpRespose.statusCode == [codeArray[0] integerValue]) {
+                                                                   NSLog(@"statusCode %ld, responseObject %@", httpRespose.statusCode, responseObject);
+                                                                   NSLog(@"login success");
+                                                                   [self insertUserInfoWithToken:[responseObject objectForKey:_RECORD_ACCESSTOKEN_KEY]];
                                                                    complition(YES, httpRespose.statusCode);
-                                                               } else if (httpRespose.statusCode == 400) {
-                                                                   NSLog(@"Code == 400 responseObject %@", responseObject);
+                                                               } else if (httpRespose.statusCode == [codeArray[1] integerValue]) {
+                                                                   NSLog(@"statusCode %ld, responseObject %@", httpRespose.statusCode, responseObject);
                                                                    complition(NO, httpRespose.statusCode);
                                                                } else {
                                                                    NSLog(@"statusCode %ld, responseObject %@", httpRespose.statusCode, responseObject);
@@ -75,7 +78,17 @@
                                                            }
                                                        }];
     [self.dataTask resume];
-    
+}
+
+#pragma mark - Google Login Method
+/* recived user info from google and return status code */
+- (void)recivedGoogleUserInfo:(GIDGoogleUser *)user
+                    complition:(SuccessStateBlock)complition {
+    // For client-side use only!
+    NSDictionary *parameters = @{_RECORD_SIGNUP_NAME_KEY:user.profile.email,
+                                 _RECORD_SIGNUP_NICKNAME_KEY:@"",
+                                 _RECORD_SIGNUP_USER_TYPE_KEY:_RECORD_SIGNUP_USER_TYPE_GOOGLE};
+    [self signUpInModulWithAPI:_RECORD_SIGNUP_API requestMethod:_RECORD_REQUEST_METHOD_POST inputParameter:parameters setStatusCode:@[@"201", @"400"] complition:complition];
     
 //    NSLog(@"user.userID %@", user.userID);
 //    // Safe to send to the server
@@ -92,12 +105,13 @@
 }
 
 #pragma mark - Facebook Login Logout Method
+/* facebook login */
 - (void)confirmFacebookLoginfromViewController:(UIViewController *)fromViewController
-                                    complition:(LoginSuccessBlock)complition {
+                                    complition:(SuccessStateBlock)complition {
     
     if ([FBSDKAccessToken currentAccessToken]) {
         NSLog(@"FBSDKAccessToken currentAccessToken");
-        [self dispatchUserInfo:complition];
+        [self dispatchUserInfoFormFacebook:complition];
         
     } else {
         FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
@@ -113,12 +127,13 @@
                  complition(NO, error.code);
              } else {
                  NSLog(@"Logged in");
-                 [self dispatchUserInfo:complition];
+                 [self dispatchUserInfoFormFacebook:complition];
              }
          }];
     }
 }
 
+/* facebook logout */
 - (void)facebookLogout {
     
     FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
@@ -130,45 +145,22 @@
     }
 }
 
--(void)dispatchUserInfo:(LoginSuccessBlock)complition {
+/*  */
+-(void)dispatchUserInfoFormFacebook:(SuccessStateBlock)complition {
     FBSDKGraphRequest *requestMe = [[FBSDKGraphRequest alloc]initWithGraphPath:@"me" parameters:@{@"fields": @"id, name, email"}];
     FBSDKGraphRequestConnection *connection = [[FBSDKGraphRequestConnection alloc] init];
     [connection addRequest:requestMe completionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
         if(result)
         {
             
-            NSString *urlString = [_RECORD_ADDRESS stringByAppendingString:_RECORD_SIGNUP_API];
-            NSDictionary *parameters = @{_RECORD_SIGNUP_NAME_KEY:[FBSDKAccessToken currentAccessToken].userID,
+//            [FBSDKAccessToken currentAccessToken].userID
+            NSDictionary *parameters = @{_RECORD_SIGNUP_NAME_KEY:[result objectForKey:@"email"],
                                          _RECORD_SIGNUP_NICKNAME_KEY:[result objectForKey:@"name"],
                                          _RECORD_SIGNUP_USER_TYPE_KEY:_RECORD_SIGNUP_USER_TYPE_FACEBOOK};
             
-            NSURLRequest *request = [self.serializer requestWithMethod:@"POST"
-                                                             URLString:urlString
-                                                            parameters:parameters
-                                                                 error:nil];
+            [self signUpInModulWithAPI:_RECORD_SIGNUP_API requestMethod:_RECORD_REQUEST_METHOD_POST inputParameter:parameters setStatusCode:@[@"201",@"400"] complition:complition];
             
-            self.dataTask = [self.manager uploadTaskWithStreamedRequest:request
-                                                               progress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
-                                                                   NSHTTPURLResponse *httpRespose = (NSHTTPURLResponse *)response;
-                                                                   if (error) {
-                                                                       NSLog(@"Email login NSError %@", error);
-                                                                       complition(NO, httpRespose.statusCode);
-                                                                   } else {
-                                                                       
-                                                                       if (httpRespose.statusCode == 201) {
-                                                                           NSLog(@"Code == 201 %@", responseObject);
-                                                                           complition(YES, httpRespose.statusCode);
-                                                                       } else if (httpRespose.statusCode == 400) {
-                                                                           NSLog(@"Code == 400 responseObject %@", responseObject);
-                                                                           complition(NO, httpRespose.statusCode);
-                                                                       } else {
-                                                                           NSLog(@"statusCode %ld, responseObject %@", httpRespose.statusCode, responseObject);
-                                                                           complition(NO, httpRespose.statusCode);
-                                                                       }
-                                                                   }
-                                                               }];
-            [self.dataTask resume];
-//            
+//
 //            if ([result objectForKey:@"name"]) {
 //                NSLog(@"First Name : %@",[result objectForKey:@"name"]);
 //            }
@@ -179,41 +171,18 @@
     }];
     [connection start];
     
-//    UITextView
 }
 
-#pragma mark - Email Login Logout Method
+#pragma mark - Email Login Method
 /* const 는 서버에서 api 주면 시작 */
 - (void)localEmailPasswordInputEmail:(NSString *)email
                          inputPassword:(NSString *)password
-                    isSucessComplition:(LoginSuccessBlock)complition
+                    isSucessComplition:(SuccessStateBlock)complition
 {
-    NSString *urlString = [@"https://fc-ios.lhy.kr/api" stringByAppendingString:@"/member/login/"];
     NSDictionary *parameters = @{@"username":email,
                                  @"password":password};
     
-    NSURLRequest *request = [self.serializer requestWithMethod:@"POST"
-                                                 URLString:urlString
-                                                parameters:parameters
-                                                     error:nil];
-
-    self.dataTask = [self.manager uploadTaskWithStreamedRequest:request
-                     progress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
-                         if (error) {
-                             NSLog(@"Email login NSError %@", error);
-                             complition(NO, 0);
-                         } else {
-                             NSHTTPURLResponse *httpRespose = (NSHTTPURLResponse *)response;
-                             if (httpRespose.statusCode == 200) {
-                                 NSLog(@"Code == 200 %@", responseObject);
-                                 complition(YES, 0);
-                             } else if (httpRespose.statusCode == 400) {
-                                 NSLog(@"Code == 400 responseObject %@", responseObject);
-                                 complition(NO, 0);
-                             }
-                         }
-                     }];
-    [self.dataTask resume];
+    [self signUpInModulWithAPI:_RECORD_SIGNIN_API requestMethod:_RECORD_REQUEST_METHOD_POST inputParameter:parameters setStatusCode:@[@"200",@"400"] complition:complition];
 }
 
 #pragma mark - Eamil Sign up Method
@@ -221,13 +190,24 @@
 - (void)localSignupInputEmail:(NSString *)email
                 inputPassword:(NSString *)password
                 inputNickName:(NSString *)nickName
-                   complition:(LoginSuccessBlock)complition {
+                   complition:(SuccessStateBlock)complition {
     
-    NSString *urlString = [_RECORD_ADDRESS stringByAppendingString:_RECORD_SIGNUP_API];
-    NSDictionary *parameters = @{_RECORD_SIGNUP_NAME_KEY:email,
-                                 _RECORD_SIGNUP_PASSWORD_KEY:password,
-                                 _RECORD_SIGNUP_NICKNAME_KEY:nickName,
-                                 _RECORD_SIGNUP_USER_TYPE_KEY:_RECORD_SIGNUP_USER_TYPE_NORMAL};
+    NSDictionary *parameters =@{_RECORD_SIGNUP_NAME_KEY:email,
+                                _RECORD_SIGNUP_PASSWORD_KEY:password,
+                                _RECORD_SIGNUP_NICKNAME_KEY:nickName,
+                                _RECORD_SIGNUP_USER_TYPE_KEY:_RECORD_SIGNUP_USER_TYPE_NORMAL};
+    
+    [self signUpInModulWithAPI:_RECORD_SIGNUP_API requestMethod:_RECORD_REQUEST_METHOD_POST inputParameter:parameters setStatusCode:@[@"201",@"400"] complition:complition];
+    
+   }
+
+
+#pragma mark - logout method
+
+- (void)logoutWithComplition:(SuccessStateBlock)complition {
+    
+    NSString *urlString = [_RECORD_ADDRESS stringByAppendingString:_RECORD_LOGOUT_API];
+    NSDictionary *parameters = @{_RECORD_LOGOUT_PARAMETER_KEY:self.serverAccessKey};
     
     NSURLRequest *request = [self.serializer requestWithMethod:@"POST"
                                                      URLString:urlString
@@ -238,30 +218,45 @@
                                                        progress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
                                                            NSHTTPURLResponse *httpRespose = (NSHTTPURLResponse *)response;
                                                            if (error) {
-                                                               NSLog(@"Email login NSError %@", error);
+                                                               NSLog(@"error not nil & Email login NSError %@", error);
                                                                complition(NO, httpRespose.statusCode);
                                                            } else {
                                                                
-                                                               if (httpRespose.statusCode == 201) {
-                                                                   NSLog(@"Code == 201 %@", responseObject);
+                                                               if (httpRespose.statusCode == 200) {
+                                                                   NSLog(@"error nil & Code == 200 %@", responseObject);
+                                                                   [self delectUserInfoToken];
                                                                    complition(YES, httpRespose.statusCode);
                                                                } else if (httpRespose.statusCode == 400) {
-                                                                   NSLog(@"Code == 400 responseObject %@", responseObject);
+                                                                   NSLog(@"error nil & Code == 400 responseObject %@", responseObject);
                                                                    complition(NO, httpRespose.statusCode);
                                                                } else {
-                                                                   NSLog(@"statusCode %ld, responseObject %@", httpRespose.statusCode, responseObject);
+                                                                   NSLog(@"error nil & statusCode %ld, responseObject %@", httpRespose.statusCode, responseObject);
                                                                    complition(NO, httpRespose.statusCode);
                                                                }
                                                            }
                                                        }];
     [self.dataTask resume];
     
-    
 }
 
+#pragma mark - get or delect token method
+/* insert userinfo into UserDefault */
+- (void)insertUserInfoWithToken:(NSString *)token {
+    //유저디폴트로 변경
+    [[NSUserDefaults standardUserDefaults] setObject:token forKey:_RECORD_ACCESSTOKEN_KEY];
+    self.serverAccessKey = [[NSUserDefaults standardUserDefaults] objectForKey:_RECORD_ACCESSTOKEN_KEY];
+}
 
+/* copy and insert token into serverAccessKey of Login Manager  */
+- (void)copyUserInfoTokenIntoLoginManager {
+    self.serverAccessKey = [[NSUserDefaults standardUserDefaults] objectForKey:_RECORD_ACCESSTOKEN_KEY];
+}
 
-
-
+/* serverAccessKey of Login Manager and UserDefault delete token */
+- (void)delectUserInfoToken {
+    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:_RECORD_ACCESSTOKEN_KEY];
+    self.serverAccessKey = @"";
+    
+}
 
 @end

@@ -39,10 +39,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ahT-Kx-WmA">
-                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="C9o-00-js4">
-                                                            <rect key="frame" x="10" y="0.0" width="300" height="40"/>
+                                                            <rect key="frame" x="10" y="0.0" width="355" height="40"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EeY-I5-Jl6">
                                                                     <rect key="frame" x="0.0" y="10.5" width="34.5" height="19"/>
@@ -51,7 +51,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RC_arrow_icon" translatesAutoresizingMaskIntoConstraints="NO" id="c47-h3-nlk">
-                                                                    <rect key="frame" x="290" y="10" width="10" height="20"/>
+                                                                    <rect key="frame" x="345" y="10" width="10" height="20"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="20" id="8pX-iH-5Wn"/>
                                                                         <constraint firstAttribute="width" constant="10" id="vgm-va-rOP"/>
@@ -108,17 +108,33 @@
                             <constraint firstItem="Iom-IL-z7c" firstAttribute="leading" secondItem="cVQ-kO-SZZ" secondAttribute="leading" id="qSg-1i-jwO"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Setting" id="GI4-q7-Tq5"/>
+                    <navigationItem key="navigationItem" title="Setting" id="GI4-q7-Tq5">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Zfi-SQ-l60">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <segue destination="Tym-oK-KfV" kind="presentation" id="POq-Uh-wtW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="logoutButton" destination="Tk7-P3-dhu" id="U7Z-DH-Ddc"/>
                         <outlet property="settingMainTableView" destination="Iom-IL-z7c" id="bEd-8Q-yiB"/>
                         <segue destination="fvz-Jv-8XG" kind="show" identifier="ProfileChangeSegue" id="BeB-4n-wqN"/>
                         <segue destination="K9L-5q-1cw" kind="show" identifier="SupportContentSegue" id="bbK-bz-DgD"/>
+                        <segue destination="QPx-Nd-rdW" kind="presentation" identifier="MemberSegueFromSetting" id="Uzv-tg-Ito"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4ZE-GL-XWJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1685.5999999999999" y="-279.31034482758622"/>
+        </scene>
+        <!--Diary-->
+        <scene sceneID="POL-J9-6eO">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Diary" id="Tym-oK-KfV" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iHi-Pq-8nc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2474" y="-925"/>
         </scene>
         <!--Profile settings-->
         <scene sceneID="gSk-tI-kUO">
@@ -442,7 +458,15 @@
             </objects>
             <point key="canvasLocation" x="2568.8000000000002" y="-435.83208395802103"/>
         </scene>
-        <!--Support View Controller-->
+        <!--Member-->
+        <scene sceneID="afY-au-DmS">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Member" id="QPx-Nd-rdW" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8bM-Bf-nqJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1686" y="189"/>
+        </scene>
+        <!--Support-->
         <scene sceneID="WjB-tO-Xjv">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="K9L-5q-1cw" customClass="RCSupportViewController" sceneMemberID="viewController">
@@ -493,6 +517,11 @@
                             <constraint firstItem="Na2-e3-dbl" firstAttribute="top" secondItem="fTV-Qf-izr" secondAttribute="bottom" id="yoB-Pe-9fv"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Support" id="mHM-7l-zUP">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="PGi-wZ-hF3">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="supportLB" destination="n8X-BI-oCg" id="Y2L-Gd-f6u"/>
                     </connections>
@@ -506,7 +535,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BUc-fj-mlW" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ny4-AM-IKg">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Ny4-AM-IKg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

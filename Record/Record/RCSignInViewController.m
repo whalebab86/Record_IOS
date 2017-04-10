@@ -35,7 +35,7 @@
     self.signInLoginFacebook.layer.cornerRadius = 3.0f;
     self.signInLoginGoogle.layer.cornerRadius = 3.0f;
     
-    /* tectfield delegate */
+    /* textfield delegate */
     self.signInEmailTF.delegate = self;
     self.signInPasswordTF.delegate = self;
     
@@ -62,10 +62,6 @@
     return YES;
 }
 
-//- (void)drawPlaceholderInRect:(CGRect)rect {
-//    
-//}
-
 #pragma mark - Email login
 - (IBAction)emailLoginButtonAction:(UIButton *)sender {
     
@@ -82,6 +78,8 @@
             [[RCLoginManager loginManager] localEmailPasswordInputEmail:self.signInEmailTF.text inputPassword:self.signInPasswordTF.text isSucessComplition:^(BOOL isSucceess, NSInteger code) {
                 if (isSucceess) {
                     NSLog(@"login success");
+                    [self performSegueWithIdentifier:@"SettingSegueFromSignin" sender:nil];
+                    
                 } else {
                     NSLog(@"login fail");
                     [self addAlertViewWithTile:@"로그인에 실패하였습니다." actionTitle:@"확인" handler:^(UIAlertAction *action) {
@@ -101,6 +99,7 @@
         [[RCLoginManager loginManager] confirmFacebookLoginfromViewController:self complition:^(BOOL isSucceess, NSInteger code) {
             if (isSucceess) {
 //                [self performSegueWithIdentifier:@"OtherSegue" sender:nil];
+                [self performSegueWithIdentifier:@"SettingSegueFromSignin" sender:nil];
             } else {
                 NSString *alertTitle = [@"facebook login error (code " stringByAppendingString:[NSString stringWithFormat:@"%ld )", code]];
                 [self addAlertViewWithTile:alertTitle actionTitle:@"Done" handler:nil];
@@ -122,6 +121,7 @@
     [[RCLoginManager loginManager] recivedGoogleUserInfo:user complition:^(BOOL isSucceess, NSInteger code) {
         if (isSucceess) {
             NSLog(@"googleSuccess");
+            [self performSegueWithIdentifier:@"SettingSegueFromSignin" sender:nil];
         } else {
             NSString *alertTitle = [@"google login error (code " stringByAppendingString:[NSString stringWithFormat:@"%ld )", code]];
             [self addAlertViewWithTile:alertTitle actionTitle:@"Done" handler:nil];
@@ -150,9 +150,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)testDelegateMethod {
-    NSLog(@"asdasd");
-}
+
 
 
 /*

@@ -7,6 +7,8 @@
 //
 
 #import <GoogleMaps/GoogleMaps.h>
+#import <AssetsLibrary/AssetsLibrary.h>
+#import <Photos/Photos.h>
 #import "RCProfileViewController.h"
 @import GooglePlaces;
 @import GooglePlacePicker;
@@ -231,6 +233,22 @@
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
     self.profileImage.image = image;
     [picker dismissViewControllerAnimated:YES completion:nil];
+    
+    NSURL *referenceURL = [info objectForKey:UIImagePickerControllerReferenceURL];
+    NSLog(@"info %@", info);
+    NSLog(@"referenceURL %@", referenceURL);
+    
+    PHAsset *asset = [[PHAsset fetchAssetsWithALAssetURLs:@[referenceURL] options:nil] lastObject];
+    PHContentEditingInputRequestOptions *options = [[PHContentEditingInputRequestOptions alloc] init];
+    options.networkAccessAllowed = YES; //download asset metadata from iCloud if needed
+    
+    [asset requestContentEditingInputWithOptions:options completionHandler:^(PHContentEditingInput *contentEditingInput, NSDictionary *info) {
+        CIImage *fullImage = [CIImage imageWithContentsOfURL:contentEditingInput.fullSizeImageURL];
+        
+        NSLog(@"%@", fullImage.properties.description);
+        NSLog(@"%@", [[fullImage.properties objectForKey:@"{GPS}"] objectForKey:@"Latitude"]);
+        NSLog(@"%@", [[fullImage.properties objectForKey:@"{GPS}"] objectForKey:@"Longitude"]);
+    }];
 }
 
 #pragma mark - right bar button item

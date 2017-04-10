@@ -109,7 +109,23 @@
         } else {
             
             //sign up 코드는 백단이 주면 설정
-            NSLog(@"로그인 탑니다!");
+            
+            
+            [[RCLoginManager loginManager] localSignupInputEmail:self.signUpEmailTF.text inputPassword:self.signUpPasswordTF.text inputNickName:@"" complition:^(BOOL isSucceess, NSInteger code) {
+              
+                if (isSucceess) {
+                    
+                        NSLog(@"로그인 탑니다!");
+                        [self performSegueWithIdentifier:@"SettingSegueFromSignup" sender:nil];
+                    
+                } else {
+                    
+                    NSLog(@"%ld", code);
+                    [self addAlertViewWithTile:[NSString stringWithFormat:@"회원가입에 실패하였습니다. %ld", code] actionTitle:@"확인" handler:nil];
+                }
+                
+            }];
+            
         }
     }
 }
@@ -121,6 +137,10 @@
         [[RCLoginManager loginManager] confirmFacebookLoginfromViewController:self complition:^(BOOL isSucceess, NSInteger code) {
             if (isSucceess) {
                 NSLog(@"로그인 되었습닌다.");
+                [self performSegueWithIdentifier:@"SettingSegueFromSignup" sender:nil];
+            } else {
+                NSLog(@"%ld", code);
+                [self addAlertViewWithTile:[NSString stringWithFormat:@"회원가입에 실패하였습니다. %ld", code] actionTitle:@"확인" handler:nil];
             }
         }];
     }
@@ -139,6 +159,7 @@
     [[RCLoginManager loginManager] recivedGoogleUserInfo:user complition:^(BOOL isSucceess, NSInteger code) {
         if (isSucceess) {
             NSLog(@"googleSuccess");
+            [self performSegueWithIdentifier:@"SettingSegueFromSignup" sender:nil];
         } else {
             NSString *alertTitle = [@"google login error (code " stringByAppendingString:[NSString stringWithFormat:@"%ld )", code]];
             [self addAlertViewWithTile:alertTitle actionTitle:@"Done" handler:nil];
