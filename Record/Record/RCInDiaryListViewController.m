@@ -6,17 +6,25 @@
 //  Copyright © 2017년 whalebab. All rights reserved.
 //
 
+/* Record controller import */
 #import "RCInDiaryListViewController.h"
+#import "RCDiaryDetailViewController.h"
+#import "RCInDiaryDetailViewController.h"
+#import "RCInDiaryLocationViewController.h"
+
+/* Record view import */
 #import "RCInDiaryTableViewHeaderView.h"
 #import "RCInDiaryTableViewCell.h"
 #import "RCInDiaryCollectionViewCell.h"
 
+/* Record source import */
 #import "RCDiaryManager.h"
 
+/* library import */
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface RCInDiaryListViewController ()
-<UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, RCInDiaryTableViewCellDelegate>
+<UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, RCInDiaryTableViewCellDelegate, RCInDiaryTableViewHeaderDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *inDiaryListTableView;
 @property (weak, nonatomic) IBOutlet UIView *inDiaryTopSolderView;
@@ -59,6 +67,8 @@
             
             [self.inDiaryListTableView reloadData];
             
+            [self.inDiaryListTableView reloadInputViews];
+            
             [self.view layoutIfNeeded];
         }
     }];
@@ -87,7 +97,6 @@
     cell.inDiaryDaysLabel.text         = [@"DAY " stringByAppendingString:inDiaryData.inDiaryDay];
     cell.inDiaryDateLabel.text         = inDiaryData.inDiaryWriteDate;
     cell.inDiaryContentLabel.text      = inDiaryData.inDiaryContent;
-
     
     /* collection view item custom */
     CGFloat collectionViewSize = cell.inDiaryImageCollectionView.frame.size.width;
@@ -111,10 +120,7 @@
     }
     
     [cell setDelegate:self];
-    
-//    [cell.inDiaryImageCollectionView setDelegate:self];
-//    [cell.inDiaryImageCollectionView setDataSource:self];
-    
+
     [cell.inDiaryImageCollectionView reloadData];
 
     return cell;
@@ -124,9 +130,10 @@
     
     RCInDiaryTableViewHeaderView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"RCInDiaryTableViewHeaderView"];
     
+    [headerView setDelegate:self];
+    
     return headerView;
 }
-
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     
@@ -151,11 +158,20 @@
     
     if(type == RCInDiaryButtonWrite) {
         
-        [self performSegueWithIdentifier:@"InDiaryDetailSegue" sender:self];
-    }else if(type == RCInDiaryButtonAdd) {
+        [self performSegueWithIdentifier:@"InDiaryDetailSegue" sender:indexPath];
+    } else if(type == RCInDiaryButtonAdd) {
         
-        [self performSegueWithIdentifier:@"InDiaryDetailSegue" sender:self];
+        [self performSegueWithIdentifier:@"InDiaryDetailSegue" sender:nil];
+    } else if(type == RCInDiaryButtonLocation) {
+        
+        [self performSegueWithIdentifier:@"InDiaryLocationSegue" sender:indexPath];
     }
+}
+
+#pragma mark - IndiaryTableHeaderView view Delegate
+- (void)showInDiaryLocationView {
+    
+    [self performSegueWithIdentifier:@"InDiaryLocationSegue" sender:nil];
 }
 
 #pragma mark - Custom button click method
@@ -195,12 +211,50 @@
 #pragma mark - segue method
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-    if([segue.identifier isEqualToString:@"InDiaryDetailSegue"]) {
+    if([segue.identifier isEqualToString:@"DiaryDetailSegue"]) {
+        
+        UINavigationController *diaryDetailVC = [segue destinationViewController];
+        ((RCDiaryDetailViewController *)diaryDetailVC.topViewController).diaryData = self.diaryData;
+        ((RCDiaryDetailViewController *)diaryDetailVC.topViewController).indexPath = self.indexPath;
         
     } else if([segue.identifier isEqualToString:@"InDiaryDetailSegue"]) {
         
+        if(sender != nil) {
+            RCInDiaryData *diaryData = [[RCDiaryManager diaryManager] inDiaryDataAtIndexPath:(NSIndexPath*)sender];
+            
+            UINavigationController *navigationVC = [segue destinationViewController];
+            RCInDiaryDetailViewController *inDiaryDetailVC = (RCInDiaryDetailViewController *)navigationVC.topViewController;
+            
+            inDiaryDetailVC.inDiaryData = diaryData;
+            inDiaryDetailVC.indexPath   = (NSIndexPath*)sender;
+        }
+    } else if([segue.identifier isEqualToString:@"InDiaryLocationSegue"]) {
+        
+        if(sender != nil) {
+            RCInDiaryData *diaryData = [[RCDiaryManager diaryManager] inDiaryDataAtIndexPath:(NSIndexPath*)sender];
+            
+            RCInDiaryLocationViewController *locationVC = [segue destinationViewController];
+            
+            locationVC.inDiaryData = diaryData;
+            locationVC.indexPath   = (NSIndexPath*)sender;
+        }
     }
+}
+
+- (IBAction)unwindForInDiaryList:(UIStoryboard *)sender {
     
+    [self.manager clearInDiaryItemAtIndexPaths];
+    [self.manager requestInDiaryListWithCompletionHandler:^(BOOL isSuccess, id responseData) {
+        
+        if(isSuccess) {
+            
+            [self.inDiaryListTableView reloadData];
+            
+            [self.view layoutIfNeeded];
+        }
+    }];
+    
+    NSLog(@"unwindForInDiaryList");
 }
 
 @end

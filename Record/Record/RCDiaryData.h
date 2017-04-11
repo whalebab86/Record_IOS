@@ -33,6 +33,9 @@
 @property (nonatomic) NSString *inDiaryContent;
 @property (nonatomic) NSArray  *inDiaryCoverImgUrl;
 
+@property (nonatomic) NSString *inDiaryLatitude;
+@property (nonatomic) NSString *inDiarylongitude;
+
 - (instancetype)initInDiatyDataWithNSDictionary:(NSDictionary *)diaryInfo;
 
 @end

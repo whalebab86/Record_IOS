@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol RCInDiaryTableViewHeaderDelegate <NSObject>
+
+- (void)showInDiaryLocationView;
+
+@end
+
 @interface RCInDiaryTableViewHeaderView : UITableViewHeaderFooterView
+
+@property (nonatomic) id<RCInDiaryTableViewHeaderDelegate> delegate;
 
 @end

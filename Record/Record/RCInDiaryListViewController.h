@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RCDiaryData.h"
 
 @interface RCInDiaryListViewController : UIViewController
+
+@property (nonatomic) RCDiaryData *diaryData;
 
 @end

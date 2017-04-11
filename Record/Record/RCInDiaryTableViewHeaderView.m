@@ -8,11 +8,7 @@
 
 #import "RCInDiaryTableViewHeaderView.h"
 
-@import GoogleMaps;
-
 @interface RCInDiaryTableViewHeaderView ()
-
-@property (nonatomic) GMSMapView *googleMapView;
 
 @property (weak, nonatomic) IBOutlet UIImageView *coverProfieImageView;
 @property (weak, nonatomic) IBOutlet UILabel     *coverProfileNameLabel;
@@ -35,27 +31,18 @@
     
     [super awakeFromNib];
     
-    [self showGoogleMap];
+    UIView *googleMapView = [[[NSBundle mainBundle] loadNibNamed:@"RCInDiaryLocationView"
+                                                           owner:self
+                                                         options:nil] objectAtIndex:0];
+    
+    [googleMapView setFrame:self.inDiaryMapView.bounds];
+    
+    [self.inDiaryMapView setClipsToBounds:YES];
+    [self.inDiaryMapView addSubview:googleMapView];
 }
 
--(void)layoutSubviews {
+- (IBAction)clickLocationMaskButton:(id)sender {
     
-    /* Google map frame 조정 */
-    [self.googleMapView setFrame:CGRectMake(0, 0, self.frame.size.width, (self.frame.size.width * 0.8))];
+    [self.delegate showInDiaryLocationView];
 }
-
-/* Google Map Load */
-- (void)showGoogleMap {
-    
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:37.86
-                                                            longitude:135.20
-                                                                 zoom:4];
-    
-    self.googleMapView = [GMSMapView mapWithFrame:CGRectZero camera:camera];
-    //    self.googleMapView.myLocationEnabled = YES;
-    self.googleMapView.mapType = kGMSTypeSatellite;
-    
-    [self.inDiaryMapView addSubview:self.googleMapView];
-}
-
 @end

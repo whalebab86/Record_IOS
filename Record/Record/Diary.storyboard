@@ -89,7 +89,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Diary cover" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dhV-41-YiM">
-                                                <rect key="frame" x="125" y="11" width="70" height="18"/>
+                                                <rect key="frame" x="125" y="11.5" width="70" height="18"/>
                                                 <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="14"/>
                                                 <color key="textColor" red="0.46666666670000001" green="0.47450980390000003" blue="0.49019607840000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -147,7 +147,7 @@
                                         <rect key="frame" x="0.0" y="100" width="320" height="40"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Diary information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d5Q-hL-siW">
-                                                <rect key="frame" x="105" y="11" width="110" height="18"/>
+                                                <rect key="frame" x="105" y="11.5" width="110" height="18"/>
                                                 <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="14"/>
                                                 <color key="textColor" red="0.46666666666666667" green="0.47450980392156861" blue="0.49019607843137253" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -285,7 +285,7 @@
                                         <rect key="frame" x="0.0" y="290" width="320" height="40"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Private Setting" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VAV-Zj-s7V">
-                                                <rect key="frame" x="114" y="11" width="92" height="18"/>
+                                                <rect key="frame" x="114" y="11.5" width="92" height="18"/>
                                                 <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="14"/>
                                                 <color key="textColor" red="0.46666666670000001" green="0.47450980390000003" blue="0.49019607840000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -307,13 +307,13 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Who can view your diary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qtc-sP-FBO">
-                                                <rect key="frame" x="15" y="16" width="152.5" height="19"/>
+                                                <rect key="frame" x="15" y="15.5" width="152.5" height="19"/>
                                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="15"/>
                                                 <color key="textColor" red="0.77254901960784317" green="0.81568627450980391" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Only me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Rr-3h-EZY">
-                                                <rect key="frame" x="231" y="16" width="52" height="19"/>
+                                                <rect key="frame" x="231" y="15.5" width="52" height="19"/>
                                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="15"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -362,7 +362,6 @@
                                         <state key="normal" image="RC_trash_icon"/>
                                         <connections>
                                             <action selector="clickDiaryDeleteButton:" destination="3Hi-G0-b6o" eventType="touchUpInside" id="hZC-U5-a8s"/>
-                                            <segue destination="afh-Ec-8OB" kind="unwind" unwindAction="unwindSegue:" id="amh-zU-A6R"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -417,12 +416,13 @@
                         <outlet property="diaryPrivateSettingLabel" destination="8Rr-3h-EZY" id="5Vt-lO-qhS"/>
                         <outlet property="diaryStackViewTopConstraint" destination="74G-Bm-eV1" id="rD9-ZL-BOC"/>
                         <outlet property="diaryStartDateTextField" destination="vIe-3Q-h1X" id="yOu-ri-Iup"/>
+                        <segue destination="afh-Ec-8OB" kind="unwind" identifier="InDiaryUnwindSegue" unwindAction="unwindSegue:" id="Bqh-n6-7Jv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jyh-xU-0Po" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="afh-Ec-8OB" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3804" y="-663"/>
+            <point key="canvasLocation" x="3754" y="-663"/>
         </scene>
         <!--In Diary List View Controller-->
         <scene sceneID="c3L-Oa-ucB">
@@ -436,7 +436,7 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="n5T-Bq-apX">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="n5T-Bq-apX">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -488,11 +488,12 @@
                         <outlet property="inDiaryTopSolderView" destination="ZQQ-bh-T5K" id="c9q-1E-aok"/>
                         <segue destination="nWU-4a-YU7" kind="show" identifier="InDiaryDetailSegue" id="oGb-Fa-Wed"/>
                         <segue destination="zQf-H5-dsh" kind="presentation" identifier="DiaryDetailSegue" id="beJ-YV-Xsy"/>
+                        <segue destination="12C-n0-YqZ" kind="presentation" identifier="InDiaryLocationSegue" id="037-pE-4A2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hTH-RR-2nU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2115" y="112"/>
+            <point key="canvasLocation" x="2126" y="112"/>
         </scene>
         <!--In DIary-->
         <scene sceneID="vx8-mS-Trd">
@@ -510,9 +511,9 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OGK-GQ-aMI">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="246.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="163"/>
                                         <subviews>
-                                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z06-hg-dyZ">
+                                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z06-hg-dyZ" userLabel="Location view">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RC_placeholder_icon" translatesAutoresizingMaskIntoConstraints="NO" id="ZVo-VM-NH7">
@@ -542,9 +543,6 @@
                                                             <constraint firstAttribute="height" constant="30" id="qCJ-GF-q6b"/>
                                                         </constraints>
                                                         <state key="normal" image="RecordLogoWithoutWord"/>
-                                                        <connections>
-                                                            <action selector="clickLocationButton:" destination="rUM-yD-oXZ" eventType="touchUpInside" id="VGO-mk-lOz"/>
-                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.13271617890000001" green="0.14825978879999999" blue="0.18977418539999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -561,10 +559,10 @@
                                                     <constraint firstAttribute="bottom" secondItem="Six-SQ-TXQ" secondAttribute="bottom" id="yGo-RM-WNa"/>
                                                 </constraints>
                                             </view>
-                                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DSs-ft-hBV">
+                                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DSs-ft-hBV" userLabel="Date view">
                                                 <rect key="frame" x="0.0" y="60" width="320" height="60"/>
                                                 <subviews>
-                                                    <datePicker clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="xoQ-r2-93u">
+                                                    <datePicker clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="xoQ-r2-93u">
                                                         <rect key="frame" x="0.0" y="60" width="320" height="128"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -574,6 +572,9 @@
                                                         <date key="date" timeIntervalSinceReferenceDate="513193911.77651399">
                                                             <!--2017-04-06 17:51:51 +0000-->
                                                         </date>
+                                                        <connections>
+                                                            <action selector="changeInDiaryDatePicker:forEvent:" destination="rUM-yD-oXZ" eventType="valueChanged" id="PLR-o0-bVf"/>
+                                                        </connections>
                                                     </datePicker>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RC_friends_icon" translatesAutoresizingMaskIntoConstraints="NO" id="XXv-r4-pHf">
                                                         <rect key="frame" x="15" y="15" width="20" height="30"/>
@@ -595,32 +596,43 @@
                                                             <constraint firstAttribute="height" constant="1" id="orV-ki-zFP"/>
                                                         </constraints>
                                                     </view>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ee-xb-vkn">
+                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="60" id="9jr-b0-fod"/>
+                                                        </constraints>
+                                                        <connections>
+                                                            <action selector="clickLocationButton:" destination="rUM-yD-oXZ" eventType="touchUpInside" id="7Hw-xb-QFZ"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.13271617890000001" green="0.14825978879999999" blue="0.18977418539999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="xoQ-r2-93u" secondAttribute="trailing" id="2aJ-Bb-6Jt"/>
                                                     <constraint firstItem="ebn-ut-JXQ" firstAttribute="leading" secondItem="XXv-r4-pHf" secondAttribute="trailing" constant="20" id="AYS-aD-I0f"/>
                                                     <constraint firstItem="xoQ-r2-93u" firstAttribute="top" secondItem="DSs-ft-hBV" secondAttribute="top" constant="60" id="CoQ-nL-JnN"/>
+                                                    <constraint firstItem="3ee-xb-vkn" firstAttribute="top" secondItem="DSs-ft-hBV" secondAttribute="top" id="Khl-mS-CDm"/>
                                                     <constraint firstAttribute="trailing" secondItem="xou-0O-kXn" secondAttribute="trailing" id="M22-c8-Kkr"/>
                                                     <constraint firstAttribute="height" constant="60" id="Nna-zR-D7P"/>
                                                     <constraint firstAttribute="bottom" secondItem="xou-0O-kXn" secondAttribute="bottom" id="Wb4-0b-BxY"/>
+                                                    <constraint firstItem="3ee-xb-vkn" firstAttribute="width" secondItem="DSs-ft-hBV" secondAttribute="width" id="WsD-He-Ycr"/>
                                                     <constraint firstItem="XXv-r4-pHf" firstAttribute="top" secondItem="DSs-ft-hBV" secondAttribute="top" constant="15" id="ZNK-sf-A4e"/>
                                                     <constraint firstItem="ebn-ut-JXQ" firstAttribute="centerY" secondItem="XXv-r4-pHf" secondAttribute="centerY" id="aEf-Fy-Wbz"/>
                                                     <constraint firstItem="xoQ-r2-93u" firstAttribute="leading" secondItem="DSs-ft-hBV" secondAttribute="leading" id="d0e-jT-7wD"/>
                                                     <constraint firstItem="XXv-r4-pHf" firstAttribute="leading" secondItem="DSs-ft-hBV" secondAttribute="leading" constant="15" id="fRv-hO-lPC"/>
                                                     <constraint firstItem="xou-0O-kXn" firstAttribute="leading" secondItem="DSs-ft-hBV" secondAttribute="leading" id="lo3-d5-0vP"/>
+                                                    <constraint firstItem="3ee-xb-vkn" firstAttribute="leading" secondItem="DSs-ft-hBV" secondAttribute="leading" id="wld-ks-AWP"/>
                                                 </constraints>
                                             </view>
-                                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h7D-gB-NfS">
-                                                <rect key="frame" x="0.0" y="120" width="320" height="126.5"/>
+                                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h7D-gB-NfS" userLabel="Content view">
+                                                <rect key="frame" x="0.0" y="120" width="320" height="43"/>
                                                 <subviews>
-                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="d4f-NR-aia">
-                                                        <rect key="frame" x="5" y="5" width="310" height="116.5"/>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="d4f-NR-aia">
+                                                        <rect key="frame" x="5" y="5" width="310" height="33"/>
                                                         <color key="backgroundColor" red="0.13271617890000001" green="0.14825978879999999" blue="0.18977418539999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" priority="1" constant="200" id="JC0-nj-3VD"/>
+                                                            <constraint firstAttribute="height" priority="1" constant="250" id="JC0-nj-3VD"/>
                                                         </constraints>
-                                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex </string>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -639,6 +651,7 @@
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="h7D-gB-NfS" secondAttribute="bottom" id="0rH-ys-oec"/>
                                             <constraint firstItem="z06-hg-dyZ" firstAttribute="leading" secondItem="OGK-GQ-aMI" secondAttribute="leading" id="5Ea-zf-uhK"/>
@@ -654,6 +667,7 @@
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.13271617890000001" green="0.14825978879999999" blue="0.18977418539999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="OGK-GQ-aMI" firstAttribute="width" secondItem="oFX-gI-gXb" secondAttribute="width" id="118-Sd-IpM"/>
                                     <constraint firstItem="OGK-GQ-aMI" firstAttribute="leading" secondItem="oFX-gI-gXb" secondAttribute="leading" id="Eb9-1t-KCn"/>
@@ -662,7 +676,52 @@
                                     <constraint firstItem="OGK-GQ-aMI" firstAttribute="top" secondItem="oFX-gI-gXb" secondAttribute="top" id="gTg-Qy-1CC"/>
                                     <constraint firstItem="OGK-GQ-aMI" firstAttribute="height" secondItem="oFX-gI-gXb" secondAttribute="height" priority="1" id="hyc-Zk-3xj"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="zrE-eu-V1N" appends="YES" id="c0V-Vw-mM9"/>
+                                </connections>
                             </scrollView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="kuB-HB-vwa">
+                                <rect key="frame" x="0.0" y="414" width="320" height="60"/>
+                                <color key="backgroundColor" red="0.16862745100000001" green="0.18823529410000001" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="Dcv-aq-d3e"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Njm-Pn-2cT">
+                                    <size key="itemSize" width="100" height="60"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="wCe-8F-00Y" customClass="RCInDiaryListViewCollectionViewCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RCSignInUpTopImage" translatesAutoresizingMaskIntoConstraints="NO" id="3bV-ug-l5e">
+                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="60"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="3bV-ug-l5e" firstAttribute="centerY" secondItem="wCe-8F-00Y" secondAttribute="centerY" id="5uI-DJ-uu1"/>
+                                            <constraint firstItem="3bV-ug-l5e" firstAttribute="width" secondItem="wCe-8F-00Y" secondAttribute="width" id="dLD-Hd-To7"/>
+                                            <constraint firstItem="3bV-ug-l5e" firstAttribute="centerX" secondItem="wCe-8F-00Y" secondAttribute="centerX" id="rK9-RN-NeC"/>
+                                            <constraint firstItem="3bV-ug-l5e" firstAttribute="height" secondItem="wCe-8F-00Y" secondAttribute="height" id="vze-q6-T6k"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="inDiaryCollectionImageView" destination="3bV-ug-l5e" id="6hE-6t-w4a"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="rUM-yD-oXZ" id="7o9-NO-3c8"/>
+                                    <outlet property="delegate" destination="rUM-yD-oXZ" id="GMU-5M-0uR"/>
+                                    <outlet property="prefetchDataSource" destination="rUM-yD-oXZ" id="aRx-13-eVN"/>
+                                </connections>
+                            </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GNw-Js-K1U">
                                 <rect key="frame" x="210" y="479" width="100" height="30"/>
                                 <subviews>
@@ -671,9 +730,10 @@
                                         <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="12"/>
                                         <inset key="titleEdgeInsets" minX="-5" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <inset key="imageEdgeInsets" minX="10" minY="5" maxX="70" maxY="5"/>
-                                        <state key="normal" title="Add photos" image="RC_write_icon">
+                                        <state key="normal" title="photos" image="RC_write_icon">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <state key="highlighted" title="Photos" image="RC_write_icon"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -686,15 +746,37 @@
                                     <constraint firstAttribute="bottom" secondItem="2kA-qn-c12" secondAttribute="bottom" id="zeo-mS-GWV"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GNL-6P-BzM" userLabel="in diary delete view">
+                                <rect key="frame" x="10" y="479" width="30" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="029-DE-Fnm">
+                                        <rect key="frame" x="7.5" y="7.5" width="15" height="15"/>
+                                        <state key="normal" image="RC_trash_icon"/>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="029-DE-Fnm" firstAttribute="top" secondItem="GNL-6P-BzM" secondAttribute="top" constant="7.5" id="fTP-Ze-uWT"/>
+                                    <constraint firstAttribute="bottom" secondItem="029-DE-Fnm" secondAttribute="bottom" constant="7.5" id="meI-hX-QAz"/>
+                                    <constraint firstAttribute="trailing" secondItem="029-DE-Fnm" secondAttribute="trailing" constant="7.5" id="slD-So-ZjX"/>
+                                    <constraint firstAttribute="height" constant="30" id="zcQ-nf-vZy"/>
+                                    <constraint firstAttribute="width" constant="30" id="zcp-d1-Khf"/>
+                                    <constraint firstItem="029-DE-Fnm" firstAttribute="leading" secondItem="GNL-6P-BzM" secondAttribute="leading" constant="7.5" id="zkG-55-iku"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.13271617890000001" green="0.14825978879999999" blue="0.18977418539999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="oFX-gI-gXb" firstAttribute="top" secondItem="pFE-zA-afN" secondAttribute="bottom" id="M4P-F7-5uE"/>
+                            <constraint firstAttribute="trailing" secondItem="kuB-HB-vwa" secondAttribute="trailing" id="M67-dU-SwG"/>
                             <constraint firstItem="SYf-zU-4Uf" firstAttribute="top" secondItem="GNw-Js-K1U" secondAttribute="bottom" constant="10" id="MTE-0H-wao"/>
+                            <constraint firstAttribute="leading" secondItem="kuB-HB-vwa" secondAttribute="leading" id="QDb-mT-Lgp"/>
                             <constraint firstItem="oFX-gI-gXb" firstAttribute="leading" secondItem="hwa-R1-P6y" secondAttribute="leading" id="Qrw-EP-1No"/>
                             <constraint firstAttribute="bottom" secondItem="oFX-gI-gXb" secondAttribute="bottom" id="YUl-lE-g9G"/>
+                            <constraint firstItem="kuB-HB-vwa" firstAttribute="bottom" secondItem="GNw-Js-K1U" secondAttribute="top" constant="-5" id="gVj-TQ-1Vs"/>
                             <constraint firstAttribute="trailing" secondItem="oFX-gI-gXb" secondAttribute="trailing" id="jwf-ka-E23"/>
+                            <constraint firstItem="SYf-zU-4Uf" firstAttribute="top" secondItem="GNL-6P-BzM" secondAttribute="bottom" constant="10" id="pM6-ne-YIL"/>
                             <constraint firstAttribute="trailing" secondItem="GNw-Js-K1U" secondAttribute="trailing" constant="10" id="pib-tM-RZp"/>
+                            <constraint firstItem="GNL-6P-BzM" firstAttribute="leading" secondItem="hwa-R1-P6y" secondAttribute="leading" constant="10" id="sIA-HL-0Vh"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="In DIary" id="md9-id-fEZ">
@@ -706,16 +788,104 @@
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="O1s-0z-ILu"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="inDiaryCollectionView" destination="kuB-HB-vwa" id="cwF-vw-WAf"/>
+                        <outlet property="inDiaryContentTextView" destination="d4f-NR-aia" id="SlA-uP-eUa"/>
+                        <outlet property="inDiaryDateLabel" destination="ebn-ut-JXQ" id="YL9-WF-qt6"/>
                         <outlet property="inDiaryDatePicker" destination="xoQ-r2-93u" id="rzT-Cq-yRK"/>
                         <outlet property="inDiaryDateViewHeightConstraints" destination="Nna-zR-D7P" id="I3b-0V-QKs"/>
+                        <outlet property="inDiaryDeleteView" destination="GNL-6P-BzM" id="5aV-OX-Y6R"/>
+                        <outlet property="inDiaryDeleteViewBottomConstraints" destination="pM6-ne-YIL" id="C2B-L1-hci"/>
+                        <outlet property="inDiaryLocationLabel" destination="I91-Fg-3p8" id="d66-8R-ZxD"/>
                         <outlet property="inDiaryPhotoButtonBottomConstraints" destination="MTE-0H-wao" id="FWJ-Ec-N5z"/>
                         <outlet property="inDiaryPhotoView" destination="GNw-Js-K1U" id="oRD-nm-4PR"/>
+                        <outlet property="inDiaryScrollContentView" destination="OGK-GQ-aMI" id="Kll-54-9jW"/>
+                        <outlet property="inDiaryScrollView" destination="oFX-gI-gXb" id="lDd-o8-oDO"/>
                         <outlet property="inDiaryScrollViewBottomConstraints" destination="YUl-lE-g9G" id="aG5-18-l6a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NOI-KU-XPE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="zrE-eu-V1N">
+                    <connections>
+                        <action selector="tapInDiaryScrollView:" destination="rUM-yD-oXZ" id="ylj-bw-Mty"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3803" y="112"/>
+            <point key="canvasLocation" x="3754" y="112"/>
+        </scene>
+        <!--In Diary Location View Controller-->
+        <scene sceneID="vqx-in-iq9">
+            <objects>
+                <viewController id="12C-n0-YqZ" customClass="RCInDiaryLocationViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pQb-bS-svc"/>
+                        <viewControllerLayoutGuide type="bottom" id="2k0-Of-82D"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="sLL-oY-Owf">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VBb-di-Bfp" userLabel="content view">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nQC-cx-wb5" userLabel="navigation view">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                                        <subviews>
+                                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LKs-zw-4HR">
+                                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <color key="barTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <textAttributes key="titleTextAttributes">
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </textAttributes>
+                                                <items>
+                                                    <navigationItem title="Title" id="L2Q-uy-Q8F">
+                                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="iYk-Cc-5E5">
+                                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <connections>
+                                                                <action selector="clickDoneButton:" destination="12C-n0-YqZ" id="QiX-LQ-P8X"/>
+                                                            </connections>
+                                                        </barButtonItem>
+                                                    </navigationItem>
+                                                </items>
+                                            </navigationBar>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="64" id="KgB-sC-HZe"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BAi-uS-mqI" userLabel="location view">
+                                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="BAi-uS-mqI" secondAttribute="bottom" id="MUg-KK-vjU"/>
+                                    <constraint firstAttribute="trailing" secondItem="nQC-cx-wb5" secondAttribute="trailing" id="XWV-ge-JCk"/>
+                                    <constraint firstItem="nQC-cx-wb5" firstAttribute="leading" secondItem="VBb-di-Bfp" secondAttribute="leading" id="ezW-ol-FIS"/>
+                                    <constraint firstAttribute="trailing" secondItem="BAi-uS-mqI" secondAttribute="trailing" id="fG3-rC-yFr"/>
+                                    <constraint firstItem="BAi-uS-mqI" firstAttribute="leading" secondItem="VBb-di-Bfp" secondAttribute="leading" id="nuE-cN-AvN"/>
+                                    <constraint firstItem="BAi-uS-mqI" firstAttribute="top" secondItem="nQC-cx-wb5" secondAttribute="bottom" id="wEh-o5-cmf"/>
+                                    <constraint firstItem="nQC-cx-wb5" firstAttribute="top" secondItem="VBb-di-Bfp" secondAttribute="top" id="yVE-lP-TKS"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="VBb-di-Bfp" firstAttribute="centerY" secondItem="sLL-oY-Owf" secondAttribute="centerY" id="EJl-bW-eY5"/>
+                            <constraint firstItem="VBb-di-Bfp" firstAttribute="width" secondItem="sLL-oY-Owf" secondAttribute="width" id="YYY-Et-mL5"/>
+                            <constraint firstItem="VBb-di-Bfp" firstAttribute="height" secondItem="sLL-oY-Owf" secondAttribute="height" id="bJG-i1-Qs8"/>
+                            <constraint firstItem="VBb-di-Bfp" firstAttribute="centerX" secondItem="sLL-oY-Owf" secondAttribute="centerX" id="xnR-Pp-FFW"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="inDiaryLocationView" destination="BAi-uS-mqI" id="HWy-fp-H8B"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Rx-Zs-zhC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2124" y="871"/>
         </scene>
         <!--Main navigation-->
         <scene sceneID="ORe-sE-4Tu">
@@ -774,6 +944,7 @@
         <!--Navigation Controller-->
         <scene sceneID="DBq-LC-BMS">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fze-1X-yAC" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nWU-4a-YU7" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="a8w-fG-lkd">
@@ -790,12 +961,12 @@
                         <segue destination="rUM-yD-oXZ" kind="relationship" relationship="rootViewController" id="d91-j4-DEX"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Fze-1X-yAC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2947.5" y="111.97183098591549"/>
+            <point key="canvasLocation" x="2948" y="112"/>
         </scene>
     </scenes>
     <resources>
+        <image name="RCSignInUpTopImage" width="374" height="241"/>
         <image name="RCSplashBGImage" width="375" height="667"/>
         <image name="RC_arrow_icon" width="21" height="39"/>
         <image name="RC_diary_tabitem" width="39" height="37"/>

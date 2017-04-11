@@ -16,6 +16,9 @@
 		3903FAB11E94B67500C5B792 /* inDiary.json in Resources */ = {isa = PBXBuildFile; fileRef = 3903FAB01E94B67500C5B792 /* inDiary.json */; };
 		390BBB571E9220D500BBB8B5 /* RCInDiaryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 390BBB561E9220D500BBB8B5 /* RCInDiaryListViewController.m */; };
 		391E8BFC1E977097000CC82E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 391E8BFB1E977097000CC82E /* GoogleService-Info.plist */; };
+		3921CB541E9A31F8005736CE /* RCInDiaryLocationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3921CB531E9A31F8005736CE /* RCInDiaryLocationView.m */; };
+		3921CB561E9A31FF005736CE /* RCInDiaryLocationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3921CB551E9A31FF005736CE /* RCInDiaryLocationView.xib */; };
+		3921CB5C1E9A5DF2005736CE /* RCInDiaryLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3921CB5B1E9A5DF2005736CE /* RCInDiaryLocationViewController.m */; };
 		3930C6231E88F21C009F457E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3930C6221E88F21C009F457E /* main.m */; };
 		3930C6261E88F21C009F457E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3930C6251E88F21C009F457E /* AppDelegate.m */; };
 		3930C62C1E88F21C009F457E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3930C62A1E88F21C009F457E /* Main.storyboard */; };
@@ -74,6 +77,11 @@
 		390BBB551E9220D500BBB8B5 /* RCInDiaryListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCInDiaryListViewController.h; sourceTree = "<group>"; };
 		390BBB561E9220D500BBB8B5 /* RCInDiaryListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCInDiaryListViewController.m; sourceTree = "<group>"; };
 		391E8BFB1E977097000CC82E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3921CB521E9A31F8005736CE /* RCInDiaryLocationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCInDiaryLocationView.h; sourceTree = "<group>"; };
+		3921CB531E9A31F8005736CE /* RCInDiaryLocationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCInDiaryLocationView.m; sourceTree = "<group>"; };
+		3921CB551E9A31FF005736CE /* RCInDiaryLocationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RCInDiaryLocationView.xib; sourceTree = "<group>"; };
+		3921CB5A1E9A5DF2005736CE /* RCInDiaryLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCInDiaryLocationViewController.h; sourceTree = "<group>"; };
+		3921CB5B1E9A5DF2005736CE /* RCInDiaryLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCInDiaryLocationViewController.m; sourceTree = "<group>"; };
 		3930C61E1E88F21B009F457E /* Record.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Record.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3930C6221E88F21C009F457E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3930C6241E88F21C009F457E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -169,6 +177,9 @@
 				3903FAAB1E936F5300C5B792 /* RCInDiaryCollectionViewCell.h */,
 				3903FAAC1E936F5300C5B792 /* RCInDiaryCollectionViewCell.m */,
 				3903FAAD1E936F5300C5B792 /* RCInDiaryCollectionViewCell.xib */,
+				3921CB521E9A31F8005736CE /* RCInDiaryLocationView.h */,
+				3921CB531E9A31F8005736CE /* RCInDiaryLocationView.m */,
+				3921CB551E9A31FF005736CE /* RCInDiaryLocationView.xib */,
 			);
 			name = InDiary;
 			sourceTree = "<group>";
@@ -273,6 +284,8 @@
 				390BBB561E9220D500BBB8B5 /* RCInDiaryListViewController.m */,
 				398FA9E91E96AD310030CE1A /* RCInDiaryDetailViewController.h */,
 				398FA9EA1E96AD310030CE1A /* RCInDiaryDetailViewController.m */,
+				3921CB5A1E9A5DF2005736CE /* RCInDiaryLocationViewController.h */,
+				3921CB5B1E9A5DF2005736CE /* RCInDiaryLocationViewController.m */,
 			);
 			name = InDiary;
 			sourceTree = "<group>";
@@ -495,6 +508,7 @@
 				39FB37B51E8EBC4B006D299F /* diary.json in Resources */,
 				3930C6311E88F21C009F457E /* LaunchScreen.storyboard in Resources */,
 				3903FAB11E94B67500C5B792 /* inDiary.json in Resources */,
+				3921CB561E9A31FF005736CE /* RCInDiaryLocationView.xib in Resources */,
 				3930C64A1E88FBD0009F457E /* Diary.storyboard in Resources */,
 				39959FF61E8A24BB006ACF7A /* RCDiaryListCustomTableViewCell.xib in Resources */,
 				3930C6481E88FBC7009F457E /* Member.storyboard in Resources */,
@@ -585,6 +599,7 @@
 				39959FF51E8A24BB006ACF7A /* RCDiaryListCustomTableViewCell.m in Sources */,
 				44CE788B1E92A50B004A3ED3 /* RCProfileViewController.m in Sources */,
 				44D61A211E896E070088FA2B /* RCSignInViewController.m in Sources */,
+				3921CB541E9A31F8005736CE /* RCInDiaryLocationView.m in Sources */,
 				39959FEB1E8A0B36006ACF7A /* RCDiaryTableViewFooterView.m in Sources */,
 				4458ECE61E8B7EF300EDC792 /* RCSettingTableViewCell.m in Sources */,
 				44D61A271E8972410088FA2B /* RCSignConfigViewController.m in Sources */,
@@ -599,6 +614,7 @@
 				4458ECE31E8B796D00EDC792 /* RCSettingViewController.m in Sources */,
 				44D61A241E896E1F0088FA2B /* RCSignUpViewController.m in Sources */,
 				39FB37AF1E8CE671006D299F /* RCDiaryData.m in Sources */,
+				3921CB5C1E9A5DF2005736CE /* RCInDiaryLocationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

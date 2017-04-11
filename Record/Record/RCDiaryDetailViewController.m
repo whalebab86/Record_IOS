@@ -6,12 +6,15 @@
 //  Copyright © 2017년 whalebab. All rights reserved.
 //
 
+/* Record controller import */
 #import "RCDiaryDetailViewController.h"
 #import "RCDiaryListViewController.h"
-#import "RCDiaryManager.h"
 
+/* Record source import */
+#import "RCDiaryManager.h"
 #import "DateSource.h"
 
+/* library import */
 #import <SDWebImage/UIImageView+WebCache.h>
 
 typedef NS_ENUM(NSInteger, RCDiaryStatusMode) {
@@ -365,7 +368,9 @@ typedef NS_ENUM(NSInteger, RCDiaryStatusMode) {
             if(isSuccess) {
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [self.navigationController popViewControllerAnimated:YES];
+//                    [self.navigationController popViewControllerAnimated:YES];
+                    
+                    [self performSegueWithIdentifier:@"InDiaryUnwindSegue" sender:self];
                 });
             } else {
                 
@@ -498,7 +503,6 @@ typedef NS_ENUM(NSInteger, RCDiaryStatusMode) {
         
     }
     
-    
     return result;
 }
 
@@ -507,9 +511,7 @@ typedef NS_ENUM(NSInteger, RCDiaryStatusMode) {
 /* */
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-    
 }
-
 
 #pragma mark - Custom notification Method
 /* Notification show & hide method */
@@ -529,6 +531,7 @@ typedef NS_ENUM(NSInteger, RCDiaryStatusMode) {
         self.diaryMaskView.alpha = 0;
         self.diaryDeleteViewBottomConstraints.constant = 8;
         self.diaryStackViewTopConstraint.constant = 0;
+        
     }
     
     /*  */
@@ -541,7 +544,6 @@ typedef NS_ENUM(NSInteger, RCDiaryStatusMode) {
         [self.view layoutIfNeeded];
     }];
 }
-
 
 - (void)dealloc {
     

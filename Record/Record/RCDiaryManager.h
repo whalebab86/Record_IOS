@@ -33,6 +33,7 @@ typedef void (^NetworkTaskHandler)(BOOL isSuccess, id responseData);
 
 
 /* In diary method */
+- (NSMutableArray *)inDiaryAllData;
 - (NSInteger)inDiaryNumberOfItems;
 - (NSInteger)inDiaryNumberOfCoverItemsAtIndexPath:(NSIndexPath *)indexPath;
 - (RCInDiaryData *)inDiaryDataAtIndexPath:(NSIndexPath *)indexPath;

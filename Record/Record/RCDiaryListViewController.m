@@ -6,17 +6,21 @@
 //  Copyright © 2017년 whalebab. All rights reserved.
 //
 
+/* Record controller import */
 #import "RCDiaryListViewController.h"
 #import "RCDiaryDetailViewController.h"
+#import "RCInDiaryListViewController.h"
 
+/* Record view import */
 #import "RCDiaryTableViewHeaderView.h"
 #import "RCDiaryTableViewFooterView.h"
 #import "RCDiaryListCustomTableViewCell.h"
 
+/* Record source import */
+#import "DateSource.h"
 #import "RCDiaryManager.h"
 
-#import "DateSource.h"
-
+/* library import */
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface RCDiaryListViewController ()
@@ -193,20 +197,17 @@
     if([segue.identifier isEqualToString:@"DiaryDetailSegue"]) {
         
         RCDiaryData *diaryData = [[RCDiaryManager diaryManager] diaryDataAtIndexPath:(NSIndexPath *)sender];
-        RCDiaryDetailViewController *vc = [segue destinationViewController];
+        RCDiaryDetailViewController *diaryDetailVC = [segue destinationViewController];
         
-        vc.diaryData = diaryData;
-        vc.indexPath = (NSIndexPath *)sender;
+        diaryDetailVC.diaryData = diaryData;
+        diaryDetailVC.indexPath = (NSIndexPath *)sender;
         
     } else if([segue.identifier isEqualToString:@"InDiaryListSegue"]) {
         
-//        RCDiaryData *diaryData = [[RCDiaryManager diaryManager] diaryDataAtIndexPath:(NSIndexPath *)sender];
-//        RCInDiaryDetailViewController *vc = [segue destinationViewController];
-//        
-//        vc.diaryData = diaryData;
-//        vc.indexPath = (NSIndexPath *)sender;
+        RCDiaryData *diaryData = [[RCDiaryManager diaryManager] diaryDataAtIndexPath:(NSIndexPath *)sender];
+        RCInDiaryListViewController *inDiaryListVC = [segue destinationViewController];
         
-        NSLog(@"InDiaryListSegue");
+        inDiaryListVC.diaryData = diaryData;
     }
 }
 
@@ -216,15 +217,15 @@
     [self performSegueWithIdentifier:@"DiaryDetailAddSegue" sender:nil];
 }
 
-//#pragma mark - UISearchController Delegate
-//- (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
-//    
-//}
-
-
 #pragma mark - Custom Segue
 - (IBAction)unwindSegue:(UIStoryboardSegue *)sender {
     
+    NSLog(@"unwindSegue");
+    
+    // 데이터 변경 완료 시점
+    // 조회 or 변경된 데이터를 이 화면에 적용
+    
+    //
 }
 
 @end

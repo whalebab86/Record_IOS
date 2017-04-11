@@ -83,7 +83,7 @@
     if(constant > 0) {
         self.profileConstraintsY.constant = 0;
     } else {
-        self.profileConstraintsY.constant = self.profileUserDescription.frame.size.height + 40;
+        self.profileConstraintsY.constant = self.profileUserDescription.frame.size.height + 20;
     }
     
     [UIView animateWithDuration:0.3 animations:^{

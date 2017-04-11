@@ -41,6 +41,9 @@
         self.inDiaryWriteDate     = [diaryInfo objectForKey:@"inDaryWriteDate"];
         self.inDiaryContent       = [diaryInfo objectForKey:@"inDaryContent"];
         self.inDiaryCoverImgUrl   = [diaryInfo objectForKey:@"inDiaryCoverImgUrl"];
+        
+        self.inDiaryLatitude      = [diaryInfo objectForKey:@"inDiaryLatitude"];
+        self.inDiarylongitude     = [diaryInfo objectForKey:@"inDiarylongitude"];
     }
     return self;
 }

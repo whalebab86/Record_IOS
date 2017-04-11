@@ -255,6 +255,11 @@
 
 
 #pragma mark - Provide In Diary Data
+- (NSMutableArray *)inDiaryAllData {
+    
+    return self.inDiaryDataArray;
+}
+
 - (NSInteger)inDiaryNumberOfItems {
     
     return self.inDiaryDataArray.count;

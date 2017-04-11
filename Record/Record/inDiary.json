@@ -18,7 +18,9 @@
          "inDiaryDay"           : "20",
          "inDaryWriteDate"      : "2017-02-02",
          "inDaryContent"        : "first diary asdasd asd asdasdasdasd asd asd asd asd asda sd asd asdadasdasd",
-         "inDiaryCoverImgUrl"   : []
+         "inDiaryCoverImgUrl"   : [],
+         "inDiarylongitude"      : "34.12",
+         "inDiaryLatitude"     : "137.12"
      },
      {
          "inDiaryMainLoacation" : "Seoul Sinsa",
@@ -26,7 +28,9 @@
          "inDiaryDay"           : "21",
          "inDaryWriteDate"      : "2017-02-03",
          "inDaryContent"        : "second diary asdasd asd asdasdasdasd asd asd asd asd asda sd asd asdadasdasd",
-         "inDiaryCoverImgUrl"   : ["http://wallpaper-gallery.net/images/image/image-1.jpg"]
+         "inDiaryCoverImgUrl"   : ["http://wallpaper-gallery.net/images/image/image-1.jpg"],
+         "inDiarylongitude"      : "35.12",
+         "inDiaryLatitude"     : "136.54"
      },
      {
          "inDiaryMainLoacation" : "Seoul Sinsa",
@@ -34,7 +38,9 @@
          "inDiaryDay"           : "22",
          "inDaryWriteDate"      : "2017-02-04",
          "inDaryContent"        : "asdasd asd asdasdasdasd asd asd asd asd asda sd asd asdadasdasd",
-         "inDiaryCoverImgUrl"   : ["http://wallpaper-gallery.net/images/image/image-3.jpg", "http://wallpaper-gallery.net/images/image/image-2.jpg"]
+         "inDiaryCoverImgUrl"   : ["http://wallpaper-gallery.net/images/image/image-3.jpg", "http://wallpaper-gallery.net/images/image/image-2.jpg"],
+         "inDiarylongitude"      : "34.12",
+         "inDiaryLatitude"     : "136.54"
      },
      {
          "inDiaryMainLoacation" : "Seoul Sinsa",
@@ -44,7 +50,11 @@
          "inDaryContent"        : "asdasd asd asdasdasdasd asd asd asd asd asda sd asd asdadasdasd asdasd asd asdasdasdasd asd asd asd asd asda sd asd asdadasdasd asdasd asd asdasdasdasd asd asd asd asd asda sd asd asdadasdasd  asdasd asd asdasdasdasd asd asd asd asd asda sd asd asdadasdasd  asdasd asd asdasdasdasd asd asd asd asd asda sd asd asdadasdasd",
          "inDiaryCoverImgUrl"   : ["http://wallpaper-gallery.net/images/image/image-4.jpg",
                                    "http://wallpaper-gallery.net/images/image/image-5.jpg",
-                                   "http://wallpaper-gallery.net/images/image/image-6.jpg"]
+                                   "http://wallpaper-gallery.net/images/image/image-6.jpg",
+                                   "http://wallpaper-gallery.net/images/image/image-7.jpg",
+                                   "http://wallpaper-gallery.net/images/image/image-8.jpg"],
+         "inDiarylongitude"      : "34.12",
+         "inDiaryLatitude"     : "133.54"
      }
      ]
 }
