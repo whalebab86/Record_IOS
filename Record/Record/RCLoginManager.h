@@ -15,27 +15,30 @@
 #import "RCLoginStaticHeader.h"
 
 
-typedef  void (^LoginSuccessBlock) (BOOL isSucceess, NSInteger code);
+typedef  void (^SuccessStateBlock) (BOOL isSucceess, NSInteger code);
 @interface RCLoginManager : NSObject
+
+@property (readonly) NSString *serverAccessKey;
 
 + (instancetype)loginManager;
 
 - (void)recivedGoogleUserInfo:(GIDGoogleUser *)user
-                   complition:(LoginSuccessBlock)complition;
+                   complition:(SuccessStateBlock)complition;
 
 - (void)confirmFacebookLoginfromViewController:(UIViewController *)fromViewController
-                                    complition:(LoginSuccessBlock)complition;
+                                    complition:(SuccessStateBlock)complition;
 
 - (void)facebookLogout;
 
 
 - (void)localEmailPasswordInputEmail:(NSString *)email
                        inputPassword:(NSString *)password
-                  isSucessComplition:(LoginSuccessBlock)complition;
+                  isSucessComplition:(SuccessStateBlock)complition;
 
 - (void)localSignupInputEmail:(NSString *)email
                 inputPassword:(NSString *)password
                 inputNickName:(NSString *)nickName
-                   complition:(LoginSuccessBlock)complition;
+                   complition:(SuccessStateBlock)complition;
 
+- (void)logoutWithComplition:(SuccessStateBlock)complition;
 @end

@@ -39,10 +39,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ahT-Kx-WmA">
-                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="C9o-00-js4">
-                                                            <rect key="frame" x="10" y="0.0" width="300" height="40"/>
+                                                            <rect key="frame" x="10" y="0.0" width="355" height="40"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EeY-I5-Jl6">
                                                                     <rect key="frame" x="0.0" y="10.5" width="34.5" height="19"/>
@@ -51,7 +51,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RC_arrow_icon" translatesAutoresizingMaskIntoConstraints="NO" id="c47-h3-nlk">
-                                                                    <rect key="frame" x="290" y="10" width="10" height="20"/>
+                                                                    <rect key="frame" x="345" y="10" width="10" height="20"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="20" id="8pX-iH-5Wn"/>
                                                                         <constraint firstAttribute="width" constant="10" id="vgm-va-rOP"/>
@@ -108,12 +108,17 @@
                             <constraint firstItem="Iom-IL-z7c" firstAttribute="leading" secondItem="cVQ-kO-SZZ" secondAttribute="leading" id="qSg-1i-jwO"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Setting" id="GI4-q7-Tq5"/>
+                    <navigationItem key="navigationItem" title="Setting" id="GI4-q7-Tq5">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Zfi-SQ-l60">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="logoutButton" destination="Tk7-P3-dhu" id="U7Z-DH-Ddc"/>
                         <outlet property="settingMainTableView" destination="Iom-IL-z7c" id="bEd-8Q-yiB"/>
                         <segue destination="fvz-Jv-8XG" kind="show" identifier="ProfileChangeSegue" id="BeB-4n-wqN"/>
                         <segue destination="K9L-5q-1cw" kind="show" identifier="SupportContentSegue" id="bbK-bz-DgD"/>
+                        <segue destination="QPx-Nd-rdW" kind="presentation" identifier="MemberSegueFromSetting" id="Uzv-tg-Ito"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4ZE-GL-XWJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -152,7 +157,7 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to change your picture" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gBm-hZ-Qqx">
-                                                                <rect key="frame" x="100" y="44.5" width="255" height="21.5"/>
+                                                                <rect key="frame" x="100" y="45" width="255" height="20"/>
                                                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
                                                                 <color key="textColor" red="0.21960784310000001" green="0.23921568630000001" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -196,13 +201,13 @@
                                                         <rect key="frame" x="10" y="0.0" width="355" height="49"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mey-QJ-Mm9">
-                                                                <rect key="frame" x="0.0" y="14" width="75" height="21.5"/>
+                                                                <rect key="frame" x="0.0" y="14.5" width="80" height="20"/>
                                                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
                                                                 <color key="textColor" red="0.77254901960784317" green="0.81568627450980391" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YSu-k6-VOB">
-                                                                <rect key="frame" x="95" y="0.0" width="260" height="49"/>
+                                                                <rect key="frame" x="100" y="0.0" width="255" height="49"/>
                                                                 <color key="textColor" red="0.7725490196" green="0.81568627449999997" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
                                                                 <textInputTraits key="textInputTraits"/>
@@ -237,13 +242,13 @@
                                                         <rect key="frame" x="10" y="0.0" width="355" height="49"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I7E-oN-0Ke">
-                                                                <rect key="frame" x="0.0" y="14" width="73.5" height="21.5"/>
+                                                                <rect key="frame" x="0.0" y="14.5" width="79.5" height="20"/>
                                                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
                                                                 <color key="textColor" red="0.77254901960784317" green="0.81568627450980391" blue="0.87058823529411766" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RDD-q5-Jhh">
-                                                                <rect key="frame" x="93.5" y="0.0" width="261.5" height="49"/>
+                                                                <rect key="frame" x="99.5" y="0.0" width="255.5" height="49"/>
                                                                 <color key="textColor" red="0.7725490196" green="0.81568627449999997" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
                                                                 <textInputTraits key="textInputTraits"/>
@@ -278,13 +283,13 @@
                                                         <rect key="frame" x="10" y="0.0" width="355" height="49.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hometown" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="veG-c8-vye">
-                                                                <rect key="frame" x="0.0" y="14" width="79" height="21.5"/>
+                                                                <rect key="frame" x="0.0" y="15" width="83.5" height="20"/>
                                                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
                                                                 <color key="textColor" red="0.77254901960784317" green="0.81568627450980391" blue="0.87058823529411766" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s8v-nr-bls">
-                                                                <rect key="frame" x="99" y="0.0" width="198.5" height="49.5"/>
+                                                                <rect key="frame" x="103.5" y="0.0" width="198.5" height="49.5"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Touch here or icon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aDn-bE-BfV">
                                                                         <rect key="frame" x="0.0" y="0.0" width="198.5" height="49.5"/>
@@ -349,7 +354,7 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="twitter"/>
                                             </textView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write a short story about yourself..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uh0-0l-hMe">
-                                                <rect key="frame" x="15" y="271" width="247" height="21.5"/>
+                                                <rect key="frame" x="15" y="271" width="266.5" height="20"/>
                                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
                                                 <color key="textColor" red="0.2196078431372549" green="0.23921568627450979" blue="0.28627450980392155" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -442,7 +447,15 @@
             </objects>
             <point key="canvasLocation" x="2568.8000000000002" y="-435.83208395802103"/>
         </scene>
-        <!--Support View Controller-->
+        <!--Member-->
+        <scene sceneID="afY-au-DmS">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8bM-Bf-nqJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Member" id="QPx-Nd-rdW" sceneMemberID="viewController"/>
+            </objects>
+            <point key="canvasLocation" x="1686" y="189"/>
+        </scene>
+        <!--Support-->
         <scene sceneID="WjB-tO-Xjv">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="K9L-5q-1cw" customClass="RCSupportViewController" sceneMemberID="viewController">
@@ -493,6 +506,11 @@
                             <constraint firstItem="Na2-e3-dbl" firstAttribute="top" secondItem="fTV-Qf-izr" secondAttribute="bottom" id="yoB-Pe-9fv"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Support" id="mHM-7l-zUP">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="PGi-wZ-hF3">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="supportLB" destination="n8X-BI-oCg" id="Y2L-Gd-f6u"/>
                     </connections>

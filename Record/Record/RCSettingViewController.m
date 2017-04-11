@@ -11,6 +11,7 @@
 #import "RCSettingTableViewCell.h"
 #import "RCSettingHeaderView.h"
 #import "RCProfileViewController.h"
+#import "RCLoginManager.h"
 @import GooglePlaces;
 
 @interface RCSettingViewController ()
@@ -44,28 +45,13 @@
 
 }
 
+#pragma mark - main tableview datasource
+/* tableView section setting */
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.settingTableInfo.sectionCount;
 }
 
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    
-    return 50.0f;
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    RCSettingHeaderView *headerView =[tableView dequeueReusableHeaderFooterViewWithIdentifier:@"RCSettingHeaderView"];
-    if (section == 0 ) {
-        headerView.sectionHeaderTitle.text = self.settingTableInfo.sectionTitleArray[section];
-        return headerView;
-    } else {
-        headerView.sectionHeaderTitle.text = self.settingTableInfo.sectionTitleArray[section];
-        return headerView;
-    }
-}
-
-
+/* tableview number of rows in section setting */
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     switch (section) {
         case 0:
@@ -81,6 +67,7 @@
     }
 }
 
+/* insert parameter into cell */
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     RCSettingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RCSettingTableViewCell" forIndexPath:indexPath];
@@ -100,32 +87,61 @@
     }
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-        if (indexPath.section == 0) {
-            if (indexPath.row == 0) {
-                [self performSegueWithIdentifier:@"ProfileChangeSegue" sender:tableView];
-            }
-        } else if (indexPath.section == 1) {
-            if (indexPath.row == 0) {
-                [self performSegueWithIdentifier:@"SupportContentSegue" sender:tableView];
-            }
-        }
+
+#pragma mark - main tableview delegate
+/* height for header in section setting */
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 50.0f;
 }
 
+/* custom header in section */
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    RCSettingHeaderView *headerView =[tableView dequeueReusableHeaderFooterViewWithIdentifier:@"RCSettingHeaderView"];
+    if (section == 0 ) {
+        headerView.sectionHeaderTitle.text = self.settingTableInfo.sectionTitleArray[section];
+        return headerView;
+    } else {
+        headerView.sectionHeaderTitle.text = self.settingTableInfo.sectionTitleArray[section];
+        return headerView;
+    }
+}
+
+/* If select tableview row, views transrate page that connected segue. */
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.section == 0) {
+        if (indexPath.row == 0) {
+            [self performSegueWithIdentifier:@"ProfileChangeSegue" sender:tableView];
+        }
+    } else if (indexPath.section == 1) {
+        if (indexPath.row == 0) {
+            [self performSegueWithIdentifier:@"SupportContentSegue" sender:tableView];
+        }
+    }
+}
+
+#pragma mark - logout action
+/* log out */
+- (IBAction)logoutButtonAction:(UIButton *)sender {
+    
+    NSLog(@"logoutButtonAction");
+    [[RCLoginManager loginManager] logoutWithComplition:^(BOOL isSucceess, NSInteger code) {
+        if (isSucceess) {
+            NSLog(@"logout success");
+            [self performSegueWithIdentifier:@"MemberSegueFromSetting" sender:nil];
+            
+        } else {
+            NSLog(@"logout error");
+        }
+    }];
+    
+}
+
+#pragma mark - etc
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-#pragma mark - logout action
-- (IBAction)logoutButtonAction:(UIButton *)sender {
-    
-    NSLog(@"logoutButtonAction");
-    
-}
-
-
 /*
 #pragma mark - Navigation
 
