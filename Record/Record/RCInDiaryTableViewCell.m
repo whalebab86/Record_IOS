@@ -87,18 +87,21 @@
     
     if([sender isEqual:self.inDiaryLikeButton]) {
         buttonType = RCInDiaryButtonLike;
+        
     } else if([sender isEqual:self.inDiaryLocationButton]) {
         buttonType = RCInDiaryButtonLocation;
+        
     } else if([sender isEqual:self.inDiaryShareButton]) {
         buttonType = RCInDiaryButtonShare;
+        
     } else if([sender isEqual:self.inDiaryWriteButton]) {
         buttonType = RCInDiaryButtonWrite;
+        
     } else {
         buttonType = RCInDiaryButtonAdd;
     }
     
     [self.delegate button:sender buttonType:buttonType indexPath:self.indexPath];
-    
 }
 
 #pragma mark - Collection view Delegate

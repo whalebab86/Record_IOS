@@ -84,7 +84,7 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JgK-gH-9hx">
-                                            <rect key="frame" x="74.5" y="105" width="118.5" height="25"/>
+                                            <rect key="frame" x="69.5" y="105" width="118.5" height="25"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NOW TRAVELING" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mHm-zi-hy5">
                                                     <rect key="frame" x="7.5" y="6" width="103.5" height="14.5"/>
@@ -114,7 +114,7 @@
                                         <constraint firstItem="BUX-QG-c7T" firstAttribute="top" secondItem="4xN-Pi-aua" secondAttribute="bottom" constant="10" id="ZbC-oH-KuM"/>
                                         <constraint firstItem="JgK-gH-9hx" firstAttribute="bottom" secondItem="BUX-QG-c7T" secondAttribute="bottom" id="azk-gh-mrX"/>
                                         <constraint firstItem="2Lw-gZ-3lh" firstAttribute="centerY" secondItem="MV0-Li-Ajh" secondAttribute="centerY" id="hrD-W3-765"/>
-                                        <constraint firstItem="JgK-gH-9hx" firstAttribute="leading" secondItem="BUX-QG-c7T" secondAttribute="trailing" constant="10" id="koD-Db-ZGQ"/>
+                                        <constraint firstItem="JgK-gH-9hx" firstAttribute="leading" secondItem="BUX-QG-c7T" secondAttribute="trailing" constant="5" id="koD-Db-ZGQ"/>
                                         <constraint firstItem="JgK-gH-9hx" firstAttribute="height" secondItem="BUX-QG-c7T" secondAttribute="height" id="r1F-X1-BxU"/>
                                         <constraint firstItem="tcl-Qf-wrL" firstAttribute="width" secondItem="MV0-Li-Ajh" secondAttribute="width" id="tD0-lF-mAT"/>
                                     </constraints>
@@ -239,9 +239,29 @@
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FBh-k9-Z5j" userLabel="Diary map view">
                             <rect key="frame" x="0.0" y="360" width="375" height="300"/>
-                            <color key="backgroundColor" red="0.31372549020000001" green="0.64313725489999995" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S9n-8l-tol" userLabel="Diary map view">
+                                    <rect key="frame" x="-0.5" y="0.0" width="375" height="300"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </view>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lii-LI-eag" userLabel="Diary mask button">
+                                    <rect key="frame" x="-0.5" y="0.0" width="375" height="300"/>
+                                    <connections>
+                                        <action selector="clickLocationMaskButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="7c9-i9-3ra"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
+                                <constraint firstItem="S9n-8l-tol" firstAttribute="centerX" secondItem="FBh-k9-Z5j" secondAttribute="centerX" id="2Ih-Zk-6sh"/>
+                                <constraint firstItem="lii-LI-eag" firstAttribute="centerX" secondItem="FBh-k9-Z5j" secondAttribute="centerX" id="8QD-jv-jCO"/>
                                 <constraint firstAttribute="width" secondItem="FBh-k9-Z5j" secondAttribute="height" multiplier="1:0.8" id="D6v-iM-Rcr"/>
+                                <constraint firstItem="lii-LI-eag" firstAttribute="width" secondItem="FBh-k9-Z5j" secondAttribute="width" id="dae-SS-QbY"/>
+                                <constraint firstItem="S9n-8l-tol" firstAttribute="width" secondItem="FBh-k9-Z5j" secondAttribute="width" id="iBD-ri-lzE"/>
+                                <constraint firstItem="S9n-8l-tol" firstAttribute="height" secondItem="FBh-k9-Z5j" secondAttribute="height" id="iVR-Tu-N0N"/>
+                                <constraint firstItem="S9n-8l-tol" firstAttribute="centerY" secondItem="FBh-k9-Z5j" secondAttribute="centerY" id="m4X-5m-z0f"/>
+                                <constraint firstItem="lii-LI-eag" firstAttribute="height" secondItem="FBh-k9-Z5j" secondAttribute="height" id="vtn-yw-ghW"/>
+                                <constraint firstItem="lii-LI-eag" firstAttribute="centerY" secondItem="FBh-k9-Z5j" secondAttribute="centerY" id="zsL-wh-hhx"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Brk-Cm-wbp" userLabel="Diary bottom view">
@@ -321,7 +341,7 @@
                 <outlet property="coverDiaryYearLabel" destination="SPK-Xf-kH7" id="CIz-lE-MTW"/>
                 <outlet property="coverProfieImageView" destination="MV0-Li-Ajh" id="42S-GR-QnF"/>
                 <outlet property="coverProfileNameLabel" destination="2Lw-gZ-3lh" id="dgk-m8-LCi"/>
-                <outlet property="inDiaryMapView" destination="FBh-k9-Z5j" id="ZQU-2d-fAI"/>
+                <outlet property="inDiaryMapView" destination="S9n-8l-tol" id="31L-XS-nRj"/>
                 <outlet property="infoDaysLabel" destination="umM-Ty-Od9" id="tcb-8t-9SH"/>
                 <outlet property="infoStepsLabel" destination="ggY-4R-fD0" id="f9E-iH-fAQ"/>
             </connections>

@@ -123,8 +123,9 @@
                                 <constraint firstAttribute="bottom" secondItem="XFO-mj-L66" secondAttribute="bottom" id="nfi-0m-EGV"/>
                             </constraints>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile description" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ZZ-tt-YuQ">
-                            <rect key="frame" x="113" y="233.5" width="150" height="16.5"/>
+                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ZZ-tt-YuQ">
+                            <rect key="frame" x="10" y="184.5" width="355" height="65.5"/>
+                            <string key="text">Profile description ㅁㄴㅇ ㅁㄴ ㅇㅁProfile description ㅁㄴㅇ ㅁㄴ ㅇㅁProfile description ㅁㄴㅇ ㅁㄴ ㅇㅁProfile description ㅁㄴㅇ ㅁㄴ ㅇㅁProfile description ㅁㄴㅇ ㅁㄴ ㅇㅁProfile description ㅁㄴㅇ ㅁㄴ ㅇㅁProfile description ㅁㄴㅇ ㅁㄴ ㅇㅁ</string>
                             <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="13"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
@@ -145,8 +146,8 @@
                         <constraint firstItem="0Hc-MD-9aN" firstAttribute="top" secondItem="14S-D9-Ans" secondAttribute="top" constant="64" id="byA-Ro-S6h"/>
                         <constraint firstItem="tYg-Tm-cl4" firstAttribute="top" secondItem="14S-D9-Ans" secondAttribute="top" id="my3-Ti-CYY"/>
                         <constraint firstItem="Dr7-rL-lFb" firstAttribute="top" secondItem="14S-D9-Ans" secondAttribute="top" id="mzl-jT-cNG"/>
-                        <constraint firstItem="7ZZ-tt-YuQ" firstAttribute="width" secondItem="XFO-mj-L66" secondAttribute="width" id="pnZ-Yv-Jib"/>
                         <constraint firstItem="Dr7-rL-lFb" firstAttribute="top" secondItem="14S-D9-Ans" secondAttribute="top" id="tHG-2U-OhJ"/>
+                        <constraint firstItem="7ZZ-tt-YuQ" firstAttribute="width" secondItem="14S-D9-Ans" secondAttribute="width" constant="-20" id="vN7-HE-zv8"/>
                         <constraint firstItem="tYg-Tm-cl4" firstAttribute="leading" secondItem="14S-D9-Ans" secondAttribute="leading" id="xRe-wG-tml"/>
                         <constraint firstItem="7ZZ-tt-YuQ" firstAttribute="bottom" secondItem="0Hc-MD-9aN" secondAttribute="bottom" id="yO9-h4-mwl"/>
                         <constraint firstAttribute="trailing" secondItem="tYg-Tm-cl4" secondAttribute="trailing" id="z8W-4w-7l5"/>
