@@ -111,9 +111,6 @@
                     <navigationItem key="navigationItem" title="Setting" id="GI4-q7-Tq5">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Zfi-SQ-l60">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <segue destination="Tym-oK-KfV" kind="presentation" id="POq-Uh-wtW"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -127,14 +124,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4ZE-GL-XWJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1685.5999999999999" y="-279.31034482758622"/>
-        </scene>
-        <!--Diary-->
-        <scene sceneID="POL-J9-6eO">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Diary" id="Tym-oK-KfV" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iHi-Pq-8nc" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2474" y="-925"/>
         </scene>
         <!--Profile settings-->
         <scene sceneID="gSk-tI-kUO">
@@ -168,7 +157,7 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to change your picture" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gBm-hZ-Qqx">
-                                                                <rect key="frame" x="100" y="44.5" width="255" height="21.5"/>
+                                                                <rect key="frame" x="100" y="45" width="255" height="20"/>
                                                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
                                                                 <color key="textColor" red="0.21960784310000001" green="0.23921568630000001" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -212,13 +201,13 @@
                                                         <rect key="frame" x="10" y="0.0" width="355" height="49"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mey-QJ-Mm9">
-                                                                <rect key="frame" x="0.0" y="14" width="75" height="21.5"/>
+                                                                <rect key="frame" x="0.0" y="14.5" width="80" height="20"/>
                                                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
                                                                 <color key="textColor" red="0.77254901960784317" green="0.81568627450980391" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YSu-k6-VOB">
-                                                                <rect key="frame" x="95" y="0.0" width="260" height="49"/>
+                                                                <rect key="frame" x="100" y="0.0" width="255" height="49"/>
                                                                 <color key="textColor" red="0.7725490196" green="0.81568627449999997" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
                                                                 <textInputTraits key="textInputTraits"/>
@@ -253,13 +242,13 @@
                                                         <rect key="frame" x="10" y="0.0" width="355" height="49"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I7E-oN-0Ke">
-                                                                <rect key="frame" x="0.0" y="14" width="73.5" height="21.5"/>
+                                                                <rect key="frame" x="0.0" y="14.5" width="79.5" height="20"/>
                                                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
                                                                 <color key="textColor" red="0.77254901960784317" green="0.81568627450980391" blue="0.87058823529411766" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RDD-q5-Jhh">
-                                                                <rect key="frame" x="93.5" y="0.0" width="261.5" height="49"/>
+                                                                <rect key="frame" x="99.5" y="0.0" width="255.5" height="49"/>
                                                                 <color key="textColor" red="0.7725490196" green="0.81568627449999997" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
                                                                 <textInputTraits key="textInputTraits"/>
@@ -294,13 +283,13 @@
                                                         <rect key="frame" x="10" y="0.0" width="355" height="49.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hometown" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="veG-c8-vye">
-                                                                <rect key="frame" x="0.0" y="14" width="79" height="21.5"/>
+                                                                <rect key="frame" x="0.0" y="15" width="83.5" height="20"/>
                                                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
                                                                 <color key="textColor" red="0.77254901960784317" green="0.81568627450980391" blue="0.87058823529411766" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s8v-nr-bls">
-                                                                <rect key="frame" x="99" y="0.0" width="198.5" height="49.5"/>
+                                                                <rect key="frame" x="103.5" y="0.0" width="198.5" height="49.5"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Touch here or icon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aDn-bE-BfV">
                                                                         <rect key="frame" x="0.0" y="0.0" width="198.5" height="49.5"/>
@@ -365,7 +354,7 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="twitter"/>
                                             </textView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write a short story about yourself..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uh0-0l-hMe">
-                                                <rect key="frame" x="15" y="271" width="247" height="21.5"/>
+                                                <rect key="frame" x="15" y="271" width="266.5" height="20"/>
                                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
                                                 <color key="textColor" red="0.2196078431372549" green="0.23921568627450979" blue="0.28627450980392155" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -461,8 +450,8 @@
         <!--Member-->
         <scene sceneID="afY-au-DmS">
             <objects>
-                <viewControllerPlaceholder storyboardName="Member" id="QPx-Nd-rdW" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8bM-Bf-nqJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Member" id="QPx-Nd-rdW" sceneMemberID="viewController"/>
             </objects>
             <point key="canvasLocation" x="1686" y="189"/>
         </scene>
@@ -535,7 +524,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BUc-fj-mlW" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Ny4-AM-IKg">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ny4-AM-IKg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
