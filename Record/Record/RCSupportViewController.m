@@ -11,8 +11,6 @@
 
 @interface RCSupportViewController ()
 
-@property (weak, nonatomic) IBOutlet UILabel *supportLB;
-
 @end
 
 @implementation RCSupportViewController
@@ -20,13 +18,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    RCSettingTableInfo *settingInfo = [[RCSettingTableInfo alloc] init];
-    self.supportLB.text = settingInfo.supportContentString;
+
     
 }
+- (IBAction)teamMemberYunseoConnetGitButtonAction:(UIButton *)sender {
+    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://github.com/KimYunseo"] options:@{} completionHandler:nil];
+    NSLog(@"teamMemberYunseoConnetGitButtonAction");
+}
+
+- (IBAction)teamMemberBongkiConnetGitButtonAction:(UIButton *)sender {
+    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://github.com/whalebab86"] options:@{} completionHandler:nil];
+    NSLog(@"teamMemberBongkiConnetGitButtonAction");
+}
+
 - (IBAction)cancelBarButtonAction:(UIBarButtonItem *)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

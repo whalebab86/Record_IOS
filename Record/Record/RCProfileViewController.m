@@ -32,6 +32,7 @@
 @property GMSPlacePicker *placePicker;
 
 @property CLLocationManager *locationManiger;
+@property (weak, nonatomic) IBOutlet UIButton *saveProfileButtonFromMemberStoryboard;
 
 @end
 
@@ -174,17 +175,12 @@
     NSLog(@"%@", noti.userInfo);
     /* get keyboard bounds and setting toolbar offset */
     CGRect willShowKeyboardBounds = [[noti.userInfo objectForKey:@"UIKeyboardFrameEndUserInfoKey"] CGRectValue];
-    CGFloat keyboardDuration = [[noti.userInfo objectForKey:@"UIKeyboardAnimationDurationUserInfoKey"] floatValue];
-    
-    [UIView animateWithDuration:keyboardDuration animations:^{
-        /*  autolayout */
-        self.mainScrollView.contentOffset = CGPointMake(0, willShowKeyboardBounds.size.height*5/6);
-    }];
+    self.mainScrollView.frame = CGRectMake(0,64,self.mainScrollView.frame.size.width, willShowKeyboardBounds.size.height);
 }
 
 /*  action of keyboard hide notification */
 - (void)keyboardWillHideNotification:(NSNotification *)noti {
-    self.mainScrollView.contentOffset = CGPointMake(0, 0);
+    self.mainScrollView.frame = CGRectMake(0,64,self.mainScrollView.frame.size.width, self.view.frame.size.height);
 }
 
 #pragma mark - get profile image
@@ -279,6 +275,7 @@
     if (![textView hasText]) {
         self.textViewplaceHolderLB.hidden = NO;
         self.doneButtonInKeyboard.enabled = YES;
+        self.saveProfileButtonFromMemberStoryboard.enabled = YES;
     }
 }
 
@@ -295,6 +292,7 @@
         self.doneButtonInKeyboard.titleLabel.font = [UIFont fontWithName:@"SourceSansPro-Semibold" size:17.0f];
         self.doneButtonInKeyboard.enabled = YES;
         self.doneBarBtnInNavi.enabled = YES;
+        self.saveProfileButtonFromMemberStoryboard.enabled = YES;
     } else {
         self.doneButtonInKeyboard.enabled = NO;
         self.countCharcterLabelInKeyboard.text = [NSString stringWithFormat:@"%ld", 140 - textView.selectedRange.location];
@@ -302,6 +300,7 @@
         self.doneButtonInKeyboard.titleLabel.font = [UIFont fontWithName:@"SourceSansPro-Regular" size:17.0f];
         [self.doneButtonInKeyboard setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
         self.doneBarBtnInNavi.enabled = NO;
+        self.saveProfileButtonFromMemberStoryboard.enabled = NO;
     }
 }
 
@@ -313,6 +312,7 @@
         self.countCharcterLabelInKeyboard.text = [NSString stringWithFormat:@"%ld", 140 - range.location];
         self.doneButtonInKeyboard.enabled = charNumLimitBool;
         self.doneBarBtnInNavi.enabled = charNumLimitBool;
+        self.saveProfileButtonFromMemberStoryboard.enabled = charNumLimitBool;
     }
     
     /* enabled 과 userInteractionEnabled 차이는? */
@@ -325,14 +325,12 @@
     return YES;
 
 }
-
-- (IBAction)swipeGestuerActionDismissController:(UISwipeGestureRecognizer *)sender {
-    NSLog(@"swipeGestuerActionDismissController");
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-    
+- (IBAction)saveProfileSetButtonAction:(UIButton *)sender {
+    if (sender == self.saveProfileButtonFromMemberStoryboard) {
+        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+        
+    }
 }
-
-
 
 #pragma mark - etc
 /* notification remove */
