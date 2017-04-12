@@ -46,6 +46,8 @@
 		4458ECE31E8B796D00EDC792 /* RCSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4458ECE21E8B796D00EDC792 /* RCSettingViewController.m */; };
 		4458ECE61E8B7EF300EDC792 /* RCSettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4458ECE51E8B7EF300EDC792 /* RCSettingTableViewCell.m */; };
 		4458ECEB1E8B83D200EDC792 /* RCSettingTableInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4458ECEA1E8B83D200EDC792 /* RCSettingTableInfo.m */; };
+		447046031E9CA90D001D0DB4 /* splash_main_img.gif in Resources */ = {isa = PBXBuildFile; fileRef = 447046021E9CA90D001D0DB4 /* splash_main_img.gif */; };
+		4470464C1E9CEA5C001D0DB4 /* RCSplashTutorialCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4470464B1E9CEA5C001D0DB4 /* RCSplashTutorialCollectionViewCell.m */; };
 		44929F471E8CD700005B6C3B /* RCLoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 44929F461E8CD700005B6C3B /* RCLoginManager.m */; };
 		44CE78781E91F492004A3ED3 /* RCSettingHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 44CE78771E91F492004A3ED3 /* RCSettingHeaderView.m */; };
 		44CE787A1E91F549004A3ED3 /* RCSettingHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44CE78791E91F549004A3ED3 /* RCSettingHeaderView.xib */; };
@@ -128,6 +130,9 @@
 		4458ECE51E8B7EF300EDC792 /* RCSettingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCSettingTableViewCell.m; sourceTree = "<group>"; };
 		4458ECE91E8B83D200EDC792 /* RCSettingTableInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCSettingTableInfo.h; sourceTree = "<group>"; };
 		4458ECEA1E8B83D200EDC792 /* RCSettingTableInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCSettingTableInfo.m; sourceTree = "<group>"; };
+		447046021E9CA90D001D0DB4 /* splash_main_img.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = splash_main_img.gif; sourceTree = "<group>"; };
+		4470464A1E9CEA5C001D0DB4 /* RCSplashTutorialCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCSplashTutorialCollectionViewCell.h; sourceTree = "<group>"; };
+		4470464B1E9CEA5C001D0DB4 /* RCSplashTutorialCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCSplashTutorialCollectionViewCell.m; sourceTree = "<group>"; };
 		44929F451E8CD700005B6C3B /* RCLoginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCLoginManager.h; sourceTree = "<group>"; };
 		44929F461E8CD700005B6C3B /* RCLoginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCLoginManager.m; sourceTree = "<group>"; };
 		44CE78761E91F492004A3ED3 /* RCSettingHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCSettingHeaderView.h; sourceTree = "<group>"; };
@@ -217,6 +222,7 @@
 				39FB37B41E8EBC4B006D299F /* diary.json */,
 				3903FAB01E94B67500C5B792 /* inDiary.json */,
 				398FA9E71E9685CC0030CE1A /* Assets.xcassets */,
+				447046021E9CA90D001D0DB4 /* splash_main_img.gif */,
 			);
 			path = Record;
 			sourceTree = "<group>";
@@ -306,6 +312,8 @@
 			children = (
 				44D61A161E89314C0088FA2B /* RCSplashViewController.h */,
 				44D61A171E89314C0088FA2B /* RCSplashViewController.m */,
+				4470464A1E9CEA5C001D0DB4 /* RCSplashTutorialCollectionViewCell.h */,
+				4470464B1E9CEA5C001D0DB4 /* RCSplashTutorialCollectionViewCell.m */,
 				44D61A251E8972410088FA2B /* RCSignConfigViewController.h */,
 				44D61A261E8972410088FA2B /* RCSignConfigViewController.m */,
 				44D61A1F1E896E070088FA2B /* RCSignInViewController.h */,
@@ -520,6 +528,7 @@
 				3903FA991E927DC900C5B792 /* RCInDiaryTableViewHeaderView.xib in Resources */,
 				4458ECE01E8B790800EDC792 /* Setting.storyboard in Resources */,
 				44D61A1B1E893BC70088FA2B /* SourceSansPro-Bold.otf in Resources */,
+				447046031E9CA90D001D0DB4 /* splash_main_img.gif in Resources */,
 				3930C62C1E88F21C009F457E /* Main.storyboard in Resources */,
 				39959FEC1E8A0B36006ACF7A /* RCDiaryTableViewFooterView.xib in Resources */,
 				44CE787A1E91F549004A3ED3 /* RCSettingHeaderView.xib in Resources */,
@@ -586,6 +595,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3903FAA41E92914F00C5B792 /* RCInDiaryTableViewCell.m in Sources */,
+				4470464C1E9CEA5C001D0DB4 /* RCSplashTutorialCollectionViewCell.m in Sources */,
 				3995A0101E8CCE61006ACF7A /* RCDiaryManager.m in Sources */,
 				3903FA971E927DC100C5B792 /* RCInDiaryTableViewHeaderView.m in Sources */,
 				44929F471E8CD700005B6C3B /* RCLoginManager.m in Sources */,

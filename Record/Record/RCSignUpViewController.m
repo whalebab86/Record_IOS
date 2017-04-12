@@ -51,6 +51,9 @@
     self.signUpPasswordTF.attributedPlaceholder = [[NSAttributedString alloc] initWithString:self.signUpPasswordTF.placeholder attributes:@{ NSForegroundColorAttributeName : [UIColor colorWithRed:197/255.0 green:208/255.0 blue:222/255.0 alpha:1.0f] }];
     self.signUpConfirmPasswordTF.attributedPlaceholder = [[NSAttributedString alloc] initWithString:self.signUpConfirmPasswordTF.placeholder attributes:@{ NSForegroundColorAttributeName : [UIColor colorWithRed:197/255.0 green:208/255.0 blue:222/255.0 alpha:1.0f] }];
     
+    
+    
+    
 }
 
 #pragma mark - TextField delegate
@@ -187,6 +190,7 @@
 
 - (void)resetOffset {
     self.signUpMainScroll.contentOffset = CGPointMake(0, 0);
+    NSLog(@"testDestinationInt %ld", self.testDestinationInt);
 }
 
 #pragma mark - etc
