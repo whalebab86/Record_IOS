@@ -20,7 +20,7 @@
 @property CGPoint offsetCenterSignInBtn;
 @property CGPoint offsetCenterSignUpBtn;
 
-@property RCSignUpViewController *testVC;
+@property RCSignUpViewController *signUpViewContollerForSegue;
 
 @end
 
@@ -33,9 +33,6 @@
     /* Default alpha of signin contrainer */
     self.signInContrainer.alpha = 1;
     self.signUpContrainer.alpha = 0;
-    
-    
-    
 }
 
 #pragma mark - Transition of reverse triangle UIImageView
@@ -76,7 +73,8 @@
             self.signMarkImageView.center = self.offsetCenterSignUpBtn;
             self.signMarkImageView.image = [UIImage imageNamed:@"SignUpMark"];
         }];
-        [self.testVC resetOffset];
+        
+        [self.signUpViewContollerForSegue resetOffset];
         [self.view endEditing:YES];
     }
 }
@@ -92,7 +90,8 @@
 /* This method is existent for signup scrollView contentOffset */
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"RCSignUpViewSegue"]) {
-        self.testVC = [segue destinationViewController];
+        /* destinationViewController 찾아보기 */
+        self.signUpViewContollerForSegue = [segue destinationViewController];
     }
 }
 

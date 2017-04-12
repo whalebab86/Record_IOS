@@ -17,8 +17,7 @@
 <UITextFieldDelegate, UITextViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, CLLocationManagerDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
 @property (weak, nonatomic) IBOutlet UIImageView *profileImage;
-@property (weak, nonatomic) IBOutlet UITextField *firstNameTextField;
-@property (weak, nonatomic) IBOutlet UITextField *lastNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *nickNameTextField;
 @property (weak, nonatomic) IBOutlet UILabel *homTownLabel;
 @property (weak, nonatomic) IBOutlet UIButton *selectedPlaceButton;
 @property (weak, nonatomic) IBOutlet UITextView *shortStoryTextView;
@@ -44,9 +43,7 @@
     self.profileImage.layer.cornerRadius = 40.0f;
     
     /* text field delegate */
-    self.firstNameTextField.delegate = self;
-    self.lastNameTextField.delegate = self;
-    
+    self.nickNameTextField.delegate = self;
     
     /* text view place holder */
     
@@ -101,6 +98,7 @@
     /* keyboard notification */
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShowNotification:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHideNotification:) name:UIKeyboardWillHideNotification object:nil];
+    
     
 }
 
@@ -327,6 +325,14 @@
     return YES;
 
 }
+
+- (IBAction)swipeGestuerActionDismissController:(UISwipeGestureRecognizer *)sender {
+    NSLog(@"swipeGestuerActionDismissController");
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
+
 
 #pragma mark - etc
 /* notification remove */

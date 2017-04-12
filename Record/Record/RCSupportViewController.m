@@ -24,6 +24,9 @@
     self.supportLB.text = settingInfo.supportContentString;
     
 }
+- (IBAction)cancelBarButtonAction:(UIBarButtonItem *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

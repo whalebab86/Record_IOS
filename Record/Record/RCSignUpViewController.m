@@ -51,6 +51,9 @@
     self.signUpPasswordTF.attributedPlaceholder = [[NSAttributedString alloc] initWithString:self.signUpPasswordTF.placeholder attributes:@{ NSForegroundColorAttributeName : [UIColor colorWithRed:197/255.0 green:208/255.0 blue:222/255.0 alpha:1.0f] }];
     self.signUpConfirmPasswordTF.attributedPlaceholder = [[NSAttributedString alloc] initWithString:self.signUpConfirmPasswordTF.placeholder attributes:@{ NSForegroundColorAttributeName : [UIColor colorWithRed:197/255.0 green:208/255.0 blue:222/255.0 alpha:1.0f] }];
     
+    
+    
+    
 }
 
 #pragma mark - TextField delegate
@@ -116,7 +119,7 @@
                 if (isSucceess) {
                     
                         NSLog(@"로그인 탑니다!");
-                        [self performSegueWithIdentifier:@"SettingSegueFromSignup" sender:nil];
+                        [self performSegueWithIdentifier:@"ProfileSettingSegueFromSignin" sender:nil];
                     
                 } else {
                     
@@ -137,7 +140,7 @@
         [[RCLoginManager loginManager] confirmFacebookLoginfromViewController:self complition:^(BOOL isSucceess, NSInteger code) {
             if (isSucceess) {
                 NSLog(@"로그인 되었습닌다.");
-                [self performSegueWithIdentifier:@"SettingSegueFromSignup" sender:nil];
+                [self performSegueWithIdentifier:@"ProfileSettingSegueFromSignin" sender:nil];
             } else {
                 NSLog(@"%ld", code);
                 [self addAlertViewWithTile:[NSString stringWithFormat:@"회원가입에 실패하였습니다. %ld", code] actionTitle:@"확인" handler:nil];
@@ -159,7 +162,7 @@
     [[RCLoginManager loginManager] recivedGoogleUserInfo:user complition:^(BOOL isSucceess, NSInteger code) {
         if (isSucceess) {
             NSLog(@"googleSuccess");
-            [self performSegueWithIdentifier:@"SettingSegueFromSignup" sender:nil];
+            [self performSegueWithIdentifier:@"ProfileSettingSegueFromSignup" sender:nil];
         } else {
             NSString *alertTitle = [@"google login error (code " stringByAppendingString:[NSString stringWithFormat:@"%ld )", code]];
             [self addAlertViewWithTile:alertTitle actionTitle:@"Done" handler:nil];
@@ -187,6 +190,7 @@
 
 - (void)resetOffset {
     self.signUpMainScroll.contentOffset = CGPointMake(0, 0);
+    NSLog(@"testDestinationInt %ld", self.testDestinationInt);
 }
 
 #pragma mark - etc
