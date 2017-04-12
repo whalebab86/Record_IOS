@@ -254,8 +254,8 @@
 
 /* serverAccessKey of Login Manager and UserDefault delete token */
 - (void)delectUserInfoToken {
-    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:_RECORD_ACCESSTOKEN_KEY];
-    self.serverAccessKey = @"";
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:_RECORD_ACCESSTOKEN_KEY];
+    self.serverAccessKey = nil;
     
 }
 

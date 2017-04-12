@@ -128,8 +128,10 @@
     [[RCLoginManager loginManager] logoutWithComplition:^(BOOL isSucceess, NSInteger code) {
         if (isSucceess) {
             NSLog(@"logout success");
-            [self performSegueWithIdentifier:@"MemberSegueFromSetting" sender:nil];
+//            [self performSegueWithIdentifier:@"MemberSegueFromSetting" sender:nil];
+//            [self.navigationController performSegueWithIdentifier:@"RecordLoginSegue" sender:self];
             
+            [self.navigationController dismissViewControllerAnimated:YES completion:nil];
         } else {
             NSLog(@"logout error");
         }
