@@ -18,7 +18,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     
-    [super viewDidAppear:NO];
+    [super viewDidAppear:YES];
     
     if([RCLoginManager loginManager].serverAccessKey == nil) {
         
