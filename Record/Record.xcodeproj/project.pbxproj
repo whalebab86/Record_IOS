@@ -15,6 +15,7 @@
 		3903FAAF1E936F5300C5B792 /* RCInDiaryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3903FAAD1E936F5300C5B792 /* RCInDiaryCollectionViewCell.xib */; };
 		3903FAB11E94B67500C5B792 /* inDiary.json in Resources */ = {isa = PBXBuildFile; fileRef = 3903FAB01E94B67500C5B792 /* inDiary.json */; };
 		390BBB571E9220D500BBB8B5 /* RCInDiaryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 390BBB561E9220D500BBB8B5 /* RCInDiaryListViewController.m */; };
+		391328901E9DF02100D7287F /* RCMainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3913288F1E9DF02100D7287F /* RCMainTabBarController.m */; };
 		391E8BFC1E977097000CC82E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 391E8BFB1E977097000CC82E /* GoogleService-Info.plist */; };
 		3921CB541E9A31F8005736CE /* RCInDiaryLocationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3921CB531E9A31F8005736CE /* RCInDiaryLocationView.m */; };
 		3921CB561E9A31FF005736CE /* RCInDiaryLocationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3921CB551E9A31FF005736CE /* RCInDiaryLocationView.xib */; };
@@ -76,6 +77,8 @@
 		3903FAB01E94B67500C5B792 /* inDiary.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = inDiary.json; sourceTree = "<group>"; };
 		390BBB551E9220D500BBB8B5 /* RCInDiaryListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCInDiaryListViewController.h; sourceTree = "<group>"; };
 		390BBB561E9220D500BBB8B5 /* RCInDiaryListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCInDiaryListViewController.m; sourceTree = "<group>"; };
+		3913288E1E9DF02100D7287F /* RCMainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCMainTabBarController.h; sourceTree = "<group>"; };
+		3913288F1E9DF02100D7287F /* RCMainTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCMainTabBarController.m; sourceTree = "<group>"; };
 		391E8BFB1E977097000CC82E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3921CB521E9A31F8005736CE /* RCInDiaryLocationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCInDiaryLocationView.h; sourceTree = "<group>"; };
 		3921CB531E9A31F8005736CE /* RCInDiaryLocationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCInDiaryLocationView.m; sourceTree = "<group>"; };
@@ -319,6 +322,8 @@
 		3930C6451E88FB57009F457E /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				3913288E1E9DF02100D7287F /* RCMainTabBarController.h */,
+				3913288F1E9DF02100D7287F /* RCMainTabBarController.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -585,6 +590,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				391328901E9DF02100D7287F /* RCMainTabBarController.m in Sources */,
 				3903FAA41E92914F00C5B792 /* RCInDiaryTableViewCell.m in Sources */,
 				3995A0101E8CCE61006ACF7A /* RCDiaryManager.m in Sources */,
 				3903FA971E927DC100C5B792 /* RCInDiaryTableViewHeaderView.m in Sources */,

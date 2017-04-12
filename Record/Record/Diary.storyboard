@@ -54,6 +54,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Record" id="VTM-vV-7Fk">
+                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="58k-re-uj4">
+                            <connections>
+                                <segue destination="D6i-N3-uQD" kind="presentation" identifier="RecordLoginSegue" id="8bg-5G-jrU"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="j7K-Y9-1RO">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -69,6 +74,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GUh-r1-QDs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1245" y="-269.36619718309862"/>
+        </scene>
+        <!--Setting-->
+        <scene sceneID="5dd-3Q-cX8">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Setting" id="D6i-N3-uQD" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qvk-de-JfJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1830" y="-737"/>
         </scene>
         <!--Diary detail-->
         <scene sceneID="D9f-xe-IL7">
@@ -89,7 +102,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Diary cover" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dhV-41-YiM">
-                                                <rect key="frame" x="125" y="11.5" width="70" height="18"/>
+                                                <rect key="frame" x="125" y="11" width="70" height="18"/>
                                                 <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="14"/>
                                                 <color key="textColor" red="0.46666666670000001" green="0.47450980390000003" blue="0.49019607840000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -147,7 +160,7 @@
                                         <rect key="frame" x="0.0" y="100" width="320" height="40"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Diary information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d5Q-hL-siW">
-                                                <rect key="frame" x="105" y="11.5" width="110" height="18"/>
+                                                <rect key="frame" x="105" y="11" width="110" height="18"/>
                                                 <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="14"/>
                                                 <color key="textColor" red="0.46666666666666667" green="0.47450980392156861" blue="0.49019607843137253" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -285,7 +298,7 @@
                                         <rect key="frame" x="0.0" y="290" width="320" height="40"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Private Setting" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VAV-Zj-s7V">
-                                                <rect key="frame" x="114" y="11.5" width="92" height="18"/>
+                                                <rect key="frame" x="114" y="11" width="92" height="18"/>
                                                 <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="14"/>
                                                 <color key="textColor" red="0.46666666670000001" green="0.47450980390000003" blue="0.49019607840000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -307,13 +320,13 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Who can view your diary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qtc-sP-FBO">
-                                                <rect key="frame" x="15" y="15.5" width="152.5" height="19"/>
+                                                <rect key="frame" x="15" y="16" width="152.5" height="19"/>
                                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="15"/>
                                                 <color key="textColor" red="0.77254901960784317" green="0.81568627450980391" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Only me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Rr-3h-EZY">
-                                                <rect key="frame" x="231" y="15.5" width="52" height="19"/>
+                                                <rect key="frame" x="231" y="16" width="52" height="19"/>
                                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="15"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -944,7 +957,6 @@
         <!--Navigation Controller-->
         <scene sceneID="DBq-LC-BMS">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Fze-1X-yAC" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nWU-4a-YU7" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="a8w-fG-lkd">
@@ -961,6 +973,7 @@
                         <segue destination="rUM-yD-oXZ" kind="relationship" relationship="rootViewController" id="d91-j4-DEX"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fze-1X-yAC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2948" y="112"/>
         </scene>
@@ -977,6 +990,6 @@
         <image name="RecordLogoWithoutWord" width="92" height="92"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="beJ-YV-Xsy"/>
+        <segue reference="1tf-94-1E7"/>
     </inferredMetricsTieBreakers>
 </document>
