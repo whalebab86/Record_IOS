@@ -136,6 +136,11 @@
     }];
     
 }
+- (IBAction)cancelBarButtonItemAction:(UIBarButtonItem *)sender {
+    
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    
+}
 
 #pragma mark - etc
 - (void)didReceiveMemoryWarning {

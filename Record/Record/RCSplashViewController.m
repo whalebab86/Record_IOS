@@ -142,32 +142,32 @@
     switch (indexPath.item) {
         case 0:
             cell.cellItemImageView.animatedImage = [FLAnimatedImage animatedImageWithGIFData:gifImageData];
-            self.tutorialCollectionViewPageControl.currentPage = indexPath.item;
+            self.tutorialCollectionViewPageControl.currentPage = 0;
             return cell;
             break;
         case 1:
             cell.cellItemImageView.image = [UIImage imageNamed:self.mainCollectionviewDataArray[indexPath.item]];
-            self.tutorialCollectionViewPageControl.currentPage = indexPath.item;
+            self.tutorialCollectionViewPageControl.currentPage = 1;
             return cell;
             break;
         case 2:
             cell.cellItemImageView.image = [UIImage imageNamed:self.mainCollectionviewDataArray[indexPath.item]];
-            self.tutorialCollectionViewPageControl.currentPage = indexPath.item;
+            self.tutorialCollectionViewPageControl.currentPage = 2;
             return cell;
             break;
         case 3:
             cell.cellItemImageView.animatedImage = [FLAnimatedImage animatedImageWithGIFData:gifImageData];
-            self.tutorialCollectionViewPageControl.currentPage = 0;
+            self.tutorialCollectionViewPageControl.currentPage = 3;
             return cell;
             break;
         case 4:
             cell.cellItemImageView.image = [UIImage imageNamed:self.mainCollectionviewDataArray[indexPath.item]];
-            self.tutorialCollectionViewPageControl.currentPage = 1;
+            self.tutorialCollectionViewPageControl.currentPage = 0;
             return cell;
             break;
         default:
             cell.cellItemImageView.animatedImage = [FLAnimatedImage animatedImageWithGIFData:gifImageData];
-            self.tutorialCollectionViewPageControl.currentPage = 0;
+            self.tutorialCollectionViewPageControl.currentPage = 1;
             return cell;
             break;
     }
@@ -186,7 +186,7 @@
         NSLog(@"facebookLoginButtonAction");
         [[RCLoginManager loginManager] confirmFacebookLoginfromViewController:self complition:^(BOOL isSucceess, NSInteger code) {
             if (isSucceess) {
-                [self performSegueWithIdentifier:@"SettingSegueFromSplash" sender:nil];
+                [self performSegueWithIdentifier:@"ProfileSettingSegueFromSplash" sender:nil];
                 NSLog(@"confirmFacebookLoginfromViewController");
             } else {
                 NSString *alertTitle = [@"facebook login error (code " stringByAppendingString:[NSString stringWithFormat:@"%ld )", code]];

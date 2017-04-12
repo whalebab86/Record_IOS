@@ -111,6 +111,9 @@
                     <navigationItem key="navigationItem" title="Setting" id="GI4-q7-Tq5">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Zfi-SQ-l60">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="cancelBarButtonItemAction:" destination="9DO-6k-qka" id="o5L-nr-i70"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -360,12 +363,16 @@
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="LAE-7a-Yz6" secondAttribute="trailing" id="0QN-n3-mQc"/>
                             <constraint firstItem="LAE-7a-Yz6" firstAttribute="top" secondItem="00A-MB-Fog" secondAttribute="bottom" id="6lk-Oq-Sic"/>
                             <constraint firstItem="U49-r1-7sx" firstAttribute="top" secondItem="LAE-7a-Yz6" secondAttribute="bottom" id="BWH-gU-kkc"/>
                             <constraint firstItem="LAE-7a-Yz6" firstAttribute="leading" secondItem="dqu-XQ-Nq8" secondAttribute="leading" id="T1g-zs-ABz"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="YmN-uH-do7" appends="YES" id="une-e2-8Bk"/>
+                        </connections>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Profile settings" id="9iH-e5-IhG">
@@ -396,6 +403,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vf3-Qb-E9K" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="down" id="YmN-uH-do7">
+                    <connections>
+                        <action selector="swipeGestuerActionDismissController:" destination="fvz-Jv-8XG" id="T8Z-O2-AAI"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2568.8000000000002" y="-435.83208395802103"/>
         </scene>

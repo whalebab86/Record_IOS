@@ -78,7 +78,7 @@
             [[RCLoginManager loginManager] localEmailPasswordInputEmail:self.signInEmailTF.text inputPassword:self.signInPasswordTF.text isSucessComplition:^(BOOL isSucceess, NSInteger code) {
                 if (isSucceess) {
                     NSLog(@"login success");
-                    [self performSegueWithIdentifier:@"SettingSegueFromSignin" sender:nil];
+                    [self performSegueWithIdentifier:@"ProfileSettingSegueFromSignin" sender:nil];
                     
                 } else {
                     NSLog(@"login fail");
@@ -99,7 +99,7 @@
         [[RCLoginManager loginManager] confirmFacebookLoginfromViewController:self complition:^(BOOL isSucceess, NSInteger code) {
             if (isSucceess) {
 //                [self performSegueWithIdentifier:@"OtherSegue" sender:nil];
-                [self performSegueWithIdentifier:@"SettingSegueFromSignin" sender:nil];
+                [self performSegueWithIdentifier:@"ProfileSettingSegueFromSignin" sender:nil];
             } else {
                 NSString *alertTitle = [@"facebook login error (code " stringByAppendingString:[NSString stringWithFormat:@"%ld )", code]];
                 [self addAlertViewWithTile:alertTitle actionTitle:@"Done" handler:nil];
@@ -121,7 +121,7 @@
     [[RCLoginManager loginManager] recivedGoogleUserInfo:user complition:^(BOOL isSucceess, NSInteger code) {
         if (isSucceess) {
             NSLog(@"googleSuccess");
-            [self performSegueWithIdentifier:@"SettingSegueFromSignin" sender:nil];
+            [self performSegueWithIdentifier:@"ProfileSettingSegueFromSignin" sender:nil];
         } else {
             NSString *alertTitle = [@"google login error (code " stringByAppendingString:[NSString stringWithFormat:@"%ld )", code]];
             [self addAlertViewWithTile:alertTitle actionTitle:@"Done" handler:nil];

@@ -99,6 +99,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShowNotification:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHideNotification:) name:UIKeyboardWillHideNotification object:nil];
     
+    
 }
 
 #pragma mark - text field delegate
@@ -324,6 +325,14 @@
     return YES;
 
 }
+
+- (IBAction)swipeGestuerActionDismissController:(UISwipeGestureRecognizer *)sender {
+    NSLog(@"swipeGestuerActionDismissController");
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
+
 
 #pragma mark - etc
 /* notification remove */
