@@ -16,6 +16,8 @@
 		3903FAB11E94B67500C5B792 /* inDiary.json in Resources */ = {isa = PBXBuildFile; fileRef = 3903FAB01E94B67500C5B792 /* inDiary.json */; };
 		390BBB571E9220D500BBB8B5 /* RCInDiaryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 390BBB561E9220D500BBB8B5 /* RCInDiaryListViewController.m */; };
 		391328901E9DF02100D7287F /* RCMainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3913288F1E9DF02100D7287F /* RCMainTabBarController.m */; };
+		391328921E9F228600D7287F /* Diary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 391328911E9F228600D7287F /* Diary.storyboard */; };
+		391328951E9F22A400D7287F /* RCInDiaryDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 391328941E9F22A400D7287F /* RCInDiaryDetailViewController.m */; };
 		391E8BFC1E977097000CC82E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 391E8BFB1E977097000CC82E /* GoogleService-Info.plist */; };
 		3921CB541E9A31F8005736CE /* RCInDiaryLocationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3921CB531E9A31F8005736CE /* RCInDiaryLocationView.m */; };
 		3921CB561E9A31FF005736CE /* RCInDiaryLocationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3921CB551E9A31FF005736CE /* RCInDiaryLocationView.xib */; };
@@ -25,9 +27,7 @@
 		3930C62C1E88F21C009F457E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3930C62A1E88F21C009F457E /* Main.storyboard */; };
 		3930C6311E88F21C009F457E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3930C62F1E88F21C009F457E /* LaunchScreen.storyboard */; };
 		3930C6481E88FBC7009F457E /* Member.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3930C6471E88FBC7009F457E /* Member.storyboard */; };
-		3930C64A1E88FBD0009F457E /* Diary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3930C6491E88FBD0009F457E /* Diary.storyboard */; };
 		398FA9E81E9685CC0030CE1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 398FA9E71E9685CC0030CE1A /* Assets.xcassets */; };
-		398FA9EB1E96AD310030CE1A /* RCInDiaryDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 398FA9EA1E96AD310030CE1A /* RCInDiaryDetailViewController.m */; };
 		39959FC51E891C91006ACF7A /* RCDiaryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39959FC41E891C91006ACF7A /* RCDiaryListViewController.m */; };
 		39959FEA1E8A0B36006ACF7A /* RCDiaryTableViewFooterEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39959FE31E8A0B36006ACF7A /* RCDiaryTableViewFooterEmptyView.xib */; };
 		39959FEB1E8A0B36006ACF7A /* RCDiaryTableViewFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39959FE51E8A0B36006ACF7A /* RCDiaryTableViewFooterView.m */; };
@@ -81,6 +81,9 @@
 		390BBB561E9220D500BBB8B5 /* RCInDiaryListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCInDiaryListViewController.m; sourceTree = "<group>"; };
 		3913288E1E9DF02100D7287F /* RCMainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCMainTabBarController.h; sourceTree = "<group>"; };
 		3913288F1E9DF02100D7287F /* RCMainTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCMainTabBarController.m; sourceTree = "<group>"; };
+		391328911E9F228600D7287F /* Diary.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Diary.storyboard; sourceTree = "<group>"; };
+		391328931E9F22A400D7287F /* RCInDiaryDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCInDiaryDetailViewController.h; sourceTree = "<group>"; };
+		391328941E9F22A400D7287F /* RCInDiaryDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCInDiaryDetailViewController.m; sourceTree = "<group>"; };
 		391E8BFB1E977097000CC82E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3921CB521E9A31F8005736CE /* RCInDiaryLocationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCInDiaryLocationView.h; sourceTree = "<group>"; };
 		3921CB531E9A31F8005736CE /* RCInDiaryLocationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCInDiaryLocationView.m; sourceTree = "<group>"; };
@@ -95,11 +98,8 @@
 		3930C6301E88F21C009F457E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3930C6321E88F21C009F457E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3930C6471E88FBC7009F457E /* Member.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Member.storyboard; sourceTree = "<group>"; };
-		3930C6491E88FBD0009F457E /* Diary.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Diary.storyboard; sourceTree = "<group>"; };
 		3930C64E1E88FF5A009F457E /* Record-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Record-Prefix.pch"; sourceTree = "<group>"; };
 		398FA9E71E9685CC0030CE1A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		398FA9E91E96AD310030CE1A /* RCInDiaryDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCInDiaryDetailViewController.h; sourceTree = "<group>"; };
-		398FA9EA1E96AD310030CE1A /* RCInDiaryDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCInDiaryDetailViewController.m; sourceTree = "<group>"; };
 		39959FC31E891C91006ACF7A /* RCDiaryListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCDiaryListViewController.h; sourceTree = "<group>"; };
 		39959FC41E891C91006ACF7A /* RCDiaryListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCDiaryListViewController.m; sourceTree = "<group>"; };
 		39959FE31E8A0B36006ACF7A /* RCDiaryTableViewFooterEmptyView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RCDiaryTableViewFooterEmptyView.xib; sourceTree = "<group>"; };
@@ -291,8 +291,8 @@
 			children = (
 				390BBB551E9220D500BBB8B5 /* RCInDiaryListViewController.h */,
 				390BBB561E9220D500BBB8B5 /* RCInDiaryListViewController.m */,
-				398FA9E91E96AD310030CE1A /* RCInDiaryDetailViewController.h */,
-				398FA9EA1E96AD310030CE1A /* RCInDiaryDetailViewController.m */,
+				391328931E9F22A400D7287F /* RCInDiaryDetailViewController.h */,
+				391328941E9F22A400D7287F /* RCInDiaryDetailViewController.m */,
 				3921CB5A1E9A5DF2005736CE /* RCInDiaryLocationViewController.h */,
 				3921CB5B1E9A5DF2005736CE /* RCInDiaryLocationViewController.m */,
 			);
@@ -342,7 +342,7 @@
 				3930C62F1E88F21C009F457E /* LaunchScreen.storyboard */,
 				3930C62A1E88F21C009F457E /* Main.storyboard */,
 				3930C6471E88FBC7009F457E /* Member.storyboard */,
-				3930C6491E88FBD0009F457E /* Diary.storyboard */,
+				391328911E9F228600D7287F /* Diary.storyboard */,
 				4458ECDF1E8B790800EDC792 /* Setting.storyboard */,
 			);
 			name = Storyboard;
@@ -522,7 +522,6 @@
 				3930C6311E88F21C009F457E /* LaunchScreen.storyboard in Resources */,
 				3903FAB11E94B67500C5B792 /* inDiary.json in Resources */,
 				3921CB561E9A31FF005736CE /* RCInDiaryLocationView.xib in Resources */,
-				3930C64A1E88FBD0009F457E /* Diary.storyboard in Resources */,
 				39959FF61E8A24BB006ACF7A /* RCDiaryListCustomTableViewCell.xib in Resources */,
 				3930C6481E88FBC7009F457E /* Member.storyboard in Resources */,
 				3903FAA71E93606B00C5B792 /* RCInDiaryTableViewCell.xib in Resources */,
@@ -531,6 +530,7 @@
 				44D61A1E1E893C4E0088FA2B /* SourceSansPro-Semibold.otf in Resources */,
 				398FA9E81E9685CC0030CE1A /* Assets.xcassets in Resources */,
 				3903FA991E927DC900C5B792 /* RCInDiaryTableViewHeaderView.xib in Resources */,
+				391328921E9F228600D7287F /* Diary.storyboard in Resources */,
 				4458ECE01E8B790800EDC792 /* Setting.storyboard in Resources */,
 				44D61A1B1E893BC70088FA2B /* SourceSansPro-Bold.otf in Resources */,
 				447046031E9CA90D001D0DB4 /* splash_main_img.gif in Resources */,
@@ -616,12 +616,12 @@
 				44CE788B1E92A50B004A3ED3 /* RCProfileViewController.m in Sources */,
 				44D61A211E896E070088FA2B /* RCSignInViewController.m in Sources */,
 				3921CB541E9A31F8005736CE /* RCInDiaryLocationView.m in Sources */,
+				391328951E9F22A400D7287F /* RCInDiaryDetailViewController.m in Sources */,
 				39959FEB1E8A0B36006ACF7A /* RCDiaryTableViewFooterView.m in Sources */,
 				4458ECE61E8B7EF300EDC792 /* RCSettingTableViewCell.m in Sources */,
 				44D61A271E8972410088FA2B /* RCSignConfigViewController.m in Sources */,
 				4458ECEB1E8B83D200EDC792 /* RCSettingTableInfo.m in Sources */,
 				3930C6261E88F21C009F457E /* AppDelegate.m in Sources */,
-				398FA9EB1E96AD310030CE1A /* RCInDiaryDetailViewController.m in Sources */,
 				44D61A181E89314C0088FA2B /* RCSplashViewController.m in Sources */,
 				3930C6231E88F21C009F457E /* main.m in Sources */,
 				44F4FE471E8CF023008CED9B /* TempLogoutViewController.m in Sources */,

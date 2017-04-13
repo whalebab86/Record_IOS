@@ -102,7 +102,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Diary cover" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dhV-41-YiM">
-                                                <rect key="frame" x="125" y="11" width="70" height="18"/>
+                                                <rect key="frame" x="125" y="11.5" width="70" height="18"/>
                                                 <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="14"/>
                                                 <color key="textColor" red="0.46666666670000001" green="0.47450980390000003" blue="0.49019607840000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -160,7 +160,7 @@
                                         <rect key="frame" x="0.0" y="100" width="320" height="40"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Diary information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d5Q-hL-siW">
-                                                <rect key="frame" x="105" y="11" width="110" height="18"/>
+                                                <rect key="frame" x="105" y="11.5" width="110" height="18"/>
                                                 <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="14"/>
                                                 <color key="textColor" red="0.46666666666666667" green="0.47450980392156861" blue="0.49019607843137253" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -298,7 +298,7 @@
                                         <rect key="frame" x="0.0" y="290" width="320" height="40"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Private Setting" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VAV-Zj-s7V">
-                                                <rect key="frame" x="114" y="11" width="92" height="18"/>
+                                                <rect key="frame" x="114" y="11.5" width="92" height="18"/>
                                                 <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="14"/>
                                                 <color key="textColor" red="0.46666666670000001" green="0.47450980390000003" blue="0.49019607840000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -320,13 +320,13 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Who can view your diary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qtc-sP-FBO">
-                                                <rect key="frame" x="15" y="16" width="152.5" height="19"/>
+                                                <rect key="frame" x="15" y="15.5" width="152.5" height="19"/>
                                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="15"/>
                                                 <color key="textColor" red="0.77254901960784317" green="0.81568627450980391" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Only me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Rr-3h-EZY">
-                                                <rect key="frame" x="231" y="16" width="52" height="19"/>
+                                                <rect key="frame" x="231" y="15.5" width="52" height="19"/>
                                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="15"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -549,24 +549,37 @@
                                                             <constraint firstAttribute="height" constant="1" id="pE1-qT-g7U"/>
                                                         </constraints>
                                                     </view>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="baw-PX-CsZ">
-                                                        <rect key="frame" x="282" y="16" width="30" height="30"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dp7-bd-RqM">
+                                                        <rect key="frame" x="0.0" y="0.0" width="260" height="60"/>
+                                                        <connections>
+                                                            <action selector="clickLocationButton:" destination="rUM-yD-oXZ" eventType="touchUpInside" id="hmt-rT-bFA"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="baw-PX-CsZ">
+                                                        <rect key="frame" x="260" y="0.0" width="60" height="59"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="30" id="3v3-Zv-UPi"/>
-                                                            <constraint firstAttribute="height" constant="30" id="qCJ-GF-q6b"/>
+                                                            <constraint firstAttribute="width" constant="60" id="t9H-4w-ucK"/>
                                                         </constraints>
-                                                        <state key="normal" image="RecordLogoWithoutWord"/>
+                                                        <state key="normal" image="RC_placeholder_icon"/>
+                                                        <connections>
+                                                            <action selector="clickLocationButton:" destination="rUM-yD-oXZ" eventType="touchUpInside" id="QdU-rV-Rkx"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.13271617890000001" green="0.14825978879999999" blue="0.18977418539999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="ZVo-VM-NH7" firstAttribute="leading" secondItem="z06-hg-dyZ" secondAttribute="leading" constant="15" id="3SX-rR-UuZ"/>
                                                     <constraint firstAttribute="height" constant="60" id="LWw-6g-htK"/>
+                                                    <constraint firstItem="Dp7-bd-RqM" firstAttribute="leading" secondItem="z06-hg-dyZ" secondAttribute="leading" id="SKi-Zg-f9Z"/>
+                                                    <constraint firstItem="Dp7-bd-RqM" firstAttribute="top" secondItem="z06-hg-dyZ" secondAttribute="top" id="TQZ-QR-O4l"/>
                                                     <constraint firstItem="ZVo-VM-NH7" firstAttribute="centerY" secondItem="z06-hg-dyZ" secondAttribute="centerY" id="ThW-Ao-8aD"/>
                                                     <constraint firstAttribute="trailing" secondItem="Six-SQ-TXQ" secondAttribute="trailing" id="Uqv-Fg-4Pa"/>
-                                                    <constraint firstAttribute="trailing" secondItem="baw-PX-CsZ" secondAttribute="trailing" constant="8" id="Uz2-YX-TYy"/>
-                                                    <constraint firstItem="baw-PX-CsZ" firstAttribute="centerY" secondItem="I91-Fg-3p8" secondAttribute="centerY" id="cED-as-3xR"/>
+                                                    <constraint firstItem="Dp7-bd-RqM" firstAttribute="height" secondItem="z06-hg-dyZ" secondAttribute="height" id="bpJ-Jc-Ghu"/>
+                                                    <constraint firstItem="baw-PX-CsZ" firstAttribute="leading" secondItem="Dp7-bd-RqM" secondAttribute="trailing" id="gQy-jU-aNB"/>
+                                                    <constraint firstItem="baw-PX-CsZ" firstAttribute="top" secondItem="z06-hg-dyZ" secondAttribute="top" id="gTq-jP-Mty"/>
+                                                    <constraint firstAttribute="trailing" secondItem="baw-PX-CsZ" secondAttribute="trailing" id="kDH-rT-b5t"/>
                                                     <constraint firstItem="Six-SQ-TXQ" firstAttribute="leading" secondItem="z06-hg-dyZ" secondAttribute="leading" id="npa-OX-XKh"/>
+                                                    <constraint firstItem="Six-SQ-TXQ" firstAttribute="top" secondItem="baw-PX-CsZ" secondAttribute="bottom" id="qxR-X4-SsW"/>
                                                     <constraint firstItem="I91-Fg-3p8" firstAttribute="leading" secondItem="ZVo-VM-NH7" secondAttribute="trailing" constant="20" id="stg-fB-qKs"/>
                                                     <constraint firstItem="I91-Fg-3p8" firstAttribute="centerY" secondItem="ZVo-VM-NH7" secondAttribute="centerY" id="w19-Ba-WOA"/>
                                                     <constraint firstAttribute="bottom" secondItem="Six-SQ-TXQ" secondAttribute="bottom" id="yGo-RM-WNa"/>
@@ -575,7 +588,7 @@
                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DSs-ft-hBV" userLabel="Date view">
                                                 <rect key="frame" x="0.0" y="60" width="320" height="60"/>
                                                 <subviews>
-                                                    <datePicker clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="xoQ-r2-93u">
+                                                    <datePicker clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="xoQ-r2-93u">
                                                         <rect key="frame" x="0.0" y="60" width="320" height="128"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -615,7 +628,7 @@
                                                             <constraint firstAttribute="height" constant="60" id="9jr-b0-fod"/>
                                                         </constraints>
                                                         <connections>
-                                                            <action selector="clickLocationButton:" destination="rUM-yD-oXZ" eventType="touchUpInside" id="7Hw-xb-QFZ"/>
+                                                            <action selector="clickDateButton:" destination="rUM-yD-oXZ" eventType="touchUpInside" id="eNJ-NH-GXh"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -746,7 +759,10 @@
                                         <state key="normal" title="photos" image="RC_write_icon">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <state key="highlighted" title="Photos" image="RC_write_icon"/>
+                                        <state key="highlighted" image="RC_write_icon"/>
+                                        <connections>
+                                            <action selector="clickPhotosButton:" destination="rUM-yD-oXZ" eventType="touchUpInside" id="gaC-PM-FVJ"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -803,12 +819,14 @@
                     <connections>
                         <outlet property="inDiaryCollectionView" destination="kuB-HB-vwa" id="cwF-vw-WAf"/>
                         <outlet property="inDiaryContentTextView" destination="d4f-NR-aia" id="SlA-uP-eUa"/>
+                        <outlet property="inDiaryCurrentLocationButton" destination="baw-PX-CsZ" id="KJg-07-Zvb"/>
                         <outlet property="inDiaryDateLabel" destination="ebn-ut-JXQ" id="YL9-WF-qt6"/>
                         <outlet property="inDiaryDatePicker" destination="xoQ-r2-93u" id="rzT-Cq-yRK"/>
                         <outlet property="inDiaryDateViewHeightConstraints" destination="Nna-zR-D7P" id="I3b-0V-QKs"/>
                         <outlet property="inDiaryDeleteView" destination="GNL-6P-BzM" id="5aV-OX-Y6R"/>
                         <outlet property="inDiaryDeleteViewBottomConstraints" destination="pM6-ne-YIL" id="C2B-L1-hci"/>
-                        <outlet property="inDiaryLocationLabel" destination="I91-Fg-3p8" id="d66-8R-ZxD"/>
+                        <outlet property="inDiaryLocationButton" destination="Dp7-bd-RqM" id="0mX-UT-lVA"/>
+                        <outlet property="inDiaryLocationLabel" destination="I91-Fg-3p8" id="yte-ar-fq9"/>
                         <outlet property="inDiaryPhotoButtonBottomConstraints" destination="MTE-0H-wao" id="FWJ-Ec-N5z"/>
                         <outlet property="inDiaryPhotoView" destination="GNw-Js-K1U" id="oRD-nm-4PR"/>
                         <outlet property="inDiaryScrollContentView" destination="OGK-GQ-aMI" id="Kll-54-9jW"/>
@@ -987,7 +1005,6 @@
         <image name="RC_placeholder_icon" width="24" height="32"/>
         <image name="RC_trash_icon" width="32" height="32"/>
         <image name="RC_write_icon" width="32" height="32"/>
-        <image name="RecordLogoWithoutWord" width="92" height="92"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="1tf-94-1E7"/>
