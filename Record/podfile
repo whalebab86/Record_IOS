@@ -17,4 +17,5 @@ target 'Record' do
   pod 'FBSDKCoreKit'
   pod 'FBSDKLoginKit'
   pod 'FBSDKShareKit'
+  pod 'KeychainItemWrapper'
 end

@@ -8,6 +8,7 @@
 
 #import <AFNetworking.h>
 #import "RCLoginManager.h"
+#import "KeychainItemWrapper.h"
 
 @interface RCLoginManager()
 <GIDSignInUIDelegate, GIDSignInUIDelegate>
@@ -16,6 +17,7 @@
 @property (nonatomic) NSURLSessionDataTask *dataTask;
 @property (nonatomic) AFHTTPRequestSerializer *serializer;
 @property (nonatomic) AFHTTPSessionManager *manager;
+@property (nonatomic) KeychainItemWrapper *keyChainWrapperInLoginManager;
 
 @end
 
@@ -37,6 +39,7 @@
         NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
         self.manager = [[AFHTTPSessionManager manager] initWithSessionConfiguration:configuration];
         self.serializer = [AFHTTPRequestSerializer serializer];
+        self.keyChainWrapperInLoginManager = [[KeychainItemWrapper alloc] initWithIdentifier:_RECORD_KEYCHAINITEMWRAPPER_KEY accessGroup:nil];
         [self copyUserInfoTokenIntoLoginManager];
     }
     return self;
@@ -242,19 +245,23 @@
 #pragma mark - get or delect token method
 /* insert userinfo into UserDefault */
 - (void)insertUserInfoWithToken:(NSString *)token {
-    //유저디폴트로 변경
-    [[NSUserDefaults standardUserDefaults] setObject:token forKey:_RECORD_ACCESSTOKEN_KEY];
-    self.serverAccessKey = [[NSUserDefaults standardUserDefaults] objectForKey:_RECORD_ACCESSTOKEN_KEY];
+    
+    [self.keyChainWrapperInLoginManager setObject:token forKey:(__bridge id)kSecValueData ];
+    self.serverAccessKey = [self.keyChainWrapperInLoginManager objectForKey:(__bridge id)kSecValueData];
+    
 }
 
 /* copy and insert token into serverAccessKey of Login Manager  */
 - (void)copyUserInfoTokenIntoLoginManager {
-    self.serverAccessKey = [[NSUserDefaults standardUserDefaults] objectForKey:_RECORD_ACCESSTOKEN_KEY];
+    
+    self.serverAccessKey = [self.keyChainWrapperInLoginManager objectForKey:(__bridge id)kSecValueData];
+    
 }
 
 /* serverAccessKey of Login Manager and UserDefault delete token */
 - (void)delectUserInfoToken {
-    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:_RECORD_ACCESSTOKEN_KEY];
+    
+    [self.keyChainWrapperInLoginManager resetKeychainItem];
     self.serverAccessKey = nil;
     
 }

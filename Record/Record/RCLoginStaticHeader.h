@@ -15,6 +15,7 @@ static NSString * const _RECORD_ADDRESS = @"https://studydev.kr";
 static NSString * const _RECORD_SIGNUP_API = @"/api/users/";
 static NSString * const _RECORD_SIGNIN_API = @"/rest-auth/login/";
 static NSString * const _RECORD_LOGOUT_API = @"/rest-auth/logout/";
+static NSString * const _RECORD_KEYCHAINITEMWRAPPER_KEY = @"keychainItemWrapperIdentifier"; 
 static NSString * const _RECORD_ACCESSTOKEN_KEY = @"key";
 static NSString * const _RECORD_SIGNUP_NAME_KEY = @"username";
 static NSString * const _RECORD_SIGNUP_PASSWORD_KEY = @"password";

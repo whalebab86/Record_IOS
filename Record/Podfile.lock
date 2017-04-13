@@ -71,6 +71,7 @@ PODS:
   - GTMSessionFetcher/Core (1.1.9)
   - GTMSessionFetcher/Full (1.1.9):
     - GTMSessionFetcher/Core (= 1.1.9)
+  - KeychainItemWrapper (1.2)
   - SDWebImage/Core (4.0.0)
   - SDWebImage/GIF (4.0.0):
     - FLAnimatedImage (~> 1.0)
@@ -86,6 +87,7 @@ DEPENDENCIES:
   - GooglePlacePicker
   - GooglePlaces
   - GoogleSignIn
+  - KeychainItemWrapper
   - SDWebImage/GIF
 
 SPEC CHECKSUMS:
@@ -106,8 +108,9 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMOAuth2: 7fc9c10f5c745f4d9850419ea88889fe3baa6b7d
   GTMSessionFetcher: 5c046c76a1f859bc9c187e918f18e4fc7bb57b5e
+  KeychainItemWrapper: 67a240172ed669842bc6bc13ed554dcd50469fa2
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
 
-PODFILE CHECKSUM: b4cf91f25e9f504ac42874f89b0eaa9814d1908d
+PODFILE CHECKSUM: 610d12ecdcb08e7729cebd8cd337584680acdd86
 
 COCOAPODS: 1.2.0
