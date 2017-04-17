@@ -209,14 +209,8 @@
 - (void)logoutWithComplition:(SuccessStateBlock)complition {
     
     NSString *urlString = [_RECORD_ADDRESS stringByAppendingString:_RECORD_LOGOUT_API];
-    NSString *logoutToken;
-    if (self.serverAccessKey == nil) {
-        logoutToken = @"Token ";
-    } else {
-        logoutToken = [@"Token " stringByAppendingString:self.serverAccessKey];
-    }
     
-    NSDictionary *parameters = @{_RECORD_LOGOUT_PARAMETER_KEY:logoutToken};
+    NSDictionary *parameters = @{_RECORD_LOGOUT_PARAMETER_KEY:[@"Token " stringByAppendingString:[self.keyChainWrapperInLoginManager objectForKey:(__bridge id)kSecValueData]]};
     
     NSURLRequest *request = [self.serializer requestWithMethod:@"POST"
                                                      URLString:urlString
@@ -237,6 +231,7 @@
                                                                    complition(YES, httpRespose.statusCode);
                                                                } else if (httpRespose.statusCode == 401) {
                                                                    NSLog(@"error nil & Code == 400 responseObject %@", responseObject);
+                                                                   [self delectUserInfoToken];
                                                                    complition(NO, httpRespose.statusCode);
                                                                } else {
                                                                    NSLog(@"error nil & statusCode %ld, responseObject %@", httpRespose.statusCode, responseObject);
@@ -294,7 +289,7 @@
             
             if (httpRespose.statusCode == 201) {
                 NSLog(@"error nil & Code == 200 %@", responseObject);
-                [self delectUserInfoToken];
+
                 complition(YES, httpRespose.statusCode);
             } else if (httpRespose.statusCode == 400) {
                 NSLog(@"error nil & Code == 400 responseObject %@", responseObject);

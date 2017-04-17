@@ -17,6 +17,16 @@
 - 여행 사진들을 등록할 수 있고, 글을 등록할 수 있다.
 - 등록한 사진들과 글을 통해 위치정보를 얻어 나만의 여행 지도를 만들 수 있다.
  
+## - Record Page Review
+
+|page|설명|
+|:-:|:-:|
+|Splash||
+|Sign in / Sign up||
+|profile||
+|||
+
+
 
 ## - Use Library
 |라이브러리명|기능|
