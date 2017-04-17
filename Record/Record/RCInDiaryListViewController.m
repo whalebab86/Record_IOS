@@ -83,6 +83,8 @@
         }
     }];
      */
+    
+    [self.inDiaryListTableView reloadData];
 }
 
 #pragma mark - TableView DataSource

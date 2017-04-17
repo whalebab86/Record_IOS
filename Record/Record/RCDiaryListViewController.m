@@ -54,7 +54,7 @@
     // Do any additional setup after loading the view.
     
     /* isReset YES 일 경우 Realm 파일 삭제 */
-    BOOL isReset = NO;
+    BOOL isReset = YES;
     if(isReset) {
         NSFileManager *manager = [NSFileManager defaultManager];
         RLMRealmConfiguration *config = [RLMRealmConfiguration defaultConfiguration];
@@ -75,10 +75,6 @@
         }
 
     }
-    
-    NSFileManager *manager = [NSFileManager defaultManager];
-    RLMRealmConfiguration *config = [RLMRealmConfiguration defaultConfiguration];
-
     
     /* Table view custom cell - xib */
     UINib *cellNib = [UINib nibWithNibName:@"RCDiaryListCustomTableViewCell" bundle:nil];

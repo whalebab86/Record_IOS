@@ -20,10 +20,11 @@
     
     [super viewDidAppear:YES];
     
-    if([RCLoginManager loginManager].serverAccessKey == nil) {
-        
-        [self performSegueWithIdentifier:@"RecordLoginSegue" sender:self];
-    }
+    [[RCLoginManager loginManager] checkValidTokenWithComplition:^(BOOL isSucceess, NSInteger code) {
+        if(!isSucceess) {
+            [self performSegueWithIdentifier:@"RecordLoginSegue" sender:self];
+        }
+    }];
 }
 
 - (void)viewDidLoad {
