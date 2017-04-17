@@ -31,6 +31,15 @@
     
     // Do any additional setup after loading the view.
     
+    [[RCLoginManager loginManager] checkValidTokenWithComplition:^(BOOL isSucceess, NSInteger code) {
+        if (isSucceess) {
+            NSLog(@"checkValidTokenWithComplition success!!!");
+        } else {
+            NSLog(@"checkValidTokenWithComplition fail!!!");
+        }
+    }];
+    
+    
     /* Signin button change layer and layer color */
     self.signInBtn.layer.borderWidth = 1.0f;
     self.signInBtn.layer.cornerRadius = 3.0f;
@@ -173,8 +182,6 @@
     }
     
 }
-
-#pragma mark - scroll view delegate
 
 
 

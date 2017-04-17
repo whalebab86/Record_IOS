@@ -19,6 +19,7 @@ typedef  void (^SuccessStateBlock) (BOOL isSucceess, NSInteger code);
 @interface RCLoginManager : NSObject
 
 @property (readonly) NSString *serverAccessKey;
+@property (readonly) BOOL isValidToken;
 
 + (instancetype)loginManager;
 
@@ -41,4 +42,7 @@ typedef  void (^SuccessStateBlock) (BOOL isSucceess, NSInteger code);
                    complition:(SuccessStateBlock)complition;
 
 - (void)logoutWithComplition:(SuccessStateBlock)complition;
+
+- (void)checkValidTokenWithComplition:(SuccessStateBlock)complition;
+
 @end

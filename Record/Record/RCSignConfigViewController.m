@@ -90,7 +90,6 @@
 /* This method is existent for signup scrollView contentOffset */
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"RCSignUpViewSegue"]) {
-        /* destinationViewController 찾아보기 */
         self.signUpViewContollerForSegue = [segue destinationViewController];
     }
 }
