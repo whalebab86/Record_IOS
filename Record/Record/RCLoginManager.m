@@ -209,7 +209,14 @@
 - (void)logoutWithComplition:(SuccessStateBlock)complition {
     
     NSString *urlString = [_RECORD_ADDRESS stringByAppendingString:_RECORD_LOGOUT_API];
-    NSDictionary *parameters = @{_RECORD_LOGOUT_PARAMETER_KEY:self.serverAccessKey};
+    NSString *logoutToken;
+    if (self.serverAccessKey == nil) {
+        logoutToken = @"Token ";
+    } else {
+        logoutToken = [@"Token " stringByAppendingString:self.serverAccessKey];
+    }
+    
+    NSDictionary *parameters = @{_RECORD_LOGOUT_PARAMETER_KEY:logoutToken};
     
     NSURLRequest *request = [self.serializer requestWithMethod:@"POST"
                                                      URLString:urlString
@@ -228,7 +235,7 @@
                                                                    NSLog(@"error nil & Code == 200 %@", responseObject);
                                                                    [self delectUserInfoToken];
                                                                    complition(YES, httpRespose.statusCode);
-                                                               } else if (httpRespose.statusCode == 400) {
+                                                               } else if (httpRespose.statusCode == 401) {
                                                                    NSLog(@"error nil & Code == 400 responseObject %@", responseObject);
                                                                    complition(NO, httpRespose.statusCode);
                                                                } else {
@@ -302,7 +309,7 @@
     [self.dataTask resume];
 }
 
-#pragma mark - check valid token
+#pragma mark - valid check token
 
 - (void)checkValidTokenWithComplition:(SuccessStateBlock)complition {
     
