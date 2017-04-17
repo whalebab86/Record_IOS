@@ -134,6 +134,9 @@
 //            [self.navigationController performSegueWithIdentifier:@"RecordLoginSegue" sender:self];
             
             [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+        } else if (!isSucceess && code == 401) {
+            NSLog(@"have not Token in header");
+            [self.navigationController dismissViewControllerAnimated:YES completion:nil];
         } else {
             NSLog(@"logout error");
         }

@@ -117,7 +117,7 @@
                 if (isSucceess) {
                     
                         NSLog(@"로그인 탑니다!");
-                        [self performSegueWithIdentifier:@"ProfileSettingSegueFromSignin" sender:nil];
+                        [self performSegueWithIdentifier:@"ProfileSettingSegueFromSignup" sender:nil];
                     
                 } else {
                     
