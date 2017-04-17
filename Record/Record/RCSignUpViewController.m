@@ -111,8 +111,6 @@
             [self addAlertViewWithTile:@"Passwords are different." actionTitle:@"Done" handler:nil];
         } else {
             
-            //sign up 코드는 백단이 주면 설정
-            
             
             [[RCLoginManager loginManager] localSignupInputEmail:self.signUpEmailTF.text inputPassword:self.signUpPasswordTF.text inputNickName:@"" complition:^(BOOL isSucceess, NSInteger code) {
               

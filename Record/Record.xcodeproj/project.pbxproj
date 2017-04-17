@@ -50,6 +50,9 @@
 		447046031E9CA90D001D0DB4 /* splash_main_img.gif in Resources */ = {isa = PBXBuildFile; fileRef = 447046021E9CA90D001D0DB4 /* splash_main_img.gif */; };
 		4470464C1E9CEA5C001D0DB4 /* RCSplashTutorialCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4470464B1E9CEA5C001D0DB4 /* RCSplashTutorialCollectionViewCell.m */; };
 		44929F471E8CD700005B6C3B /* RCLoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 44929F461E8CD700005B6C3B /* RCLoginManager.m */; };
+		44B69C091E9F277F00C32A69 /* RCMyDiaryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B69C081E9F277F00C32A69 /* RCMyDiaryCollectionViewCell.m */; };
+		44B69C0C1E9F3CBE00C32A69 /* RCMyDiaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B69C0B1E9F3CBE00C32A69 /* RCMyDiaryViewController.m */; };
+		44B69C0F1E9F5CA700C32A69 /* RCMyDiaryCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B69C0E1E9F5CA700C32A69 /* RCMyDiaryCollectionViewFlowLayout.m */; };
 		44CE78781E91F492004A3ED3 /* RCSettingHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 44CE78771E91F492004A3ED3 /* RCSettingHeaderView.m */; };
 		44CE787A1E91F549004A3ED3 /* RCSettingHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44CE78791E91F549004A3ED3 /* RCSettingHeaderView.xib */; };
 		44CE788B1E92A50B004A3ED3 /* RCProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44CE788A1E92A50B004A3ED3 /* RCProfileViewController.m */; };
@@ -138,6 +141,12 @@
 		4470464B1E9CEA5C001D0DB4 /* RCSplashTutorialCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCSplashTutorialCollectionViewCell.m; sourceTree = "<group>"; };
 		44929F451E8CD700005B6C3B /* RCLoginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCLoginManager.h; sourceTree = "<group>"; };
 		44929F461E8CD700005B6C3B /* RCLoginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCLoginManager.m; sourceTree = "<group>"; };
+		44B69C071E9F277F00C32A69 /* RCMyDiaryCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCMyDiaryCollectionViewCell.h; sourceTree = "<group>"; };
+		44B69C081E9F277F00C32A69 /* RCMyDiaryCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCMyDiaryCollectionViewCell.m; sourceTree = "<group>"; };
+		44B69C0A1E9F3CBE00C32A69 /* RCMyDiaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCMyDiaryViewController.h; sourceTree = "<group>"; };
+		44B69C0B1E9F3CBE00C32A69 /* RCMyDiaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCMyDiaryViewController.m; sourceTree = "<group>"; };
+		44B69C0D1E9F5CA700C32A69 /* RCMyDiaryCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCMyDiaryCollectionViewFlowLayout.h; sourceTree = "<group>"; };
+		44B69C0E1E9F5CA700C32A69 /* RCMyDiaryCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCMyDiaryCollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		44CE78761E91F492004A3ED3 /* RCSettingHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCSettingHeaderView.h; sourceTree = "<group>"; };
 		44CE78771E91F492004A3ED3 /* RCSettingHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCSettingHeaderView.m; sourceTree = "<group>"; };
 		44CE78791E91F549004A3ED3 /* RCSettingHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RCSettingHeaderView.xib; sourceTree = "<group>"; };
@@ -282,6 +291,12 @@
 				4458ECE51E8B7EF300EDC792 /* RCSettingTableViewCell.m */,
 				443E9A9B1E93961B007C76D7 /* RCSupportViewController.h */,
 				443E9A9C1E93961B007C76D7 /* RCSupportViewController.m */,
+				44B69C0A1E9F3CBE00C32A69 /* RCMyDiaryViewController.h */,
+				44B69C0B1E9F3CBE00C32A69 /* RCMyDiaryViewController.m */,
+				44B69C071E9F277F00C32A69 /* RCMyDiaryCollectionViewCell.h */,
+				44B69C081E9F277F00C32A69 /* RCMyDiaryCollectionViewCell.m */,
+				44B69C0D1E9F5CA700C32A69 /* RCMyDiaryCollectionViewFlowLayout.h */,
+				44B69C0E1E9F5CA700C32A69 /* RCMyDiaryCollectionViewFlowLayout.m */,
 			);
 			name = Setting;
 			sourceTree = "<group>";
@@ -621,12 +636,15 @@
 				4458ECE61E8B7EF300EDC792 /* RCSettingTableViewCell.m in Sources */,
 				44D61A271E8972410088FA2B /* RCSignConfigViewController.m in Sources */,
 				4458ECEB1E8B83D200EDC792 /* RCSettingTableInfo.m in Sources */,
+				44B69C091E9F277F00C32A69 /* RCMyDiaryCollectionViewCell.m in Sources */,
 				3930C6261E88F21C009F457E /* AppDelegate.m in Sources */,
 				44D61A181E89314C0088FA2B /* RCSplashViewController.m in Sources */,
 				3930C6231E88F21C009F457E /* main.m in Sources */,
 				44F4FE471E8CF023008CED9B /* TempLogoutViewController.m in Sources */,
 				3995A00A1E8BC4DF006ACF7A /* DateSource.m in Sources */,
 				442A62CD1E94D85700B727C7 /* RCUtilyValidation.m in Sources */,
+				44B69C0F1E9F5CA700C32A69 /* RCMyDiaryCollectionViewFlowLayout.m in Sources */,
+				44B69C0C1E9F3CBE00C32A69 /* RCMyDiaryViewController.m in Sources */,
 				4458ECE31E8B796D00EDC792 /* RCSettingViewController.m in Sources */,
 				44D61A241E896E1F0088FA2B /* RCSignUpViewController.m in Sources */,
 				39FB37AF1E8CE671006D299F /* RCDiaryData.m in Sources */,

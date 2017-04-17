@@ -40,13 +40,12 @@
         self.manager = [[AFHTTPSessionManager manager] initWithSessionConfiguration:configuration];
         self.serializer = [AFHTTPRequestSerializer serializer];
         self.keyChainWrapperInLoginManager = [[KeychainItemWrapper alloc] initWithIdentifier:_RECORD_KEYCHAINITEMWRAPPER_KEY accessGroup:nil];
-        [self copyUserInfoTokenIntoLoginManager];
     }
     return self;
 }
 
-#pragma mark - sign up sign in modul
-- (void)signUpInModulWithAPI:(NSString *)api
+#pragma mark - upload task modul in sign in and sign up, etc
+- (void)uploadTaskModulWithAPI:(NSString *)api
             requestMethod:(NSString *)method
            inputParameter:(NSDictionary *)parameters
             setStatusCode:(NSArray *)codeArray
@@ -91,7 +90,7 @@
     NSDictionary *parameters = @{_RECORD_SIGNUP_NAME_KEY:user.profile.email,
                                  _RECORD_SIGNUP_NICKNAME_KEY:@"",
                                  _RECORD_SIGNUP_USER_TYPE_KEY:_RECORD_SIGNUP_USER_TYPE_GOOGLE};
-    [self signUpInModulWithAPI:_RECORD_SIGNUP_API requestMethod:_RECORD_REQUEST_METHOD_POST inputParameter:parameters setStatusCode:@[@"201", @"400"] complition:complition];
+    [self uploadTaskModulWithAPI:_RECORD_SIGNUP_API requestMethod:_RECORD_REQUEST_METHOD_POST inputParameter:parameters setStatusCode:@[@"201", @"400"] complition:complition];
     
 //    NSLog(@"user.userID %@", user.userID);
 //    // Safe to send to the server
@@ -161,7 +160,7 @@
                                          _RECORD_SIGNUP_NICKNAME_KEY:[result objectForKey:@"name"],
                                          _RECORD_SIGNUP_USER_TYPE_KEY:_RECORD_SIGNUP_USER_TYPE_FACEBOOK};
             
-            [self signUpInModulWithAPI:_RECORD_SIGNUP_API requestMethod:_RECORD_REQUEST_METHOD_POST inputParameter:parameters setStatusCode:@[@"201",@"400"] complition:complition];
+            [self uploadTaskModulWithAPI:_RECORD_SIGNUP_API requestMethod:_RECORD_REQUEST_METHOD_POST inputParameter:parameters setStatusCode:@[@"201",@"400"] complition:complition];
             
 //
 //            if ([result objectForKey:@"name"]) {
@@ -185,7 +184,7 @@
     NSDictionary *parameters = @{@"username":email,
                                  @"password":password};
     
-    [self signUpInModulWithAPI:_RECORD_SIGNIN_API requestMethod:_RECORD_REQUEST_METHOD_POST inputParameter:parameters setStatusCode:@[@"200",@"400"] complition:complition];
+    [self uploadTaskModulWithAPI:_RECORD_SIGNIN_API requestMethod:_RECORD_REQUEST_METHOD_POST inputParameter:parameters setStatusCode:@[@"200",@"401"] complition:complition];
 }
 
 #pragma mark - Eamil Sign up Method
@@ -200,7 +199,7 @@
                                 _RECORD_SIGNUP_NICKNAME_KEY:nickName,
                                 _RECORD_SIGNUP_USER_TYPE_KEY:_RECORD_SIGNUP_USER_TYPE_NORMAL};
     
-    [self signUpInModulWithAPI:_RECORD_SIGNUP_API requestMethod:_RECORD_REQUEST_METHOD_POST inputParameter:parameters setStatusCode:@[@"201",@"400"] complition:complition];
+    [self uploadTaskModulWithAPI:_RECORD_SIGNUP_API requestMethod:_RECORD_REQUEST_METHOD_POST inputParameter:parameters setStatusCode:@[@"201",@"400"] complition:complition];
     
    }
 
@@ -265,5 +264,83 @@
     self.serverAccessKey = nil;
     
 }
+
+#pragma mark - change profile
+
+- (void)uploadProfileImageWithUIImage:(UIImage *)image complition:(SuccessStateBlock)complition {
+    
+    NSString *urlString = [_RECORD_ADDRESS stringByAppendingString:_RECORD_PROFILECHANGE_API];
+    NSDictionary *parameters = @{_RECORD_PROFILECHANGE_PARAMETER_KEY:[@"Token " stringByAppendingString:self.serverAccessKey]};
+    
+    NSURLRequest *request = [self.serializer requestWithMethod:@"POST"
+                                                     URLString:urlString
+                                                    parameters:parameters
+                                                         error:nil];
+
+    NSData *profileImageData = UIImagePNGRepresentation(image);
+    self.dataTask = [self.manager uploadTaskWithRequest:request fromData:profileImageData progress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+        NSHTTPURLResponse *httpRespose = (NSHTTPURLResponse *)response;
+        if (error) {
+            NSLog(@"error not nil & Email login NSError %@", error);
+            complition(NO, httpRespose.statusCode);
+        } else {
+            
+            if (httpRespose.statusCode == 201) {
+                NSLog(@"error nil & Code == 200 %@", responseObject);
+                [self delectUserInfoToken];
+                complition(YES, httpRespose.statusCode);
+            } else if (httpRespose.statusCode == 400) {
+                NSLog(@"error nil & Code == 400 responseObject %@", responseObject);
+                complition(NO, httpRespose.statusCode);
+            } else {
+                NSLog(@"error nil & statusCode %ld, responseObject %@", httpRespose.statusCode, responseObject);
+                complition(NO, httpRespose.statusCode);
+            }
+        }
+    }];
+
+    [self.dataTask resume];
+}
+
+#pragma mark - check valid token
+
+- (void)checkValidTokenWithComplition:(SuccessStateBlock)complition {
+    
+    NSDictionary *parameters =@{@"key":[self.keyChainWrapperInLoginManager objectForKey:(__bridge id)kSecValueData]};
+
+    NSString *urlString = [_RECORD_ADDRESS stringByAppendingString:_RECORD_CHECK_VALID_TOKEN_API];
+    
+    NSURLRequest *request = [self.serializer requestWithMethod:@"POST"
+                                                     URLString:urlString
+                                                    parameters:parameters
+                                                         error:nil];
+    
+    self.dataTask = [self.manager uploadTaskWithStreamedRequest:request
+                                                       progress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+                                                           NSHTTPURLResponse *httpRespose = (NSHTTPURLResponse *)response;
+                                                           if (error) {
+                                                               NSLog(@"error not nil & Email login NSError %@", error);
+                                                               [self delectUserInfoToken];
+                                                               complition(NO, httpRespose.statusCode);
+                                                           } else {
+                                                               
+                                                               if (httpRespose.statusCode == 200) {
+                                                                   NSLog(@"error nil & Code == 200 %@", responseObject);
+                                                                   [self copyUserInfoTokenIntoLoginManager];
+                                                                   complition(YES, httpRespose.statusCode);
+                                                               } else if (httpRespose.statusCode == 401) {
+                                                                   NSLog(@"error nil & Code == 400 responseObject %@", responseObject);
+                                                                   [self delectUserInfoToken];
+                                                                   complition(NO, httpRespose.statusCode);
+                                                               } else {
+                                                                   NSLog(@"error nil & statusCode %ld, responseObject %@", httpRespose.statusCode, responseObject);
+                                                                   [self delectUserInfoToken];
+                                                                   complition(NO, httpRespose.statusCode);
+                                                               }
+                                                           }
+                                                       }];
+    [self.dataTask resume];
+}
+
 
 @end

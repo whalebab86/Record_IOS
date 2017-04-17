@@ -80,12 +80,14 @@
                     NSLog(@"login success");
                     [self performSegueWithIdentifier:@"ProfileSettingSegueFromSignin" sender:nil];
                     
-                } else {
+                } else if (!isSucceess  && code == 401) {
                     NSLog(@"login fail");
-                    [self addAlertViewWithTile:@"로그인에 실패하였습니다." actionTitle:@"확인" handler:^(UIAlertAction *action) {
+                    [self addAlertViewWithTile:@"로그인에 실패하였습니다.\n아이디와 비밀번호를 확인해주세요!" actionTitle:@"확인" handler:^(UIAlertAction *action) {
                         signInVC.signInEmailTF.text = @"";
                         signInVC.signInPasswordTF.text = @"";
                     }];
+                } else {
+                    [self addAlertViewWithTile:@"로그인에 실패하였습니다." actionTitle:@"확인" handler:nil];
                 }
             }];
         }
