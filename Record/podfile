@@ -30,4 +30,10 @@ target 'Record' do
 
   # pods imagepicker
   pod 'QBImagePickerController'
+  
+  # pods realm
+  pod 'Realm'
+  
+
+  pod ‘VCTransitionsLibrary’
 end

@@ -149,8 +149,8 @@
 
 - (void)googleMapCameraChangedDefault {
     
-    double minLatitude = 0.0,  maxLatitude = 0.0;
-    double minLongitude = 0.0, maxLongitude = 0.0;
+    double minLatitude  = 36.0,  maxLatitude = 136.0;
+    double minLongitude = 36.0, maxLongitude = 136.0;
     
     for (NSInteger i = 0; i < [self.googleMarkerArray count]; i ++) {
         

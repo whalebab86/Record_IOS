@@ -11,10 +11,11 @@
 @interface DateSource : NSObject
 
 + (NSDate *)dateOfToday;
++ (NSString *)convertWithDate:(NSDate *)date format:(NSString *)format;
 + (NSString *)convertDateToString:(NSDate *)date;
 + (NSDate *)convertStringToDate:(NSString *)dateString;
-+ (NSComparisonResult)comparWithFromDate:(NSString *)fromDate withToDate:(NSString *)toDate;
-+ (NSString *)calculateWithFromDate:(NSString *)fromDate withToDate:(NSString *)toDate;
++ (NSComparisonResult)comparWithFromDate:(NSDate *)fromDate withToDate:(NSDate *)toDate;
++ (NSString *)calculateWithFromDate:(NSDate *)fromDate withToDate:(NSDate *)toDate;
 + (NSString *)formattedDateToMonth:(NSString *)date;
 
 @end

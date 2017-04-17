@@ -8,11 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "RCDiaryData.h"
+#import "RCDiaryRealm.h"
 
 @interface RCInDiaryDetailViewController : UIViewController
 
 @property (nonatomic) RCInDiaryData *inDiaryData;
 @property (nonatomic) NSIndexPath   *indexPath;
+
+@property (nonatomic) RCDiaryRealm  *diaryRealm;
+
+@property (nonatomic) NSString      *diaryPk;
+@property (nonatomic) NSString      *inDiaryPk;
 
 @end
 

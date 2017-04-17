@@ -73,10 +73,14 @@ PODS:
     - GTMSessionFetcher/Core (= 1.1.9)
   - KeychainItemWrapper (1.2)
   - QBImagePickerController (3.4.0)
+  - Realm (2.5.1):
+    - Realm/Headers (= 2.5.1)
+  - Realm/Headers (2.5.1)
   - SDWebImage/Core (4.0.0)
   - SDWebImage/GIF (4.0.0):
     - FLAnimatedImage (~> 1.0)
     - SDWebImage/Core
+  - VCTransitionsLibrary (1.5.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
@@ -90,7 +94,9 @@ DEPENDENCIES:
   - GoogleSignIn
   - KeychainItemWrapper
   - QBImagePickerController
+  - Realm
   - SDWebImage/GIF
+  - VCTransitionsLibrary
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
@@ -112,8 +118,10 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 5c046c76a1f859bc9c187e918f18e4fc7bb57b5e
   KeychainItemWrapper: 67a240172ed669842bc6bc13ed554dcd50469fa2
   QBImagePickerController: d54cf93db6decf26baf6ed3472f336ef35cae022
+  Realm: 32f86104d37c8521f864d4274050b38ba6190733
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
+  VCTransitionsLibrary: d61fd9b7b6721942f0d583bcc0e7f8c31ec9271b
 
-PODFILE CHECKSUM: 6272c3c523e6f1751d8c7d2f77819e1c82e9c5ff
+PODFILE CHECKSUM: d9f541880c02adc5326c797cd011db1ae035b49b
 
 COCOAPODS: 1.1.1

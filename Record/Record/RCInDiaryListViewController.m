@@ -14,17 +14,21 @@
 
 /* Record view import */
 #import "RCInDiaryTableViewHeaderView.h"
+#import "RCInDiaryTableViewFooterView.h"
 #import "RCInDiaryTableViewCell.h"
 #import "RCInDiaryCollectionViewCell.h"
 
 /* Record source import */
 #import "RCDiaryManager.h"
+#import "DateSource.h"
 
 /* library import */
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface RCInDiaryListViewController ()
-<UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, RCInDiaryTableViewCellDelegate, RCInDiaryTableViewHeaderDelegate>
+<UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, RCInDiaryTableViewCellDelegate, RCInDiaryTableViewHeaderDelegate, RCInDiaryTableViewFooterDelegate>
+
+@property (nonatomic) RLMResults<RCInDiaryRealm *>   *inDiaryResults;
 
 @property (weak, nonatomic) IBOutlet UITableView *inDiaryListTableView;
 @property (weak, nonatomic) IBOutlet UIView *inDiaryTopSolderView;
@@ -43,21 +47,27 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Do any additional setup after loading the view.
+    self.inDiaryResults = [RCInDiaryRealm allObjects];
     
+    // Do any additional setup after loading the view.
     UINib *headerViewNib = [UINib nibWithNibName:@"RCInDiaryTableViewHeaderView" bundle:nil];
-    [self.inDiaryListTableView registerNib:headerViewNib forHeaderFooterViewReuseIdentifier:@"RCInDiaryTableViewHeaderView"];
+    [self.inDiaryListTableView registerNib:headerViewNib
+        forHeaderFooterViewReuseIdentifier:@"RCInDiaryTableViewHeaderView"];
     
     UINib *tableCellNib = [UINib nibWithNibName:@"RCInDiaryTableViewCell" bundle:nil];
     [self.inDiaryListTableView registerNib:tableCellNib forCellReuseIdentifier:@"RCInDiaryTableViewCell"];
     
+    UINib *footerViewNib = [UINib nibWithNibName:@"RCInDiaryTableViewFooterView" bundle:nil];
+    [self.inDiaryListTableView registerNib:footerViewNib
+        forHeaderFooterViewReuseIdentifier:@"RCInDiaryTableViewFooterView"];
+    
     [self.inDIaryTopSlider setThumbImage:[UIImage imageNamed:@"Oval"] forState:UIControlStateNormal];
     [self.inDIaryTopSlider setContentMode:UIViewContentModeScaleToFill];
 
-    
     self.inDiaryListTableView.rowHeight          = UITableViewAutomaticDimension;
     self.inDiaryListTableView.estimatedRowHeight = 500;
     
+    /*
     self.manager = [RCDiaryManager diaryManager];
     
     [self.manager clearInDiaryItemAtIndexPaths];
@@ -72,31 +82,35 @@
             [self.view layoutIfNeeded];
         }
     }];
+     */
 }
 
 #pragma mark - TableView DataSource
 #pragma mark - TableView Delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return [self.manager inDiaryNumberOfItems];
+//    return [self.manager inDiaryNumberOfItems];
+    
+    return [self.inDiaryResults count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     self.indexPath = indexPath;
     
-    RCInDiaryData *inDiaryData = [self.manager inDiaryDataAtIndexPath:indexPath];
+//    RCInDiaryData *inDiaryData = [self.manager inDiaryDataAtIndexPath:indexPath];
+    RCInDiaryRealm *inDiartRealm = [self.inDiaryResults objectAtIndex:indexPath.row];
     
     RCInDiaryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RCInDiaryTableViewCell" forIndexPath:indexPath];
     
     cell.indexPath = indexPath;
     
     /* table view cell custom */
-    cell.inDiaryMainLocationLabel.text = inDiaryData.inDiaryMainLoacation;
-    cell.inDiarySubLocationLabel.text  = inDiaryData.inDiarySubLocation;
-    cell.inDiaryDaysLabel.text         = [@"DAY " stringByAppendingString:inDiaryData.inDiaryDay];
-    cell.inDiaryDateLabel.text         = inDiaryData.inDiaryWriteDate;
-    cell.inDiaryContentLabel.text      = inDiaryData.inDiaryContent;
+    cell.inDiaryMainLocationLabel.text = inDiartRealm.inDiaryLocationName;
+    cell.inDiarySubLocationLabel.text  = inDiartRealm.inDiaryLocationName;
+    cell.inDiaryDaysLabel.text         = [@"DAY " stringByAppendingString:@"1"];
+    cell.inDiaryDateLabel.text         = [DateSource convertWithDate:inDiartRealm.inDiaryReportingDate format:@"yyyy-MM-dd HH:mm:ss"];
+    cell.inDiaryContentLabel.text      = inDiartRealm.inDiaryContent;
     
     /* collection view item custom */
     CGFloat collectionViewSize = cell.inDiaryImageCollectionView.frame.size.width;
@@ -126,20 +140,64 @@
     return cell;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    
+    CGFloat selfWidth = self.view.frame.size.width;
+    
+    return (selfWidth * 0.8f) + 60 + (selfWidth * 0.8f) + 65;
+}
+
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
     RCInDiaryTableViewHeaderView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"RCInDiaryTableViewHeaderView"];
     
+    headerView.diaryCoverImageView.image = [UIImage imageWithData:self.diaryRealm.diaryCoverImage];
+    headerView.coverDiaryTitleLabel.text = self.diaryRealm.diaryName;
+    headerView.coverDiaryYearLabel.text  = [DateSource convertWithDate:self.diaryRealm.diaryStartDate
+                                                                format:@"YYYY"];
+    headerView.infoDaysLabel.text        = [DateSource calculateWithFromDate:self.diaryRealm.diaryStartDate
+                                                                  withToDate:self.diaryRealm.diaryEndDate];
+    headerView.bottomStartDayLabel.text  = [DateSource convertWithDate:self.diaryRealm.diaryStartDate
+                                                                format:@"YYYY년 MM월 dd일"];
+    
+    NSComparisonResult dateCompareResult = [DateSource comparWithFromDate:self.diaryRealm.diaryEndDate
+                                                               withToDate:[NSDate date]];
+    
+    if(dateCompareResult == NSOrderedDescending) {
+        [headerView.coverDiaryStatusView setBackgroundColor:[UIColor colorWithRed:255/255.0f
+                                                                            green:106/255.0f
+                                                                             blue:58/255.0f
+                                                                            alpha:1]];
+        headerView.coverDiaryStatusLabel.text = @"NOW TRAVELING";
+    } else {
+        [headerView.coverDiaryStatusView setBackgroundColor:[UIColor colorWithRed:43/255.0f
+                                                                            green:48/255.0f
+                                                                             blue:59/255.0f
+                                                                            alpha:1]];
+        
+        headerView.coverDiaryStatusLabel.text = @"END TRAVELING";
+    }
+
     [headerView setDelegate:self];
     
     return headerView;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     
-    CGFloat selfWidth = self.view.frame.size.width;
+    return 145;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     
-    return (selfWidth * 0.8) + 60 + (selfWidth * 0.8) + 65;
+    RCInDiaryTableViewFooterView *footerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"RCInDiaryTableViewFooterView"];
+    
+    footerView.bottomEndDayLabel.text = [DateSource convertWithDate:self.diaryRealm.diaryEndDate
+                                                             format:@"YYYY년 MM월 dd일"];
+    
+    [footerView setDelegate:self];
+    
+    return footerView;
 }
 
 #pragma mark - ScrollView Delegate
@@ -172,6 +230,12 @@
 - (void)showInDiaryLocationView {
     
     [self performSegueWithIdentifier:@"InDiaryLocationSegue" sender:nil];
+}
+
+#pragma mark - Tableview footer view button click method
+- (void)tableViewFooterButton:(UIButton *)button {
+    
+    [self performSegueWithIdentifier:@"InDiaryDetailSegue" sender:nil];
 }
 
 #pragma mark - Custom button click method
@@ -214,8 +278,10 @@
     if([segue.identifier isEqualToString:@"DiaryDetailSegue"]) {
         
         UINavigationController *diaryDetailVC = [segue destinationViewController];
-        ((RCDiaryDetailViewController *)diaryDetailVC.topViewController).diaryData = self.diaryData;
-        ((RCDiaryDetailViewController *)diaryDetailVC.topViewController).indexPath = self.indexPath;
+//        ((RCDiaryDetailViewController *)diaryDetailVC.topViewController).diaryData = self.diaryData;
+//        ((RCDiaryDetailViewController *)diaryDetailVC.topViewController).indexPath = self.indexPath;
+        
+        ((RCDiaryDetailViewController *)diaryDetailVC.topViewController).diaryRealm  = self.diaryRealm;
         
     } else if([segue.identifier isEqualToString:@"InDiaryDetailSegue"]) {
         
@@ -227,7 +293,11 @@
             
             inDiaryDetailVC.inDiaryData = diaryData;
             inDiaryDetailVC.indexPath   = (NSIndexPath*)sender;
+            
+            inDiaryDetailVC.diaryRealm  = self.diaryRealm;
+//            inDiaryDetailVC.diaryPk     = self.diaryRealm.diaryPk;
         }
+        
     } else if([segue.identifier isEqualToString:@"InDiaryLocationSegue"]) {
         
         if(sender != nil) {
@@ -238,22 +308,25 @@
             locationVC.inDiaryData = diaryData;
             locationVC.indexPath   = (NSIndexPath*)sender;
         }
+        
     }
 }
 
-- (IBAction)unwindForInDiaryList:(UIStoryboard *)sender {
+
+- (IBAction)unwindForInDiaryList:(UIStoryboardSegue *)sender {
     
-    [self.manager clearInDiaryItemAtIndexPaths];
-    [self.manager requestInDiaryListWithCompletionHandler:^(BOOL isSuccess, id responseData) {
-        
-        if(isSuccess) {
-            
-            [self.inDiaryListTableView reloadData];
-            
-            [self.view layoutIfNeeded];
-        }
-    }];
+//    [self.manager clearInDiaryItemAtIndexPaths];
+//    [self.manager requestInDiaryListWithCompletionHandler:^(BOOL isSuccess, id responseData) {
+//        
+//        if(isSuccess) {
+//            
+//            [self.inDiaryListTableView reloadData];
+//            
+//            [self.view layoutIfNeeded];
+//        }
+//    }];
     
+    [self.inDiaryListTableView reloadData];
     NSLog(@"unwindForInDiaryList");
 }
 

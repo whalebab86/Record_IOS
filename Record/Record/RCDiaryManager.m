@@ -8,6 +8,9 @@
 
 #import "RCDiaryManager.h"
 #import <AFNetworking.h>
+#import <Realm/Realm.h>
+
+#import "RCDiaryRealm.h"
 
 @interface RCDiaryManager ()
 
@@ -15,10 +18,10 @@
 @property (nonatomic) AFHTTPRequestSerializer *serializer;
 @property (nonatomic) NSURLSessionDataTask *dataTask;
 
-@property NSMutableArray      *diaryDataArray;
+@property (nonatomic) NSMutableArray      *diaryDataArray;
 
-@property NSMutableDictionary *inDiaryInfo;
-@property NSMutableArray      *inDiaryDataArray;
+@property (nonatomic) NSMutableDictionary *inDiaryInfo;
+@property (nonatomic) NSMutableArray      *inDiaryDataArray;
 
 @end
 
@@ -52,64 +55,31 @@
     return self;
 }
 
-//#pragma mark - Pass Request Form (Common Method)
-//- (void)passRequestFormWithMethod:(NSString *)method URLString:(NSString *)urlString andHandler:(NetworkTaskHandler)completionHandler {
-//    
-//    NSURLRequest *request = [_serializer requestWithMethod:method
-//                                                 URLString:urlString
-//                                                parameters:nil
-//                                                     error:nil];
-//    
-//    [self resumeDataTaskWithRequest:request andCompletionHandler:completionHandler];
-//}
-//
-//#pragma mark - Execute DataTask and CompletionHandler
-//- (void)resumeDataTaskWithRequest:(NSURLRequest *)request andCompletionHandler:(NetworkTaskHandler)completionHandler {
-//    
-//    self.dataTask = [_sessionManager dataTaskWithRequest:request
-//                                   completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
-//                                       
-//                                       BOOL result = NO;
-//                                       
-//                                       if (error) {
-//                                           NSLog(@"에러 발생. %@", error);
-//                                       }
-//                                       else {
-//                                           result = YES;
-//                                       }
-//                                       
-//                                       dispatch_async(dispatch_get_main_queue(), ^{
-//                                           
-//                                           completionHandler(result, responseObject);
-//                                       });
-//                                   }];
-//    [self.dataTask resume];
-//}
-
-
 #pragma mark - Configure Request [ Diary ]
 /* Diary list select */
 - (void)requestDiaryListWithCompletionHandler:(NetworkTaskHandler)completionHandler {
     
-    [self readDictionaryFromWithFilepath:@"diary" andHandler:^(BOOL isSuccess, id responseData) {
-        
-        if(isSuccess) {
-            
-            NSDictionary *resultInfo = (NSDictionary *)responseData;
-            NSArray *diayList        = [resultInfo objectForKey:@"results"];
-            
-            for (NSDictionary *diaryInfo in diayList) {
-                
-                RCDiaryData *data = [[RCDiaryData alloc] initDiatyDataWithNSDictionary:diaryInfo];
-                [self.diaryDataArray addObject:data];
-            }
-            
-            completionHandler(isSuccess, responseData);
-        } else {
-            
-            completionHandler(isSuccess, nil);
-        }
-    }];
+    
+    
+//    [self readDictionaryFromWithFilepath:@"diary" andHandler:^(BOOL isSuccess, id responseData) {
+//        
+//        if(isSuccess) {
+//            
+//            NSDictionary *resultInfo = (NSDictionary *)responseData;
+//            NSArray *diayList        = [resultInfo objectForKey:@"results"];
+//            
+//            for (NSDictionary *diaryInfo in diayList) {
+//                
+//                RCDiaryData *data = [[RCDiaryData alloc] initDiatyDataWithNSDictionary:diaryInfo];
+//                [self.diaryDataArray addObject:data];
+//            }
+//            
+//            completionHandler(isSuccess, responseData);
+//        } else {
+//            
+//            completionHandler(isSuccess, nil);
+//        }
+//    }];
 }
 
 /* Diary info insert */
@@ -162,6 +132,7 @@
                                                                  options:0
                                                                    error:&error];
     completionHandler(YES, responseData);
+    
 }
 
 /* json data wirte */

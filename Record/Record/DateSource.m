@@ -15,6 +15,15 @@
     return [NSDate date];
 }
 
++ (NSString *)convertWithDate:(NSDate *)date format:(NSString *)format{
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateStyle:NSDateFormatterShortStyle];
+    [dateFormatter setDateFormat:format];
+    
+    return [dateFormatter stringFromDate:date];
+}
+
 + (NSString *)convertDateToString:(NSDate *)date {
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -47,26 +56,26 @@
     return formattedDate;
 }
 
-+ (NSComparisonResult)comparWithFromDate:(NSString *)fromDate withToDate:(NSString *)toDate {
++ (NSComparisonResult)comparWithFromDate:(NSDate *)fromDate withToDate:(NSDate *)toDate {
     
-    NSComparisonResult result = [[self convertStringToDate:fromDate] compare:[self convertStringToDate:toDate]];
+    NSComparisonResult result = [fromDate compare:toDate];
     
     return result;
 }
 
-+ (NSString *)calculateWithFromDate:(NSString *)fromDate withToDate:(NSString *)toDate {
++ (NSString *)calculateWithFromDate:(NSDate *)fromDate withToDate:(NSDate *)toDate {
     
     NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     
     /* from day - to day */
     NSDateComponents *components = [gregorianCalendar components:NSCalendarUnitDay
-                                                        fromDate:[self convertStringToDate:fromDate]
-                                                          toDate:[self convertStringToDate:toDate]
+                                                        fromDate:fromDate
+                                                          toDate:toDate
                                                          options:0];
     
     /* today - to day */
     NSDateComponents *components2 = [gregorianCalendar components:NSCalendarUnitDay
-                                                         fromDate:[self convertStringToDate:fromDate]
+                                                         fromDate:fromDate
                                                            toDate:[NSDate date]
                                                           options:0];
     

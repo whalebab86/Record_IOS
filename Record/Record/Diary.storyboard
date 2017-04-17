@@ -31,11 +31,6 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vmb-cx-aIs">
-                                <rect key="frame" x="40" y="188" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="226" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="o6i-Xe-jul">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                                 <color key="backgroundColor" red="0.13271617889404297" green="0.14825978875160217" blue="0.18977418541908264" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -45,12 +40,30 @@
                                     <outlet property="delegate" destination="GAj-ps-ltx" id="paN-bx-Twu"/>
                                 </connections>
                             </tableView>
+                            <searchBar contentMode="redraw" placeholder="diary name" showsSearchResultsButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W5T-fO-m32">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="cih-aw-cuI"/>
+                                </constraints>
+                                <color key="barTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
+                                <connections>
+                                    <outlet property="delegate" destination="GAj-ps-ltx" id="Qxu-26-de5"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="o6i-Xe-jul" firstAttribute="top" secondItem="xeL-CB-7d2" secondAttribute="bottom" id="0Pz-WX-Oxy"/>
                             <constraint firstAttribute="trailing" secondItem="o6i-Xe-jul" secondAttribute="trailing" id="5yc-pm-hJc"/>
+                            <constraint firstItem="o6i-Xe-jul" firstAttribute="top" secondItem="xeL-CB-7d2" secondAttribute="bottom" id="Hug-JV-MQH"/>
                             <constraint firstItem="f7r-HU-z09" firstAttribute="top" secondItem="o6i-Xe-jul" secondAttribute="bottom" id="Iqe-lC-w0w"/>
+                            <constraint firstItem="W5T-fO-m32" firstAttribute="top" secondItem="xeL-CB-7d2" secondAttribute="bottom" id="JvA-kb-WeW"/>
                             <constraint firstItem="o6i-Xe-jul" firstAttribute="leading" secondItem="1qS-1r-bP4" secondAttribute="leading" id="cJV-8f-FqV"/>
+                            <constraint firstItem="W5T-fO-m32" firstAttribute="leading" secondItem="1qS-1r-bP4" secondAttribute="leading" id="lqw-0D-T3V"/>
+                            <constraint firstAttribute="trailing" secondItem="W5T-fO-m32" secondAttribute="trailing" id="sfT-9n-xIQ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Record" id="VTM-vV-7Fk">
@@ -69,6 +82,7 @@
                     <connections>
                         <outlet property="diaryTableView" destination="o6i-Xe-jul" id="WRL-X3-hhf"/>
                         <segue destination="KjS-7X-gbo" kind="show" identifier="InDiaryListSegue" id="Qdo-Ab-1t7"/>
+                        <segue destination="zQf-H5-dsh" kind="show" identifier="DiaryDetailSegue" id="8ev-tb-87O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GUh-r1-QDs" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -102,7 +116,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Diary cover" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dhV-41-YiM">
-                                                <rect key="frame" x="125" y="11.5" width="70" height="18"/>
+                                                <rect key="frame" x="125" y="11" width="70" height="18"/>
                                                 <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="14"/>
                                                 <color key="textColor" red="0.46666666670000001" green="0.47450980390000003" blue="0.49019607840000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -160,7 +174,7 @@
                                         <rect key="frame" x="0.0" y="100" width="320" height="40"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Diary information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d5Q-hL-siW">
-                                                <rect key="frame" x="105" y="11.5" width="110" height="18"/>
+                                                <rect key="frame" x="105" y="11" width="110" height="18"/>
                                                 <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="14"/>
                                                 <color key="textColor" red="0.46666666666666667" green="0.47450980392156861" blue="0.49019607843137253" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -298,7 +312,7 @@
                                         <rect key="frame" x="0.0" y="290" width="320" height="40"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Private Setting" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VAV-Zj-s7V">
-                                                <rect key="frame" x="114" y="11.5" width="92" height="18"/>
+                                                <rect key="frame" x="114" y="11" width="92" height="18"/>
                                                 <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="14"/>
                                                 <color key="textColor" red="0.46666666670000001" green="0.47450980390000003" blue="0.49019607840000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -320,13 +334,13 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Who can view your diary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qtc-sP-FBO">
-                                                <rect key="frame" x="15" y="15.5" width="152.5" height="19"/>
+                                                <rect key="frame" x="15" y="16" width="152.5" height="19"/>
                                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="15"/>
                                                 <color key="textColor" red="0.77254901960784317" green="0.81568627450980391" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Only me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Rr-3h-EZY">
-                                                <rect key="frame" x="231" y="15.5" width="52" height="19"/>
+                                                <rect key="frame" x="231" y="16" width="52" height="19"/>
                                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="15"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -367,7 +381,7 @@
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3VA-DA-E4o">
-                                <rect key="frame" x="272" y="520" width="40" height="40"/>
+                                <rect key="frame" x="272" y="471" width="40" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y5l-uO-lst">
                                         <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
@@ -430,6 +444,7 @@
                         <outlet property="diaryStackViewTopConstraint" destination="74G-Bm-eV1" id="rD9-ZL-BOC"/>
                         <outlet property="diaryStartDateTextField" destination="vIe-3Q-h1X" id="yOu-ri-Iup"/>
                         <segue destination="afh-Ec-8OB" kind="unwind" identifier="InDiaryUnwindSegue" unwindAction="unwindSegue:" id="Bqh-n6-7Jv"/>
+                        <segue destination="afh-Ec-8OB" kind="unwind" identifier="InDiaryListUnwindSegue" unwindAction="unwindForInDiaryList:" id="yka-JM-KEw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jyh-xU-0Po" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -440,7 +455,7 @@
         <!--In Diary List View Controller-->
         <scene sceneID="c3L-Oa-ucB">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="KjS-7X-gbo" customClass="RCInDiaryListViewController" sceneMemberID="viewController">
+                <viewController autoresizesArchivedViewToFullSize="NO" automaticallyAdjustsScrollViewInsets="NO" id="KjS-7X-gbo" customClass="RCInDiaryListViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tBE-cJ-qZ5"/>
                         <viewControllerLayoutGuide type="bottom" id="Fhu-vd-9qZ"/>
@@ -449,14 +464,6 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="n5T-Bq-apX">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="KjS-7X-gbo" id="RWd-UY-JJ9"/>
-                                    <outlet property="delegate" destination="KjS-7X-gbo" id="Kxy-18-Vdx"/>
-                                </connections>
-                            </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZQQ-bh-T5K">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
                                 <subviews>
@@ -476,13 +483,21 @@
                                     <constraint firstItem="C9l-6c-Ii7" firstAttribute="centerY" secondItem="ZQQ-bh-T5K" secondAttribute="centerY" id="nxg-Ce-jxE"/>
                                 </constraints>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="n5T-Bq-apX">
+                                <rect key="frame" x="0.0" y="30" width="320" height="425"/>
+                                <color key="backgroundColor" red="0.16862745100000001" green="0.18823529410000001" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="KjS-7X-gbo" id="RWd-UY-JJ9"/>
+                                    <outlet property="delegate" destination="KjS-7X-gbo" id="Kxy-18-Vdx"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="n5T-Bq-apX" firstAttribute="leading" secondItem="LEI-PS-jqd" secondAttribute="leading" id="A7X-u1-XMz"/>
                             <constraint firstAttribute="trailing" secondItem="n5T-Bq-apX" secondAttribute="trailing" id="XOp-dQ-bYI"/>
+                            <constraint firstItem="n5T-Bq-apX" firstAttribute="top" secondItem="ZQQ-bh-T5K" secondAttribute="bottom" id="ceX-ew-hc7"/>
                             <constraint firstItem="ZQQ-bh-T5K" firstAttribute="top" secondItem="tBE-cJ-qZ5" secondAttribute="bottom" id="ghO-yh-4X5"/>
-                            <constraint firstItem="n5T-Bq-apX" firstAttribute="top" secondItem="tBE-cJ-qZ5" secondAttribute="bottom" id="jK4-fY-uxG"/>
                             <constraint firstItem="Fhu-vd-9qZ" firstAttribute="top" secondItem="n5T-Bq-apX" secondAttribute="bottom" id="qZm-g7-8Iv"/>
                             <constraint firstItem="ZQQ-bh-T5K" firstAttribute="width" secondItem="LEI-PS-jqd" secondAttribute="width" id="wGr-8Y-Lfx"/>
                             <constraint firstItem="ZQQ-bh-T5K" firstAttribute="leading" secondItem="LEI-PS-jqd" secondAttribute="leading" id="xoS-Q1-8I1"/>
@@ -506,7 +521,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hTH-RR-2nU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2126" y="112"/>
+            <point key="canvasLocation" x="2124.375" y="111.97183098591549"/>
         </scene>
         <!--In DIary-->
         <scene sceneID="vx8-mS-Trd">
@@ -1007,6 +1022,6 @@
         <image name="RC_write_icon" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1tf-94-1E7"/>
+        <segue reference="beJ-YV-Xsy"/>
     </inferredMetricsTieBreakers>
 </document>

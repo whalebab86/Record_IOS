@@ -107,7 +107,8 @@
 #pragma mark - Collection view Delegate
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    return [self.manager inDiaryNumberOfCoverItemsAtIndexPath:self.indexPath];
+//    return [self.manager inDiaryNumberOfCoverItemsAtIndexPath:self.indexPath];
+    return 0;
 }
 
 

@@ -10,18 +10,7 @@
 
 @interface RCInDiaryTableViewHeaderView ()
 
-@property (weak, nonatomic) IBOutlet UIImageView *coverProfieImageView;
-@property (weak, nonatomic) IBOutlet UILabel     *coverProfileNameLabel;
-@property (weak, nonatomic) IBOutlet UILabel     *coverDiaryTitleLabel;
-@property (weak, nonatomic) IBOutlet UILabel     *coverDiaryYearLabel;
-@property (weak, nonatomic) IBOutlet UILabel     *coverDiaryStatusLabel;
-
-@property (weak, nonatomic) IBOutlet UIView      *inDiaryMapView;
-
-@property (weak, nonatomic) IBOutlet UILabel     *infoDaysLabel;
-@property (weak, nonatomic) IBOutlet UILabel     *infoStepsLabel;
-
-@property (weak, nonatomic) IBOutlet UILabel     *bottomStartDayLabel;
+@property (weak, nonatomic) IBOutlet UIView *inDiaryTripStartView;
 
 @end
 
@@ -39,6 +28,12 @@
     
     [self.inDiaryMapView setClipsToBounds:YES];
     [self.inDiaryMapView addSubview:googleMapView];
+    
+    [self.inDiaryTripStartView.layer setCornerRadius:self.inDiaryTripStartView.frame.size.height/2];
+    [self.inDiaryTripStartView.layer setBorderColor:[UIColor whiteColor].CGColor];
+    [self.inDiaryTripStartView.layer setBorderWidth:1];
+    
+    [self.inDiaryTripStartView setClipsToBounds:YES];
 }
 
 - (IBAction)clickLocationMaskButton:(id)sender {

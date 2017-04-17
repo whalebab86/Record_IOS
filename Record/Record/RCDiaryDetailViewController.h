@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "RCDiaryData.h"
+#import "RCDiaryRealm.h"
 
 @interface RCDiaryDetailViewController : UIViewController
 
-@property (nonatomic) RCDiaryData *diaryData;
-@property (nonatomic) NSIndexPath *indexPath;
+
+@property (nonatomic) RCDiaryRealm *diaryRealm;
+@property (nonatomic) RCDiaryData  *diaryData;
+@property (nonatomic) NSIndexPath  *indexPath;
 
 @end

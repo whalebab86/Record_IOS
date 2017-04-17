@@ -16,28 +16,40 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="RCDiaryTableViewFooterView">
+        <view contentMode="scaleToFill" restorationIdentifier="RCInDiaryTableViewFooterView" id="iN0-l3-epB" customClass="RCDiaryTableViewFooterView">
             <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oq7-YR-m19" userLabel="Content View">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WeT-vB-vzX">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
-                            <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="20"/>
-                            <state key="normal" title="+ Create diary"/>
-                            <connections>
-                                <action selector="didClickButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="tah-Zg-Vzw"/>
-                            </connections>
-                        </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zOt-T1-QS1">
+                            <rect key="frame" x="5" y="5" width="365" height="55"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WeT-vB-vzX">
+                                    <rect key="frame" x="0.0" y="0.0" width="365" height="55"/>
+                                    <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="20"/>
+                                    <state key="normal" title="+ Create diary"/>
+                                    <connections>
+                                        <action selector="didClickButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="tah-Zg-Vzw"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="WeT-vB-vzX" secondAttribute="bottom" id="2GD-1N-b2L"/>
+                                <constraint firstItem="WeT-vB-vzX" firstAttribute="leading" secondItem="zOt-T1-QS1" secondAttribute="leading" id="4qf-3F-45h"/>
+                                <constraint firstAttribute="trailing" secondItem="WeT-vB-vzX" secondAttribute="trailing" id="AE5-Uk-bBl"/>
+                                <constraint firstItem="WeT-vB-vzX" firstAttribute="top" secondItem="zOt-T1-QS1" secondAttribute="top" id="CtB-0Z-4I5"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" red="0.13271617889404297" green="0.14825978875160217" blue="0.18977418541908264" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="WeT-vB-vzX" secondAttribute="bottom" id="9MS-cU-dTc"/>
-                        <constraint firstAttribute="trailing" secondItem="WeT-vB-vzX" secondAttribute="trailing" id="HwB-XL-4F6"/>
-                        <constraint firstItem="WeT-vB-vzX" firstAttribute="top" secondItem="oq7-YR-m19" secondAttribute="top" id="ctR-Ta-c5A"/>
-                        <constraint firstItem="WeT-vB-vzX" firstAttribute="leading" secondItem="oq7-YR-m19" secondAttribute="leading" id="wtK-2K-oaT"/>
+                        <constraint firstItem="zOt-T1-QS1" firstAttribute="top" secondItem="oq7-YR-m19" secondAttribute="top" constant="5" id="52M-bg-AVZ"/>
+                        <constraint firstAttribute="bottom" secondItem="zOt-T1-QS1" secondAttribute="bottom" constant="5" id="JQq-Gf-p8r"/>
+                        <constraint firstAttribute="trailing" secondItem="zOt-T1-QS1" secondAttribute="trailing" constant="5" id="WA8-Co-W2M"/>
+                        <constraint firstItem="zOt-T1-QS1" firstAttribute="leading" secondItem="oq7-YR-m19" secondAttribute="leading" constant="5" id="adE-q9-v5I"/>
                     </constraints>
                 </view>
             </subviews>
@@ -49,6 +61,9 @@
                 <constraint firstItem="oq7-YR-m19" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="mgY-gd-XGC"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="diaryFooterButtonView" destination="zOt-T1-QS1" id="u1t-CS-xFb"/>
+            </connections>
         </view>
     </objects>
 </document>

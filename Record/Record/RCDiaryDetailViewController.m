@@ -15,6 +15,7 @@
 #import "DateSource.h"
 
 /* library import */
+#import <Realm.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 
 typedef NS_ENUM(NSInteger, RCDiaryStatusMode) {
@@ -50,6 +51,7 @@ typedef NS_ENUM(NSInteger, RCDiaryStatusMode) {
 
 @property (nonatomic) NSDate *diaryStartDate;
 @property (nonatomic) NSDate *diaryEndDate;
+@property (nonatomic) NSData *diaryCoverImg;
 
 
 @property (nonatomic, weak) UIDatePicker *diaryDatePicker;
@@ -63,17 +65,23 @@ typedef NS_ENUM(NSInteger, RCDiaryStatusMode) {
     
     // Do any additional setup after loading the view.
     
-    if(self.diaryData == nil) {
-        
-        /* page status insert */
+    if(self.diaryRealm == nil) {
+//    if(self.diaryData == nil) {
+    
         self.diaryModifyMode = RCDiaryStatusModeInsert;
+        
+        self.diaryRealm = [[RCDiaryRealm alloc] init];
+        
+        self.diaryCoverImg = UIImagePNGRepresentation([UIImage imageNamed:@"RCSignInUpTopImage"]);
+        /* page status insert
         self.diaryData = [[RCDiaryData alloc] init];
         
         [self.diaryDeleteView setHidden:YES];
+         */
     } else {
         
-        /* page status update */
         self.diaryModifyMode = RCDiaryStatusModeUpdate;
+        /* page status update
         
         self.diaryNameTextField.text      = self.diaryData.diaryName;
         self.diaryStartDateTextField.text = self.diaryData.diaryStartDate;
@@ -81,8 +89,16 @@ typedef NS_ENUM(NSInteger, RCDiaryStatusMode) {
         
         [self.diaryCoverImageView sd_setImageWithURL:[NSURL URLWithString:self.diaryData.diaryCoverImageUrl]
                                     placeholderImage:[UIImage imageNamed:@"RCSignInUpTopImage"]];
+         */
         
+        self.diaryCoverImageView.image    = [UIImage imageWithData:self.diaryRealm.diaryCoverImage];
+        self.diaryNameTextField.text      = self.diaryRealm.diaryName;
+        self.diaryStartDateTextField.text = [DateSource convertWithDate:self.diaryRealm.diaryStartDate format:@"yyyy-MM-dd"];
+        self.diaryEndDateTextField.text   = [DateSource convertWithDate:self.diaryRealm.diaryEndDate   format:@"yyyy-MM-dd"];
         
+        self.diaryStartDate = self.diaryRealm.diaryStartDate;
+        self.diaryEndDate   = self.diaryRealm.diaryEndDate;
+        self.diaryCoverImg  = self.diaryRealm.diaryCoverImage;
     }
     
     /* diary cover imageview custom */
@@ -176,6 +192,9 @@ typedef NS_ENUM(NSInteger, RCDiaryStatusMode) {
     }
     
     self.diaryCoverImageView.image = takenImage;
+    
+//    self.diaryCoverImg = UIImagePNGRepresentation(takenImage);
+    self.diaryCoverImg = UIImageJPEGRepresentation(takenImage, 0.6);
     
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
@@ -340,43 +359,75 @@ typedef NS_ENUM(NSInteger, RCDiaryStatusMode) {
         return;
     };
     
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    
     if(self.diaryModifyMode == RCDiaryStatusModeInsert) {
         /* page insert mode */
         
-        [[RCDiaryManager diaryManager] insertDiaryItemwithDiaryObject:self.diaryData];
-        
-        [[RCDiaryManager diaryManager] requestDiaryInsertWithCompletionHandler:^(BOOL isSuccess, id responseData) {
+        [realm transactionWithBlock:^{
             
-            if(isSuccess) {
-                
-                dispatch_async(dispatch_get_main_queue(), ^{
-                   [self dismissViewControllerAnimated:YES completion:nil];
-                });
-            } else {
-                
-                NSLog(@"fail");
-            }
+            self.diaryRealm.diaryPk         = [DateSource convertWithDate:[NSDate date] format:@"yyyyMMddHHmmssSSSS"];
+            self.diaryRealm.diaryName       = self.diaryNameTextField.text;
+            self.diaryRealm.diaryStartDate  = self.diaryStartDate;
+            self.diaryRealm.diaryEndDate    = self.diaryEndDate;
+            self.diaryRealm.diaryCoverImage = self.diaryCoverImg;
+            self.diaryRealm.diaryCreateDate = [NSDate date];
+            [realm addOrUpdateObject:self.diaryRealm];
+            
+            [self.view endEditing:YES];
+            [self dismissViewControllerAnimated:YES completion:nil];
         }];
+        
+//        [[RCDiaryManager diaryManager] insertDiaryItemwithDiaryObject:self.diaryData];
+//        
+//        [[RCDiaryManager diaryManager] requestDiaryInsertWithCompletionHandler:^(BOOL isSuccess, id responseData) {
+//            
+//            if(isSuccess) {
+//                
+//                dispatch_async(dispatch_get_main_queue(), ^{
+//                   [self dismissViewControllerAnimated:YES completion:nil];
+//                });
+//            } else {
+//                
+//                NSLog(@"fail");
+//            }
+//        }];
         
     } else if(self.diaryModifyMode == RCDiaryStatusModeUpdate) {
         /* page update mode */
         
-        [[RCDiaryManager diaryManager] updateDiaryItemAtIndexPaths:self.indexPath withDiaryObject:self.diaryData];
+        [self.view endEditing:YES];
         
-        [[RCDiaryManager diaryManager] requestDiaryUpdateWithCompletionHandler:^(BOOL isSuccess, id responseData) {
+        [realm transactionWithBlock:^{
             
-            if(isSuccess) {
-                
-                dispatch_async(dispatch_get_main_queue(), ^{
-//                    [self.navigationController popViewControllerAnimated:YES];
-                    
-                    [self performSegueWithIdentifier:@"InDiaryUnwindSegue" sender:self];
-                });
-            } else {
-                
-                NSLog(@"fail");
-            }
+            self.diaryRealm.diaryCoverImage = self.diaryCoverImg;
+            
+            self.diaryRealm.diaryName      = self.diaryNameTextField.text;
+            self.diaryRealm.diaryStartDate = self.diaryStartDate;
+            self.diaryRealm.diaryEndDate   = self.diaryEndDate;
+            
+            [realm addOrUpdateObject:self.diaryRealm];
+            
+//            [self dismissViewControllerAnimated:YES completion:nil];
+            [self performSegueWithIdentifier:@"InDiaryListUnwindSegue" sender:self];
         }];
+        
+//        [[RCDiaryManager diaryManager] updateDiaryItemAtIndexPaths:self.indexPath withDiaryObject:self.diaryData];
+//        
+//        [[RCDiaryManager diaryManager] requestDiaryUpdateWithCompletionHandler:^(BOOL isSuccess, id responseData) {
+//            
+//            if(isSuccess) {
+//                
+//                dispatch_async(dispatch_get_main_queue(), ^{
+////                    [self.navigationController popViewControllerAnimated:YES];
+//                    
+//                    [self performSegueWithIdentifier:@"InDiaryUnwindSegue" sender:self];
+//                });
+//            } else {
+//                
+//                NSLog(@"fail");
+//            }
+//        }];
     }
 }
 
@@ -413,20 +464,32 @@ typedef NS_ENUM(NSInteger, RCDiaryStatusMode) {
 
 - (IBAction)clickDiaryDeleteButton:(UIButton *)sender {
     
-    [[RCDiaryManager diaryManager] deleteDiaryItemAtIndexPaths:self.indexPath];
+    RLMRealm *realm = [RLMRealm defaultRealm];
     
-    [[RCDiaryManager diaryManager] requestDiaryDeleteWithCompletionHandler:^(BOOL isSuccess, id responseData) {
+    [realm transactionWithBlock:^{
         
-        if(isSuccess) {
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.navigationController popViewControllerAnimated:YES];
-            });
-        } else {
-            
-            NSLog(@"fail");
-        }
+        [realm deleteObject:self.diaryRealm];
+        //[realm addOrUpdateObject:self.diaryRealm];
+        
+        [self.view endEditing:YES];
+//        [self dismissViewControllerAnimated:YES completion:nil];
+        [self performSegueWithIdentifier:@"InDiaryUnwindSegue" sender:self];
     }];
+    
+//    [[RCDiaryManager diaryManager] deleteDiaryItemAtIndexPaths:self.indexPath];
+//    
+//    [[RCDiaryManager diaryManager] requestDiaryDeleteWithCompletionHandler:^(BOOL isSuccess, id responseData) {
+//        
+//        if(isSuccess) {
+//            
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                [self.navigationController popViewControllerAnimated:YES];
+//            });
+//        } else {
+//            
+//            NSLog(@"fail");
+//        }
+//    }];
     
 }
 
@@ -438,12 +501,19 @@ typedef NS_ENUM(NSInteger, RCDiaryStatusMode) {
     if(self.diaryStartDateTextField.isFirstResponder) {
         
         self.diaryStartDateTextField.text = [DateSource convertDateToString:self.diaryKeyboardDatePicker.date];
+        self.diaryStartDate = self.diaryKeyboardDatePicker.date;
+        
+//        self.diaryRealm.diaryStartDate = self.diaryKeyboardDatePicker.date;
+        
         if(result) [self.diaryStartDateTextField resignFirstResponder];
         //        if(result)  [self.diaryEndDateTextField becomeFirstResponder];
         
     } else if(self.diaryEndDateTextField.isFirstResponder) {
         
         self.diaryEndDateTextField.text = [DateSource convertDateToString:self.diaryKeyboardDatePicker.date];
+        self.diaryEndDate   = self.diaryKeyboardDatePicker.date;
+//        self.diaryRealm.diaryEndDate = self.diaryKeyboardDatePicker.date;
+        
         if(result) [self.diaryEndDateTextField resignFirstResponder];
         
         //        if(result)  [self.diaryEndDateTextField resignFirstResponder];
@@ -456,8 +526,8 @@ typedef NS_ENUM(NSInteger, RCDiaryStatusMode) {
     NSString *msg = @"";
     BOOL result = NO;
     
-    NSComparisonResult dateCompareResult = [DateSource comparWithFromDate:self.diaryStartDateTextField.text
-                                                               withToDate:self.diaryEndDateTextField.text];
+    NSComparisonResult dateCompareResult = [DateSource comparWithFromDate:self.diaryStartDate
+                                                               withToDate:self.diaryEndDate];
     
     /* 공백 제거 */
     NSString *diaryName = [self.diaryNameTextField.text
@@ -482,11 +552,11 @@ typedef NS_ENUM(NSInteger, RCDiaryStatusMode) {
     
     if(result) {
         
-        self.diaryData.diaryName          = self.diaryNameTextField.text;
-        self.diaryData.diaryStartDate     = self.diaryStartDateTextField.text;
-        self.diaryData.diaryEndDate       = self.diaryEndDateTextField.text;
-        self.diaryData.diaryCoverImageUrl = @"";
-        self.diaryData.inDiaryCount       = 0;
+//        self.diaryData.diaryName          = self.diaryNameTextField.text;
+//        self.diaryData.diaryStartDate     = self.diaryStartDateTextField.text;
+//        self.diaryData.diaryEndDate       = self.diaryEndDateTextField.text;
+//        self.diaryData.diaryCoverImageUrl = @"";
+//        self.diaryData.inDiaryCount       = 0;
         
     } else {
         

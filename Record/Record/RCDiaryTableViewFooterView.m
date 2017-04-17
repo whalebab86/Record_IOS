@@ -8,7 +8,24 @@
 
 #import "RCDiaryTableViewFooterView.h"
 
+@interface RCDiaryTableViewFooterView ()
+
+@property (weak, nonatomic) IBOutlet UIView *diaryFooterButtonView;
+
+@end
+
 @implementation RCDiaryTableViewFooterView
+
+- (void)awakeFromNib {
+    
+    [super awakeFromNib];
+    
+    [self.diaryFooterButtonView.layer setCornerRadius:2.5];
+    [self.diaryFooterButtonView.layer setBorderWidth:1];
+    [self.diaryFooterButtonView.layer setBorderColor:[UIColor whiteColor].CGColor];
+    
+    [self.diaryFooterButtonView setClipsToBounds:YES];
+}
 
 - (IBAction)didClickButton:(UIButton *)sender {
     

@@ -24,43 +24,47 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" restorationIdentifier="RCInDiaryTableViewHeaderView" id="iN0-l3-epB" userLabel="In Diary Table View Header View" customClass="RCInDiaryTableViewHeaderView">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="801"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="726"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0jn-0q-dNr" userLabel="Content view">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="801"/>
+                <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0jn-0q-dNr" userLabel="Content view">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="726"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yks-gL-ecV" userLabel="Diary cover view">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RCSplashBGImage" translatesAutoresizingMaskIntoConstraints="NO" id="4RP-M8-2Ac">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RCSplashBGImage" translatesAutoresizingMaskIntoConstraints="NO" id="4RP-M8-2Ac">
                                     <rect key="frame" x="-0.5" y="0.0" width="375" height="300"/>
                                 </imageView>
+                                <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GRL-9M-vOK">
+                                    <rect key="frame" x="-0.5" y="0.0" width="375" height="300"/>
+                                    <color key="backgroundColor" red="0.16862745100000001" green="0.18823529410000001" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8KO-9l-OoB">
                                     <rect key="frame" x="0.0" y="150" width="375" height="150"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RC_friends_icon" translatesAutoresizingMaskIntoConstraints="NO" id="MV0-Li-Ajh">
-                                            <rect key="frame" x="20" y="27" width="20" height="20"/>
+                                            <rect key="frame" x="20" y="30" width="20" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="20" id="KQB-Ae-dtE"/>
                                                 <constraint firstAttribute="width" constant="20" id="T5B-gf-i1J"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="봉기 조" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Lw-gZ-3lh">
-                                            <rect key="frame" x="48" y="29" width="36.5" height="16.5"/>
+                                            <rect key="frame" x="48" y="32.5" width="37.5" height="15.5"/>
                                             <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="13"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tcl-Qf-wrL">
-                                            <rect key="frame" x="20" y="51" width="20" height="2"/>
+                                            <rect key="frame" x="20" y="54" width="20" height="2"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="2" id="eH6-jv-Yy3"/>
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Diary title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4xN-Pi-aua">
-                                            <rect key="frame" x="20" y="57" width="132.5" height="38"/>
+                                            <rect key="frame" x="20" y="60" width="126" height="35"/>
                                             <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="30"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
@@ -123,12 +127,16 @@
                             <color key="backgroundColor" red="0.7725490196" green="0.81568627449999997" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstItem="4RP-M8-2Ac" firstAttribute="width" secondItem="yks-gL-ecV" secondAttribute="width" id="4En-KM-ckU"/>
+                                <constraint firstItem="GRL-9M-vOK" firstAttribute="centerY" secondItem="4RP-M8-2Ac" secondAttribute="centerY" id="800-KC-9lc"/>
                                 <constraint firstItem="8KO-9l-OoB" firstAttribute="width" secondItem="yks-gL-ecV" secondAttribute="width" id="Gqg-UM-Ck5"/>
                                 <constraint firstAttribute="width" secondItem="yks-gL-ecV" secondAttribute="height" multiplier="1:0.8" id="LjM-gu-ozt"/>
+                                <constraint firstItem="GRL-9M-vOK" firstAttribute="height" secondItem="4RP-M8-2Ac" secondAttribute="height" id="OgT-ZN-xJf"/>
                                 <constraint firstItem="8KO-9l-OoB" firstAttribute="leading" secondItem="yks-gL-ecV" secondAttribute="leading" id="TXf-RE-NKr"/>
                                 <constraint firstAttribute="bottom" secondItem="8KO-9l-OoB" secondAttribute="bottom" id="WGm-eT-J7o"/>
                                 <constraint firstItem="4RP-M8-2Ac" firstAttribute="centerY" secondItem="yks-gL-ecV" secondAttribute="centerY" id="dpc-dP-BkY"/>
+                                <constraint firstItem="GRL-9M-vOK" firstAttribute="centerX" secondItem="4RP-M8-2Ac" secondAttribute="centerX" id="hxP-VN-xr0"/>
                                 <constraint firstItem="4RP-M8-2Ac" firstAttribute="height" secondItem="yks-gL-ecV" secondAttribute="height" id="k6x-yn-DwD"/>
+                                <constraint firstItem="GRL-9M-vOK" firstAttribute="width" secondItem="4RP-M8-2Ac" secondAttribute="width" id="nJ8-R1-5h1"/>
                                 <constraint firstItem="4RP-M8-2Ac" firstAttribute="centerX" secondItem="yks-gL-ecV" secondAttribute="centerX" id="ove-yu-7fc"/>
                             </constraints>
                         </view>
@@ -176,7 +184,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JBe-UO-0t8">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JBe-UO-0t8">
                                                     <rect key="frame" x="0.0" y="16.5" width="125" height="11"/>
                                                     <fontDescription key="fontDescription" name="SourceSansPro-Semibold" family="Source Sans Pro" pointSize="14"/>
                                                     <nil key="textColor"/>
@@ -205,7 +213,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ggY-4R-fD0">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ggY-4R-fD0">
                                                     <rect key="frame" x="0.0" y="16.5" width="125" height="11"/>
                                                     <fontDescription key="fontDescription" name="SourceSansPro-Semibold" family="Source Sans Pro" pointSize="14"/>
                                                     <nil key="textColor"/>
@@ -268,13 +276,13 @@
                             <rect key="frame" x="0.0" y="660" width="375" height="65"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0dJ-CE-nIl">
-                                    <rect key="frame" x="20" y="15" width="35" height="35"/>
+                                    <rect key="frame" x="22.5" y="15" width="35" height="35"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RCSplashBGImage" translatesAutoresizingMaskIntoConstraints="NO" id="M6u-pN-hmS">
                                             <rect key="frame" x="-0.5" y="-0.5" width="35" height="35"/>
                                         </imageView>
                                     </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" red="0.16862745100000001" green="0.18823529410000001" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="35" id="GcG-RB-pgR"/>
                                         <constraint firstItem="M6u-pN-hmS" firstAttribute="width" secondItem="0dJ-CE-nIl" secondAttribute="width" id="NK7-IZ-5Wn"/>
@@ -285,31 +293,31 @@
                                     </constraints>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trip started" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ByJ-L9-6Rb">
-                                    <rect key="frame" x="70" y="15" width="84.5" height="21.5"/>
+                                    <rect key="frame" x="72.5" y="15" width="86" height="20"/>
                                     <fontDescription key="fontDescription" name="SourceSansPro-Semibold" family="Source Sans Pro" pointSize="17"/>
-                                    <nil key="textColor"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017년 Feb 28일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DTI-Dy-diW">
-                                    <rect key="frame" x="70" y="33.5" width="104.5" height="17"/>
+                                    <rect key="frame" x="72.5" y="33.5" width="104.5" height="17"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" red="0.7725490196" green="0.81568627449999997" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.16862745100000001" green="0.18823529410000001" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstItem="DTI-Dy-diW" firstAttribute="bottom" secondItem="0dJ-CE-nIl" secondAttribute="bottom" id="DNp-SX-9tf"/>
                                 <constraint firstItem="DTI-Dy-diW" firstAttribute="leading" secondItem="ByJ-L9-6Rb" secondAttribute="leading" id="KTf-fY-UYr"/>
                                 <constraint firstAttribute="height" constant="65" id="PgD-M4-3kv"/>
-                                <constraint firstItem="0dJ-CE-nIl" firstAttribute="leading" secondItem="Brk-Cm-wbp" secondAttribute="leading" constant="20" id="gTn-o9-RYv"/>
+                                <constraint firstItem="0dJ-CE-nIl" firstAttribute="leading" secondItem="Brk-Cm-wbp" secondAttribute="leading" constant="22.5" id="gTn-o9-RYv"/>
                                 <constraint firstItem="ByJ-L9-6Rb" firstAttribute="leading" secondItem="0dJ-CE-nIl" secondAttribute="trailing" constant="15" id="mjT-cd-3Xk"/>
                                 <constraint firstItem="ByJ-L9-6Rb" firstAttribute="top" secondItem="0dJ-CE-nIl" secondAttribute="top" id="njs-ef-aE2"/>
                                 <constraint firstAttribute="bottom" secondItem="0dJ-CE-nIl" secondAttribute="bottom" constant="15" id="tcy-kf-cY8"/>
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="FBh-k9-Z5j" firstAttribute="width" secondItem="0jn-0q-dNr" secondAttribute="width" id="1Uu-eC-Hea"/>
                         <constraint firstItem="yks-gL-ecV" firstAttribute="top" secondItem="0jn-0q-dNr" secondAttribute="top" id="8Xn-wt-mUf"/>
@@ -337,15 +345,19 @@
             <connections>
                 <outlet property="bottomStartDayLabel" destination="DTI-Dy-diW" id="ESv-gV-ThC"/>
                 <outlet property="coverDiaryStatusLabel" destination="mHm-zi-hy5" id="pNY-OW-RDk"/>
+                <outlet property="coverDiaryStatusView" destination="JgK-gH-9hx" id="Ab2-9L-C7p"/>
                 <outlet property="coverDiaryTitleLabel" destination="4xN-Pi-aua" id="e1e-UO-tDx"/>
                 <outlet property="coverDiaryYearLabel" destination="SPK-Xf-kH7" id="CIz-lE-MTW"/>
                 <outlet property="coverProfieImageView" destination="MV0-Li-Ajh" id="42S-GR-QnF"/>
                 <outlet property="coverProfileNameLabel" destination="2Lw-gZ-3lh" id="dgk-m8-LCi"/>
+                <outlet property="diaryCoverImageView" destination="4RP-M8-2Ac" id="kW9-B1-7e4"/>
                 <outlet property="inDiaryMapView" destination="S9n-8l-tol" id="31L-XS-nRj"/>
+                <outlet property="inDiaryTripStartView" destination="0dJ-CE-nIl" id="hGx-4s-hNt"/>
+                <outlet property="infoCountryLabel" destination="JBe-UO-0t8" id="bGU-3N-tkW"/>
                 <outlet property="infoDaysLabel" destination="umM-Ty-Od9" id="tcb-8t-9SH"/>
                 <outlet property="infoStepsLabel" destination="ggY-4R-fD0" id="f9E-iH-fAQ"/>
             </connections>
-            <point key="canvasLocation" x="17.5" y="147.5"/>
+            <point key="canvasLocation" x="17.5" y="110"/>
         </view>
     </objects>
     <resources>

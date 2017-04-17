@@ -96,8 +96,8 @@ QBImagePickerControllerDelegate>
     
     
     
-    if(self.inDiaryData == nil) {
-        
+//    if(self.inDiaryData == nil) {
+    if(self.inDiaryPk == nil) {
         /* page status insert */
         self.inDiaryStatusMode = RCInDiaryStatusModeInsert;
         self.inDiaryDatePicker.date = [NSDate date];
