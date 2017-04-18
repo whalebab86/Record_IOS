@@ -45,4 +45,6 @@ typedef  void (^SuccessStateBlock) (BOOL isSucceess, NSInteger code);
 
 - (void)checkValidTokenWithComplition:(SuccessStateBlock)complition;
 
+- (void)uploadProfileImageWithUIImage:(UIImage *)image complition:(SuccessStateBlock)complition;
+
 @end

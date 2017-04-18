@@ -10,6 +10,7 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <Photos/Photos.h>
 #import "RCProfileViewController.h"
+#import "RCLoginManager.h"
 @import GooglePlaces;
 @import GooglePlacePicker;
 
@@ -226,6 +227,7 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
     self.profileImage.image = image;
+    
     [picker dismissViewControllerAnimated:YES completion:nil];
     
     NSURL *referenceURL = [info objectForKey:UIImagePickerControllerReferenceURL];
@@ -250,6 +252,12 @@
     NSLog(@"saveBarButtonAction");
     [self.view endEditing:YES];
     self.mainScrollView.contentOffset = CGPointMake(0, 0);
+    
+    [[RCLoginManager loginManager] uploadProfileImageWithUIImage:self.profileImage.image complition:^(BOOL isSucceess, NSInteger code) {
+        if (isSucceess) {
+            
+        }
+    }];
     
 }
 
