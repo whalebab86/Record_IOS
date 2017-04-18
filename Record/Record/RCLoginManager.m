@@ -18,6 +18,7 @@
 @property (nonatomic) AFHTTPRequestSerializer *serializer;
 @property (nonatomic) AFHTTPSessionManager *manager;
 @property (nonatomic) KeychainItemWrapper *keyChainWrapperInLoginManager;
+@property (nonatomic) NSString *profileImageURL;
 
 @end
 
@@ -44,43 +45,43 @@
     return self;
 }
 
-#pragma mark - upload task modul in sign in and sign up, etc
-- (void)uploadTaskModulWithAPI:(NSString *)api
-            requestMethod:(NSString *)method
-           inputParameter:(NSDictionary *)parameters
-            setStatusCode:(NSArray *)codeArray
-                complition:(SuccessStateBlock)complition {
-    
-    NSString *urlString = [_RECORD_ADDRESS stringByAppendingString:api];
-    
-    NSURLRequest *request = [self.serializer requestWithMethod:method
-                                                     URLString:urlString
-                                                    parameters:parameters
-                                                         error:nil];
-    
-    self.dataTask = [self.manager uploadTaskWithStreamedRequest:request
-                                                       progress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
-                                                           NSHTTPURLResponse *httpRespose = (NSHTTPURLResponse *)response;
-                                                           if (error) {
-                                                               NSLog(@"Email login NSError %@  statusCode %ld, responseObject %@", error, httpRespose.statusCode, responseObject);
-                                                               complition(NO, httpRespose.statusCode);
-                                                           } else {
-                                                               if (httpRespose.statusCode == [codeArray[0] integerValue]) {
-                                                                   NSLog(@"statusCode %ld, responseObject %@", httpRespose.statusCode, responseObject);
-                                                                   NSLog(@"login success");
-                                                                   [self insertUserInfoWithToken:[responseObject objectForKey:_RECORD_ACCESSTOKEN_KEY]];
-                                                                   complition(YES, httpRespose.statusCode);
-                                                               } else if (httpRespose.statusCode == [codeArray[1] integerValue]) {
-                                                                   NSLog(@"statusCode %ld, responseObject %@", httpRespose.statusCode, responseObject);
-                                                                   complition(NO, httpRespose.statusCode);
-                                                               } else {
-                                                                   NSLog(@"statusCode %ld, responseObject %@", httpRespose.statusCode, responseObject);
-                                                                   complition(NO, httpRespose.statusCode);
-                                                               }
-                                                           }
-                                                       }];
-    [self.dataTask resume];
-}
+//#pragma mark - upload task modul in sign in and sign up, etc
+//- (void)uploadTaskModulWithAPI:(NSString *)api
+//            requestMethod:(NSString *)method
+//           inputParameter:(NSDictionary *)parameters
+//            setStatusCode:(NSArray *)codeArray
+//                complition:(SuccessStateBlock)complition {
+//    
+//    NSString *urlString = [_RECORD_ADDRESS stringByAppendingString:api];
+//    
+//    NSURLRequest *request = [self.serializer requestWithMethod:method
+//                                                     URLString:urlString
+//                                                    parameters:parameters
+//                                                         error:nil];
+//    
+//    self.dataTask = [self.manager uploadTaskWithStreamedRequest:request
+//                                                       progress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+//                                                           NSHTTPURLResponse *httpRespose = (NSHTTPURLResponse *)response;
+//                                                           if (error) {
+//                                                               NSLog(@"Email login NSError %@  statusCode %ld, responseObject %@", error, httpRespose.statusCode, responseObject);
+//                                                               complition(NO, httpRespose.statusCode);
+//                                                           } else {
+//                                                               if (httpRespose.statusCode == [codeArray[0] integerValue]) {
+//                                                                   NSLog(@"statusCode %ld, responseObject %@", httpRespose.statusCode, responseObject);
+//                                                                   NSLog(@"login success");
+//                                                                   [self insertUserInfoWithToken:[responseObject objectForKey:_RECORD_ACCESSTOKEN_KEY]];
+//                                                                   complition(YES, httpRespose.statusCode);
+//                                                               } else if (httpRespose.statusCode == [codeArray[1] integerValue]) {
+//                                                                   NSLog(@"statusCode %ld, responseObject %@", httpRespose.statusCode, responseObject);
+//                                                                   complition(NO, httpRespose.statusCode);
+//                                                               } else {
+//                                                                   NSLog(@"statusCode %ld, responseObject %@", httpRespose.statusCode, responseObject);
+//                                                                   complition(NO, httpRespose.statusCode);
+//                                                               }
+//                                                           }
+//                                                       }];
+//    [self.dataTask resume];
+//}
 
 #pragma mark - Google Login Method
 /* recived user info from google and return status code */
@@ -90,7 +91,14 @@
     NSDictionary *parameters = @{_RECORD_SIGNUP_NAME_KEY:user.profile.email,
                                  _RECORD_SIGNUP_NICKNAME_KEY:@"",
                                  _RECORD_SIGNUP_USER_TYPE_KEY:_RECORD_SIGNUP_USER_TYPE_GOOGLE};
-    [self uploadTaskModulWithAPI:_RECORD_SIGNUP_API requestMethod:_RECORD_REQUEST_METHOD_POST inputParameter:parameters setStatusCode:@[@"201", @"400"] complition:complition];
+    
+    NSString *urlString = [_RECORD_ADDRESS stringByAppendingString:_RECORD_SIGNUP_API];
+    [self.manager POST:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [self insertUserInfoWithToken:[responseObject objectForKey:_RECORD_ACCESSTOKEN_KEY]];
+        complition(YES, ((NSHTTPURLResponse *)task.response).statusCode);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        complition(NO, ((NSHTTPURLResponse *)task.response).statusCode);
+    }];
     
 //    NSLog(@"user.userID %@", user.userID);
 //    // Safe to send to the server
@@ -160,8 +168,13 @@
                                          _RECORD_SIGNUP_NICKNAME_KEY:[result objectForKey:@"name"],
                                          _RECORD_SIGNUP_USER_TYPE_KEY:_RECORD_SIGNUP_USER_TYPE_FACEBOOK};
             
-            [self uploadTaskModulWithAPI:_RECORD_SIGNUP_API requestMethod:_RECORD_REQUEST_METHOD_POST inputParameter:parameters setStatusCode:@[@"201",@"400"] complition:complition];
-            
+            NSString *urlString = [_RECORD_ADDRESS stringByAppendingString:_RECORD_SIGNUP_API];
+            [self.manager POST:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                [self insertUserInfoWithToken:[responseObject objectForKey:_RECORD_ACCESSTOKEN_KEY]];
+                complition(YES, ((NSHTTPURLResponse *)task.response).statusCode);
+            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                complition(NO, ((NSHTTPURLResponse *)task.response).statusCode);
+            }];
 //
 //            if ([result objectForKey:@"name"]) {
 //                NSLog(@"First Name : %@",[result objectForKey:@"name"]);
@@ -184,7 +197,14 @@
     NSDictionary *parameters = @{@"username":email,
                                  @"password":password};
     
-    [self uploadTaskModulWithAPI:_RECORD_SIGNIN_API requestMethod:_RECORD_REQUEST_METHOD_POST inputParameter:parameters setStatusCode:@[@"200",@"401"] complition:complition];
+    NSString *urlString = [_RECORD_ADDRESS stringByAppendingString:_RECORD_SIGNIN_API];
+    [self.manager POST:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [self insertUserInfoWithToken:[responseObject objectForKey:_RECORD_ACCESSTOKEN_KEY]];
+        complition(YES, ((NSHTTPURLResponse *)task.response).statusCode);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        complition(NO, ((NSHTTPURLResponse *)task.response).statusCode);
+    }];
+
 }
 
 #pragma mark - Eamil Sign up Method
@@ -199,9 +219,14 @@
                                 _RECORD_SIGNUP_NICKNAME_KEY:nickName,
                                 _RECORD_SIGNUP_USER_TYPE_KEY:_RECORD_SIGNUP_USER_TYPE_NORMAL};
     
-    [self uploadTaskModulWithAPI:_RECORD_SIGNUP_API requestMethod:_RECORD_REQUEST_METHOD_POST inputParameter:parameters setStatusCode:@[@"201",@"400"] complition:complition];
-    
-   }
+    NSString *urlString = [_RECORD_ADDRESS stringByAppendingString:_RECORD_SIGNUP_API];
+    [self.manager POST:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [self insertUserInfoWithToken:[responseObject objectForKey:_RECORD_ACCESSTOKEN_KEY]];
+        complition(YES, ((NSHTTPURLResponse *)task.response).statusCode);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        complition(NO, ((NSHTTPURLResponse *)task.response).statusCode);
+    }];
+}
 
 
 #pragma mark - logout method
@@ -209,42 +234,16 @@
 - (void)logoutWithComplition:(SuccessStateBlock)complition {
     
     NSString *urlString = [_RECORD_ADDRESS stringByAppendingString:_RECORD_LOGOUT_API];
-    NSString *logoutToken;
-    if (self.serverAccessKey == nil) {
-        logoutToken = @"Token ";
-    } else {
-        logoutToken = [@"Token " stringByAppendingString:self.serverAccessKey];
-    }
     
-    NSDictionary *parameters = @{_RECORD_LOGOUT_PARAMETER_KEY:logoutToken};
+    self.manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
-    NSURLRequest *request = [self.serializer requestWithMethod:@"POST"
-                                                     URLString:urlString
-                                                    parameters:parameters
-                                                         error:nil];
-    
-    self.dataTask = [self.manager uploadTaskWithStreamedRequest:request
-                                                       progress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
-                                                           NSHTTPURLResponse *httpRespose = (NSHTTPURLResponse *)response;
-                                                           if (error) {
-                                                               NSLog(@"error not nil & Email login NSError %@", error);
-                                                               complition(NO, httpRespose.statusCode);
-                                                           } else {
-                                                               
-                                                               if (httpRespose.statusCode == 200) {
-                                                                   NSLog(@"error nil & Code == 200 %@", responseObject);
-                                                                   [self delectUserInfoToken];
-                                                                   complition(YES, httpRespose.statusCode);
-                                                               } else if (httpRespose.statusCode == 401) {
-                                                                   NSLog(@"error nil & Code == 400 responseObject %@", responseObject);
-                                                                   complition(NO, httpRespose.statusCode);
-                                                               } else {
-                                                                   NSLog(@"error nil & statusCode %ld, responseObject %@", httpRespose.statusCode, responseObject);
-                                                                   complition(NO, httpRespose.statusCode);
-                                                               }
-                                                           }
-                                                       }];
-    [self.dataTask resume];
+    [self.manager.requestSerializer setValue:[@"Token " stringByAppendingString:[self.keyChainWrapperInLoginManager objectForKey:(__bridge id)kSecValueData]] forHTTPHeaderField:_RECORD_LOGOUT_PARAMETER_KEY];
+    [self.manager POST:urlString parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [self delectUserInfoToken];
+        complition(YES, ((NSHTTPURLResponse *)task.response).statusCode);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        complition(NO, ((NSHTTPURLResponse *)task.response).statusCode);
+    }];
     
 }
 
@@ -277,36 +276,23 @@
 - (void)uploadProfileImageWithUIImage:(UIImage *)image complition:(SuccessStateBlock)complition {
     
     NSString *urlString = [_RECORD_ADDRESS stringByAppendingString:_RECORD_PROFILECHANGE_API];
-    NSDictionary *parameters = @{_RECORD_PROFILECHANGE_PARAMETER_KEY:[@"Token " stringByAppendingString:self.serverAccessKey]};
+    NSData *profileImageData = UIImageJPEGRepresentation(image, 0.1f);
     
-    NSURLRequest *request = [self.serializer requestWithMethod:@"POST"
-                                                     URLString:urlString
-                                                    parameters:parameters
-                                                         error:nil];
-
-    NSData *profileImageData = UIImagePNGRepresentation(image);
-    self.dataTask = [self.manager uploadTaskWithRequest:request fromData:profileImageData progress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
-        NSHTTPURLResponse *httpRespose = (NSHTTPURLResponse *)response;
-        if (error) {
-            NSLog(@"error not nil & Email login NSError %@", error);
-            complition(NO, httpRespose.statusCode);
-        } else {
-            
-            if (httpRespose.statusCode == 201) {
-                NSLog(@"error nil & Code == 200 %@", responseObject);
-                [self delectUserInfoToken];
-                complition(YES, httpRespose.statusCode);
-            } else if (httpRespose.statusCode == 400) {
-                NSLog(@"error nil & Code == 400 responseObject %@", responseObject);
-                complition(NO, httpRespose.statusCode);
-            } else {
-                NSLog(@"error nil & statusCode %ld, responseObject %@", httpRespose.statusCode, responseObject);
-                complition(NO, httpRespose.statusCode);
-            }
-        }
+    self.manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [self.manager.requestSerializer setValue:[@"Token " stringByAppendingString:[self.keyChainWrapperInLoginManager objectForKey:(__bridge id)kSecValueData]] forHTTPHeaderField:_RECORD_PROFILECHANGE_PARAMETER_KEY];
+   
+    [self.manager POST:urlString parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        [formData appendPartWithFileData:profileImageData name:@"photo" fileName:@"profile.jpg" mimeType:@"image/jpeg"];
+        
+    } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+//        self.profileImageURL = [[responseObject objectForKey:@"user"] objectForKey:@"profile_img"];
+        [[NSUserDefaults standardUserDefaults] setValue:[[responseObject objectForKey:@"user"] objectForKey:@"profile_img"] forKey:@"profileImage"];
+        complition(YES, ((NSHTTPURLResponse *)task.response).statusCode);
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        complition(NO, ((NSHTTPURLResponse *)task.response).statusCode);
     }];
 
-    [self.dataTask resume];
 }
 
 #pragma mark - valid check token
@@ -317,37 +303,20 @@
 
     NSString *urlString = [_RECORD_ADDRESS stringByAppendingString:_RECORD_CHECK_VALID_TOKEN_API];
     
-    NSURLRequest *request = [self.serializer requestWithMethod:@"POST"
-                                                     URLString:urlString
-                                                    parameters:parameters
-                                                         error:nil];
-    
-    self.dataTask = [self.manager uploadTaskWithStreamedRequest:request
-                                                       progress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
-                                                           NSHTTPURLResponse *httpRespose = (NSHTTPURLResponse *)response;
-                                                           if (error) {
-                                                               NSLog(@"error not nil & Email login NSError %@", error);
-                                                               [self delectUserInfoToken];
-                                                               complition(NO, httpRespose.statusCode);
-                                                           } else {
-                                                               
-                                                               if (httpRespose.statusCode == 200) {
-                                                                   NSLog(@"error nil & Code == 200 %@", responseObject);
-                                                                   [self copyUserInfoTokenIntoLoginManager];
-                                                                   complition(YES, httpRespose.statusCode);
-                                                               } else if (httpRespose.statusCode == 401) {
-                                                                   NSLog(@"error nil & Code == 400 responseObject %@", responseObject);
-                                                                   [self delectUserInfoToken];
-                                                                   complition(NO, httpRespose.statusCode);
-                                                               } else {
-                                                                   NSLog(@"error nil & statusCode %ld, responseObject %@", httpRespose.statusCode, responseObject);
-                                                                   [self delectUserInfoToken];
-                                                                   complition(NO, httpRespose.statusCode);
-                                                               }
-                                                           }
-                                                       }];
-    [self.dataTask resume];
+    [self.manager POST:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [self copyUserInfoTokenIntoLoginManager];
+        complition(YES, ((NSHTTPURLResponse *)task.response).statusCode);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [self delectUserInfoToken];
+        complition(NO, ((NSHTTPURLResponse *)task.response).statusCode);
+    }];
+
 }
 
+#pragma mark - photo URL
+
+- (NSString *)photoURL {
+    return [[NSUserDefaults standardUserDefaults] objectForKey:@"profile_img"];
+}
 
 @end
