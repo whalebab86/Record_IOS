@@ -10,6 +10,7 @@
 
 /* library import */
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "DateSource.h"
 
 @interface RCInDiaryLocationView ()
 <GMSMapViewDelegate>
@@ -23,6 +24,8 @@
 
 @property (nonatomic) BOOL isChangeAnimation;
 
+@property (nonatomic) RCDiaryManager *manager;
+
 @end
 
 @implementation RCInDiaryLocationView
@@ -30,6 +33,8 @@
 - (void)awakeFromNib {
     
     [super awakeFromNib];
+    
+    self.manager = [RCDiaryManager diaryManager];
     
     self.googleMarkerArray = [[NSMutableArray alloc] init];
     
@@ -55,16 +60,21 @@
     GMSMapView *mapView = [GMSMapView mapWithFrame:CGRectZero camera:camera];
     self.googleMapView = mapView;
     
+    [mapView setMinZoom:1 maxZoom:18];
+    
     [self.googleMapView setDelegate:self];
 
     GMSMutablePath *path = [GMSMutablePath path];
     self.googlePath = path;
 
-    NSMutableArray *inDiaryArray = [[RCDiaryManager diaryManager] inDiaryAllData];
+//    NSMutableArray *inDiaryArray = [[RCDiaryManager diaryManager] inDiaryAllData];
+    
+//    NSMutableArray *inDiaryArray = self.inDiaryResults;
     
     GMSMarker *marker;
     
-    for (RCInDiaryData* data in inDiaryArray) {
+//    [self.googleMarkerArray removeAllObjects];
+    for (RCInDiaryRealm* data in self.manager.inDiaryResults) {
         
         marker = [self drawMarkerViewWithInDiary:data];
         marker.groundAnchor = CGPointMake(0.5, 0.5);
@@ -82,9 +92,10 @@
     [self addSubview:mapView];
 }
 
-- (GMSMarker *)drawMarkerViewWithInDiary:(RCInDiaryData *) data {
+- (GMSMarker *)drawMarkerViewWithInDiary:(RCInDiaryRealm *) data {
     
-    CLLocationCoordinate2D position = CLLocationCoordinate2DMake([data.inDiarylongitude doubleValue], [data.inDiaryLatitude doubleValue]);
+    CLLocationCoordinate2D position = CLLocationCoordinate2DMake([data.inDiaryLocationLatitude doubleValue],
+                                                                 [data.inDiaryLocationLongitude doubleValue]);
     
     [self.googlePath addCoordinate:position];
     
@@ -101,13 +112,14 @@
     [markerView setBackgroundColor:[UIColor blackColor]];
     [markerView setClipsToBounds:YES];
     
-    [marker setTitle:data.inDiaryWriteDate];
+    [marker setTitle:[DateSource convertWithDate:data.inDiaryReportingDate format:@"yyyy-MM-dd"]];
     
     UIImageView *markerImageView = [[UIImageView alloc] initWithFrame:markerView.bounds];
     [markerView addSubview:markerImageView];
     
     marker.tracksViewChanges = NO;
     
+    /*
     if([data.inDiaryCoverImgUrl count] > 0) {
  
         marker.tracksViewChanges = YES;
@@ -123,6 +135,9 @@
         
         [markerImageView setImage:[UIImage imageNamed:@"RecordLogoWithoutWord"]];
     }
+     */
+    
+    [markerImageView setImage:[UIImage imageNamed:@"RecordLogoWithoutWord"]];
     
     marker.iconView = markerView;
     
@@ -163,15 +178,15 @@
             maxLongitude = marker.position.longitude;
         } else {
             
-            if(minLatitude < marker.position.latitude) {
+            if(minLatitude > marker.position.latitude) {
                 minLatitude = marker.position.latitude;
-            } else if(minLatitude > marker.position.latitude) {
+            } else if(maxLatitude < marker.position.latitude) {
                 maxLatitude = marker.position.latitude;
             }
             
-            if(minLongitude < marker.position.longitude) {
+            if(minLongitude > marker.position.longitude) {
                 minLongitude = marker.position.longitude;
-            } else if(maxLongitude > marker.position.longitude) {
+            } else if(maxLongitude < marker.position.longitude) {
                 maxLongitude = marker.position.longitude;
             }
         }
@@ -182,6 +197,7 @@
     
     GMSCoordinateBounds *bounds = [[GMSCoordinateBounds alloc] initWithCoordinate:vancouver coordinate:calgary];
     GMSCameraPosition *camera = [self.googleMapView cameraForBounds:bounds insets:UIEdgeInsetsMake(40, 40, 40, 40)];
+    
     
     [CATransaction begin];
     [CATransaction setValue:[NSNumber numberWithFloat: 1.0f] forKey:kCATransactionAnimationDuration];
@@ -199,7 +215,7 @@
         
         [self.delegate googleMapViewDidLoad:mapView];
         
-        self.isChangeAnimation = NO;
+//        self.isChangeAnimation = NO;
     }
 }
 

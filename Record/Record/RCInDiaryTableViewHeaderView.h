@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "RCInDiaryLocationView.h"
+
 @protocol RCInDiaryTableViewHeaderDelegate <NSObject>
 
 - (void)showInDiaryLocationView;
@@ -35,5 +37,7 @@
 @property (weak, nonatomic) IBOutlet UILabel     *infoStepsLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel     *bottomStartDayLabel;
+
+@property (weak, nonatomic) RCInDiaryLocationView *googleMapView;
 
 @end

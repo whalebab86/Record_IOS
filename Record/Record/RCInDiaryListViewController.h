@@ -15,4 +15,6 @@
 @property (nonatomic) RCDiaryData    *diaryData;
 @property (nonatomic) RCDiaryRealm   *diaryRealm;
 
+@property (nonatomic) NSIndexPath    *indexPath;
+
 @end

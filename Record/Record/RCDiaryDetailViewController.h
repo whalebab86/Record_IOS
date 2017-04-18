@@ -12,9 +12,9 @@
 
 @interface RCDiaryDetailViewController : UIViewController
 
-
-@property (nonatomic) RCDiaryRealm *diaryRealm;
 @property (nonatomic) RCDiaryData  *diaryData;
 @property (nonatomic) NSIndexPath  *indexPath;
+
+@property (nonatomic) RCDiaryRealm *diaryRealm;
 
 @end

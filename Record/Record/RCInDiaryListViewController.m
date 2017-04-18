@@ -38,17 +38,30 @@
 
 @property (nonatomic) RCDiaryManager *manager;
 
-@property NSIndexPath *indexPath;
-
 @end
 
 @implementation RCInDiaryListViewController
 
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
+    
+    self.diaryRealm = [self.manager.diaryResults objectAtIndex:self.indexPath.row];
+    
+    self.inDiaryResults = [self.diaryRealm.inDiaryArray sortedResultsUsingKeyPath:@"inDiaryReportingDate" ascending:NO];
+    
+    [self.inDiaryListTableView reloadData];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.inDiaryResults = [RCInDiaryRealm allObjects];
+    self.manager = [RCDiaryManager diaryManager];
     
+    self.diaryRealm = [self.manager.diaryResults objectAtIndex:self.indexPath.row];
+    
+    self.inDiaryResults = [self.diaryRealm.inDiaryArray sortedResultsUsingKeyPath:@"inDiaryReportingDate" ascending:NO];
+
     // Do any additional setup after loading the view.
     UINib *headerViewNib = [UINib nibWithNibName:@"RCInDiaryTableViewHeaderView" bundle:nil];
     [self.inDiaryListTableView registerNib:headerViewNib
@@ -98,7 +111,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    self.indexPath = indexPath;
+//    self.indexPath = indexPath;
     
 //    RCInDiaryData *inDiaryData = [self.manager inDiaryDataAtIndexPath:indexPath];
     RCInDiaryRealm *inDiartRealm = [self.inDiaryResults objectAtIndex:indexPath.row];
@@ -117,6 +130,12 @@
     /* collection view item custom */
     CGFloat collectionViewSize = cell.inDiaryImageCollectionView.frame.size.width;
     
+    [cell.inDiaryEmptyImageView setHidden:NO];
+    
+    cell.inDiaryImageCollectionViewFlowLayout.itemSize = CGSizeMake(collectionViewSize, collectionViewSize * 0.6);
+    cell.inDiaryImageCollectionViewFlowLayout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    
+    /*
     if([self.manager inDiaryNumberOfCoverItemsAtIndexPath:self.indexPath] == 0) {
         [cell.inDiaryEmptyImageView setHidden:NO];
         
@@ -134,6 +153,7 @@
         cell.inDiaryImageCollectionViewFlowLayout.itemSize = CGSizeMake(collectionViewSize-20, collectionViewSize * 0.6);
         cell.inDiaryImageCollectionViewFlowLayout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 20);
     }
+     */
     
     [cell setDelegate:self];
 
@@ -153,33 +173,39 @@
     
     RCInDiaryTableViewHeaderView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"RCInDiaryTableViewHeaderView"];
     
-    headerView.diaryCoverImageView.image = [UIImage imageWithData:self.diaryRealm.diaryCoverImage];
-    headerView.coverDiaryTitleLabel.text = self.diaryRealm.diaryName;
-    headerView.coverDiaryYearLabel.text  = [DateSource convertWithDate:self.diaryRealm.diaryStartDate
-                                                                format:@"YYYY"];
-    headerView.infoDaysLabel.text        = [DateSource calculateWithFromDate:self.diaryRealm.diaryStartDate
-                                                                  withToDate:self.diaryRealm.diaryEndDate];
-    headerView.bottomStartDayLabel.text  = [DateSource convertWithDate:self.diaryRealm.diaryStartDate
-                                                                format:@"YYYY년 MM월 dd일"];
-    
-    NSComparisonResult dateCompareResult = [DateSource comparWithFromDate:self.diaryRealm.diaryEndDate
-                                                               withToDate:[NSDate date]];
-    
-    if(dateCompareResult == NSOrderedDescending) {
-        [headerView.coverDiaryStatusView setBackgroundColor:[UIColor colorWithRed:255/255.0f
-                                                                            green:106/255.0f
-                                                                             blue:58/255.0f
-                                                                            alpha:1]];
-        headerView.coverDiaryStatusLabel.text = @"NOW TRAVELING";
-    } else {
-        [headerView.coverDiaryStatusView setBackgroundColor:[UIColor colorWithRed:43/255.0f
-                                                                            green:48/255.0f
-                                                                             blue:59/255.0f
-                                                                            alpha:1]];
+    if(self.diaryRealm != nil) {
+        headerView.diaryCoverImageView.image = [UIImage imageWithData:self.diaryRealm.diaryCoverImage];
+        headerView.coverDiaryTitleLabel.text = self.diaryRealm.diaryName;
+        headerView.coverDiaryYearLabel.text  = [DateSource convertWithDate:self.diaryRealm.diaryStartDate
+                                                                    format:@"YYYY"];
+        headerView.infoDaysLabel.text        = [DateSource calculateWithFromDate:self.diaryRealm.diaryStartDate
+                                                                      withToDate:self.diaryRealm.diaryEndDate];
+        headerView.bottomStartDayLabel.text  = [DateSource convertWithDate:self.diaryRealm.diaryStartDate
+                                                                    format:@"YYYY년 MM월 dd일"];
         
-        headerView.coverDiaryStatusLabel.text = @"END TRAVELING";
+        NSComparisonResult dateCompareResult = [DateSource comparWithFromDate:self.diaryRealm.diaryEndDate
+                                                                   withToDate:[NSDate date]];
+        
+        if(dateCompareResult == NSOrderedDescending) {
+            [headerView.coverDiaryStatusView setBackgroundColor:[UIColor colorWithRed:255/255.0f
+                                                                                green:106/255.0f
+                                                                                 blue:58/255.0f
+                                                                                alpha:1]];
+            headerView.coverDiaryStatusLabel.text = @"NOW TRAVELING";
+        } else {
+            [headerView.coverDiaryStatusView setBackgroundColor:[UIColor colorWithRed:43/255.0f
+                                                                                green:48/255.0f
+                                                                                 blue:59/255.0f
+                                                                                alpha:1]];
+            
+            headerView.coverDiaryStatusLabel.text = @"END TRAVELING";
+        }
+        
+//        headerView.googleMapView.inDiaryResults = self.inDiaryResults;
     }
-
+    
+//    [headerView.googleMapView showGoogleMap];
+    
     [headerView setDelegate:self];
     
     return headerView;
@@ -241,6 +267,13 @@
 }
 
 #pragma mark - Custom button click method
+- (IBAction)clickCancelBarButton:(UIBarButtonItem *)sender {
+    
+    [self.inDiaryListTableView removeFromSuperview];
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (IBAction)clickInDiaryOptionBarButtonItem:(UIBarButtonItem *)sender {
     
     UIAlertController *optionAlert = [UIAlertController alertControllerWithTitle:nil
@@ -287,27 +320,33 @@
         
     } else if([segue.identifier isEqualToString:@"InDiaryDetailSegue"]) {
         
-        if(sender != nil) {
-            RCInDiaryData *diaryData = [[RCDiaryManager diaryManager] inDiaryDataAtIndexPath:(NSIndexPath*)sender];
+//        if(sender != nil) {
+//            RCInDiaryData *diaryData = [[RCDiaryManager diaryManager] inDiaryDataAtIndexPath:(NSIndexPath*)sender];
             
             UINavigationController *navigationVC = [segue destinationViewController];
             RCInDiaryDetailViewController *inDiaryDetailVC = (RCInDiaryDetailViewController *)navigationVC.topViewController;
             
-            inDiaryDetailVC.inDiaryData = diaryData;
-            inDiaryDetailVC.indexPath   = (NSIndexPath*)sender;
+            inDiaryDetailVC.diaryIndexPath = self.indexPath;
+            inDiaryDetailVC.indexPath      = (NSIndexPath*)sender;
             
-            inDiaryDetailVC.diaryRealm  = self.diaryRealm;
+//            inDiaryDetailVC.inDiaryData = diaryData;
+            
+//            inDiaryDetailVC.diaryRealm  = self.diaryRealm;
 //            inDiaryDetailVC.diaryPk     = self.diaryRealm.diaryPk;
-        }
+            
+//        }
         
     } else if([segue.identifier isEqualToString:@"InDiaryLocationSegue"]) {
         
         if(sender != nil) {
-            RCInDiaryData *diaryData = [[RCDiaryManager diaryManager] inDiaryDataAtIndexPath:(NSIndexPath*)sender];
+            
+//            self.manager.in
+            
+            //RCInDiaryData *diaryData = [[RCDiaryManager diaryManager] inDiaryDataAtIndexPath:(NSIndexPath*)sender];
             
             RCInDiaryLocationViewController *locationVC = [segue destinationViewController];
             
-            locationVC.inDiaryData = diaryData;
+//            locationVC.inDiaryData = diaryData;
             locationVC.indexPath   = (NSIndexPath*)sender;
         }
         

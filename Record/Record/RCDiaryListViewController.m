@@ -34,7 +34,8 @@
 
 @property (nonatomic) NSMutableArray *diaryListArray;
 
-@property (nonatomic) RLMResults<RCDiaryRealm *>   *diaryResults;
+@property (nonatomic) RCDiaryManager *manager;
+//@property (nonatomic) RLMResults<RCDiaryRealm *>   *diaryResults;
 
 @end
 
@@ -44,8 +45,6 @@
     
     [super viewWillAppear:animated];
     
-    self.diaryResults = [[RCDiaryRealm allObjects] sortedResultsUsingKeyPath:@"diaryStartDate"
-                                                                   ascending:YES];
     [self.diaryTableView reloadData];
 }
 
@@ -54,27 +53,31 @@
     // Do any additional setup after loading the view.
     
     /* isReset YES 일 경우 Realm 파일 삭제 */
-    BOOL isReset = YES;
-    if(isReset) {
-        NSFileManager *manager = [NSFileManager defaultManager];
-        RLMRealmConfiguration *config = [RLMRealmConfiguration defaultConfiguration];
-        NSArray<NSURL *> *realmFileURLs = @[
-                                            config.fileURL,
-                                            [config.fileURL URLByAppendingPathExtension:@"lock"],
-                                            [config.fileURL URLByAppendingPathExtension:@"note"],
-                                            [config.fileURL URLByAppendingPathExtension:@"management"]
-                                            ];
-        for (NSURL *URL in realmFileURLs) {
+    BOOL isReset = NO;
+    
+    NSFileManager *manager = [NSFileManager defaultManager];
+    RLMRealmConfiguration *config = [RLMRealmConfiguration defaultConfiguration];
+    NSArray<NSURL *> *realmFileURLs = @[
+                                        config.fileURL,
+                                        [config.fileURL URLByAppendingPathExtension:@"lock"],
+                                        [config.fileURL URLByAppendingPathExtension:@"note"],
+                                        [config.fileURL URLByAppendingPathExtension:@"management"]
+                                        ];
+    for (NSURL *URL in realmFileURLs) {
 
-            NSLog(@"%@", URL);
-            NSError *error = nil;
+        NSLog(@"%@", URL);
+        NSError *error = nil;
+        if(isReset) {
             [manager removeItemAtURL:URL error:&error];
             if (error) {
                 // handle error
             }
+        } else {
+            NSLog(@"%@", URL);
         }
-
     }
+    
+    self.manager = [RCDiaryManager diaryManager];
     
     /* Table view custom cell - xib */
     UINib *cellNib = [UINib nibWithNibName:@"RCDiaryListCustomTableViewCell" bundle:nil];
@@ -103,7 +106,7 @@
 /* Tableview numberOfRowsInSection */
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return [self.diaryResults count];
+    return [self.manager.diaryResults count];
 }
 
 
@@ -113,7 +116,7 @@
     RCDiaryListCustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RCDiaryListCustomTableViewCell"
                                                                            forIndexPath:indexPath];
     
-    RCDiaryRealm *diaryData = [self.diaryResults objectAtIndex:indexPath.row];
+    RCDiaryRealm *diaryData = [self.manager.diaryResults objectAtIndex:indexPath.row];
     
     cell.diaryMainImageView.image  = [UIImage imageWithData:diaryData.diaryCoverImage];
     
@@ -205,7 +208,7 @@
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     
     NSString *searchKeywork = [NSString stringWithFormat:@"diaryName CONTAINS[c] '%@'", searchBar.text];
-    self.diaryResults = [[RCDiaryRealm allObjects] objectsWhere:searchKeywork];
+    self.manager.diaryResults = [[RCDiaryRealm allObjects] objectsWhere:searchKeywork];
     
     [self.diaryTableView reloadData];
     
@@ -221,15 +224,18 @@
         
         RCDiaryDetailViewController *diaryDetailVC = ((RCDiaryDetailViewController *)diaryNaviVC.topViewController);
         
-        RCDiaryRealm *diaryRealm = [self.diaryResults objectAtIndex:((NSIndexPath *)sender).row];
+        RCDiaryRealm *diaryRealm = [self.manager.diaryResults objectAtIndex:((NSIndexPath *)sender).row];
         diaryDetailVC.diaryRealm = diaryRealm;
         
     } else if([segue.identifier isEqualToString:@"InDiaryListSegue"]) {
         
         RCInDiaryListViewController *inDiaryListVC = [segue destinationViewController];
         
-        RCDiaryRealm *diaryRealm   = [self.diaryResults objectAtIndex:((NSIndexPath *)sender).row];
-        inDiaryListVC.diaryRealm   = diaryRealm;
+        inDiaryListVC.indexPath   = (NSIndexPath *)sender;
+        
+        self.manager.inDiaryResults = [self.manager.diaryResults objectAtIndex:((NSIndexPath *)sender).row].inDiaryArray;
+//        RCDiaryRealm *diaryRealm  = [self.manager.diaryResults objectAtIndex:((NSIndexPath *)sender).row];
+//        inDiaryListVC.diaryRealm   = diaryRealm;
     }
 }
 
@@ -243,6 +249,8 @@
 - (IBAction)unwindSegue:(UIStoryboardSegue *)sender {
     
     NSLog(@"unwindSegue");
+    
+//    [[sender sourceViewController] remove];
     
     // 데이터 변경 완료 시점
     // 조회 or 변경된 데이터를 이 화면에 적용

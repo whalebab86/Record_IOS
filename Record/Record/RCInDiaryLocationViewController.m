@@ -47,7 +47,7 @@
     
     if(self.inDiaryData != nil) {
         
-        [self.googleMapView googleMapCameraChangedAtIndex:self.indexPath whtiData:self.inDiaryData];
+//        [self.googleMapView googleMapCameraChangedAtIndex:self.indexPath whtiData:self.inDiaryData];
         
     } else {
         

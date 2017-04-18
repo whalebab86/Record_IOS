@@ -9,12 +9,18 @@
 #import <Foundation/Foundation.h>
 
 #import "RCDiaryData.h"
+#import "RCDiaryRealm.h"
 
 typedef void (^NetworkTaskHandler)(BOOL isSuccess, id responseData);
 
 @interface RCDiaryManager : NSObject
 
 + (instancetype)diaryManager;
+
+@property (nonatomic) RLMRealm *realm;
+@property (nonatomic) RLMResults<RCDiaryRealm *>   *diaryResults;
+
+@property (nonatomic) RLMArray<RCInDiaryRealm *>   *inDiaryResults;
 
 /* Request diary list */
 - (void)requestDiaryListWithCompletionHandler:(NetworkTaskHandler)completionHandler;

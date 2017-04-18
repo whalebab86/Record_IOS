@@ -10,8 +10,6 @@
 #import <AFNetworking.h>
 #import <Realm/Realm.h>
 
-#import "RCDiaryRealm.h"
-
 @interface RCDiaryManager ()
 
 @property (nonatomic) AFURLSessionManager *sessionManager;
@@ -51,6 +49,11 @@
         
         self.inDiaryInfo      = [[NSMutableDictionary alloc] init];
         
+        /* Realm list */
+        self.realm            = [RLMRealm defaultRealm];
+        
+        self.diaryResults     = [[RCDiaryRealm allObjects] sortedResultsUsingKeyPath:@"diaryStartDate"
+                                                                           ascending:YES];
     }
     return self;
 }

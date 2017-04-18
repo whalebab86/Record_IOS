@@ -22,6 +22,10 @@
 
 @property (nonatomic) id<RCInDiaryLocationDelegate> delegate;
 
+@property (nonatomic) RLMArray<RCInDiaryRealm *>   *inDiaryResults;
+
+- (void)showGoogleMap;
+
 - (void)googleMapCameraChangedAtIndex:(NSIndexPath *)indexPath whtiData:(RCInDiaryData *)data;
 - (void)googleMapCameraChangedDefault;
 

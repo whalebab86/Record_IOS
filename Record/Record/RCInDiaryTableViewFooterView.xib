@@ -29,17 +29,17 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UvZ-4Y-cU6">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                             <subviews>
-                                <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xWq-rn-hS2" userLabel="add view">
-                                    <rect key="frame" x="65" y="4.5" width="300" height="70"/>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xWq-rn-hS2" userLabel="add view">
+                                    <rect key="frame" x="60" y="12" width="305" height="55"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="add your in diary story" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eMd-2M-2AX">
-                                            <rect key="frame" x="15" y="24" width="169" height="21.5"/>
+                                            <rect key="frame" x="15" y="17" width="169" height="21.5"/>
                                             <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" red="0.29803921568627451" green="0.29803921568627451" blue="0.29803921568627451" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstItem="eMd-2M-2AX" firstAttribute="leading" secondItem="xWq-rn-hS2" secondAttribute="leading" constant="15" id="YVQ-Tt-BZ7"/>
                                         <constraint firstItem="eMd-2M-2AX" firstAttribute="centerY" secondItem="xWq-rn-hS2" secondAttribute="centerY" id="eH0-fB-dS2"/>
@@ -53,14 +53,14 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nhx-Lp-4Pk">
-                                    <rect key="frame" x="10" y="10" width="60" height="60"/>
+                                    <rect key="frame" x="15" y="15" width="50" height="50"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cd1-zz-KwS">
-                                            <rect key="frame" x="3" y="3" width="54" height="54"/>
+                                            <rect key="frame" x="3" y="3" width="44" height="44"/>
                                             <color key="backgroundColor" red="0.13271617890000001" green="0.14825978879999999" blue="0.18977418539999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RbY-Mx-4r5">
-                                            <rect key="frame" x="26.5" y="19.5" width="9" height="21.5"/>
+                                            <rect key="frame" x="21" y="15" width="9" height="21.5"/>
                                             <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
@@ -71,8 +71,8 @@
                                         <constraint firstItem="RbY-Mx-4r5" firstAttribute="centerX" secondItem="cd1-zz-KwS" secondAttribute="centerX" id="F4s-tx-tAC"/>
                                         <constraint firstItem="cd1-zz-KwS" firstAttribute="height" secondItem="nhx-Lp-4Pk" secondAttribute="height" constant="-6" id="LvA-sC-fTq"/>
                                         <constraint firstItem="cd1-zz-KwS" firstAttribute="width" secondItem="nhx-Lp-4Pk" secondAttribute="width" constant="-6" id="Sih-rH-77p"/>
-                                        <constraint firstAttribute="height" constant="60" id="e2T-Og-OMF"/>
-                                        <constraint firstAttribute="width" constant="60" id="gyT-YD-CFJ"/>
+                                        <constraint firstAttribute="height" constant="50" id="e2T-Og-OMF"/>
+                                        <constraint firstAttribute="width" constant="50" id="gyT-YD-CFJ"/>
                                         <constraint firstItem="RbY-Mx-4r5" firstAttribute="centerY" secondItem="cd1-zz-KwS" secondAttribute="centerY" id="rbf-eA-9Pb"/>
                                         <constraint firstItem="cd1-zz-KwS" firstAttribute="centerY" secondItem="nhx-Lp-4Pk" secondAttribute="centerY" id="tqJ-UY-Pb4"/>
                                         <constraint firstItem="cd1-zz-KwS" firstAttribute="centerX" secondItem="nhx-Lp-4Pk" secondAttribute="centerX" id="ywO-6Z-JKQ"/>
@@ -85,7 +85,7 @@
                                     </connections>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" red="0.16862745100000001" green="0.18823529410000001" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.1333333333" green="0.14901960780000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstItem="nhx-Lp-4Pk" firstAttribute="centerY" secondItem="UvZ-4Y-cU6" secondAttribute="centerY" id="4Ou-qf-Jr0"/>
                                 <constraint firstItem="ZbU-bF-xch" firstAttribute="centerY" secondItem="UvZ-4Y-cU6" secondAttribute="centerY" id="5Ua-ug-ET0"/>
@@ -93,7 +93,7 @@
                                 <constraint firstItem="xWq-rn-hS2" firstAttribute="leading" secondItem="nhx-Lp-4Pk" secondAttribute="trailing" constant="-5" id="Rbv-My-joE"/>
                                 <constraint firstItem="ZbU-bF-xch" firstAttribute="centerX" secondItem="UvZ-4Y-cU6" secondAttribute="centerX" id="UF1-3b-dDg"/>
                                 <constraint firstItem="ZbU-bF-xch" firstAttribute="width" secondItem="UvZ-4Y-cU6" secondAttribute="width" id="eb2-U9-tzi"/>
-                                <constraint firstItem="xWq-rn-hS2" firstAttribute="height" secondItem="UvZ-4Y-cU6" secondAttribute="height" constant="-10" id="hLi-JQ-zLr"/>
+                                <constraint firstItem="xWq-rn-hS2" firstAttribute="height" secondItem="UvZ-4Y-cU6" secondAttribute="height" constant="-25" id="hLi-JQ-zLr"/>
                                 <constraint firstAttribute="trailing" secondItem="xWq-rn-hS2" secondAttribute="trailing" constant="10" id="j45-9A-80B"/>
                                 <constraint firstItem="lwI-rH-G9s" firstAttribute="leading" secondItem="UvZ-4Y-cU6" secondAttribute="leading" constant="39" id="jR6-Ba-WJ1"/>
                                 <constraint firstItem="lwI-rH-G9s" firstAttribute="height" secondItem="UvZ-4Y-cU6" secondAttribute="height" constant="-2" id="oYS-zZ-u1L"/>

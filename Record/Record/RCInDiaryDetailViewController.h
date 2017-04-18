@@ -12,13 +12,18 @@
 
 @interface RCInDiaryDetailViewController : UIViewController
 
-@property (nonatomic) RCInDiaryData *inDiaryData;
-@property (nonatomic) NSIndexPath   *indexPath;
+@property (nonatomic) RCInDiaryData  *inDiaryData;
 
-@property (nonatomic) RCDiaryRealm  *diaryRealm;
+@property (nonatomic) NSIndexPath    *diaryIndexPath;
+@property (nonatomic) NSIndexPath    *indexPath;
 
-@property (nonatomic) NSString      *diaryPk;
-@property (nonatomic) NSString      *inDiaryPk;
+@property (nonatomic) RCDiaryRealm   *diaryRealm;
+
+@property (nonatomic) RCInDiaryRealm *inDiaryRealm;
+@property (nonatomic) RLMResults<RCInDiaryRealm *>   *inDiaryResults;
+
+@property (nonatomic) NSString       *diaryPk;
+@property (nonatomic) NSString       *inDiaryPk;
 
 @end
 

@@ -44,27 +44,27 @@
                                     <rect key="frame" x="0.0" y="150" width="375" height="150"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RC_friends_icon" translatesAutoresizingMaskIntoConstraints="NO" id="MV0-Li-Ajh">
-                                            <rect key="frame" x="20" y="30" width="20" height="20"/>
+                                            <rect key="frame" x="20" y="27" width="20" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="20" id="KQB-Ae-dtE"/>
                                                 <constraint firstAttribute="width" constant="20" id="T5B-gf-i1J"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="봉기 조" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Lw-gZ-3lh">
-                                            <rect key="frame" x="48" y="32.5" width="37.5" height="15.5"/>
+                                            <rect key="frame" x="48" y="29" width="36.5" height="16.5"/>
                                             <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="13"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tcl-Qf-wrL">
-                                            <rect key="frame" x="20" y="54" width="20" height="2"/>
+                                            <rect key="frame" x="20" y="51" width="20" height="2"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="2" id="eH6-jv-Yy3"/>
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Diary title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4xN-Pi-aua">
-                                            <rect key="frame" x="20" y="60" width="126" height="35"/>
+                                            <rect key="frame" x="20" y="57" width="132.5" height="38"/>
                                             <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="30"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
@@ -158,13 +158,13 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="36/51" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="umM-Ty-Od9">
                                                     <rect key="frame" x="0.0" y="16.5" width="125" height="11"/>
                                                     <fontDescription key="fontDescription" name="SourceSansPro-Semibold" family="Source Sans Pro" pointSize="14"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DAYS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MIM-uW-Y0O">
                                                     <rect key="frame" x="0.0" y="32.5" width="125" height="11.5"/>
                                                     <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="14"/>
-                                                    <color key="textColor" red="0.16862745100000001" green="0.18823529410000001" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kFX-hb-C9o">
@@ -187,13 +187,13 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JBe-UO-0t8">
                                                     <rect key="frame" x="0.0" y="16.5" width="125" height="11"/>
                                                     <fontDescription key="fontDescription" name="SourceSansPro-Semibold" family="Source Sans Pro" pointSize="14"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COUNTRIES" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jiu-Bk-9h8">
                                                     <rect key="frame" x="0.0" y="32.5" width="125" height="11.5"/>
                                                     <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="14"/>
-                                                    <color key="textColor" red="0.16862745100000001" green="0.18823529410000001" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aHZ-iz-Rbd">
@@ -216,13 +216,13 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ggY-4R-fD0">
                                                     <rect key="frame" x="0.0" y="16.5" width="125" height="11"/>
                                                     <fontDescription key="fontDescription" name="SourceSansPro-Semibold" family="Source Sans Pro" pointSize="14"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="STEPS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TQV-yr-MEn">
                                                     <rect key="frame" x="0.0" y="32.5" width="125" height="11.5"/>
                                                     <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="14"/>
-                                                    <color key="textColor" red="0.16862745100000001" green="0.18823529410000001" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="62O-V0-5wa">
@@ -236,7 +236,7 @@
                                     </subviews>
                                 </stackView>
                             </subviews>
-                            <color key="backgroundColor" red="0.7725490196" green="0.81568627449999997" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.16862745098039217" green="0.18823529411764706" blue="0.23137254901960785" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="60" id="2M2-Uw-toS"/>
                                 <constraint firstItem="3g8-iJ-CnB" firstAttribute="width" secondItem="lTn-XE-b6U" secondAttribute="width" id="aNc-Uy-ihU"/>
@@ -252,6 +252,10 @@
                                     <rect key="frame" x="-0.5" y="0.0" width="375" height="300"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </view>
+                                <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="81f-SM-bLd">
+                                    <rect key="frame" x="-0.5" y="0.0" width="375" height="300"/>
+                                    <color key="backgroundColor" red="0.16862745098039217" green="0.18823529411764706" blue="0.23137254901960785" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lii-LI-eag" userLabel="Diary mask button">
                                     <rect key="frame" x="-0.5" y="0.0" width="375" height="300"/>
                                     <connections>
@@ -264,10 +268,14 @@
                                 <constraint firstItem="S9n-8l-tol" firstAttribute="centerX" secondItem="FBh-k9-Z5j" secondAttribute="centerX" id="2Ih-Zk-6sh"/>
                                 <constraint firstItem="lii-LI-eag" firstAttribute="centerX" secondItem="FBh-k9-Z5j" secondAttribute="centerX" id="8QD-jv-jCO"/>
                                 <constraint firstAttribute="width" secondItem="FBh-k9-Z5j" secondAttribute="height" multiplier="1:0.8" id="D6v-iM-Rcr"/>
+                                <constraint firstItem="81f-SM-bLd" firstAttribute="width" secondItem="S9n-8l-tol" secondAttribute="width" id="ErN-7D-3b0"/>
+                                <constraint firstItem="81f-SM-bLd" firstAttribute="height" secondItem="S9n-8l-tol" secondAttribute="height" id="V2h-Zc-6Hl"/>
                                 <constraint firstItem="lii-LI-eag" firstAttribute="width" secondItem="FBh-k9-Z5j" secondAttribute="width" id="dae-SS-QbY"/>
+                                <constraint firstItem="81f-SM-bLd" firstAttribute="centerY" secondItem="S9n-8l-tol" secondAttribute="centerY" id="ffu-hE-DTH"/>
                                 <constraint firstItem="S9n-8l-tol" firstAttribute="width" secondItem="FBh-k9-Z5j" secondAttribute="width" id="iBD-ri-lzE"/>
                                 <constraint firstItem="S9n-8l-tol" firstAttribute="height" secondItem="FBh-k9-Z5j" secondAttribute="height" id="iVR-Tu-N0N"/>
                                 <constraint firstItem="S9n-8l-tol" firstAttribute="centerY" secondItem="FBh-k9-Z5j" secondAttribute="centerY" id="m4X-5m-z0f"/>
+                                <constraint firstItem="81f-SM-bLd" firstAttribute="centerX" secondItem="S9n-8l-tol" secondAttribute="centerX" id="mcZ-OH-dW7"/>
                                 <constraint firstItem="lii-LI-eag" firstAttribute="height" secondItem="FBh-k9-Z5j" secondAttribute="height" id="vtn-yw-ghW"/>
                                 <constraint firstItem="lii-LI-eag" firstAttribute="centerY" secondItem="FBh-k9-Z5j" secondAttribute="centerY" id="zsL-wh-hhx"/>
                             </constraints>
@@ -293,7 +301,7 @@
                                     </constraints>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trip started" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ByJ-L9-6Rb">
-                                    <rect key="frame" x="72.5" y="15" width="86" height="20"/>
+                                    <rect key="frame" x="72.5" y="15" width="84.5" height="21.5"/>
                                     <fontDescription key="fontDescription" name="SourceSansPro-Semibold" family="Source Sans Pro" pointSize="17"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>

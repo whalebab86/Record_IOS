@@ -33,7 +33,6 @@
     [super awakeFromNib];
     // Initialization code
     
-    
     UIColor *grayColor = [UIColor colorWithRed:101/255.0
                                             green:104/255.0
                                              blue:111/255.0
@@ -48,7 +47,6 @@
     
     [self.inDiaryInfoAreaView.layer setCornerRadius:3];
     [self.inDiaryInfoAreaView setClipsToBounds:YES];
-    
     
     [self.inDiaryLikeButtonView.layer setBorderColor:whiteColor.CGColor];
     [self.inDiaryLikeButtonView.layer setBorderWidth:1];

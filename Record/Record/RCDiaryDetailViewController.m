@@ -53,8 +53,9 @@ typedef NS_ENUM(NSInteger, RCDiaryStatusMode) {
 @property (nonatomic) NSDate *diaryEndDate;
 @property (nonatomic) NSData *diaryCoverImg;
 
-
 @property (nonatomic, weak) UIDatePicker *diaryDatePicker;
+
+@property (nonatomic) RCDiaryManager *manager;
 
 @end
 
@@ -64,6 +65,12 @@ typedef NS_ENUM(NSInteger, RCDiaryStatusMode) {
     [super viewDidLoad];
     
     // Do any additional setup after loading the view.
+    
+    self.manager    = [RCDiaryManager diaryManager];
+    
+    if(self.indexPath != nil) {
+        self.diaryRealm = [self.manager.diaryResults objectAtIndex:self.indexPath.row];
+    }
     
     if(self.diaryRealm == nil) {
 //    if(self.diaryData == nil) {
@@ -359,12 +366,10 @@ typedef NS_ENUM(NSInteger, RCDiaryStatusMode) {
         return;
     };
     
-    RLMRealm *realm = [RLMRealm defaultRealm];
-    
     if(self.diaryModifyMode == RCDiaryStatusModeInsert) {
         /* page insert mode */
         
-        [realm transactionWithBlock:^{
+        [self.manager.realm transactionWithBlock:^{
             
             self.diaryRealm.diaryPk         = [DateSource convertWithDate:[NSDate date] format:@"yyyyMMddHHmmssSSSS"];
             self.diaryRealm.diaryName       = self.diaryNameTextField.text;
@@ -372,7 +377,8 @@ typedef NS_ENUM(NSInteger, RCDiaryStatusMode) {
             self.diaryRealm.diaryEndDate    = self.diaryEndDate;
             self.diaryRealm.diaryCoverImage = self.diaryCoverImg;
             self.diaryRealm.diaryCreateDate = [NSDate date];
-            [realm addOrUpdateObject:self.diaryRealm];
+            
+            [self.manager.realm addOrUpdateObject:self.diaryRealm];
             
             [self.view endEditing:YES];
             [self dismissViewControllerAnimated:YES completion:nil];
@@ -398,7 +404,7 @@ typedef NS_ENUM(NSInteger, RCDiaryStatusMode) {
         
         [self.view endEditing:YES];
         
-        [realm transactionWithBlock:^{
+        [self.manager.realm transactionWithBlock:^{
             
             self.diaryRealm.diaryCoverImage = self.diaryCoverImg;
             
@@ -406,9 +412,8 @@ typedef NS_ENUM(NSInteger, RCDiaryStatusMode) {
             self.diaryRealm.diaryStartDate = self.diaryStartDate;
             self.diaryRealm.diaryEndDate   = self.diaryEndDate;
             
-            [realm addOrUpdateObject:self.diaryRealm];
+            [self.manager.realm addOrUpdateObject:self.diaryRealm];
             
-//            [self dismissViewControllerAnimated:YES completion:nil];
             [self performSegueWithIdentifier:@"InDiaryListUnwindSegue" sender:self];
         }];
         
