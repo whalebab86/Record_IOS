@@ -35,6 +35,10 @@
 @property (weak, nonatomic) IBOutlet UILabel     *infoDaysLabel;
 @property (weak, nonatomic) IBOutlet UILabel     *infoCountryLabel;
 @property (weak, nonatomic) IBOutlet UILabel     *infoStepsLabel;
+@property (weak, nonatomic) IBOutlet UILabel     *infoStartYearLabel;
+@property (weak, nonatomic) IBOutlet UILabel     *infoStartMonthLabel;
+@property (weak, nonatomic) IBOutlet UILabel     *infoEndYearLabel;
+@property (weak, nonatomic) IBOutlet UILabel     *infoEndMonthLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel     *bottomStartDayLabel;
 

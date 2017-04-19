@@ -15,8 +15,8 @@ RLM_ARRAY_TYPE(RCInDiaryPhotoRealm)
 
 @interface RCInDiaryPhotoRealm : RLMObject
 
-@property (nonatomic) NSData *inDiaryPhoto;
-@property (nonatomic) NSDate *CreateDate;
+@property (nonatomic) NSData   *inDiaryPhoto;
+@property (nonatomic) NSDate   *CreateDate;
 
 @end
 
@@ -34,7 +34,7 @@ RLM_ARRAY_TYPE(RCInDiaryPhotoRealm)
 @property (nonatomic) NSDate       *inDiaryReportingDate;
 @property (nonatomic) NSDate       *inDiaryCreateDate;
 
-//@property (nonatomic) RLMArray<RCInDiaryPhotoRealm *><RCInDiaryPhotoRealm> *inDiaryPhotosArray;
+@property (nonatomic) RLMArray<RCInDiaryPhotoRealm *><RCInDiaryPhotoRealm> *inDiaryPhotosArray;
 
 @end
 

@@ -202,7 +202,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7s0-ZS-5zX" userLabel="Contents view">
                                 <rect key="frame" x="0.0" y="310" width="334" height="102.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s5s-2m-Jhb">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s5s-2m-Jhb">
                                         <rect key="frame" x="10" y="0.0" width="314" height="92.5"/>
                                         <string key="text">In diary content asjhdk ajhsdkj ahsdkj ahsdk ajshdk ajhsdk ajhsdk ajhsdk ajhsdkajhsdka asd asd asd asd asd asd asd asd asd asd asd asd asd asd a</string>
                                         <fontDescription key="fontDescription" name="SourceSansPro-Semibold" family="Source Sans Pro" pointSize="16"/>
@@ -229,7 +229,7 @@
                                             <constraint firstAttribute="height" constant="1" id="IqO-Lq-wNZ"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fyd-Yc-ggJ">
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fyd-Yc-ggJ">
                                         <rect key="frame" x="10" y="15.5" width="30" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x5B-oS-36X">
@@ -253,7 +253,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Fh-2K-qRg">
-                                        <rect key="frame" x="45" y="15.5" width="120" height="30"/>
+                                        <rect key="frame" x="10" y="15.5" width="120" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kbk-Au-LPG">
                                                 <rect key="frame" x="35" y="0.0" width="120" height="30"/>
@@ -289,7 +289,7 @@
                                             <constraint firstAttribute="width" constant="30" id="Cfw-TL-p0d"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Zd-74-Cr5">
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Zd-74-Cr5">
                                         <rect key="frame" x="259" y="15.5" width="30" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Ff-jW-QZS">
@@ -313,11 +313,11 @@
                                     <constraint firstItem="Fyd-Yc-ggJ" firstAttribute="centerY" secondItem="YE4-2V-U0c" secondAttribute="centerY" id="2m7-cL-1l6"/>
                                     <constraint firstItem="4Fh-2K-qRg" firstAttribute="top" secondItem="9Zd-74-Cr5" secondAttribute="top" id="5gs-TJ-iS3"/>
                                     <constraint firstItem="4Fh-2K-qRg" firstAttribute="centerY" secondItem="Fyd-Yc-ggJ" secondAttribute="centerY" id="6kH-YU-w0y"/>
+                                    <constraint firstItem="4Fh-2K-qRg" firstAttribute="leading" secondItem="Fyd-Yc-ggJ" secondAttribute="leading" id="G58-Ao-6LE"/>
                                     <constraint firstItem="9Zd-74-Cr5" firstAttribute="top" secondItem="xk0-9P-N5w" secondAttribute="top" id="HD6-DQ-6mi"/>
                                     <constraint firstItem="Fyd-Yc-ggJ" firstAttribute="top" secondItem="6lt-Pg-oIc" secondAttribute="bottom" constant="10" id="I5z-Me-77i"/>
                                     <constraint firstItem="6lt-Pg-oIc" firstAttribute="centerX" secondItem="YE4-2V-U0c" secondAttribute="centerX" id="KgE-bM-a5c"/>
                                     <constraint firstItem="9Zd-74-Cr5" firstAttribute="height" secondItem="Fyd-Yc-ggJ" secondAttribute="height" id="TB2-QP-BnC"/>
-                                    <constraint firstItem="4Fh-2K-qRg" firstAttribute="leading" secondItem="Fyd-Yc-ggJ" secondAttribute="trailing" constant="5" id="d5n-gl-HoD"/>
                                     <constraint firstItem="4Fh-2K-qRg" firstAttribute="height" secondItem="Fyd-Yc-ggJ" secondAttribute="height" id="fqH-E6-k37"/>
                                     <constraint firstItem="xk0-9P-N5w" firstAttribute="height" secondItem="Fyd-Yc-ggJ" secondAttribute="height" id="grn-rb-rIr"/>
                                     <constraint firstItem="6lt-Pg-oIc" firstAttribute="leading" secondItem="Fyd-Yc-ggJ" secondAttribute="leading" id="oQ6-Je-J8e"/>

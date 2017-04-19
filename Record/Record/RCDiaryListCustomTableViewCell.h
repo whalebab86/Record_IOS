@@ -24,5 +24,7 @@
 @property (weak, nonatomic) IBOutlet UILabel     *diaryBottomDaysLabel;
 @property (weak, nonatomic) IBOutlet UILabel     *diaryBottomKmLabel;
 @property (weak, nonatomic) IBOutlet UILabel     *diaryBottomInDiaryCount;
+@property (weak, nonatomic) IBOutlet UILabel     *diaryBottomEndYearLabel;
+@property (weak, nonatomic) IBOutlet UILabel     *diaryBottomEndMonth;
 
 @end

@@ -20,7 +20,9 @@
 @property (nonatomic) RCDiaryRealm   *diaryRealm;
 
 @property (nonatomic) RCInDiaryRealm *inDiaryRealm;
-@property (nonatomic) RLMResults<RCInDiaryRealm *>   *inDiaryResults;
+
+@property (nonatomic) RLMResults<RCInDiaryRealm *>        *inDiaryResults;
+@property (nonatomic) RLMResults<RCInDiaryPhotoRealm *>   *inDiaryPhotoResults;
 
 @property (nonatomic) NSString       *diaryPk;
 @property (nonatomic) NSString       *inDiaryPk;

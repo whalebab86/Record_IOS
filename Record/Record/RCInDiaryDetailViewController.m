@@ -25,39 +25,45 @@ typedef NS_ENUM(NSInteger, RCInDiaryStatusMode) {
 };
 
 @interface RCInDiaryDetailViewController ()
-<UITextViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate,
-QBImagePickerControllerDelegate>
+<UITextViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,
+CLLocationManagerDelegate, QBImagePickerControllerDelegate>
 
-@property (weak, nonatomic) IBOutlet UIDatePicker *inDiaryDatePicker;
-@property (weak, nonatomic) IBOutlet UIView *inDiaryPhotoView;
+/* view */
+@property (weak, nonatomic) IBOutlet UIDatePicker     *inDiaryDatePicker;
+@property (weak, nonatomic) IBOutlet UIView           *inDiaryPhotoView;
 
-@property (weak, nonatomic) IBOutlet UIScrollView *inDiaryScrollView;
-@property (weak, nonatomic) IBOutlet UIView *inDiaryScrollContentView;
-@property (weak, nonatomic) IBOutlet UIView *inDiaryDeleteView;
+@property (weak, nonatomic) IBOutlet UIScrollView     *inDiaryScrollView;
+@property (weak, nonatomic) IBOutlet UIView           *inDiaryScrollContentView;
+@property (weak, nonatomic) IBOutlet UIView           *inDiaryDeleteView;
 
-@property (weak, nonatomic) IBOutlet UILabel *inDiaryLocationLabel;
-@property (weak, nonatomic) IBOutlet UILabel *inDiaryDateLabel;
-@property (weak, nonatomic) IBOutlet UITextView *inDiaryContentTextView;
+@property (weak, nonatomic) IBOutlet UILabel          *inDiaryLocationLabel;
+@property (weak, nonatomic) IBOutlet UILabel          *inDiaryDateLabel;
+@property (weak, nonatomic) IBOutlet UITextView       *inDiaryContentTextView;
 
 @property (weak, nonatomic) IBOutlet UICollectionView *inDiaryCollectionView;
 
+@property (weak, nonatomic) IBOutlet UIButton         *inDiaryLocationButton;
+@property (weak, nonatomic) IBOutlet UIButton         *inDiaryCurrentLocationButton;
+
+/* Constraint */
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *inDiaryScrollViewBottomConstraints;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *inDiaryPhotoButtonBottomConstraints;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *inDiaryDateViewHeightConstraints;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *inDiaryDeleteViewBottomConstraints;
 
-@property (nonatomic) RCInDiaryStatusMode inDiaryStatusMode;
 
+/* location */
 @property (nonatomic) CLLocationManager *locationManager;
 
-@property (nonatomic) GMSPlacePicker *placePicker;
-@property (nonatomic) GMSPlacesClient *placesClient;
+@property (nonatomic) GMSPlacePicker    *placePicker;
+@property (nonatomic) GMSPlacesClient   *placesClient;
+@property (nonatomic) GMSPlace          *locationPlace;
 
-@property (weak, nonatomic) IBOutlet UIButton *inDiaryLocationButton;
-@property (weak, nonatomic) IBOutlet UIButton *inDiaryCurrentLocationButton;
+
+/* data */
+@property (nonatomic) RCInDiaryStatusMode inDiaryStatusMode;
 
 @property (nonatomic) NSMutableArray *inDiaryImageArray;
-
 @property (nonatomic) RCDiaryManager *manager;
 
 @end
@@ -67,11 +73,12 @@ QBImagePickerControllerDelegate>
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.manager    = [RCDiaryManager diaryManager];
+    /* Manager or Source  */
+    self.manager        = [RCDiaryManager diaryManager];
     
-    self.diaryRealm = [self.manager.diaryResults objectAtIndex:self.diaryIndexPath.row];
-    
+    self.diaryRealm     = [self.manager.diaryResults objectAtIndex:self.diaryIndexPath.row];
     self.inDiaryResults = [self.diaryRealm.inDiaryArray sortedResultsUsingKeyPath:@"inDiaryReportingDate" ascending:NO];
+    
     
     /* Google Map place */
     self.placesClient = [GMSPlacesClient sharedClient];
@@ -79,19 +86,28 @@ QBImagePickerControllerDelegate>
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
     
+    
     /* Custom image picker array  */
     self.inDiaryImageArray = [[NSMutableArray alloc] init];
     
-    // Do any additional setup after loading the view.
-    [self.inDiaryDatePicker setValue:[UIColor whiteColor] forKey:@"textColor"];
     
+    /* custom date picker */
+    [self.inDiaryDatePicker setValue:[UIColor whiteColor] forKey:@"textColor"];
+    [self.inDiaryDatePicker setMinimumDate:self.diaryRealm.diaryStartDate];
+    [self.inDiaryDatePicker setMaximumDate:self.diaryRealm.diaryEndDate];
+    
+    
+    /* custom photo view */
     [self.inDiaryPhotoView.layer setCornerRadius:3];
     [self.inDiaryPhotoView setClipsToBounds:YES];
     
+    
+    /* custom delete view */
     [self.inDiaryDeleteView.layer setCornerRadius:self.inDiaryDeleteView.frame.size.height/2.0f];
     [self.inDiaryDeleteView.layer setBorderColor:[UIColor whiteColor].CGColor];
     [self.inDiaryDeleteView.layer setBorderWidth:2.0f];
     [self.inDiaryDeleteView setClipsToBounds:YES];
+    
     
     /* keyboard notification */
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -102,7 +118,7 @@ QBImagePickerControllerDelegate>
                                              selector:@selector(didChangeKeyboardPosition:)
                                                  name:UIKeyboardWillHideNotification object:nil];
     
-//    if(self.inDiaryData == nil) {
+    /* inDiary information setting */
     if(self.indexPath == nil) {
         /* page status insert */
         self.inDiaryStatusMode = RCInDiaryStatusModeInsert;
@@ -125,28 +141,24 @@ QBImagePickerControllerDelegate>
         
         self.inDiaryRealm = [self.inDiaryResults objectAtIndex:self.indexPath.row];
         
-        self.inDiaryLocationLabel.text   = self.inDiaryRealm.inDiaryLocationName;
+        self.inDiaryLocationLabel.text   = [[self.inDiaryRealm.inDiaryLocationCountry stringByAppendingString:@" "]
+                                            stringByAppendingString:self.inDiaryRealm.inDiaryLocationName];
         
         self.inDiaryDatePicker.date      = self.inDiaryRealm.inDiaryReportingDate;
         self.inDiaryDateLabel.text       = [DateSource convertWithDate:self.inDiaryRealm.inDiaryReportingDate format:@"yyyy-MM-dd E HH:mm"];
         
         self.inDiaryContentTextView.text = self.inDiaryRealm.inDiaryContent;
-
-//        [self.diaryCoverImageView sd_setImageWithURL:[NSURL URLWithString:self.diaryData.diaryCoverImageUrl]
-//                                    placeholderImage:[UIImage imageNamed:@"RCSignInUpTopImage"]];
+        
+        for (RCInDiaryPhotoRealm *data in self.inDiaryRealm.inDiaryPhotosArray) {
+            [self.inDiaryImageArray addObject:data.inDiaryPhoto];
+        }
     }
+    
+    [self.inDiaryCollectionView reloadData];
 }
 
 #pragma mark - UICollectionView Delegate
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    
-    NSInteger itemCount = [self.inDiaryData.inDiaryCoverImgUrl count];
-    
-    if(itemCount == 0) {
-//        [self.inDiaryCollectionView setHidden:YES];
-    }
-    
-//    return itemCount;
     
     return [self.inDiaryImageArray count];
 }
@@ -155,13 +167,9 @@ QBImagePickerControllerDelegate>
     
     RCInDiaryListViewCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     
-//    NSString *imageUrl = [self.inDiaryData.inDiaryCoverImgUrl objectAtIndex:indexPath.row];
+    NSData *imageData = [self.inDiaryImageArray objectAtIndex:indexPath.row];
     
-//    [cell.inDiaryCollectionImageView sd_setImageWithURL:[NSURL URLWithString:imageUrl]
-//                                       placeholderImage:[UIImage imageNamed:@"RCSignInUpTopImage"]];
-    
-    
-    [cell.inDiaryCollectionImageView setImage:[self.inDiaryImageArray objectAtIndex:indexPath.row]];
+    [cell.inDiaryCollectionImageView setImage:[UIImage imageWithData:imageData]];
     
     return cell;
 }
@@ -193,24 +201,21 @@ QBImagePickerControllerDelegate>
     
     PHImageManager *manager = [PHImageManager defaultManager];
 
-//    CGFloat scale = UIScreen.mainScreen.scale;
-    
-    [self.inDiaryImageArray removeAllObjects];
+//    [self.inDiaryImageArray removeAllObjects];
     
     for (PHAsset *asset in assets) {
         // Do something with the asset
         NSLog(@"%@", asset.localIdentifier);
         
-        CGSize targetSize = CGSizeMake(1000, 1000);
+        CGSize targetSize = CGSizeMake(1000, 800);
         
         PHImageRequestOptions * imageRequestOptions = [[PHImageRequestOptions alloc] init];
         imageRequestOptions.synchronous = YES;
         
-        [manager requestImageForAsset:asset targetSize:targetSize contentMode:PHImageContentModeAspectFill options:nil
+        [manager requestImageForAsset:asset targetSize:targetSize contentMode:PHImageContentModeAspectFill options:imageRequestOptions
                         resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
                             
-                            [self.inDiaryImageArray addObject:result];
-//
+                            [self.inDiaryImageArray addObject:UIImagePNGRepresentation(result)];
         }];
     }
     
@@ -226,42 +231,27 @@ QBImagePickerControllerDelegate>
     
     if(sender == self.inDiaryCurrentLocationButton) {
         
+        /* current location */
         [self findCurrentLocation];
     } else if(sender == self.inDiaryLocationButton) {
         
-        CLLocationCoordinate2D center = CLLocationCoordinate2DMake([self.inDiaryRealm.inDiaryLocationLatitude doubleValue],
-                                                                   [self.inDiaryRealm.inDiaryLocationLongitude doubleValue]);
-        
-        GMSCoordinateBounds *viewport = [[GMSCoordinateBounds alloc] initWithCoordinate:center
-                                                                             coordinate:center];
+        /* search location */
+        [self findSearchLocation];
+    }
+}
 
-        GMSPlacePickerConfig *config = [[GMSPlacePickerConfig alloc] initWithViewport:viewport];
-        self.placePicker = [[GMSPlacePicker alloc] initWithConfig:config];
+- (IBAction)clickPhotosButton:(UIButton *)sender {
+    
+    if([self.inDiaryImageArray count] < 5) {
         
-        [self.placePicker pickPlaceWithCallback:^(GMSPlace *place, NSError *error) {
-            if (error != nil) {
-                NSLog(@"Pick Place error %@", [error localizedDescription]);
-                return;
-            }
-            
-            if (place != nil) {
-                
-                [self.manager.realm transactionWithBlock:^{
-                
-                    self.inDiaryRealm.inDiaryLocationLatitude = [NSNumber numberWithDouble:place.coordinate.latitude];
-                    self.inDiaryRealm.inDiaryLocationLongitude = [NSNumber numberWithDouble:place.coordinate.longitude];
-                    self.inDiaryRealm.inDiaryLocationName = [[place.formattedAddress componentsSeparatedByString:@", "] componentsJoinedByString:@"\n"];
-                    self.inDiaryRealm.inDiaryLocationCountry = [[place.formattedAddress componentsSeparatedByString:@", "] lastObject];
-                    
-                }];
-                
-                NSString *locationInfo = [[place.formattedAddress componentsSeparatedByString:@", "]
-                                          componentsJoinedByString:@"\n"];
-                
-                self.inDiaryLocationLabel.text = locationInfo;
-                
-            }
-        }];
+        QBImagePickerController *imagePickerController = [QBImagePickerController new];
+        imagePickerController.delegate = self;
+        
+        imagePickerController.allowsMultipleSelection = YES;
+        imagePickerController.maximumNumberOfSelection = 5 - [self.inDiaryImageArray count];
+        imagePickerController.showsNumberOfSelectedAssets = YES;
+        
+        [self presentViewController:imagePickerController animated:YES completion:NULL];
     }
 }
 
@@ -285,24 +275,6 @@ QBImagePickerControllerDelegate>
     
 }
 
-- (IBAction)clickPhotosButton:(UIButton *)sender {
-    
-    QBImagePickerController *imagePickerController = [QBImagePickerController new];
-    imagePickerController.delegate = self;
-    
-    imagePickerController.allowsMultipleSelection = YES;
-    imagePickerController.maximumNumberOfSelection = 3;
-    imagePickerController.showsNumberOfSelectedAssets = YES;
-    
-    [self presentViewController:imagePickerController animated:YES completion:NULL];
-}
-
-- (IBAction)changeInDiaryDatePicker:(UIDatePicker *)sender forEvent:(UIEvent *)event {
-    
-    self.inDiaryDateLabel.text = [DateSource convertWithDate:sender.date format:@"yyyy-MM-dd E HH:mm"];
-}
-
-
 - (IBAction)clickCancelBarButton:(id)sender {
     
     [self.view endEditing:YES];
@@ -316,33 +288,53 @@ QBImagePickerControllerDelegate>
 
 - (IBAction)clickDoneBarButton:(id)sender {
     
+    [self.view endEditing:YES];
     
-    /* in diary data setting
+    /* in diary data setting */
     if(![self settingDiaryDataInfo]) {
         NSLog(@"fail");
         return;
     };
-     */
-    
-    [self.view endEditing:YES];
     
     if(self.inDiaryStatusMode == RCInDiaryStatusModeInsert) {
         
         /* page insert mode */
         [self.manager.realm transactionWithBlock:^{
             
+            if(self.locationPlace != nil) {
+                self.inDiaryRealm.inDiaryLocationLatitude = [NSNumber numberWithDouble:self.locationPlace.coordinate.latitude];
+                self.inDiaryRealm.inDiaryLocationLongitude = [NSNumber numberWithDouble:self.locationPlace.coordinate.longitude];
+                
+                NSArray *placeArray = [self.locationPlace.formattedAddress componentsSeparatedByString:@" "];
+                self.inDiaryRealm.inDiaryLocationCountry = [placeArray objectAtIndex:0];
+                
+                if([placeArray count] > 1) {
+                    
+                    NSRange range = NSMakeRange(1, [placeArray count]-1);
+                    self.inDiaryRealm.inDiaryLocationName    = [[placeArray subarrayWithRange:range] componentsJoinedByString:@" "];
+                }
+            }
+            
             self.inDiaryRealm.inDiaryPk     = [DateSource convertWithDate:[NSDate date] format:@"yyyyMMddHHmmssSSSS"];
             self.inDiaryRealm.diaryPk       = self.diaryRealm.diaryPk;
-            
             self.inDiaryRealm.inDiaryContent = self.inDiaryContentTextView.text;
-            
             self.inDiaryRealm.inDiaryReportingDate = self.inDiaryDatePicker.date;
             self.inDiaryRealm.inDiaryCreateDate = [NSDate date];
             
             [self.diaryRealm.inDiaryArray addObject:self.inDiaryRealm];
             
-            [self.manager.realm addOrUpdateObject:self.diaryRealm];
+            [self.inDiaryRealm.inDiaryPhotosArray removeAllObjects];
             
+            for (NSData *data in self.inDiaryImageArray) {
+                
+                RCInDiaryPhotoRealm *photo = [[RCInDiaryPhotoRealm alloc] init];
+                photo.inDiaryPhoto = data;
+                
+                [self.inDiaryRealm.inDiaryPhotosArray addObject:photo];
+            }
+            
+//            [self.inDiaryRealm.inDiaryPhotosArray addObjects:self.inDiaryImageArray];
+
             [self dismissViewControllerAnimated:YES completion:nil];
         }];
         
@@ -351,11 +343,32 @@ QBImagePickerControllerDelegate>
         
         [self.manager.realm transactionWithBlock:^{
             
+            if(self.locationPlace != nil) {
+                self.inDiaryRealm.inDiaryLocationLatitude = [NSNumber numberWithDouble:self.locationPlace.coordinate.latitude];
+                self.inDiaryRealm.inDiaryLocationLongitude = [NSNumber numberWithDouble:self.locationPlace.coordinate.longitude];
+                
+                NSArray *placeArray = [self.locationPlace.formattedAddress componentsSeparatedByString:@" "];
+                self.inDiaryRealm.inDiaryLocationCountry = [placeArray objectAtIndex:0];
+                
+                if([placeArray count] > 1) {
+                    
+                    NSRange range = NSMakeRange(1, [placeArray count]-1);
+                    self.inDiaryRealm.inDiaryLocationName    = [[placeArray subarrayWithRange:range] componentsJoinedByString:@" "];
+                }
+            }
+            
+            [self.inDiaryRealm.inDiaryPhotosArray removeAllObjects];
+            for (NSData *data in self.inDiaryImageArray) {
+                
+                RCInDiaryPhotoRealm *photo = [[RCInDiaryPhotoRealm alloc] init];
+                photo.inDiaryPhoto = data;
+                
+                [self.inDiaryRealm.inDiaryPhotosArray addObject:photo];
+            }
+//            [self.inDiaryRealm.inDiaryPhotosArray addObjects:self.inDiaryImageArray];
+            
             self.inDiaryRealm.inDiaryContent = self.inDiaryContentTextView.text;
             self.inDiaryRealm.inDiaryReportingDate = self.inDiaryDatePicker.date;
-            
-//            [self.diaryRealm.inDiaryArray replaceObjectAtIndex:self.indexPath.row withObject:self.inDiaryRealm];
-//            [self.manager.realm addOrUpdateObject:self.diaryRealm];
             
             [self dismissViewControllerAnimated:YES completion:nil];
         }];
@@ -364,17 +377,40 @@ QBImagePickerControllerDelegate>
 }
 
 - (IBAction)clickDeleteButton:(id)sender {
-    [self.manager.realm transactionWithBlock:^{
-        
-        [self.diaryRealm.inDiaryArray removeObjectAtIndex:self.indexPath.row];
-        
-        [self.manager.realm addOrUpdateObject:self.diaryRealm];
-        
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }];
     
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Delete in diary"
+                                                                             message:nil
+                                                                      preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok"
+                                                       style:UIAlertActionStyleDefault
+                                                     handler:^(UIAlertAction * _Nonnull action) {
+                                                         [self.manager.realm transactionWithBlock:^{
+                                                             
+                                                             [self.manager.realm deleteObject:self.inDiaryRealm];
+                                                             
+                                                             [self dismissViewControllerAnimated:YES completion:nil];
+                                                         }];
+                                                     }];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
+                                                           style:UIAlertActionStyleCancel
+                                                         handler:nil];
+    
+    [alertController addAction:okAction];
+    [alertController addAction:cancelAction];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
+#pragma mark - Custom value change Method
+- (IBAction)changeInDiaryDatePicker:(UIDatePicker *)sender forEvent:(UIEvent *)event {
+    
+    self.inDiaryDateLabel.text = [DateSource convertWithDate:sender.date format:@"yyyy-MM-dd E HH:mm"];
+}
+
+#pragma mark - Custom tap Method
 - (IBAction)tapInDiaryScrollView:(UIGestureRecognizer *)sender {
     
     if(!self.inDiaryContentTextView.isFirstResponder) {
@@ -386,13 +422,62 @@ QBImagePickerControllerDelegate>
     NSLog(@"Tap");
 }
 
+- (IBAction)tapScrollView:(UITapGestureRecognizer *)sender {
+    
+    if(self.inDiaryContentTextView.isFirstResponder) {
+        
+        //        [self.inDiaryContentTextView resignFirstResponder];
+    }
+}
+
 #pragma mark - Custom Method
+
+- (BOOL)settingDiaryDataInfo {
+    
+    NSString *msg = @"";
+    BOOL result = NO;
+    
+    /* 공백 제거 */
+    NSString *diaryName = [self.inDiaryContentTextView.text
+                           stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceCharacterSet]];
+    
+    if([self.inDiaryLocationLabel.text isEqualToString:@""] || self.inDiaryLocationLabel.text == nil) {
+        
+        msg = @"Location is empty";
+    } else if([diaryName isEqualToString:@""]) {
+        
+        msg = @"In diary content is empty";
+    } else {
+        
+        result = YES;
+    }
+    
+    if(!result) {
+        
+        /* vaildate alert */
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:msg
+                                                                                 message:nil
+                                                                          preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"확인" style:UIAlertActionStyleDefault handler:nil];
+        
+        [alertController addAction:okAction];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
+    
+    return result;
+}
+
+
+/* current location */
 - (void)findCurrentLocation {
     
     self.inDiaryLocationLabel.text = @"current location loading....";
     
     [self.placesClient currentPlaceWithCallback:^(GMSPlaceLikelihoodList *placeLikelihoodList, NSError *error){
         if (error != nil) {
+            self.locationPlace = nil;
             NSLog(@"Pick Place error %@", [error localizedDescription]);
             return;
         }
@@ -401,19 +486,46 @@ QBImagePickerControllerDelegate>
             GMSPlace *place = [[[placeLikelihoodList likelihoods] firstObject] place];
             if (place != nil) {
                 
-                [self.manager.realm transactionWithBlock:^{
-                    
-                    self.inDiaryRealm.inDiaryLocationLatitude = [NSNumber numberWithDouble:place.coordinate.latitude];
-                    self.inDiaryRealm.inDiaryLocationLongitude = [NSNumber numberWithDouble:place.coordinate.longitude];
-                    self.inDiaryRealm.inDiaryLocationName = [[place.formattedAddress componentsSeparatedByString:@", "] componentsJoinedByString:@"\n"];
-                    self.inDiaryRealm.inDiaryLocationCountry = [[place.formattedAddress componentsSeparatedByString:@", "] lastObject];
-                }];
+                self.locationPlace = place;
                 
                 NSString *locationInfo = [[place.formattedAddress componentsSeparatedByString:@", "]
                                           componentsJoinedByString:@"\n"];
                 
                 self.inDiaryLocationLabel.text = locationInfo;
             }
+        }
+    }];
+}
+
+/* search location */
+- (void)findSearchLocation {
+    
+    CLLocationCoordinate2D center = CLLocationCoordinate2DMake(self.locationPlace.coordinate.latitude,
+                                                               self.locationPlace.coordinate.longitude);
+    
+    GMSCoordinateBounds *viewport = [[GMSCoordinateBounds alloc] initWithCoordinate:center
+                                                                         coordinate:center];
+    
+    GMSPlacePickerConfig *config = [[GMSPlacePickerConfig alloc] initWithViewport:viewport];
+    self.placePicker = [[GMSPlacePicker alloc] initWithConfig:config];
+    
+    [self.placePicker pickPlaceWithCallback:^(GMSPlace *place, NSError *error) {
+        if (error != nil) {
+            
+            self.locationPlace = nil;
+            NSLog(@"Pick Place error %@", [error localizedDescription]);
+            return;
+        }
+        
+        if (place != nil) {
+            
+            self.locationPlace = place;
+            
+            NSString *locationInfo = [[place.formattedAddress componentsSeparatedByString:@", "]
+                                      componentsJoinedByString:@"\n"];
+            
+            self.inDiaryLocationLabel.text = locationInfo;
+            
         }
     }];
 }
@@ -452,13 +564,6 @@ QBImagePickerControllerDelegate>
         
         [self.view layoutIfNeeded];
     }];
-}
-- (IBAction)tapScrollView:(UITapGestureRecognizer *)sender {
-    
-    if(self.inDiaryContentTextView.isFirstResponder) {
-        
-//        [self.inDiaryContentTextView resignFirstResponder];
-    }
 }
 
 @end

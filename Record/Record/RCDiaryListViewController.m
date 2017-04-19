@@ -26,11 +26,11 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface RCDiaryListViewController ()
-<UITableViewDataSource, UITableViewDelegate, RCDiaryTableViewFooterDelegate, UISearchBarDelegate>
+<UITableViewDataSource, UITableViewDelegate, RCDiaryTableViewFooterDelegate, UIScrollViewDelegate, UISearchBarDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *diaryTableView;
 
-@property (nonatomic) UISearchBar *searchBar;
+@property (nonatomic) IBOutlet UISearchBar *searchBar;
 
 @property (nonatomic) NSMutableArray *diaryListArray;
 
@@ -126,7 +126,9 @@
     cell.diaryDaysLabel.text       = [DateSource calculateWithFromDate:diaryData.diaryStartDate
                                                             withToDate:diaryData.diaryEndDate];
     
-    cell.inDiaryCountLabel.text    = @"0";
+    cell.diaryBottomEndYearLabel.text   = [DateSource convertWithDate:diaryData.diaryEndDate format:@"YYYY"];
+    cell.diaryBottomEndMonth.text       = [DateSource convertWithDate:diaryData.diaryEndDate format:@"~MMMM dd일"];
+    cell.inDiaryCountLabel.text         = [NSString stringWithFormat:@"%ld", [diaryData.inDiaryArray count]];
     
     return cell;
 }
@@ -145,7 +147,7 @@
 /* Tableview heightForRowAtIndexPath */
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return (self.view.frame.size.width * 0.7);
+    return (self.view.frame.size.width * 0.75);
 }
 
 
@@ -201,7 +203,7 @@
 /* Tableview heightForFooterInSection */
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     
-    return 80;
+    return 70;
 }
 
 #pragma mark - UISearchBar Delegate
@@ -212,6 +214,17 @@
     
     [self.diaryTableView reloadData];
     
+    [searchBar resignFirstResponder];
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    
+    NSString *searchKeywork = [NSString stringWithFormat:@"diaryName CONTAINS[c] ''"];
+    self.manager.diaryResults = [[RCDiaryRealm allObjects] objectsWhere:searchKeywork];
+    
+    [self.diaryTableView reloadData];
+    
+    [searchBar setText:@""];
     [searchBar resignFirstResponder];
 }
 
@@ -243,6 +256,25 @@
 - (void)tableViewFooterButton:(UIButton *)button {
     
     [self performSegueWithIdentifier:@"DiaryDetailAddSegue" sender:nil];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+    if(scrollView.contentOffset.y < 80) {
+        if(self.searchBar.isHidden) {
+            NSLog(@"no");
+            [UIView animateWithDuration:2 animations:^{
+                [self.searchBar setHidden:NO];
+            }];
+        }
+    } else {
+        if(!self.searchBar.isHidden) {
+            NSLog(@"yes");
+            [UIView animateWithDuration:2 animations:^{
+                [self.searchBar setHidden:YES];
+            }];
+        }
+    }
 }
 
 #pragma mark - Custom Segue

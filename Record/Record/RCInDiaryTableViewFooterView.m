@@ -31,9 +31,10 @@
     
     [self.inDiaryPlusView setClipsToBounds:YES];
     
+    UIColor *color = [UIColor colorWithRed:255/228.0f green:255/228.0f blue:255/230.0f alpha:0.7];
     
     [self.inDiaryTripEndView.layer setCornerRadius:self.inDiaryTripEndView.frame.size.height/2];
-    [self.inDiaryTripEndView.layer setBorderColor:[UIColor whiteColor].CGColor];
+    [self.inDiaryTripEndView.layer setBorderColor:color.CGColor];
     [self.inDiaryTripEndView.layer setBorderWidth:1];
     
     [self.inDiaryTripEndView setClipsToBounds:YES];

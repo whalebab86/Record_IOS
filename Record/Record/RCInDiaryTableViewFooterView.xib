@@ -12,8 +12,8 @@
         <array key="SourceSansPro-Bold.otf">
             <string>SourceSansPro-Bold</string>
         </array>
-        <array key="SourceSansPro-Semibold.otf">
-            <string>SourceSansPro-Semibold</string>
+        <array key="SourceSansPro-Regular.otf">
+            <string>SourceSansPro-Regular</string>
         </array>
     </customFonts>
     <objects>
@@ -30,18 +30,19 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xWq-rn-hS2" userLabel="add view">
-                                    <rect key="frame" x="60" y="12" width="305" height="55"/>
+                                    <rect key="frame" x="60" y="17.5" width="305" height="44"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="add your in diary story" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eMd-2M-2AX">
-                                            <rect key="frame" x="15" y="17" width="169" height="21.5"/>
+                                            <rect key="frame" x="15" y="11.5" width="169" height="21.5"/>
                                             <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.29803921568627451" green="0.29803921568627451" blue="0.29803921568627451" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="0.1450980392" green="0.60784313729999995" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstItem="eMd-2M-2AX" firstAttribute="leading" secondItem="xWq-rn-hS2" secondAttribute="leading" constant="15" id="YVQ-Tt-BZ7"/>
+                                        <constraint firstAttribute="height" constant="44" id="YlN-Lu-Jwm"/>
                                         <constraint firstItem="eMd-2M-2AX" firstAttribute="centerY" secondItem="xWq-rn-hS2" secondAttribute="centerY" id="eH0-fB-dS2"/>
                                     </constraints>
                                 </view>
@@ -93,7 +94,6 @@
                                 <constraint firstItem="xWq-rn-hS2" firstAttribute="leading" secondItem="nhx-Lp-4Pk" secondAttribute="trailing" constant="-5" id="Rbv-My-joE"/>
                                 <constraint firstItem="ZbU-bF-xch" firstAttribute="centerX" secondItem="UvZ-4Y-cU6" secondAttribute="centerX" id="UF1-3b-dDg"/>
                                 <constraint firstItem="ZbU-bF-xch" firstAttribute="width" secondItem="UvZ-4Y-cU6" secondAttribute="width" id="eb2-U9-tzi"/>
-                                <constraint firstItem="xWq-rn-hS2" firstAttribute="height" secondItem="UvZ-4Y-cU6" secondAttribute="height" constant="-25" id="hLi-JQ-zLr"/>
                                 <constraint firstAttribute="trailing" secondItem="xWq-rn-hS2" secondAttribute="trailing" constant="10" id="j45-9A-80B"/>
                                 <constraint firstItem="lwI-rH-G9s" firstAttribute="leading" secondItem="UvZ-4Y-cU6" secondAttribute="leading" constant="39" id="jR6-Ba-WJ1"/>
                                 <constraint firstItem="lwI-rH-G9s" firstAttribute="height" secondItem="UvZ-4Y-cU6" secondAttribute="height" constant="-2" id="oYS-zZ-u1L"/>
@@ -109,29 +109,29 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h6d-hB-fc8">
                                     <rect key="frame" x="23.5" y="15" width="35" height="35"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RCSplashBGImage" translatesAutoresizingMaskIntoConstraints="NO" id="tX2-ka-LN5">
-                                            <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RC_flag_icon" translatesAutoresizingMaskIntoConstraints="NO" id="tX2-ka-LN5">
+                                            <rect key="frame" x="10" y="9.5" width="17" height="17"/>
                                         </imageView>
                                     </subviews>
                                     <color key="backgroundColor" red="0.16862745100000001" green="0.18823529410000001" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
-                                        <constraint firstItem="tX2-ka-LN5" firstAttribute="centerX" secondItem="h6d-hB-fc8" secondAttribute="centerX" id="A9d-YO-f4X"/>
-                                        <constraint firstItem="tX2-ka-LN5" firstAttribute="height" secondItem="h6d-hB-fc8" secondAttribute="height" id="Dca-ev-mzY"/>
+                                        <constraint firstItem="tX2-ka-LN5" firstAttribute="centerX" secondItem="h6d-hB-fc8" secondAttribute="centerX" constant="1" id="A9d-YO-f4X"/>
+                                        <constraint firstItem="tX2-ka-LN5" firstAttribute="height" secondItem="h6d-hB-fc8" secondAttribute="height" constant="-18" id="Dca-ev-mzY"/>
                                         <constraint firstItem="tX2-ka-LN5" firstAttribute="centerY" secondItem="h6d-hB-fc8" secondAttribute="centerY" id="Ien-Oq-7B8"/>
-                                        <constraint firstItem="tX2-ka-LN5" firstAttribute="width" secondItem="h6d-hB-fc8" secondAttribute="width" id="YjM-aq-1D6"/>
+                                        <constraint firstItem="tX2-ka-LN5" firstAttribute="width" secondItem="h6d-hB-fc8" secondAttribute="width" constant="-18" id="YjM-aq-1D6"/>
                                         <constraint firstAttribute="height" constant="35" id="ckU-Ab-Leg"/>
                                         <constraint firstAttribute="width" constant="35" id="iUI-ba-rio"/>
                                     </constraints>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trip end" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bzo-En-vxK">
-                                    <rect key="frame" x="73.5" y="15" width="61" height="21.5"/>
-                                    <fontDescription key="fontDescription" name="SourceSansPro-Semibold" family="Source Sans Pro" pointSize="17"/>
+                                    <rect key="frame" x="73.5" y="15" width="58" height="20.5"/>
+                                    <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="16"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017년 Feb 28일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aA9-A4-1zz">
-                                    <rect key="frame" x="73.5" y="33" width="105" height="17"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <rect key="frame" x="73.5" y="32" width="93" height="18"/>
+                                    <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="14"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -177,6 +177,6 @@
         </view>
     </objects>
     <resources>
-        <image name="RCSplashBGImage" width="375" height="667"/>
+        <image name="RC_flag_icon" width="24" height="24"/>
     </resources>
 </document>

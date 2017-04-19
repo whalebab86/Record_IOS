@@ -73,18 +73,19 @@ typedef NS_ENUM(NSInteger, RCDiaryStatusMode) {
     }
     
     if(self.diaryRealm == nil) {
-//    if(self.diaryData == nil) {
     
+        /* page status insert */
+        
         self.diaryModifyMode = RCDiaryStatusModeInsert;
         
         self.diaryRealm = [[RCDiaryRealm alloc] init];
         
         self.diaryCoverImg = UIImagePNGRepresentation([UIImage imageNamed:@"RCSignInUpTopImage"]);
-        /* page status insert
-        self.diaryData = [[RCDiaryData alloc] init];
         
         [self.diaryDeleteView setHidden:YES];
-         */
+        
+        self.diaryData = [[RCDiaryData alloc] init];
+        
     } else {
         
         self.diaryModifyMode = RCDiaryStatusModeUpdate;
@@ -469,17 +470,35 @@ typedef NS_ENUM(NSInteger, RCDiaryStatusMode) {
 
 - (IBAction)clickDiaryDeleteButton:(UIButton *)sender {
     
-    RLMRealm *realm = [RLMRealm defaultRealm];
+    [self.view endEditing:YES];
     
-    [realm transactionWithBlock:^{
-        
-        [realm deleteObject:self.diaryRealm];
-        //[realm addOrUpdateObject:self.diaryRealm];
-        
-        [self.view endEditing:YES];
-//        [self dismissViewControllerAnimated:YES completion:nil];
-        [self performSegueWithIdentifier:@"InDiaryUnwindSegue" sender:self];
-    }];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Delete diary"
+                                                                             message:nil
+                                                                      preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok"
+                                                       style:UIAlertActionStyleDefault
+                                                     handler:^(UIAlertAction * _Nonnull action) {
+                                                         
+                                                         
+                                                         RLMRealm *realm = [RLMRealm defaultRealm];
+                                                         [realm transactionWithBlock:^{
+                                                             
+                                                             [realm deleteObject:self.diaryRealm];
+                                                             [self performSegueWithIdentifier:@"InDiaryUnwindSegue" sender:self];
+                                                             
+                                                         }];
+                                                     }];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
+                                                           style:UIAlertActionStyleCancel
+                                                         handler:nil];
+    
+    [alertController addAction:okAction];
+    [alertController addAction:cancelAction];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+
     
 //    [[RCDiaryManager diaryManager] deleteDiaryItemAtIndexPaths:self.indexPath];
 //    

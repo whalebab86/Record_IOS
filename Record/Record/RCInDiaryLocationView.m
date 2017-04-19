@@ -52,8 +52,18 @@
 /* Google Map Load */
 - (void)showGoogleMap {
     
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:38
-                                                            longitude:128
+    [self.googleMapView removeFromSuperview];
+    
+    CGFloat dafualtLatitude  = 38;
+    CGFloat dafualtlongitude = 128;
+    
+    if([self.manager.inDiaryResults count] > 0) {
+        dafualtLatitude = [[self.manager.inDiaryResults objectAtIndex:0].inDiaryLocationLatitude   doubleValue];
+        dafualtlongitude = [[self.manager.inDiaryResults objectAtIndex:0].inDiaryLocationLongitude doubleValue];
+    }
+    
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:dafualtLatitude
+                                                            longitude:dafualtlongitude
                                                                  zoom:1];
     self.camera = camera;
     
@@ -67,13 +77,9 @@
     GMSMutablePath *path = [GMSMutablePath path];
     self.googlePath = path;
 
-//    NSMutableArray *inDiaryArray = [[RCDiaryManager diaryManager] inDiaryAllData];
-    
-//    NSMutableArray *inDiaryArray = self.inDiaryResults;
-    
     GMSMarker *marker;
     
-//    [self.googleMarkerArray removeAllObjects];
+    [self.googleMarkerArray removeAllObjects];
     for (RCInDiaryRealm* data in self.manager.inDiaryResults) {
         
         marker = [self drawMarkerViewWithInDiary:data];
@@ -85,7 +91,7 @@
     self.marker = marker;
     
     GMSPolyline *rectangle = [GMSPolyline polylineWithPath:path];
-    rectangle.strokeColor = [UIColor whiteColor];
+    rectangle.strokeColor = [UIColor blackColor];
     rectangle.strokeWidth = 2;
     rectangle.map = self.googleMapView;
     
@@ -119,28 +125,15 @@
     
     marker.tracksViewChanges = NO;
     
-    /*
-    if([data.inDiaryCoverImgUrl count] > 0) {
+    if([data.inDiaryPhotosArray count] > 0) {
  
-        marker.tracksViewChanges = YES;
-        
-        [markerImageView sd_setImageWithURL:[NSURL URLWithString:[data.inDiaryCoverImgUrl objectAtIndex:0]]
-                           placeholderImage:[UIImage imageNamed:@"RCSignInUpTopImage"]
-                                  completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-                                      
-            marker.tracksViewChanges = NO;
-        }];
-
+        [markerImageView setImage:[UIImage imageWithData:[data.inDiaryPhotosArray objectAtIndex:0].inDiaryPhoto]];
     } else {
         
         [markerImageView setImage:[UIImage imageNamed:@"RecordLogoWithoutWord"]];
     }
-     */
-    
-    [markerImageView setImage:[UIImage imageNamed:@"RecordLogoWithoutWord"]];
     
     marker.iconView = markerView;
-    
     marker.map = self.googleMapView;
     
     return marker;
@@ -154,7 +147,7 @@
     GMSCameraUpdate *locationCam = [GMSCameraUpdate setTarget:locationCoordinate zoom:8];
     
     [CATransaction begin];
-    [CATransaction setValue:[NSNumber numberWithFloat: 1.0f] forKey:kCATransactionAnimationDuration];
+    [CATransaction setValue:[NSNumber numberWithFloat: 2.0f] forKey:kCATransactionAnimationDuration];
 
     [self.googleMapView animateWithCameraUpdate:locationCam];
     [self.googleMapView setSelectedMarker:[self.googleMarkerArray objectAtIndex:indexPath.row]];
@@ -200,7 +193,7 @@
     
     
     [CATransaction begin];
-    [CATransaction setValue:[NSNumber numberWithFloat: 1.0f] forKey:kCATransactionAnimationDuration];
+    [CATransaction setValue:[NSNumber numberWithFloat: 2.0f] forKey:kCATransactionAnimationDuration];
 
     [self.googleMapView animateToCameraPosition:camera];
     

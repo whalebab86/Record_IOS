@@ -106,20 +106,25 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
 //    return [self.manager inDiaryNumberOfCoverItemsAtIndexPath:self.indexPath];
-    return 0;
+    
+    RLMResults<RCInDiaryRealm*> *result = [self.manager.inDiaryResults sortedResultsUsingKeyPath:@"inDiaryReportingDate"
+                                                                                      ascending:NO];
+    
+    return [[result objectAtIndex:self.indexPath.row].inDiaryPhotosArray count];
 }
 
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     RCInDiaryCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"RCInDiaryCollectionViewCell" forIndexPath:indexPath];
+
+    RLMResults<RCInDiaryRealm*> *result = [self.manager.inDiaryResults sortedResultsUsingKeyPath:@"inDiaryReportingDate"
+                                                                                       ascending:NO];
     
-    RCInDiaryData *inDiaryData = [self.manager inDiaryDataAtIndexPath:self.indexPath];
+    RCInDiaryPhotoRealm *photo = [[result objectAtIndex:self.indexPath.row].inDiaryPhotosArray objectAtIndex:indexPath.row];
     
-    NSString *imageUrl = [inDiaryData.inDiaryCoverImgUrl objectAtIndex:indexPath.row];
     
-    [cell.inDiaryCollectionViewCellImageVIew sd_setImageWithURL:[NSURL URLWithString:imageUrl]
-                                               placeholderImage:[UIImage imageNamed:@"RCSignInUpTopImage"]];
+    [cell.inDiaryCollectionViewCellImageVIew setImage:[UIImage imageWithData:photo.inDiaryPhoto]];
     
     return cell;
 }
