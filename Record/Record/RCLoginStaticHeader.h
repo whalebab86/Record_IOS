@@ -17,6 +17,7 @@ static NSString * const _RECORD_SIGNIN_API = @"/user/login/";
 static NSString * const _RECORD_LOGOUT_API = @"/user/logout/";
 static NSString * const _RECORD_PROFILECHANGE_API = @"/user/changeprofile/";
 static NSString * const _RECORD_CHECK_VALID_TOKEN_API = @"/user/token/";
+static NSString * const _RECORD_CHANGE_PROFILE_INFORMATION = @"/user/changepersonal/";
 static NSString * const _RECORD_KEYCHAINITEMWRAPPER_KEY = @"keychainItemWrapperIdentifier"; 
 static NSString * const _RECORD_ACCESSTOKEN_KEY = @"key";
 static NSString * const _RECORD_SIGNUP_NAME_KEY = @"username";
@@ -28,7 +29,8 @@ static NSString * const _RECORD_SIGNUP_USER_TYPE_FACEBOOK = @"FACEBOOK";
 static NSString * const _RECORD_SIGNUP_USER_TYPE_GOOGLE = @"GOOGLE";
 static NSString * const _RECORD_LOGOUT_PARAMETER_KEY = @"Authorization";
 static NSString * const _RECORD_PROFILECHANGE_PARAMETER_KEY = @"Authorization";
-static NSString * const _RECORD_REQUEST_METHOD_POST = @"POST";
-static NSString * const _RECORD_REQUEST_METHOD_GET = @"GET";
-
+static NSString * const _RECORD_CHANGE_PROFILE_IMAGE_URL = @"profile_img";
+static NSString * const _RECORD_CHANGE_PROFILE_INFORMATION_HOMETOWN_KEY = @"hometown";
+static NSString * const _RECORD_CHANGE_PROFILE_INFORMATION_NICKNAME_KEY = @"nickname";
+static NSString * const _RECORD_CHANGE_PROFILE_INFORMATION_INTRODUCTION_KEY = @"introduction";
 #endif /* RCLoginStaticHeader_h */

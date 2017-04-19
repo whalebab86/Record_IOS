@@ -52,7 +52,25 @@
 		4458ECEB1E8B83D200EDC792 /* RCSettingTableInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4458ECEA1E8B83D200EDC792 /* RCSettingTableInfo.m */; };
 		447046031E9CA90D001D0DB4 /* splash_main_img.gif in Resources */ = {isa = PBXBuildFile; fileRef = 447046021E9CA90D001D0DB4 /* splash_main_img.gif */; };
 		4470464C1E9CEA5C001D0DB4 /* RCSplashTutorialCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4470464B1E9CEA5C001D0DB4 /* RCSplashTutorialCollectionViewCell.m */; };
+		448425961EA7547200C526DF /* RCMyTravelBookSecondPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 448425951EA7547200C526DF /* RCMyTravelBookSecondPageView.m */; };
+		448425981EA7549400C526DF /* RCMyTravelBookSecondPageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 448425971EA7549400C526DF /* RCMyTravelBookSecondPageView.xib */; };
+		4484259B1EA76FBF00C526DF /* RCMyTravelBookFirstPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4484259A1EA76FBF00C526DF /* RCMyTravelBookFirstPageView.m */; };
+		4484259D1EA76FD300C526DF /* RCMyTravelBookFirstPageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4484259C1EA76FD300C526DF /* RCMyTravelBookFirstPageView.xib */; };
+		448425A01EA7705E00C526DF /* RCMyTravelBookRemainPhotoPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4484259F1EA7705E00C526DF /* RCMyTravelBookRemainPhotoPageView.m */; };
+		448425A41EA770A800C526DF /* RCMyTravelBookRemainPhotoPageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 448425A31EA770A800C526DF /* RCMyTravelBookRemainPhotoPageView.xib */; };
+		448425BC1EA7883500C526DF /* MPAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 448425A71EA7883500C526DF /* MPAnimation.m */; };
+		448425BD1EA7883500C526DF /* MPFlipTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 448425AA1EA7883500C526DF /* MPFlipTransition.m */; };
+		448425BE1EA7883500C526DF /* MPFoldTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 448425AD1EA7883500C526DF /* MPFoldTransition.m */; };
+		448425BF1EA7883500C526DF /* MPTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 448425AF1EA7883500C526DF /* MPTransition.m */; };
+		448425C01EA7883500C526DF /* MPFlipSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 448425B31EA7883500C526DF /* MPFlipSegue.m */; };
+		448425C11EA7883500C526DF /* MPFoldModalSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 448425B51EA7883500C526DF /* MPFoldModalSegue.m */; };
+		448425C21EA7883500C526DF /* MPFoldNavPopSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 448425B71EA7883500C526DF /* MPFoldNavPopSegue.m */; };
+		448425C31EA7883500C526DF /* MPFoldNavPushSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 448425B91EA7883500C526DF /* MPFoldNavPushSegue.m */; };
+		448425C41EA7883500C526DF /* MPFoldSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 448425BB1EA7883500C526DF /* MPFoldSegue.m */; };
 		44929F471E8CD700005B6C3B /* RCLoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 44929F461E8CD700005B6C3B /* RCLoginManager.m */; };
+		44AE684E1EA5E339008F4B2C /* RCMemberInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 44AE684D1EA5E339008F4B2C /* RCMemberInfo.m */; };
+		44AE68501EA5FD12008F4B2C /* MyTravelDiaryBook.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44AE684F1EA5FD12008F4B2C /* MyTravelDiaryBook.storyboard */; };
+		44AE68541EA60252008F4B2C /* RCMyTravelDiaryBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44AE68531EA60252008F4B2C /* RCMyTravelDiaryBookViewController.m */; };
 		44B69C091E9F277F00C32A69 /* RCMyDiaryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B69C081E9F277F00C32A69 /* RCMyDiaryCollectionViewCell.m */; };
 		44B69C0C1E9F3CBE00C32A69 /* RCMyDiaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B69C0B1E9F3CBE00C32A69 /* RCMyDiaryViewController.m */; };
 		44B69C0F1E9F5CA700C32A69 /* RCMyDiaryCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B69C0E1E9F5CA700C32A69 /* RCMyDiaryCollectionViewFlowLayout.m */; };
@@ -147,8 +165,43 @@
 		447046021E9CA90D001D0DB4 /* splash_main_img.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = splash_main_img.gif; sourceTree = "<group>"; };
 		4470464A1E9CEA5C001D0DB4 /* RCSplashTutorialCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCSplashTutorialCollectionViewCell.h; sourceTree = "<group>"; };
 		4470464B1E9CEA5C001D0DB4 /* RCSplashTutorialCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCSplashTutorialCollectionViewCell.m; sourceTree = "<group>"; };
+		448425941EA7547200C526DF /* RCMyTravelBookSecondPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCMyTravelBookSecondPageView.h; sourceTree = "<group>"; };
+		448425951EA7547200C526DF /* RCMyTravelBookSecondPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCMyTravelBookSecondPageView.m; sourceTree = "<group>"; };
+		448425971EA7549400C526DF /* RCMyTravelBookSecondPageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RCMyTravelBookSecondPageView.xib; sourceTree = "<group>"; };
+		448425991EA76FBF00C526DF /* RCMyTravelBookFirstPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCMyTravelBookFirstPageView.h; sourceTree = "<group>"; };
+		4484259A1EA76FBF00C526DF /* RCMyTravelBookFirstPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCMyTravelBookFirstPageView.m; sourceTree = "<group>"; };
+		4484259C1EA76FD300C526DF /* RCMyTravelBookFirstPageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RCMyTravelBookFirstPageView.xib; sourceTree = "<group>"; };
+		4484259E1EA7705E00C526DF /* RCMyTravelBookRemainPhotoPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCMyTravelBookRemainPhotoPageView.h; sourceTree = "<group>"; };
+		4484259F1EA7705E00C526DF /* RCMyTravelBookRemainPhotoPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCMyTravelBookRemainPhotoPageView.m; sourceTree = "<group>"; };
+		448425A31EA770A800C526DF /* RCMyTravelBookRemainPhotoPageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RCMyTravelBookRemainPhotoPageView.xib; sourceTree = "<group>"; };
+		448425A61EA7883500C526DF /* MPAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPAnimation.h; sourceTree = "<group>"; };
+		448425A71EA7883500C526DF /* MPAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPAnimation.m; sourceTree = "<group>"; };
+		448425A81EA7883500C526DF /* MPFlipEnumerations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPFlipEnumerations.h; sourceTree = "<group>"; };
+		448425A91EA7883500C526DF /* MPFlipTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPFlipTransition.h; sourceTree = "<group>"; };
+		448425AA1EA7883500C526DF /* MPFlipTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPFlipTransition.m; sourceTree = "<group>"; };
+		448425AB1EA7883500C526DF /* MPFoldEnumerations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPFoldEnumerations.h; sourceTree = "<group>"; };
+		448425AC1EA7883500C526DF /* MPFoldTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPFoldTransition.h; sourceTree = "<group>"; };
+		448425AD1EA7883500C526DF /* MPFoldTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPFoldTransition.m; sourceTree = "<group>"; };
+		448425AE1EA7883500C526DF /* MPTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPTransition.h; sourceTree = "<group>"; };
+		448425AF1EA7883500C526DF /* MPTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPTransition.m; sourceTree = "<group>"; };
+		448425B01EA7883500C526DF /* MPTransitionEnumerations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPTransitionEnumerations.h; sourceTree = "<group>"; };
+		448425B21EA7883500C526DF /* MPFlipSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPFlipSegue.h; sourceTree = "<group>"; };
+		448425B31EA7883500C526DF /* MPFlipSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPFlipSegue.m; sourceTree = "<group>"; };
+		448425B41EA7883500C526DF /* MPFoldModalSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPFoldModalSegue.h; sourceTree = "<group>"; };
+		448425B51EA7883500C526DF /* MPFoldModalSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPFoldModalSegue.m; sourceTree = "<group>"; };
+		448425B61EA7883500C526DF /* MPFoldNavPopSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPFoldNavPopSegue.h; sourceTree = "<group>"; };
+		448425B71EA7883500C526DF /* MPFoldNavPopSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPFoldNavPopSegue.m; sourceTree = "<group>"; };
+		448425B81EA7883500C526DF /* MPFoldNavPushSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPFoldNavPushSegue.h; sourceTree = "<group>"; };
+		448425B91EA7883500C526DF /* MPFoldNavPushSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPFoldNavPushSegue.m; sourceTree = "<group>"; };
+		448425BA1EA7883500C526DF /* MPFoldSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPFoldSegue.h; sourceTree = "<group>"; };
+		448425BB1EA7883500C526DF /* MPFoldSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPFoldSegue.m; sourceTree = "<group>"; };
 		44929F451E8CD700005B6C3B /* RCLoginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCLoginManager.h; sourceTree = "<group>"; };
 		44929F461E8CD700005B6C3B /* RCLoginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCLoginManager.m; sourceTree = "<group>"; };
+		44AE684C1EA5E339008F4B2C /* RCMemberInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCMemberInfo.h; sourceTree = "<group>"; };
+		44AE684D1EA5E339008F4B2C /* RCMemberInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCMemberInfo.m; sourceTree = "<group>"; };
+		44AE684F1EA5FD12008F4B2C /* MyTravelDiaryBook.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MyTravelDiaryBook.storyboard; sourceTree = "<group>"; };
+		44AE68521EA60252008F4B2C /* RCMyTravelDiaryBookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCMyTravelDiaryBookViewController.h; sourceTree = "<group>"; };
+		44AE68531EA60252008F4B2C /* RCMyTravelDiaryBookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCMyTravelDiaryBookViewController.m; sourceTree = "<group>"; };
 		44B69C071E9F277F00C32A69 /* RCMyDiaryCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCMyDiaryCollectionViewCell.h; sourceTree = "<group>"; };
 		44B69C081E9F277F00C32A69 /* RCMyDiaryCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCMyDiaryCollectionViewCell.m; sourceTree = "<group>"; };
 		44B69C0A1E9F3CBE00C32A69 /* RCMyDiaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCMyDiaryViewController.h; sourceTree = "<group>"; };
@@ -240,6 +293,7 @@
 				3930C64F1E88FFCC009F457E /* Utility */,
 				3930C6531E8902F5009F457E /* Temp */,
 				3930C6211E88F21B009F457E /* Supporting Files */,
+				448425A51EA7883500C526DF /* MPFoldTransition */,
 				3930C6321E88F21C009F457E /* Info.plist */,
 				391E8BFB1E977097000CC82E /* GoogleService-Info.plist */,
 				39FB37B41E8EBC4B006D299F /* diary.json */,
@@ -275,6 +329,7 @@
 				39959FF71E8A274E006ACF7A /* Diary */,
 				3930C64B1E88FBE7009F457E /* Storyboard */,
 				44CE787B1E928B49004A3ED3 /* Setting */,
+				44AE68511EA5FD52008F4B2C /* DiaryBook */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -308,6 +363,8 @@
 				44B69C081E9F277F00C32A69 /* RCMyDiaryCollectionViewCell.m */,
 				44B69C0D1E9F5CA700C32A69 /* RCMyDiaryCollectionViewFlowLayout.h */,
 				44B69C0E1E9F5CA700C32A69 /* RCMyDiaryCollectionViewFlowLayout.m */,
+				44AE68521EA60252008F4B2C /* RCMyTravelDiaryBookViewController.h */,
+				44AE68531EA60252008F4B2C /* RCMyTravelDiaryBookViewController.m */,
 			);
 			name = Setting;
 			sourceTree = "<group>";
@@ -370,6 +427,7 @@
 				3930C6471E88FBC7009F457E /* Member.storyboard */,
 				391328911E9F228600D7287F /* Diary.storyboard */,
 				4458ECDF1E8B790800EDC792 /* Setting.storyboard */,
+				44AE684F1EA5FD12008F4B2C /* MyTravelDiaryBook.storyboard */,
 			);
 			name = Storyboard;
 			sourceTree = "<group>";
@@ -423,6 +481,8 @@
 				391328971E9F4D7300D7287F /* RCDiaryRealm.m */,
 				4458ECE91E8B83D200EDC792 /* RCSettingTableInfo.h */,
 				4458ECEA1E8B83D200EDC792 /* RCSettingTableInfo.m */,
+				44AE684C1EA5E339008F4B2C /* RCMemberInfo.h */,
+				44AE684D1EA5E339008F4B2C /* RCMemberInfo.m */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -464,6 +524,58 @@
 				C8E10F661C41DA25751724C5 /* Pods-Record.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		448425A51EA7883500C526DF /* MPFoldTransition */ = {
+			isa = PBXGroup;
+			children = (
+				448425A61EA7883500C526DF /* MPAnimation.h */,
+				448425A71EA7883500C526DF /* MPAnimation.m */,
+				448425A81EA7883500C526DF /* MPFlipEnumerations.h */,
+				448425A91EA7883500C526DF /* MPFlipTransition.h */,
+				448425AA1EA7883500C526DF /* MPFlipTransition.m */,
+				448425AB1EA7883500C526DF /* MPFoldEnumerations.h */,
+				448425AC1EA7883500C526DF /* MPFoldTransition.h */,
+				448425AD1EA7883500C526DF /* MPFoldTransition.m */,
+				448425AE1EA7883500C526DF /* MPTransition.h */,
+				448425AF1EA7883500C526DF /* MPTransition.m */,
+				448425B01EA7883500C526DF /* MPTransitionEnumerations.h */,
+				448425B11EA7883500C526DF /* Segues */,
+			);
+			path = MPFoldTransition;
+			sourceTree = "<group>";
+		};
+		448425B11EA7883500C526DF /* Segues */ = {
+			isa = PBXGroup;
+			children = (
+				448425B21EA7883500C526DF /* MPFlipSegue.h */,
+				448425B31EA7883500C526DF /* MPFlipSegue.m */,
+				448425B41EA7883500C526DF /* MPFoldModalSegue.h */,
+				448425B51EA7883500C526DF /* MPFoldModalSegue.m */,
+				448425B61EA7883500C526DF /* MPFoldNavPopSegue.h */,
+				448425B71EA7883500C526DF /* MPFoldNavPopSegue.m */,
+				448425B81EA7883500C526DF /* MPFoldNavPushSegue.h */,
+				448425B91EA7883500C526DF /* MPFoldNavPushSegue.m */,
+				448425BA1EA7883500C526DF /* MPFoldSegue.h */,
+				448425BB1EA7883500C526DF /* MPFoldSegue.m */,
+			);
+			path = Segues;
+			sourceTree = "<group>";
+		};
+		44AE68511EA5FD52008F4B2C /* DiaryBook */ = {
+			isa = PBXGroup;
+			children = (
+				448425991EA76FBF00C526DF /* RCMyTravelBookFirstPageView.h */,
+				4484259A1EA76FBF00C526DF /* RCMyTravelBookFirstPageView.m */,
+				4484259C1EA76FD300C526DF /* RCMyTravelBookFirstPageView.xib */,
+				448425941EA7547200C526DF /* RCMyTravelBookSecondPageView.h */,
+				448425951EA7547200C526DF /* RCMyTravelBookSecondPageView.m */,
+				448425971EA7549400C526DF /* RCMyTravelBookSecondPageView.xib */,
+				4484259E1EA7705E00C526DF /* RCMyTravelBookRemainPhotoPageView.h */,
+				4484259F1EA7705E00C526DF /* RCMyTravelBookRemainPhotoPageView.m */,
+				448425A31EA770A800C526DF /* RCMyTravelBookRemainPhotoPageView.xib */,
+			);
+			name = DiaryBook;
 			sourceTree = "<group>";
 		};
 		44CE787B1E928B49004A3ED3 /* Setting */ = {
@@ -547,10 +659,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				39FB37B51E8EBC4B006D299F /* diary.json in Resources */,
+				4484259D1EA76FD300C526DF /* RCMyTravelBookFirstPageView.xib in Resources */,
 				3930C6311E88F21C009F457E /* LaunchScreen.storyboard in Resources */,
 				3903FAB11E94B67500C5B792 /* inDiary.json in Resources */,
 				3921CB561E9A31FF005736CE /* RCInDiaryLocationView.xib in Resources */,
 				39CA02D81EA08B87001525AD /* RCInDiaryTableViewFooterView.xib in Resources */,
+				44AE68501EA5FD12008F4B2C /* MyTravelDiaryBook.storyboard in Resources */,
+				448425981EA7549400C526DF /* RCMyTravelBookSecondPageView.xib in Resources */,
+				448425A41EA770A800C526DF /* RCMyTravelBookRemainPhotoPageView.xib in Resources */,
 				39959FF61E8A24BB006ACF7A /* RCDiaryListCustomTableViewCell.xib in Resources */,
 				3930C6481E88FBC7009F457E /* Member.storyboard in Resources */,
 				3903FAA71E93606B00C5B792 /* RCInDiaryTableViewCell.xib in Resources */,
@@ -642,28 +758,42 @@
 				390BBB571E9220D500BBB8B5 /* RCInDiaryListViewController.m in Sources */,
 				443E9A9D1E93961B007C76D7 /* RCSupportViewController.m in Sources */,
 				39959FF51E8A24BB006ACF7A /* RCDiaryListCustomTableViewCell.m in Sources */,
+				448425C41EA7883500C526DF /* MPFoldSegue.m in Sources */,
 				44CE788B1E92A50B004A3ED3 /* RCProfileViewController.m in Sources */,
 				44D61A211E896E070088FA2B /* RCSignInViewController.m in Sources */,
 				3921CB541E9A31F8005736CE /* RCInDiaryLocationView.m in Sources */,
 				391328951E9F22A400D7287F /* RCInDiaryDetailViewController.m in Sources */,
 				39959FEB1E8A0B36006ACF7A /* RCDiaryTableViewFooterView.m in Sources */,
+				448425BF1EA7883500C526DF /* MPTransition.m in Sources */,
 				4458ECE61E8B7EF300EDC792 /* RCSettingTableViewCell.m in Sources */,
+				448425BD1EA7883500C526DF /* MPFlipTransition.m in Sources */,
 				44D61A271E8972410088FA2B /* RCSignConfigViewController.m in Sources */,
 				4458ECEB1E8B83D200EDC792 /* RCSettingTableInfo.m in Sources */,
 				44B69C091E9F277F00C32A69 /* RCMyDiaryCollectionViewCell.m in Sources */,
+				448425C21EA7883500C526DF /* MPFoldNavPopSegue.m in Sources */,
 				3930C6261E88F21C009F457E /* AppDelegate.m in Sources */,
 				44D61A181E89314C0088FA2B /* RCSplashViewController.m in Sources */,
+				448425BE1EA7883500C526DF /* MPFoldTransition.m in Sources */,
 				3930C6231E88F21C009F457E /* main.m in Sources */,
 				44F4FE471E8CF023008CED9B /* TempLogoutViewController.m in Sources */,
 				391328981E9F4D7300D7287F /* RCDiaryRealm.m in Sources */,
 				3995A00A1E8BC4DF006ACF7A /* DateSource.m in Sources */,
 				442A62CD1E94D85700B727C7 /* RCUtilyValidation.m in Sources */,
+				448425961EA7547200C526DF /* RCMyTravelBookSecondPageView.m in Sources */,
+				44AE684E1EA5E339008F4B2C /* RCMemberInfo.m in Sources */,
+				4484259B1EA76FBF00C526DF /* RCMyTravelBookFirstPageView.m in Sources */,
+				448425BC1EA7883500C526DF /* MPAnimation.m in Sources */,
+				448425C11EA7883500C526DF /* MPFoldModalSegue.m in Sources */,
 				44B69C0F1E9F5CA700C32A69 /* RCMyDiaryCollectionViewFlowLayout.m in Sources */,
 				44B69C0C1E9F3CBE00C32A69 /* RCMyDiaryViewController.m in Sources */,
 				4458ECE31E8B796D00EDC792 /* RCSettingViewController.m in Sources */,
 				39CA02D61EA08B77001525AD /* RCInDiaryTableViewFooterView.m in Sources */,
 				44D61A241E896E1F0088FA2B /* RCSignUpViewController.m in Sources */,
+				448425A01EA7705E00C526DF /* RCMyTravelBookRemainPhotoPageView.m in Sources */,
+				448425C31EA7883500C526DF /* MPFoldNavPushSegue.m in Sources */,
+				448425C01EA7883500C526DF /* MPFlipSegue.m in Sources */,
 				39FB37AF1E8CE671006D299F /* RCDiaryData.m in Sources */,
+				44AE68541EA60252008F4B2C /* RCMyTravelDiaryBookViewController.m in Sources */,
 				3921CB5C1E9A5DF2005736CE /* RCInDiaryLocationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

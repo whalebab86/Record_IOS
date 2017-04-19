@@ -45,7 +45,7 @@
     return self;
 }
 
-//#pragma mark - upload task modul in sign in and sign up, etc
+#pragma mark - upload task modul in sign in and sign up, etc
 //- (void)uploadTaskModulWithAPI:(NSString *)api
 //            requestMethod:(NSString *)method
 //           inputParameter:(NSDictionary *)parameters
@@ -189,7 +189,6 @@
 }
 
 #pragma mark - Email Login Method
-/* const 는 서버에서 api 주면 시작 */
 - (void)localEmailPasswordInputEmail:(NSString *)email
                          inputPassword:(NSString *)password
                     isSucessComplition:(SuccessStateBlock)complition
@@ -272,7 +271,7 @@
 }
 
 #pragma mark - change profile
-
+/* change profile image */
 - (void)uploadProfileImageWithUIImage:(UIImage *)image complition:(SuccessStateBlock)complition {
     
     NSString *urlString = [_RECORD_ADDRESS stringByAppendingString:_RECORD_PROFILECHANGE_API];
@@ -283,10 +282,11 @@
    
     [self.manager POST:urlString parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         [formData appendPartWithFileData:profileImageData name:@"photo" fileName:@"profile.jpg" mimeType:@"image/jpeg"];
+//        [formData appendPartWithFormData:<#(nonnull NSData *)#> name:<#(nonnull NSString *)#>];
         
     } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
 //        self.profileImageURL = [[responseObject objectForKey:@"user"] objectForKey:@"profile_img"];
-        [[NSUserDefaults standardUserDefaults] setValue:[[responseObject objectForKey:@"user"] objectForKey:@"profile_img"] forKey:@"profileImage"];
+        [[NSUserDefaults standardUserDefaults] setValue:[[responseObject objectForKey:@"user"] objectForKey:_RECORD_CHANGE_PROFILE_IMAGE_URL] forKey:_RECORD_CHANGE_PROFILE_IMAGE_URL];
         complition(YES, ((NSHTTPURLResponse *)task.response).statusCode);
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -295,8 +295,30 @@
 
 }
 
-#pragma mark - valid check token
+/* change profile personal information */
+- (void)uploadProfilePersonalInformationWithNickname:(NSString *)nickname hometown:(NSString *)hometown selfIntroduction:( NSString *)introdution complition:(SuccessStateBlock)complition {
+    
+    NSString *urlString = [_RECORD_ADDRESS stringByAppendingString:_RECORD_CHANGE_PROFILE_INFORMATION];
+    
+    self.manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    [self.manager.requestSerializer setValue:[@"Token " stringByAppendingString:[self.keyChainWrapperInLoginManager objectForKey:(__bridge id)kSecValueData]] forHTTPHeaderField:_RECORD_PROFILECHANGE_PARAMETER_KEY];
+   
+    NSDictionary *parameters =@{_RECORD_CHANGE_PROFILE_INFORMATION_HOMETOWN_KEY:hometown, _RECORD_CHANGE_PROFILE_INFORMATION_NICKNAME_KEY:nickname, _RECORD_CHANGE_PROFILE_INFORMATION_INTRODUCTION_KEY:introdution};
+    
+    [self.manager POST:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [[NSUserDefaults standardUserDefaults] setObject:hometown forKey:_RECORD_CHANGE_PROFILE_INFORMATION_HOMETOWN_KEY];
+        [[NSUserDefaults standardUserDefaults] setObject:nickname forKey:_RECORD_CHANGE_PROFILE_INFORMATION_NICKNAME_KEY];
+        [[NSUserDefaults standardUserDefaults] setObject:introdution forKey:_RECORD_CHANGE_PROFILE_INFORMATION_INTRODUCTION_KEY];
+        complition(YES, ((NSHTTPURLResponse *)task.response).statusCode);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        complition(NO, ((NSHTTPURLResponse *)task.response).statusCode);
+    }];
+}
 
+
+#pragma mark - valid token check
+/* valid token check */
 - (void)checkValidTokenWithComplition:(SuccessStateBlock)complition {
     
     NSDictionary *parameters =@{@"key":[self.keyChainWrapperInLoginManager objectForKey:(__bridge id)kSecValueData]};
@@ -313,10 +335,6 @@
 
 }
 
-#pragma mark - photo URL
 
-- (NSString *)photoURL {
-    return [[NSUserDefaults standardUserDefaults] objectForKey:@"profile_img"];
-}
 
 @end

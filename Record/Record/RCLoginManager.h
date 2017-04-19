@@ -47,4 +47,5 @@ typedef  void (^SuccessStateBlock) (BOOL isSucceess, NSInteger code);
 
 - (void)uploadProfileImageWithUIImage:(UIImage *)image complition:(SuccessStateBlock)complition;
 
+- (void)uploadProfilePersonalInformationWithNickname:(NSString *)nickname hometown:(NSString *)hometown selfIntroduction:( NSString *)introdution complition:(SuccessStateBlock)complition;
 @end
