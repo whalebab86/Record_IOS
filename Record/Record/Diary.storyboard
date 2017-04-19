@@ -1093,7 +1093,7 @@
         <image name="RCSignInUpTopImage" width="374" height="241"/>
         <image name="RCSplashBGImage" width="375" height="667"/>
         <image name="RC_arrow_icon" width="21" height="39"/>
-        <image name="RC_calendar_icon" width="32" height="32"/>
+        <image name="RC_calendar_icon" width="64" height="64"/>
         <image name="RC_currentLocation_icon" width="32" height="32"/>
         <image name="RC_friends_icon" width="27" height="34"/>
         <image name="RC_gear_icon" width="24" height="24"/>
