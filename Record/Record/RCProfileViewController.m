@@ -9,8 +9,11 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <Photos/Photos.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 #import "RCProfileViewController.h"
 #import "RCLoginManager.h"
+#import "RCMemberInfo.h"
+
 @import GooglePlaces;
 @import GooglePlacePicker;
 
@@ -101,7 +104,9 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShowNotification:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHideNotification:) name:UIKeyboardWillHideNotification object:nil];
     
-    
+    /* profile image */
+    RCMemberInfo *personalInfo = [[RCMemberInfo alloc] init];
+    [self.profileImage sd_setImageWithURL:[NSURL URLWithString:personalInfo.profileImageURL] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
 }
 
 #pragma mark - text field delegate
@@ -176,7 +181,7 @@
     NSLog(@"%@", noti.userInfo);
     /* get keyboard bounds and setting toolbar offset */
     CGRect willShowKeyboardBounds = [[noti.userInfo objectForKey:@"UIKeyboardFrameEndUserInfoKey"] CGRectValue];
-    self.mainScrollView.frame = CGRectMake(0,64,self.mainScrollView.frame.size.width, willShowKeyboardBounds.size.height);
+    self.mainScrollView.frame = CGRectMake(0,64,self.mainScrollView.frame.size.width, willShowKeyboardBounds.size.height*1.5);
 }
 
 /*  action of keyboard hide notification */
