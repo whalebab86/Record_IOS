@@ -9,6 +9,7 @@
 #import "RCMyDiaryViewController.h"
 #import "RCMyDiaryCollectionViewCell.h"
 #import "RCMyDiaryCollectionViewFlowLayout.h"
+#import "RCDiaryManager.h"
 
 @interface RCMyDiaryViewController ()
 <UICollectionViewDataSource,UICollectionViewDelegate, UICollectionViewDataSourcePrefetching>
@@ -27,7 +28,9 @@
     self.rcMyDiaryCollectionView.delegate = self;
     self.rcMyDiaryCollectionView.dataSource = self;
     self.rcMyDiaryCollectionView.prefetchDataSource = self;
-
+    
+    
+    
     
     
 }
@@ -38,12 +41,29 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     
-    return 5;
+    return [RCDiaryManager diaryManager].diaryResults.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
 
     RCMyDiaryCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"RCMyDiaryCollectionViewCell" forIndexPath:indexPath];
+    cell.mainImage.image = [UIImage imageWithData:[RCDiaryManager diaryManager].diaryResults[indexPath.item].diaryCoverImage];
+    cell.diaryTitleLB.text = [RCDiaryManager diaryManager].diaryResults[indexPath.item].diaryName;
+    cell.totalPostNumberLB.text = [NSString stringWithFormat:@"%ld", [RCDiaryManager diaryManager].diaryResults[indexPath.item].inDiaryArray.count];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setCalendar:[NSCalendar currentCalendar]];
+    [dateFormatter setTimeZone:[NSTimeZone defaultTimeZone]];
+    [dateFormatter setDateFormat:@"yy-MMM-dd"];
+    NSString *startDate = [dateFormatter stringFromDate:[RCDiaryManager diaryManager].diaryResults[indexPath.item].diaryStartDate];
+    NSString *endDate = [dateFormatter stringFromDate:[RCDiaryManager diaryManager].diaryResults[indexPath.item].diaryEndDate];
+    cell.fromStartDateToEndDateLB.text = [startDate stringByAppendingString:endDate];
+    
+    NSDateComponents *components;
+    components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay fromDate:[RCDiaryManager diaryManager].diaryResults[indexPath.item].diaryStartDate toDate:[RCDiaryManager diaryManager].diaryResults[indexPath.item].diaryEndDate options:0];
+    cell.totalTravelDateNumberLB.text = [NSString stringWithFormat:@"%ld", [components day]];
+    
+    
     
     return cell;
 }
