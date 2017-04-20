@@ -331,7 +331,7 @@
     
     NSDictionary *parameters =@{@"key":[self.keyChainWrapperInLoginManager objectForKey:(__bridge id)kSecValueData]};
 
-    NSString *urlString = [_RECORD_ADDRESS stringByAppendingString:_RECORD_CHECK_VALID_TOKEN_API];
+    NSString *urlString = [_RECORD_ADDRESS stringByAppendingString:_RECORD_CHECK_VALID_TOKEN_API] ;
     
     [self.manager POST:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [self copyUserInfoTokenIntoLoginManager];

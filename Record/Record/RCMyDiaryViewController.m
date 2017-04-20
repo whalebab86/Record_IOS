@@ -10,6 +10,7 @@
 #import "RCMyDiaryCollectionViewCell.h"
 #import "RCMyDiaryCollectionViewFlowLayout.h"
 #import "RCDiaryManager.h"
+#import "RCMyTravelDiaryBookViewController.h"
 
 @interface RCMyDiaryViewController ()
 <UICollectionViewDataSource,UICollectionViewDelegate, UICollectionViewDataSourcePrefetching>
@@ -28,10 +29,6 @@
     self.rcMyDiaryCollectionView.delegate = self;
     self.rcMyDiaryCollectionView.dataSource = self;
     self.rcMyDiaryCollectionView.prefetchDataSource = self;
-    
-    
-    
-    
     
 }
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
@@ -87,11 +84,30 @@
     
     return inset;
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    UINavigationController *segueNavigationController = [segue destinationViewController];
+    
+    RCMyTravelDiaryBookViewController *travelDiaryBookVC = (RCMyTravelDiaryBookViewController *)segueNavigationController.topViewController;
+    travelDiaryBookVC.recivedIndexPath = sender;
+    
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [self performSegueWithIdentifier:@"RCMyTravelDiaryBookViewControllerSegue" sender:indexPath];
+    
+}
+
+
 - (IBAction)cancelBarButtonItemAction:(UIBarButtonItem *)sender {
     
     [self.navigationController popViewControllerAnimated:YES];
     
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

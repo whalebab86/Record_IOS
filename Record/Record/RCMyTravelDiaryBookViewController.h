@@ -10,4 +10,6 @@
 
 @interface RCMyTravelDiaryBookViewController : UIViewController
 
+@property NSIndexPath *recivedIndexPath;
+
 @end

@@ -12,11 +12,15 @@
         <!--Navigation Controller-->
         <scene sceneID="BPa-wn-8Yw">
             <objects>
-                <navigationController navigationBarHidden="YES" id="Z48-1y-tNw" sceneMemberID="viewController">
+                <navigationController id="Z48-1y-tNw" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="X56-Hk-SPa">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="X56-Hk-SPa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.18039215689999999" green="0.63137254899999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -27,10 +31,10 @@
             </objects>
             <point key="canvasLocation" x="470" y="87"/>
         </scene>
-        <!--View Controller-->
+        <!--Title-->
         <scene sceneID="Eri-Kz-iBO">
             <objects>
-                <viewController id="de9-jZ-3Fu" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RCMyTravelDiaryBookViewController" id="de9-jZ-3Fu" customClass="RCMyTravelDiaryBookViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="De0-Ch-rEc"/>
                         <viewControllerLayoutGuide type="bottom" id="pfF-0j-FWg"/>
@@ -39,10 +43,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="OYR-eU-5Vi" appends="YES" id="NKR-hw-Euu"/>
+                            <outletCollection property="gestureRecognizers" destination="OmQ-HR-lBd" appends="YES" id="C1d-qd-dd0"/>
+                        </connections>
                     </view>
-                    <navigationItem key="navigationItem" id="V82-1X-jPr"/>
+                    <navigationItem key="navigationItem" title="Title" id="Ky4-0V-rhG">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Qk6-Vu-u43">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="cancelButtonAction:" destination="de9-jZ-3Fu" id="55C-bp-lTy"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PuD-In-XrG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="up" id="OYR-eU-5Vi">
+                    <connections>
+                        <action selector="upSwipeGestureAction:" destination="de9-jZ-3Fu" id="YoP-E6-cGM"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="down" id="OmQ-HR-lBd">
+                    <connections>
+                        <action selector="downSwipeGestureAction:" destination="de9-jZ-3Fu" id="u9o-m0-5sr"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1209" y="87"/>
         </scene>

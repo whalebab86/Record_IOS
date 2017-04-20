@@ -336,6 +336,7 @@
 				3930C6431E88FB4C009F457E /* Diary */,
 				3930C6421E88FB45009F457E /* InDiary */,
 				3930C6411E88FB40009F457E /* Setting */,
+				443442C61EA8830600850146 /* DiaryBook */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -357,8 +358,6 @@
 				44B69C081E9F277F00C32A69 /* RCMyDiaryCollectionViewCell.m */,
 				44B69C0D1E9F5CA700C32A69 /* RCMyDiaryCollectionViewFlowLayout.h */,
 				44B69C0E1E9F5CA700C32A69 /* RCMyDiaryCollectionViewFlowLayout.m */,
-				44AE68521EA60252008F4B2C /* RCMyTravelDiaryBookViewController.h */,
-				44AE68531EA60252008F4B2C /* RCMyTravelDiaryBookViewController.m */,
 			);
 			name = Setting;
 			sourceTree = "<group>";
@@ -518,6 +517,15 @@
 				C8E10F661C41DA25751724C5 /* Pods-Record.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		443442C61EA8830600850146 /* DiaryBook */ = {
+			isa = PBXGroup;
+			children = (
+				44AE68521EA60252008F4B2C /* RCMyTravelDiaryBookViewController.h */,
+				44AE68531EA60252008F4B2C /* RCMyTravelDiaryBookViewController.m */,
+			);
+			name = DiaryBook;
 			sourceTree = "<group>";
 		};
 		448425A51EA7883500C526DF /* MPFoldTransition */ = {

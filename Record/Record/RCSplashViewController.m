@@ -31,13 +31,13 @@
     
     // Do any additional setup after loading the view.
     
-    [[RCLoginManager loginManager] checkValidTokenWithComplition:^(BOOL isSucceess, NSInteger code) {
-        if (isSucceess) {
-            NSLog(@"checkValidTokenWithComplition success!!!");
-        } else {
-            NSLog(@"checkValidTokenWithComplition fail!!!");
-        }
-    }];
+//    [[RCLoginManager loginManager] checkValidTokenWithComplition:^(BOOL isSucceess, NSInteger code) {
+//        if (isSucceess) {
+//            NSLog(@"checkValidTokenWithComplition success!!!");
+//        } else {
+//            NSLog(@"checkValidTokenWithComplition fail!!!");
+//        }
+//    }];
     
     
     /* Signin button change layer and layer color */
