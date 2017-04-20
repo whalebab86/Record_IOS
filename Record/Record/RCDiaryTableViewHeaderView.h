@@ -10,6 +10,11 @@
 
 @interface RCDiaryTableViewHeaderView : UITableViewHeaderFooterView
 
+@property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
+@property (weak, nonatomic) IBOutlet UILabel     *profileUserNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel     *profileUserLocationLabel;
+@property (weak, nonatomic) IBOutlet UILabel     *profileUserDescription;
+
 - (void)showGoogleMap;
 
 @end

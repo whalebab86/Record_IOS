@@ -17,12 +17,8 @@
 @property (weak, nonatomic) IBOutlet UIView      *mapView;
 
 @property (weak, nonatomic) IBOutlet UIView      *profileView;
-@property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
-@property (weak, nonatomic) IBOutlet UILabel     *profileUserNameLabel;
-@property (weak, nonatomic) IBOutlet UILabel     *profileUserLocationLabel;
 @property (weak, nonatomic) IBOutlet UIView      *profileUserNameIconView;
 @property (weak, nonatomic) IBOutlet UILabel     *profileUserNameIconLabel;
-@property (weak, nonatomic) IBOutlet UILabel     *profileUserDescription;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *profileConstraintsY;
 

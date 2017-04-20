@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "RCInDiaryCollectionViewCell.h"
 
+#import "RCDiaryRealm.h"
+
 typedef NS_ENUM(NSInteger, RCInDiaryButton) {
     RCInDiaryButtonLike,
     RCInDiaryButtonLocation,
@@ -20,6 +22,9 @@ typedef NS_ENUM(NSInteger, RCInDiaryButton) {
 @protocol RCInDiaryTableViewCellDelegate <NSObject>
 
 - (void)button:(UIButton *)button buttonType:(RCInDiaryButton)type indexPath:(NSIndexPath *)indexPath;
+- (void)inDiaryPhoto:(RLMArray<RCInDiaryPhotoRealm *><RCInDiaryPhotoRealm> *)photo
+      diaryIndexPath:(NSIndexPath *)diaryIndexPath
+      photoIndexPath:(NSIndexPath *)photoIndexPath;
 
 @end
 
