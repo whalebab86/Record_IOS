@@ -264,16 +264,18 @@
     [self.view endEditing:YES];
     self.mainScrollView.contentOffset = CGPointMake(0, 0);
     
-    [[RCLoginManager loginManager] uploadProfileImageWithUIImage:self.profileImage.image complition:^(BOOL isSucceess, NSInteger code) {
-        if (!isSucceess) {
-            [self addAlertViewWithTile:[@"프로필 사진 저장 오류" stringByAppendingString:[NSString stringWithFormat:@"%ld", code]] actionTitle:@"done" handler:nil];
-        }
-    }];
-    
     [[RCLoginManager loginManager] uploadProfilePersonalInformationWithNickname:self.nickNameTextField.text hometown:self.homTownLabel.text selfIntroduction:self.shortStoryTextView.text complition:^(BOOL isSucceess, NSInteger code) {
         if (!isSucceess) {
             
             [self addAlertViewWithTile:[@"프로필 저장 오류" stringByAppendingString:[NSString stringWithFormat:@"%ld", code]] actionTitle:@"done" handler:nil];
+        } else {
+            [[RCLoginManager loginManager] uploadProfileImageWithUIImage:self.profileImage.image complition:^(BOOL isSucceess, NSInteger code) {
+                if (!isSucceess) {
+                    [self addAlertViewWithTile:[@"프로필 사진 저장 오류" stringByAppendingString:[NSString stringWithFormat:@"%ld", code]] actionTitle:@"done" handler:nil];
+                } else {
+                    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+                }
+            }];
         }
     }];
     
@@ -351,22 +353,23 @@
     return YES;
 
 }
+
+
+#pragma mark - save button action
 - (IBAction)saveProfileSetButtonAction:(UIButton *)sender {
     if (sender == self.saveProfileButtonFromMemberStoryboard) {
         
-        [[RCLoginManager loginManager] uploadProfileImageWithUIImage:self.profileImage.image complition:^(BOOL isSucceess, NSInteger code) {
+        [[RCLoginManager loginManager] uploadProfilePersonalInformationWithNickname:self.nickNameTextField.text hometown:self.homTownLabel.text selfIntroduction:self.shortStoryTextView.text complition:^(BOOL isSucceess, NSInteger code) {
             if (!isSucceess) {
-                [self addAlertViewWithTile:[@"프로필 사진 저장 오류" stringByAppendingString:[NSString stringWithFormat:@"%ld", code]] actionTitle:@"done" handler:nil];
+                
+                [self addAlertViewWithTile:[@"프로필 저장 오류" stringByAppendingString:[NSString stringWithFormat:@"%ld", code]] actionTitle:@"done" handler:nil];
             } else {
-                [[RCLoginManager loginManager] uploadProfilePersonalInformationWithNickname:self.nickNameTextField.text hometown:self.homTownLabel.text selfIntroduction:self.shortStoryTextView.text complition:^(BOOL isSucceess, NSInteger code) {
+                [[RCLoginManager loginManager] uploadProfileImageWithUIImage:self.profileImage.image complition:^(BOOL isSucceess, NSInteger code) {
                     if (!isSucceess) {
-                        
-                        [self addAlertViewWithTile:[@"프로필 저장 오류" stringByAppendingString:[NSString stringWithFormat:@"%ld", code]] actionTitle:@"done" handler:nil];
+                        [self addAlertViewWithTile:[@"프로필 사진 저장 오류" stringByAppendingString:[NSString stringWithFormat:@"%ld", code]] actionTitle:@"done" handler:nil];
                     } else {
                         [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-                        
                     }
-                    
                 }];
             }
         }];
