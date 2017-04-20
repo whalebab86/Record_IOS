@@ -11,6 +11,7 @@
 #import "RCDiaryDetailViewController.h"
 #import "RCInDiaryDetailViewController.h"
 #import "RCInDiaryLocationViewController.h"
+#import "RCInDiaryPhotoViewController.h"
 
 /* Record view import */
 #import "RCInDiaryTableViewHeaderView.h"
@@ -26,7 +27,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface RCInDiaryListViewController ()
-<UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, RCInDiaryTableViewCellDelegate, RCInDiaryTableViewHeaderDelegate, RCInDiaryTableViewFooterDelegate>
+<UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, RCInDiaryTableViewCellDelegate, RCInDiaryTableViewHeaderDelegate, RCInDiaryTableViewFooterDelegate, UICollectionViewDelegate>
 
 /* view */
 @property (weak, nonatomic) IBOutlet UITableView *inDiaryListTableView;
@@ -116,16 +117,11 @@
 #pragma mark - TableView Delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-//    return [self.manager inDiaryNumberOfItems];
-    
     return [self.inDiaryResults count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-//    self.indexPath = indexPath;
-    
-//    RCInDiaryData *inDiaryData = [self.manager inDiaryDataAtIndexPath:indexPath];
+
     RCInDiaryRealm *inDiartRealm = [self.inDiaryResults objectAtIndex:indexPath.row];
     
     RCInDiaryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RCInDiaryTableViewCell" forIndexPath:indexPath];
@@ -156,26 +152,6 @@
     } else {
         [cell.inDiaryEmptyImageView setHidden:YES];
     }
-    
-    /*
-    if(imageCount == 0) {
-        [cell.inDiaryEmptyImageView setHidden:NO];
-        
-    } else if(imageCount == 1) {
-        
-        [cell.inDiaryEmptyImageView setHidden:YES];
-        
-        cell.inDiaryImageCollectionViewFlowLayout.itemSize = CGSizeMake(collectionViewSize, collectionViewSize * 0.6);
-        cell.inDiaryImageCollectionViewFlowLayout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
-        
-    } else {
-        
-        [cell.inDiaryEmptyImageView setHidden:YES];
-        
-        cell.inDiaryImageCollectionViewFlowLayout.itemSize = CGSizeMake(collectionViewSize-20, collectionViewSize * 0.6);
-        cell.inDiaryImageCollectionViewFlowLayout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 20);
-    }
-     */
     
     [cell setDelegate:self];
 
@@ -298,6 +274,19 @@
     }
 }
 
+#pragma mark - IndiaryCollectionViewCell view Delegate
+- (void)inDiaryPhoto:(RLMArray<RCInDiaryPhotoRealm *><RCInDiaryPhotoRealm> *)photo
+      diaryIndexPath:(NSIndexPath *)diaryIndexPath
+      photoIndexPath:(NSIndexPath *)photoIndexPath {
+
+    NSDictionary *inDiaryDic = @{@"inDiaryPhoto":photo,
+                                 @"diaryIndexPath":diaryIndexPath,
+                                 @"photoIndexPath":photoIndexPath};
+    
+    [self performSegueWithIdentifier:@"InDiaryPhotoSegue" sender:inDiaryDic];
+}
+
+
 #pragma mark - IndiaryTableHeaderView view Delegate
 - (void)showInDiaryLocationView {
     
@@ -363,47 +352,48 @@
     
     if([segue.identifier isEqualToString:@"DiaryDetailSegue"]) {
         
-        UINavigationController *diaryDetailVC = [segue destinationViewController];
-//        ((RCDiaryDetailViewController *)diaryDetailVC.topViewController).diaryData = self.diaryData;
-//        ((RCDiaryDetailViewController *)diaryDetailVC.topViewController).indexPath = self.indexPath;
+        /* Diary detail */
         
+        UINavigationController *diaryDetailVC = [segue destinationViewController];
+
         ((RCDiaryDetailViewController *)diaryDetailVC.topViewController).diaryRealm  = self.diaryRealm;
         
     } else if([segue.identifier isEqualToString:@"InDiaryDetailSegue"]) {
         
-//        if(sender != nil) {
-//            RCInDiaryData *diaryData = [[RCDiaryManager diaryManager] inDiaryDataAtIndexPath:(NSIndexPath*)sender];
-            
-            UINavigationController *navigationVC = [segue destinationViewController];
-            RCInDiaryDetailViewController *inDiaryDetailVC = (RCInDiaryDetailViewController *)navigationVC.topViewController;
-            
-            inDiaryDetailVC.diaryIndexPath = self.indexPath;
-            inDiaryDetailVC.indexPath      = (NSIndexPath*)sender;
-            
-//            inDiaryDetailVC.inDiaryData = diaryData;
-            
-//            inDiaryDetailVC.diaryRealm  = self.diaryRealm;
-//            inDiaryDetailVC.diaryPk     = self.diaryRealm.diaryPk;
-            
-//        }
+        /* In diary detail */
+
+        UINavigationController *navigationVC = [segue destinationViewController];
+        RCInDiaryDetailViewController *inDiaryDetailVC = (RCInDiaryDetailViewController *)navigationVC.topViewController;
+        
+        inDiaryDetailVC.diaryIndexPath = self.indexPath;
+        inDiaryDetailVC.indexPath      = (NSIndexPath*)sender;
         
     } else if([segue.identifier isEqualToString:@"InDiaryLocationSegue"]) {
         
+        /* In diary location */
+        
         if(sender != nil) {
-            
-//            self.manager.in
-            
-            //RCInDiaryData *diaryData = [[RCDiaryManager diaryManager] inDiaryDataAtIndexPath:(NSIndexPath*)sender];
             
             RCInDiaryLocationViewController *locationVC = [segue destinationViewController];
             
             locationVC.inDiartRealm = [self.inDiaryResults objectAtIndex:((NSIndexPath*)sender).row];
-            
-//            locationVC.inDiaryData = diaryData;
-//            locationVC.inDia
+
             locationVC.indexPath   = (NSIndexPath*)sender;
         }
         
+    } else if([segue.identifier isEqualToString:@"InDiaryPhotoSegue"]) {
+        
+        /* In diary photo */
+        if(sender != nil) {
+            
+            NSDictionary *inDiaryDic = (NSDictionary *)sender;
+            
+            RCInDiaryPhotoViewController *photoVC = [segue destinationViewController];
+            
+            photoVC.inDiaryPhoto     = [inDiaryDic objectForKey:@"inDiaryPhoto"];
+            photoVC.inDiaryIndexPath = [inDiaryDic objectForKey:@"diaryIndexPath"];
+            photoVC.photoIndexPath   = [inDiaryDic objectForKey:@"photoIndexPath"];
+        }
     }
 }
 

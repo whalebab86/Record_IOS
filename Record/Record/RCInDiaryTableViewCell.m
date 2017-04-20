@@ -110,7 +110,9 @@
     RLMResults<RCInDiaryRealm*> *result = [self.manager.inDiaryResults sortedResultsUsingKeyPath:@"inDiaryReportingDate"
                                                                                       ascending:NO];
     
-    return [[result objectAtIndex:self.indexPath.row].inDiaryPhotosArray count];
+    NSInteger count = [[result objectAtIndex:self.indexPath.row].inDiaryPhotosArray count];
+    
+    return count;
 }
 
 
@@ -136,5 +138,14 @@
     return cell;
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    RLMResults<RCInDiaryRealm*> *result = [self.manager.inDiaryResults sortedResultsUsingKeyPath:@"inDiaryReportingDate"
+                                                                                       ascending:NO];
+    
+    RLMArray<RCInDiaryPhotoRealm *><RCInDiaryPhotoRealm> *photo = [result objectAtIndex:self.indexPath.row].inDiaryPhotosArray;
+    
+    [self.delegate inDiaryPhoto:photo diaryIndexPath:self.indexPath photoIndexPath:indexPath];
+}
 
 @end

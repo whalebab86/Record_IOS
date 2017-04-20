@@ -20,6 +20,7 @@
 #import "DateSource.h"
 #import "RCDiaryManager.h"
 #import "RCDiaryRealm.h"
+#import "RCMemberInfo.h"
 
 /* library import */
 #import <Realm.h>
@@ -39,6 +40,8 @@
 
 @property (nonatomic) RCDiaryManager *manager;
 
+@property (nonatomic) RCMemberInfo *memberInfo;
+
 //@property (nonatomic) RLMResults<RCDiaryRealm *>   *diaryResults;
 
 @end
@@ -48,6 +51,8 @@
 - (void)viewWillAppear:(BOOL)animated {
     
     [super viewWillAppear:animated];
+    
+    self.memberInfo = [[RCMemberInfo alloc] init];
     
     [self.diaryTableView reloadData];
 }
@@ -88,6 +93,10 @@
                                                   forBarMetrics:UIBarMetricsDefault];
     
     self.manager = [RCDiaryManager diaryManager];
+    
+    /* Table view header view - xib */
+    UINib *nib = [UINib nibWithNibName:@"RCDiaryTableViewHeaderView" bundle: nil];
+    [self.diaryTableView registerNib:nib forHeaderFooterViewReuseIdentifier:@"RCDiaryTableViewHeaderView"];
     
     /* Table view custom cell - xib */
     UINib *cellNib = [UINib nibWithNibName:@"RCDiaryListCustomTableViewCell" bundle:nil];
@@ -167,11 +176,14 @@
 /* Tableview viewForHeaderInSection */
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
-    /* Table view header view - xib */
-    UINib *nib = [UINib nibWithNibName:@"RCDiaryTableViewHeaderView" bundle: nil];
-    [self.diaryTableView registerNib:nib forHeaderFooterViewReuseIdentifier:@"RCDiaryTableViewHeaderView"];
-    
     RCDiaryTableViewHeaderView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"RCDiaryTableViewHeaderView"];
+    
+    [headerView.profileImageView sd_setImageWithURL:[NSURL URLWithString:self.memberInfo.profileImageURL]
+                                placeholderImage:[UIImage imageNamed:@"RCSignInUpTopImage"]];
+    
+    headerView.profileUserNameLabel.text     = self.memberInfo.nickName;
+    headerView.profileUserLocationLabel.text = self.memberInfo.homeTown;
+    headerView.profileUserDescription.text   = self.memberInfo.introduction;
     
     return headerView;
 }
