@@ -11,6 +11,8 @@
 @interface RCInDiaryPhotoViewController ()
 <UICollectionViewDelegate, UICollectionViewDataSource>
 
+@property (weak, nonatomic) IBOutlet UICollectionView *inDiaryPhotoCollectionView;
+
 @end
 
 @implementation RCInDiaryPhotoViewController
@@ -36,6 +38,8 @@
     
     cell.inDiaryPhotoCountLabel.text = [NSString stringWithFormat:@"%ld / %ld", indexPath.item + 1,
                                         [self.inDiaryPhoto count]];
+    
+    //[self.inDiaryPhotoCollectionView setContentOffset:CGPointMake(self.view.frame.size.width * self.photoIndexPath.row, 0)];
     
     return cell;
 }
