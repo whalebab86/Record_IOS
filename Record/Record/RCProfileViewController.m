@@ -51,7 +51,9 @@
     self.nickNameTextField.delegate = self;
     
     /* text view place holder */
-    
+    if(![self.shortStoryTextView hasText]) {
+        self.textViewplaceHolderLB.hidden = NO;
+    }
     
     /* text view delegate */
     self.shortStoryTextView.delegate = self;
@@ -107,6 +109,11 @@
     /* profile image */
     RCMemberInfo *personalInfo = [[RCMemberInfo alloc] init];
     [self.profileImage sd_setImageWithURL:[NSURL URLWithString:personalInfo.profileImageURL] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+    
+    self.nickNameTextField.text = personalInfo.nickName;
+    self.homTownLabel.text = personalInfo.homeTown;
+    self.shortStoryTextView.text = personalInfo.introduction;
+    
 }
 
 #pragma mark - text field delegate
@@ -259,8 +266,15 @@
     self.mainScrollView.contentOffset = CGPointMake(0, 0);
     
     [[RCLoginManager loginManager] uploadProfileImageWithUIImage:self.profileImage.image complition:^(BOOL isSucceess, NSInteger code) {
-        if (isSucceess) {
+        if (!isSucceess) {
+            [self addAlertViewWithTile:[@"프로필 사진 저장 오류" stringByAppendingString:[NSString stringWithFormat:@"%ld", code]] actionTitle:@"done" handler:nil];
+        }
+    }];
+    
+    [[RCLoginManager loginManager] uploadProfilePersonalInformationWithNickname:self.nickNameTextField.text hometown:self.homTownLabel.text selfIntroduction:self.shortStoryTextView.text complition:^(BOOL isSucceess, NSInteger code) {
+        if (!isSucceess) {
             
+            [self addAlertViewWithTile:[@"프로필 저장 오류" stringByAppendingString:[NSString stringWithFormat:@"%ld", code]] actionTitle:@"done" handler:nil];
         }
     }];
     
@@ -343,6 +357,14 @@
         [self.navigationController dismissViewControllerAnimated:YES completion:nil];
         
     }
+}
+
+#pragma mark - alert method
+- (void)addAlertViewWithTile:(nullable NSString *)viewTitle actionTitle:(nullable NSString *)actionTitle handler:(void (^ __nullable)(UIAlertAction *action))handler {
+    UIAlertController *alertView = [UIAlertController alertControllerWithTitle:viewTitle message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *done = [UIAlertAction actionWithTitle:actionTitle style:UIAlertActionStyleDefault handler:handler];
+    [alertView addAction:done];
+    [self presentViewController:alertView animated:YES completion:nil];
 }
 
 #pragma mark - etc

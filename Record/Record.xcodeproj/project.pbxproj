@@ -52,11 +52,9 @@
 		4458ECEB1E8B83D200EDC792 /* RCSettingTableInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4458ECEA1E8B83D200EDC792 /* RCSettingTableInfo.m */; };
 		447046031E9CA90D001D0DB4 /* splash_main_img.gif in Resources */ = {isa = PBXBuildFile; fileRef = 447046021E9CA90D001D0DB4 /* splash_main_img.gif */; };
 		4470464C1E9CEA5C001D0DB4 /* RCSplashTutorialCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4470464B1E9CEA5C001D0DB4 /* RCSplashTutorialCollectionViewCell.m */; };
-		448425961EA7547200C526DF /* RCMyTravelBookSecondPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 448425951EA7547200C526DF /* RCMyTravelBookSecondPageView.m */; };
 		448425981EA7549400C526DF /* RCMyTravelBookSecondPageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 448425971EA7549400C526DF /* RCMyTravelBookSecondPageView.xib */; };
 		4484259B1EA76FBF00C526DF /* RCMyTravelBookFirstPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4484259A1EA76FBF00C526DF /* RCMyTravelBookFirstPageView.m */; };
 		4484259D1EA76FD300C526DF /* RCMyTravelBookFirstPageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4484259C1EA76FD300C526DF /* RCMyTravelBookFirstPageView.xib */; };
-		448425A01EA7705E00C526DF /* RCMyTravelBookRemainPhotoPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4484259F1EA7705E00C526DF /* RCMyTravelBookRemainPhotoPageView.m */; };
 		448425A41EA770A800C526DF /* RCMyTravelBookRemainPhotoPageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 448425A31EA770A800C526DF /* RCMyTravelBookRemainPhotoPageView.xib */; };
 		448425BC1EA7883500C526DF /* MPAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 448425A71EA7883500C526DF /* MPAnimation.m */; };
 		448425BD1EA7883500C526DF /* MPFlipTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 448425AA1EA7883500C526DF /* MPFlipTransition.m */; };
@@ -165,14 +163,10 @@
 		447046021E9CA90D001D0DB4 /* splash_main_img.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = splash_main_img.gif; sourceTree = "<group>"; };
 		4470464A1E9CEA5C001D0DB4 /* RCSplashTutorialCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCSplashTutorialCollectionViewCell.h; sourceTree = "<group>"; };
 		4470464B1E9CEA5C001D0DB4 /* RCSplashTutorialCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCSplashTutorialCollectionViewCell.m; sourceTree = "<group>"; };
-		448425941EA7547200C526DF /* RCMyTravelBookSecondPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCMyTravelBookSecondPageView.h; sourceTree = "<group>"; };
-		448425951EA7547200C526DF /* RCMyTravelBookSecondPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCMyTravelBookSecondPageView.m; sourceTree = "<group>"; };
 		448425971EA7549400C526DF /* RCMyTravelBookSecondPageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RCMyTravelBookSecondPageView.xib; sourceTree = "<group>"; };
 		448425991EA76FBF00C526DF /* RCMyTravelBookFirstPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCMyTravelBookFirstPageView.h; sourceTree = "<group>"; };
 		4484259A1EA76FBF00C526DF /* RCMyTravelBookFirstPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCMyTravelBookFirstPageView.m; sourceTree = "<group>"; };
 		4484259C1EA76FD300C526DF /* RCMyTravelBookFirstPageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RCMyTravelBookFirstPageView.xib; sourceTree = "<group>"; };
-		4484259E1EA7705E00C526DF /* RCMyTravelBookRemainPhotoPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCMyTravelBookRemainPhotoPageView.h; sourceTree = "<group>"; };
-		4484259F1EA7705E00C526DF /* RCMyTravelBookRemainPhotoPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCMyTravelBookRemainPhotoPageView.m; sourceTree = "<group>"; };
 		448425A31EA770A800C526DF /* RCMyTravelBookRemainPhotoPageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RCMyTravelBookRemainPhotoPageView.xib; sourceTree = "<group>"; };
 		448425A61EA7883500C526DF /* MPAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPAnimation.h; sourceTree = "<group>"; };
 		448425A71EA7883500C526DF /* MPAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPAnimation.m; sourceTree = "<group>"; };
@@ -568,11 +562,7 @@
 				448425991EA76FBF00C526DF /* RCMyTravelBookFirstPageView.h */,
 				4484259A1EA76FBF00C526DF /* RCMyTravelBookFirstPageView.m */,
 				4484259C1EA76FD300C526DF /* RCMyTravelBookFirstPageView.xib */,
-				448425941EA7547200C526DF /* RCMyTravelBookSecondPageView.h */,
-				448425951EA7547200C526DF /* RCMyTravelBookSecondPageView.m */,
 				448425971EA7549400C526DF /* RCMyTravelBookSecondPageView.xib */,
-				4484259E1EA7705E00C526DF /* RCMyTravelBookRemainPhotoPageView.h */,
-				4484259F1EA7705E00C526DF /* RCMyTravelBookRemainPhotoPageView.m */,
 				448425A31EA770A800C526DF /* RCMyTravelBookRemainPhotoPageView.xib */,
 			);
 			name = DiaryBook;
@@ -779,7 +769,6 @@
 				391328981E9F4D7300D7287F /* RCDiaryRealm.m in Sources */,
 				3995A00A1E8BC4DF006ACF7A /* DateSource.m in Sources */,
 				442A62CD1E94D85700B727C7 /* RCUtilyValidation.m in Sources */,
-				448425961EA7547200C526DF /* RCMyTravelBookSecondPageView.m in Sources */,
 				44AE684E1EA5E339008F4B2C /* RCMemberInfo.m in Sources */,
 				4484259B1EA76FBF00C526DF /* RCMyTravelBookFirstPageView.m in Sources */,
 				448425BC1EA7883500C526DF /* MPAnimation.m in Sources */,
@@ -789,7 +778,6 @@
 				4458ECE31E8B796D00EDC792 /* RCSettingViewController.m in Sources */,
 				39CA02D61EA08B77001525AD /* RCInDiaryTableViewFooterView.m in Sources */,
 				44D61A241E896E1F0088FA2B /* RCSignUpViewController.m in Sources */,
-				448425A01EA7705E00C526DF /* RCMyTravelBookRemainPhotoPageView.m in Sources */,
 				448425C31EA7883500C526DF /* MPFoldNavPushSegue.m in Sources */,
 				448425C01EA7883500C526DF /* MPFlipSegue.m in Sources */,
 				39FB37AF1E8CE671006D299F /* RCDiaryData.m in Sources */,

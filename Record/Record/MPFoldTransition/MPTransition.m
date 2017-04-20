@@ -110,8 +110,8 @@
 	}
 
 	[self setSourceView:src.view];
-	if ([src wantsFullScreenLayout] && NSFoundationVersionNumber <= NSFoundationVersionNumber_iOS_6_1)
-	{
+	if (src.edgesForExtendedLayout == UIRectEdgeNone && NSFoundationVersionNumber <= NSFoundationVersionNumber_iOS_6_1)
+	{//[src wantsFullScreenLayout] -> src.edgesForExtendedLayout == UIRectEdgeNone
 		// don't include the status bar height in the rect to fold
 		CGRect frame = src.view.frame;
 		CGRect frameViewRect = [src.view convertRect:frame fromView:nil];
@@ -166,8 +166,8 @@
 + (BOOL)subView:(UIView *)subView1 isAboveSubView:(UIView *)subView2
 {
 	UIView *superview = [subView1 superview];
-	int index1 = [[superview subviews] indexOfObject:subView1];
-	int index2 = [[superview subviews] indexOfObject:subView2];
+	NSInteger index1 = [[superview subviews] indexOfObject:subView1];
+	NSInteger index2 = [[superview subviews] indexOfObject:subView2];
 	if (index2 == NSNotFound)
 		[NSException raise:@"Invalid Operation" format:@"Both views must have the same superview"];
 	return index1 > index2;

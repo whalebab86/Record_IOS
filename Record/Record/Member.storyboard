@@ -734,7 +734,7 @@
                                         <rect key="frame" x="0.0" y="50" width="375" height="547"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8id-Xh-DKD" userLabel="content view">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="547"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="543"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ti7-Gh-dPc">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
@@ -899,7 +899,7 @@
                                                         </constraints>
                                                     </view>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="jES-07-jQu">
-                                                        <rect key="frame" x="10" y="211" width="355" height="336"/>
+                                                        <rect key="frame" x="10" y="211" width="355" height="332"/>
                                                         <color key="backgroundColor" red="0.10980392160000001" green="0.1215686275" blue="0.1529411765" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="textColor" red="0.7725490196" green="0.81568627449999997" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
@@ -957,11 +957,11 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Register your profile!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OkM-N0-vHY">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                                 <fontDescription key="fontDescription" name="SourceSansPro-Semibold" family="Source Sans Pro" pointSize="17"/>
-                                                <color key="textColor" red="0.7725490196" green="0.81568627449999997" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.2196078431372549" green="0.23921568627450979" blue="0.28627450980392155" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.18039215689999999" green="0.63137254899999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="OkM-N0-vHY" secondAttribute="bottom" id="2NL-jR-Zp3"/>
                                             <constraint firstAttribute="trailing" secondItem="OkM-N0-vHY" secondAttribute="trailing" id="Y3w-Te-Nvg"/>
@@ -970,35 +970,47 @@
                                             <constraint firstItem="OkM-N0-vHY" firstAttribute="leading" secondItem="3U7-eD-6mW" secondAttribute="leading" id="uqj-aH-n2m"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H1e-A4-b1l">
-                                        <rect key="frame" x="10" y="602" width="355" height="40"/>
-                                        <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
-                                        <state key="normal" title="Thanks! Record your journey!">
-                                            <color key="titleColor" red="0.7725490196" green="0.81568627449999997" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="saveProfileSetButtonAction:" destination="S2E-AF-eJy" eventType="touchUpInside" id="XWk-4Z-3bP"/>
-                                        </connections>
-                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qaZ-rN-neH">
+                                        <rect key="frame" x="0.0" y="593" width="375" height="54"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H1e-A4-b1l">
+                                                <rect key="frame" x="5" y="10" width="365" height="34"/>
+                                                <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
+                                                <state key="normal" title="Thanks! Record your journey!">
+                                                    <color key="titleColor" red="0.7725490196" green="0.81568627449999997" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="saveProfileSetButtonAction:" destination="S2E-AF-eJy" eventType="touchUpInside" id="XWk-4Z-3bP"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.18039215689999999" green="0.63137254899999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="H1e-A4-b1l" secondAttribute="bottom" constant="10" id="1Sg-ir-cLu"/>
+                                            <constraint firstItem="H1e-A4-b1l" firstAttribute="leading" secondItem="qaZ-rN-neH" secondAttribute="leading" constant="5" id="IJ5-H3-Nef"/>
+                                            <constraint firstAttribute="trailing" secondItem="H1e-A4-b1l" secondAttribute="trailing" constant="5" id="i9b-cq-oSm"/>
+                                            <constraint firstItem="H1e-A4-b1l" firstAttribute="top" secondItem="qaZ-rN-neH" secondAttribute="top" constant="10" id="y6G-rA-N8T"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.21960784310000001" green="0.23921568630000001" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="0Aa-Vq-tKz" secondAttribute="bottom" constant="50" id="0QB-tC-3X8"/>
-                                    <constraint firstItem="H1e-A4-b1l" firstAttribute="leading" secondItem="yOO-zQ-IC1" secondAttribute="leading" constant="10" id="7hm-Eu-OTe"/>
                                     <constraint firstItem="3U7-eD-6mW" firstAttribute="leading" secondItem="yOO-zQ-IC1" secondAttribute="leading" id="EjK-5y-4Ho"/>
-                                    <constraint firstItem="H1e-A4-b1l" firstAttribute="top" secondItem="0Aa-Vq-tKz" secondAttribute="bottom" constant="5" id="FZ6-74-qRI"/>
-                                    <constraint firstAttribute="trailing" secondItem="H1e-A4-b1l" secondAttribute="trailing" constant="10" id="L76-aF-b8R"/>
                                     <constraint firstItem="0Aa-Vq-tKz" firstAttribute="top" secondItem="yOO-zQ-IC1" secondAttribute="top" constant="50" id="LCJ-eW-CF3"/>
-                                    <constraint firstAttribute="bottom" secondItem="H1e-A4-b1l" secondAttribute="bottom" constant="5" id="Lee-uZ-PKm"/>
+                                    <constraint firstItem="qaZ-rN-neH" firstAttribute="top" secondItem="jES-07-jQu" secondAttribute="bottom" id="Mcd-sF-82g"/>
                                     <constraint firstItem="0Aa-Vq-tKz" firstAttribute="top" secondItem="3U7-eD-6mW" secondAttribute="bottom" id="Sd9-Rj-jT5"/>
                                     <constraint firstItem="3U7-eD-6mW" firstAttribute="top" secondItem="yOO-zQ-IC1" secondAttribute="top" id="Ve4-Xj-G3e"/>
                                     <constraint firstAttribute="trailing" secondItem="3U7-eD-6mW" secondAttribute="trailing" id="dTi-3V-Bip"/>
                                     <constraint firstItem="0Aa-Vq-tKz" firstAttribute="leading" secondItem="yOO-zQ-IC1" secondAttribute="leading" id="hvZ-fY-rF0"/>
+                                    <constraint firstAttribute="bottom" secondItem="qaZ-rN-neH" secondAttribute="bottom" id="iIo-x2-yvR"/>
                                     <constraint firstAttribute="trailing" secondItem="0Aa-Vq-tKz" secondAttribute="trailing" id="mjf-ae-rTO"/>
+                                    <constraint firstAttribute="trailing" secondItem="qaZ-rN-neH" secondAttribute="trailing" id="oM1-fO-sGH"/>
+                                    <constraint firstItem="qaZ-rN-neH" firstAttribute="leading" secondItem="yOO-zQ-IC1" secondAttribute="leading" id="rUI-hw-1OZ"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.21960784310000001" green="0.23921568630000001" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.18039215689999999" green="0.63137254899999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="yOO-zQ-IC1" secondAttribute="trailing" id="2eD-Mc-hWZ"/>
