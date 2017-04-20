@@ -70,7 +70,6 @@
     if (sender == self.signInLoginBtn) {
         if (![RCUtilyValidation isValidEmail:self.signInEmailTF.text]) {
             [self addAlertViewWithTile:@"유효한 Email이 아닙니다" actionTitle:@"확인" handler:^(UIAlertAction *action) {
-                signInVC.signInEmailTF.text = @"";
                 signInVC.signInPasswordTF.text = @"";
             }];
             
@@ -83,11 +82,12 @@
                 } else if (!isSucceess  && code == 401) {
                     NSLog(@"login fail");
                     [self addAlertViewWithTile:@"로그인에 실패하였습니다.\n아이디와 비밀번호를 확인해주세요!" actionTitle:@"확인" handler:^(UIAlertAction *action) {
-                        signInVC.signInEmailTF.text = @"";
                         signInVC.signInPasswordTF.text = @"";
                     }];
                 } else {
-                    [self addAlertViewWithTile:@"로그인에 실패하였습니다." actionTitle:@"확인" handler:nil];
+                    NSString *errorString = [@"로그인에 실패하였습니다." stringByAppendingString:[NSString stringWithFormat:@"%ld", code]];
+                    [self addAlertViewWithTile:errorString actionTitle:@"확인" handler:nil];
+                    signInVC.signInPasswordTF.text = @"";
                 }
             }];
         }
