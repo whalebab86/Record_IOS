@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7PO-38-EOB">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -449,28 +449,31 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="MDO-iW-MaS">
-                                                                    <rect key="frame" x="0.0" y="15.5" width="317" height="63.5"/>
+                                                                    <rect key="frame" x="5" y="15.5" width="307" height="63.5"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="시작 날짜~끝나는 날짜" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OOW-dl-pkY">
-                                                                            <rect key="frame" x="0.0" y="24" width="104.5" height="15.5"/>
+                                                                            <rect key="frame" x="0.0" y="24" width="184" height="15.5"/>
                                                                             <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="12"/>
                                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="post number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yor-FX-dc7">
-                                                                            <rect key="frame" x="252.5" y="24" width="64.5" height="15.5"/>
+                                                                            <rect key="frame" x="242.5" y="24" width="64.5" height="15.5"/>
                                                                             <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="12"/>
                                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                     </subviews>
+                                                                    <constraints>
+                                                                        <constraint firstItem="OOW-dl-pkY" firstAttribute="width" secondItem="MDO-iW-MaS" secondAttribute="width" multiplier="3/5" id="wML-N3-1Ad"/>
+                                                                    </constraints>
                                                                 </stackView>
                                                             </subviews>
                                                             <constraints>
-                                                                <constraint firstAttribute="trailing" secondItem="MDO-iW-MaS" secondAttribute="trailing" id="1g2-RB-lwb"/>
+                                                                <constraint firstAttribute="trailing" secondItem="MDO-iW-MaS" secondAttribute="trailing" constant="5" id="1g2-RB-lwb"/>
                                                                 <constraint firstItem="MDO-iW-MaS" firstAttribute="top" secondItem="qfm-hq-ej3" secondAttribute="bottom" id="Gc6-SP-0ab"/>
                                                                 <constraint firstAttribute="trailing" secondItem="qfm-hq-ej3" secondAttribute="trailing" id="PR6-Am-aMh"/>
-                                                                <constraint firstItem="MDO-iW-MaS" firstAttribute="leading" secondItem="6ZV-Uz-zhh" secondAttribute="leading" id="Rxe-1H-WOv"/>
+                                                                <constraint firstItem="MDO-iW-MaS" firstAttribute="leading" secondItem="6ZV-Uz-zhh" secondAttribute="leading" constant="5" id="Rxe-1H-WOv"/>
                                                                 <constraint firstItem="qfm-hq-ej3" firstAttribute="top" secondItem="6ZV-Uz-zhh" secondAttribute="top" id="Tea-L0-7rh"/>
                                                                 <constraint firstItem="qfm-hq-ej3" firstAttribute="leading" secondItem="6ZV-Uz-zhh" secondAttribute="leading" id="fTl-Ht-xOt"/>
                                                                 <constraint firstAttribute="bottom" secondItem="MDO-iW-MaS" secondAttribute="bottom" id="qI1-WE-25R"/>
@@ -549,10 +552,10 @@
             </objects>
             <point key="canvasLocation" x="2645.5999999999999" y="-296.40179910044981"/>
         </scene>
-        <!--Storyboard Reference-->
+        <!--MyTravelDiaryBook-->
         <scene sceneID="UoE-0r-tGT">
             <objects>
-                <viewControllerPlaceholder id="P98-di-Tt1" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="MyTravelDiaryBook" id="P98-di-Tt1" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HVm-7C-Qcj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3894" y="-255"/>
@@ -767,7 +770,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="xrG-tB-lVq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.1803921568627451" green="0.63137254901960782" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </textAttributes>

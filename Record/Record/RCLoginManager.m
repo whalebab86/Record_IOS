@@ -199,6 +199,12 @@
     NSString *urlString = [_RECORD_ADDRESS stringByAppendingString:_RECORD_SIGNIN_API];
     [self.manager POST:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [self insertUserInfoWithToken:[responseObject objectForKey:_RECORD_ACCESSTOKEN_KEY]];
+        /* 수정 필요 */
+        [[NSUserDefaults standardUserDefaults] setValue:[[responseObject objectForKey:@"user"] objectForKey:_RECORD_CHANGE_PROFILE_IMAGE_URL] forKey:_RECORD_CHANGE_PROFILE_IMAGE_URL];
+        [[NSUserDefaults standardUserDefaults] setObject:[[responseObject objectForKey:@"user"] objectForKey:@"hometown"] forKey:_RECORD_CHANGE_PROFILE_INFORMATION_HOMETOWN_KEY];
+        [[NSUserDefaults standardUserDefaults] setObject:[[responseObject objectForKey:@"user"] objectForKey:@"nickname"] forKey:_RECORD_CHANGE_PROFILE_INFORMATION_NICKNAME_KEY];
+        [[NSUserDefaults standardUserDefaults] setObject:[[responseObject objectForKey:@"user"] objectForKey:@"introduction"] forKey:_RECORD_CHANGE_PROFILE_INFORMATION_INTRODUCTION_KEY];
+        
         complition(YES, ((NSHTTPURLResponse *)task.response).statusCode);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         complition(NO, ((NSHTTPURLResponse *)task.response).statusCode);
@@ -282,10 +288,8 @@
    
     [self.manager POST:urlString parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         [formData appendPartWithFileData:profileImageData name:@"photo" fileName:@"profile.jpg" mimeType:@"image/jpeg"];
-//        [formData appendPartWithFormData:<#(nonnull NSData *)#> name:<#(nonnull NSString *)#>];
         
     } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//        self.profileImageURL = [[responseObject objectForKey:@"user"] objectForKey:@"profile_img"];
         [[NSUserDefaults standardUserDefaults] setValue:[[responseObject objectForKey:@"user"] objectForKey:_RECORD_CHANGE_PROFILE_IMAGE_URL] forKey:_RECORD_CHANGE_PROFILE_IMAGE_URL];
         complition(YES, ((NSHTTPURLResponse *)task.response).statusCode);
         
@@ -304,13 +308,17 @@
     
     [self.manager.requestSerializer setValue:[@"Token " stringByAppendingString:[self.keyChainWrapperInLoginManager objectForKey:(__bridge id)kSecValueData]] forHTTPHeaderField:_RECORD_PROFILECHANGE_PARAMETER_KEY];
    
-    NSDictionary *parameters =@{_RECORD_CHANGE_PROFILE_INFORMATION_HOMETOWN_KEY:hometown, _RECORD_CHANGE_PROFILE_INFORMATION_NICKNAME_KEY:nickname, _RECORD_CHANGE_PROFILE_INFORMATION_INTRODUCTION_KEY:introdution};
-    
-    [self.manager POST:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [self.manager POST:urlString parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        [formData appendPartWithFormData:[nickname dataUsingEncoding:NSUTF8StringEncoding] name:_RECORD_CHANGE_PROFILE_INFORMATION_NICKNAME_KEY];
+        [formData appendPartWithFormData:[hometown dataUsingEncoding:NSUTF8StringEncoding] name:_RECORD_CHANGE_PROFILE_INFORMATION_HOMETOWN_KEY];
+        [formData appendPartWithFormData:[introdution dataUsingEncoding:NSUTF8StringEncoding] name:_RECORD_CHANGE_PROFILE_INFORMATION_INTRODUCTION_KEY];
+        
+    } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [[NSUserDefaults standardUserDefaults] setObject:hometown forKey:_RECORD_CHANGE_PROFILE_INFORMATION_HOMETOWN_KEY];
         [[NSUserDefaults standardUserDefaults] setObject:nickname forKey:_RECORD_CHANGE_PROFILE_INFORMATION_NICKNAME_KEY];
         [[NSUserDefaults standardUserDefaults] setObject:introdution forKey:_RECORD_CHANGE_PROFILE_INFORMATION_INTRODUCTION_KEY];
         complition(YES, ((NSHTTPURLResponse *)task.response).statusCode);
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         complition(NO, ((NSHTTPURLResponse *)task.response).statusCode);
     }];
