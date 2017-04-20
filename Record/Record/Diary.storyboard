@@ -42,8 +42,8 @@
                                     <outlet property="delegate" destination="GAj-ps-ltx" id="paN-bx-Twu"/>
                                 </connections>
                             </tableView>
-                            <searchBar contentMode="redraw" searchBarStyle="prominent" placeholder="diary name" showsSearchResultsButton="YES" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W5T-fO-m32">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <searchBar contentMode="redraw" searchBarStyle="prominent" placeholder="diary name" showsSearchResultsButton="YES" showsCancelButton="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W5T-fO-m32">
+                                <rect key="frame" x="0.0" y="-1" width="320" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="cih-aw-cuI"/>
                                 </constraints>
@@ -62,7 +62,7 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="o6i-Xe-jul" secondAttribute="trailing" id="5yc-pm-hJc"/>
                             <constraint firstItem="o6i-Xe-jul" firstAttribute="top" secondItem="xeL-CB-7d2" secondAttribute="bottom" id="Hug-JV-MQH"/>
-                            <constraint firstItem="W5T-fO-m32" firstAttribute="top" secondItem="xeL-CB-7d2" secondAttribute="bottom" id="JvA-kb-WeW"/>
+                            <constraint firstItem="W5T-fO-m32" firstAttribute="top" secondItem="xeL-CB-7d2" secondAttribute="bottom" constant="-1" id="JvA-kb-WeW"/>
                             <constraint firstItem="o6i-Xe-jul" firstAttribute="leading" secondItem="1qS-1r-bP4" secondAttribute="leading" id="cJV-8f-FqV"/>
                             <constraint firstItem="f7r-HU-z09" firstAttribute="top" secondItem="o6i-Xe-jul" secondAttribute="bottom" id="gJE-t0-LeN"/>
                             <constraint firstItem="W5T-fO-m32" firstAttribute="leading" secondItem="1qS-1r-bP4" secondAttribute="leading" id="lqw-0D-T3V"/>
@@ -71,13 +71,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="Record" id="VTM-vV-7Fk">
                         <barButtonItem key="leftBarButtonItem" image="RC_gear_icon" id="58k-re-uj4">
-                            <inset key="imageInsets" minX="0.0" minY="7" maxX="8" maxY="6"/>
+                            <inset key="imageInsets" minX="0.0" minY="5" maxX="5" maxY="5"/>
                             <connections>
                                 <segue destination="D6i-N3-uQD" kind="presentation" identifier="RecordLoginSegue" id="8bg-5G-jrU"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="RC_plus_icon" id="j7K-Y9-1RO">
-                            <inset key="imageInsets" minX="8" minY="7" maxX="0.0" maxY="6"/>
+                            <inset key="imageInsets" minX="5" minY="5" maxX="0.0" maxY="5"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="zQf-H5-dsh" kind="presentation" identifier="DiaryDetailAddSegue" id="1tf-94-1E7"/>
@@ -202,15 +202,15 @@
                                                     <constraint firstAttribute="height" constant="1" id="4No-0f-3OJ"/>
                                                 </constraints>
                                             </view>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RC_friends_icon" translatesAutoresizingMaskIntoConstraints="NO" id="fjD-26-Heb">
-                                                <rect key="frame" x="20" y="15" width="15" height="20"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RC_tag_icon" translatesAutoresizingMaskIntoConstraints="NO" id="fjD-26-Heb">
+                                                <rect key="frame" x="20" y="15" width="20" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="EFf-cR-sWW"/>
-                                                    <constraint firstAttribute="width" constant="15" id="kdD-tv-NbC"/>
+                                                    <constraint firstAttribute="width" constant="20" id="kdD-tv-NbC"/>
                                                 </constraints>
                                             </imageView>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Diary name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KLn-wP-Jaw">
-                                                <rect key="frame" x="55" y="0.0" width="265" height="50"/>
+                                                <rect key="frame" x="60" y="0.0" width="260" height="50"/>
                                                 <color key="textColor" red="0.77254901960784317" green="0.81568627450980391" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -243,15 +243,15 @@
                                                     <constraint firstAttribute="height" constant="1" id="5g7-QZ-IUm"/>
                                                 </constraints>
                                             </view>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RC_friends_icon" translatesAutoresizingMaskIntoConstraints="NO" id="SdE-8F-HXw">
-                                                <rect key="frame" x="20" y="15" width="15" height="20"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RC_date_icon" translatesAutoresizingMaskIntoConstraints="NO" id="SdE-8F-HXw">
+                                                <rect key="frame" x="20" y="15" width="20" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="KeD-Cg-s1L"/>
-                                                    <constraint firstAttribute="width" constant="15" id="bT8-tB-xYw"/>
+                                                    <constraint firstAttribute="width" constant="20" id="bT8-tB-xYw"/>
                                                 </constraints>
                                             </imageView>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Start date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vIe-3Q-h1X">
-                                                <rect key="frame" x="55" y="0.0" width="265" height="50"/>
+                                                <rect key="frame" x="60" y="0.0" width="260" height="50"/>
                                                 <color key="textColor" red="0.77254901960784317" green="0.81568627450980391" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -263,12 +263,10 @@
                                         <color key="backgroundColor" red="0.10980392156862745" green="0.12156862745098039" blue="0.15294117647058825" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="vIe-3Q-h1X" firstAttribute="centerY" secondItem="SdE-8F-HXw" secondAttribute="centerY" id="43W-ef-Dfl"/>
-                                            <constraint firstItem="vIe-3Q-h1X" firstAttribute="leading" secondItem="SdE-8F-HXw" secondAttribute="trailing" constant="20" id="5ss-zT-pQn"/>
                                             <constraint firstItem="yky-II-5AR" firstAttribute="leading" secondItem="MeM-E8-oj3" secondAttribute="leading" id="RUS-xB-mg8"/>
                                             <constraint firstAttribute="trailing" secondItem="yky-II-5AR" secondAttribute="trailing" id="TSF-qq-Tmn"/>
                                             <constraint firstItem="SdE-8F-HXw" firstAttribute="centerY" secondItem="MeM-E8-oj3" secondAttribute="centerY" id="XE9-FB-Zgd"/>
                                             <constraint firstAttribute="trailing" secondItem="vIe-3Q-h1X" secondAttribute="trailing" id="c08-zh-UFD"/>
-                                            <constraint firstItem="SdE-8F-HXw" firstAttribute="leading" secondItem="MeM-E8-oj3" secondAttribute="leading" constant="20" id="fEZ-2A-98k"/>
                                             <constraint firstAttribute="bottom" secondItem="yky-II-5AR" secondAttribute="bottom" id="gBM-cG-iF3"/>
                                             <constraint firstItem="vIe-3Q-h1X" firstAttribute="height" secondItem="MeM-E8-oj3" secondAttribute="height" id="p6D-yQ-Tjd"/>
                                             <constraint firstAttribute="height" constant="50" id="z02-fq-Bzq"/>
@@ -283,15 +281,15 @@
                                                     <constraint firstAttribute="height" constant="1" id="afY-9W-OCo"/>
                                                 </constraints>
                                             </view>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RC_friends_icon" translatesAutoresizingMaskIntoConstraints="NO" id="YNt-tN-iMA">
-                                                <rect key="frame" x="20" y="15" width="15" height="20"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RC_date_icon" translatesAutoresizingMaskIntoConstraints="NO" id="YNt-tN-iMA">
+                                                <rect key="frame" x="20" y="15" width="20" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="SaL-hv-9Gw"/>
-                                                    <constraint firstAttribute="width" constant="15" id="m3I-FN-5tt"/>
+                                                    <constraint firstAttribute="width" constant="20" id="m3I-FN-5tt"/>
                                                 </constraints>
                                             </imageView>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="End date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QV5-z5-3yt">
-                                                <rect key="frame" x="55" y="0.0" width="265" height="50"/>
+                                                <rect key="frame" x="60" y="0.0" width="260" height="50"/>
                                                 <color key="textColor" red="0.77254901960784317" green="0.81568627450980391" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -304,10 +302,8 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="9qh-wJ-F9X"/>
                                             <constraint firstAttribute="trailing" secondItem="Uwx-W2-rN1" secondAttribute="trailing" id="HEA-cH-cXJ"/>
-                                            <constraint firstItem="YNt-tN-iMA" firstAttribute="leading" secondItem="CkX-MC-Wec" secondAttribute="leading" constant="20" id="PDr-Rd-B7s"/>
                                             <constraint firstItem="Uwx-W2-rN1" firstAttribute="leading" secondItem="CkX-MC-Wec" secondAttribute="leading" id="Qt5-eZ-0O7"/>
                                             <constraint firstItem="QV5-z5-3yt" firstAttribute="centerY" secondItem="YNt-tN-iMA" secondAttribute="centerY" id="cW5-Rc-ZX9"/>
-                                            <constraint firstItem="QV5-z5-3yt" firstAttribute="leading" secondItem="YNt-tN-iMA" secondAttribute="trailing" constant="20" id="g7c-ED-gzr"/>
                                             <constraint firstItem="YNt-tN-iMA" firstAttribute="centerY" secondItem="CkX-MC-Wec" secondAttribute="centerY" id="gKo-Te-Yoy"/>
                                             <constraint firstItem="QV5-z5-3yt" firstAttribute="height" secondItem="CkX-MC-Wec" secondAttribute="height" id="la5-y6-76y"/>
                                             <constraint firstAttribute="bottom" secondItem="Uwx-W2-rN1" secondAttribute="bottom" id="rTG-p9-ZCJ"/>
@@ -385,9 +381,15 @@
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="SdE-8F-HXw" firstAttribute="centerX" secondItem="fjD-26-Heb" secondAttribute="centerX" id="5hV-CL-ZVy"/>
+                                    <constraint firstItem="QV5-z5-3yt" firstAttribute="leading" secondItem="vIe-3Q-h1X" secondAttribute="leading" id="9To-lE-47S"/>
+                                    <constraint firstItem="vIe-3Q-h1X" firstAttribute="leading" secondItem="KLn-wP-Jaw" secondAttribute="leading" id="sob-eb-2Lb"/>
+                                    <constraint firstItem="YNt-tN-iMA" firstAttribute="centerX" secondItem="SdE-8F-HXw" secondAttribute="centerX" id="uzt-kc-udc"/>
+                                </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3VA-DA-E4o">
-                                <rect key="frame" x="272" y="471" width="40" height="40"/>
+                                <rect key="frame" x="272" y="520" width="40" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y5l-uO-lst">
                                         <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
@@ -458,7 +460,7 @@
             </objects>
             <point key="canvasLocation" x="3754" y="-663"/>
         </scene>
-        <!--In Diary List View Controller-->
+        <!--In diary-->
         <scene sceneID="c3L-Oa-ucB">
             <objects>
                 <viewController autoresizesArchivedViewToFullSize="NO" automaticallyAdjustsScrollViewInsets="NO" id="KjS-7X-gbo" customClass="RCInDiaryListViewController" sceneMemberID="viewController">
@@ -473,7 +475,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZQQ-bh-T5K">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
                                 <subviews>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="C9l-6c-Ii7">
+                                    <slider opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="C9l-6c-Ii7">
                                         <rect key="frame" x="-2" y="0.0" width="324" height="31"/>
                                         <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                         <color key="minimumTrackTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -520,14 +522,15 @@
                             <constraint firstItem="ZQQ-bh-T5K" firstAttribute="leading" secondItem="LEI-PS-jqd" secondAttribute="leading" id="xoS-Q1-8I1"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="AXc-dZ-Luj">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="YsC-bg-02o">
+                    <navigationItem key="navigationItem" title="In diary" id="AXc-dZ-Luj">
+                        <barButtonItem key="leftBarButtonItem" image="RC_back_icon" id="YsC-bg-02o">
+                            <inset key="imageInsets" minX="0.0" minY="5" maxX="10" maxY="5"/>
                             <connections>
                                 <action selector="clickCancelBarButton:" destination="KjS-7X-gbo" id="tGY-9f-Fgj"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="RC_option_icon" id="NRV-OA-Q02">
-                            <inset key="imageInsets" minX="8" minY="6" maxX="4" maxY="6"/>
+                            <inset key="imageInsets" minX="10" minY="5" maxX="0.0" maxY="5"/>
                             <connections>
                                 <action selector="clickInDiaryOptionBarButtonItem:" destination="KjS-7X-gbo" id="kMx-5O-VLk"/>
                             </connections>
@@ -644,7 +647,7 @@
                                                             <action selector="changeInDiaryDatePicker:forEvent:" destination="rUM-yD-oXZ" eventType="valueChanged" id="PLR-o0-bVf"/>
                                                         </connections>
                                                     </datePicker>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RC_calendar_icon" translatesAutoresizingMaskIntoConstraints="NO" id="XXv-r4-pHf">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RC_date_icon" translatesAutoresizingMaskIntoConstraints="NO" id="XXv-r4-pHf">
                                                         <rect key="frame" x="12.5" y="15" width="25" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="eH9-GU-Nco"/>
@@ -749,7 +752,7 @@
                                 </connections>
                             </scrollView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="kuB-HB-vwa">
-                                <rect key="frame" x="0.0" y="414" width="320" height="60"/>
+                                <rect key="frame" x="0.0" y="409" width="320" height="60"/>
                                 <color key="backgroundColor" red="0.16862745100000001" green="0.18823529410000001" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="Dcv-aq-d3e"/>
@@ -796,12 +799,12 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2kA-qn-c12">
                                         <rect key="frame" x="0.0" y="0.0" width="100" height="30"/>
                                         <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="12"/>
-                                        <inset key="titleEdgeInsets" minX="-5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <inset key="imageEdgeInsets" minX="10" minY="5" maxX="70" maxY="5"/>
-                                        <state key="normal" title="photos" image="RC_write_icon">
+                                        <state key="normal" title="photos" image="RC_camera_white_color_icon">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <state key="highlighted" image="RC_write_icon"/>
+                                        <state key="highlighted" image="RC_camera_white_color_icon"/>
                                         <connections>
                                             <action selector="clickPhotosButton:" destination="rUM-yD-oXZ" eventType="touchUpInside" id="gaC-PM-FVJ"/>
                                         </connections>
@@ -846,7 +849,7 @@
                             <constraint firstAttribute="leading" secondItem="kuB-HB-vwa" secondAttribute="leading" id="QDb-mT-Lgp"/>
                             <constraint firstItem="oFX-gI-gXb" firstAttribute="leading" secondItem="hwa-R1-P6y" secondAttribute="leading" id="Qrw-EP-1No"/>
                             <constraint firstAttribute="bottom" secondItem="oFX-gI-gXb" secondAttribute="bottom" id="YUl-lE-g9G"/>
-                            <constraint firstItem="kuB-HB-vwa" firstAttribute="bottom" secondItem="GNw-Js-K1U" secondAttribute="top" constant="-5" id="gVj-TQ-1Vs"/>
+                            <constraint firstItem="kuB-HB-vwa" firstAttribute="bottom" secondItem="GNw-Js-K1U" secondAttribute="top" constant="-10" id="gVj-TQ-1Vs"/>
                             <constraint firstAttribute="trailing" secondItem="oFX-gI-gXb" secondAttribute="trailing" id="jwf-ka-E23"/>
                             <constraint firstItem="SYf-zU-4Uf" firstAttribute="top" secondItem="GNL-6P-BzM" secondAttribute="bottom" constant="10" id="pM6-ne-YIL"/>
                             <constraint firstAttribute="trailing" secondItem="GNw-Js-K1U" secondAttribute="trailing" constant="10" id="pib-tM-RZp"/>
@@ -881,9 +884,11 @@
                         <outlet property="inDiaryScrollContentView" destination="OGK-GQ-aMI" id="Kll-54-9jW"/>
                         <outlet property="inDiaryScrollView" destination="oFX-gI-gXb" id="lDd-o8-oDO"/>
                         <outlet property="inDiaryScrollViewBottomConstraints" destination="YUl-lE-g9G" id="aG5-18-l6a"/>
+                        <segue destination="h78-HM-TwT" kind="unwind" identifier="unwindDiaryList" unwindAction="unwindForInDiaryList:" id="onx-ds-yF9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NOI-KU-XPE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="h78-HM-TwT" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="zrE-eu-V1N">
                     <connections>
                         <action selector="tapInDiaryScrollView:" destination="rUM-yD-oXZ" id="ylj-bw-Mty"/>
@@ -980,27 +985,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="d1f-Db-9e1">
-                                <rect key="frame" x="0.0" y="80" width="320" height="428"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ZCP-SD-aVK">
-                                    <size key="itemSize" width="50" height="50"/>
+                                <rect key="frame" x="0.0" y="80" width="320" height="488"/>
+                                <color key="backgroundColor" red="0.16862745100000001" green="0.18823529410000001" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ZCP-SD-aVK">
+                                    <size key="itemSize" width="237" height="287"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Md7-kn-mh0">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <rect key="frame" x="0.0" y="100.5" width="237" height="287"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="237" height="287"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </view>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i2V-0w-Njm">
-                                <rect key="frame" x="268" y="33" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yfx-xZ-QOS">
+                                <rect key="frame" x="267" y="42" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                             </button>
@@ -1008,7 +1013,7 @@
                         <color key="backgroundColor" red="0.16862745100000001" green="0.18823529410000001" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="d1f-Db-9e1" firstAttribute="top" secondItem="dX5-xd-RiD" secondAttribute="bottom" constant="60" id="N5J-FX-y7s"/>
-                            <constraint firstItem="Q4l-pN-HzY" firstAttribute="top" secondItem="d1f-Db-9e1" secondAttribute="bottom" constant="60" id="WH6-Fr-jFt"/>
+                            <constraint firstItem="Q4l-pN-HzY" firstAttribute="top" secondItem="d1f-Db-9e1" secondAttribute="bottom" id="WH6-Fr-jFt"/>
                             <constraint firstAttribute="trailing" secondItem="d1f-Db-9e1" secondAttribute="trailing" id="ZPK-Fv-04M"/>
                             <constraint firstItem="d1f-Db-9e1" firstAttribute="leading" secondItem="StR-U7-hPB" secondAttribute="leading" id="iOG-ar-8yK"/>
                         </constraints>
@@ -1016,7 +1021,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JBA-1c-cRK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2537" y="903"/>
+            <point key="canvasLocation" x="2536.875" y="902.11267605633805"/>
         </scene>
         <!--Main navigation-->
         <scene sceneID="ORe-sE-4Tu">
@@ -1093,15 +1098,16 @@
         <image name="RCSignInUpTopImage" width="374" height="241"/>
         <image name="RCSplashBGImage" width="375" height="667"/>
         <image name="RC_arrow_icon" width="21" height="39"/>
-        <image name="RC_calendar_icon" width="64" height="64"/>
+        <image name="RC_back_icon" width="32" height="32"/>
+        <image name="RC_camera_white_color_icon" width="16" height="16"/>
         <image name="RC_currentLocation_icon" width="32" height="32"/>
-        <image name="RC_friends_icon" width="27" height="34"/>
+        <image name="RC_date_icon" width="32" height="32"/>
         <image name="RC_gear_icon" width="24" height="24"/>
         <image name="RC_option_icon" width="32" height="32"/>
         <image name="RC_placeholder_icon" width="24" height="32"/>
         <image name="RC_plus_icon" width="24" height="24"/>
+        <image name="RC_tag_icon" width="32" height="32"/>
         <image name="RC_trash_icon" width="32" height="32"/>
-        <image name="RC_write_icon" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="beJ-YV-Xsy"/>

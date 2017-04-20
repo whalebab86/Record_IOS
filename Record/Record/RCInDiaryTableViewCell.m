@@ -123,6 +123,13 @@
     
     RCInDiaryPhotoRealm *photo = [[result objectAtIndex:self.indexPath.row].inDiaryPhotosArray objectAtIndex:indexPath.row];
     
+    if([[result objectAtIndex:self.indexPath.row].inDiaryPhotosArray count] > 1) {
+        [self.inDiaryImageCollectionViewFlowLayout setItemSize:CGSizeMake(self.inDiaryImageCollectionView.frame.size.width-20,
+                                                                          self.inDiaryImageCollectionView.frame.size.height)];
+    } else {
+        [self.inDiaryImageCollectionViewFlowLayout setItemSize:CGSizeMake(self.inDiaryImageCollectionView.frame.size.width,
+                                                                          self.inDiaryImageCollectionView.frame.size.height)];
+    }
     
     [cell.inDiaryCollectionViewCellImageVIew setImage:[UIImage imageWithData:photo.inDiaryPhoto]];
     

@@ -41,6 +41,8 @@
 @property (nonatomic) RLMResults<RCInDiaryRealm *>   *inDiaryResults;
 @property (nonatomic) RCDiaryManager *manager;
 
+@property (nonatomic) BOOL isLocationLoding;
+
 @end
 
 @implementation RCInDiaryListViewController
@@ -66,6 +68,8 @@
     self.diaryRealm = [self.manager.diaryResults objectAtIndex:self.indexPath.row];
     
     self.inDiaryResults = [self.diaryRealm.inDiaryArray sortedResultsUsingKeyPath:@"inDiaryReportingDate" ascending:NO];
+    
+    self.isLocationLoding = YES;
 
     // Do any additional setup after loading the view.
     UINib *headerViewNib = [UINib nibWithNibName:@"RCInDiaryTableViewHeaderView" bundle:nil];
@@ -79,9 +83,11 @@
     [self.inDiaryListTableView registerNib:footerViewNib
         forHeaderFooterViewReuseIdentifier:@"RCInDiaryTableViewFooterView"];
     
-    [self.inDIaryTopSlider setThumbTintColor:[UIColor redColor]];
     [self.inDIaryTopSlider setThumbImage:[UIImage imageNamed:@"RC_walk_icon"] forState:UIControlStateNormal];
+    [self.inDIaryTopSlider setThumbImage:[UIImage imageNamed:@"RC_walk_icon"] forState:UIControlStateHighlighted];
     [self.inDIaryTopSlider setContentMode:UIViewContentModeScaleAspectFit];
+    
+    [self.inDIaryTopSlider addTarget:self action:@selector(changeTopSlider:) forControlEvents:UIControlEventValueChanged];
 
     self.inDiaryListTableView.rowHeight          = UITableViewAutomaticDimension;
     self.inDiaryListTableView.estimatedRowHeight = 500;
@@ -130,18 +136,19 @@
     cell.inDiaryMainLocationLabel.text = inDiartRealm.inDiaryLocationCountry;
     cell.inDiarySubLocationLabel.text  = inDiartRealm.inDiaryLocationName;
     
-    cell.inDiaryDaysLabel.text         = [@"DAY " stringByAppendingString:@"1"];
-    cell.inDiaryDateLabel.text         = [DateSource convertWithDate:inDiartRealm.inDiaryReportingDate format:@"yyyy-MM-dd HH:mm:ss"];
+    NSString *dayStr = [DateSource componentsWithFromDate:self.diaryRealm.diaryStartDate
+                                               withToDate:inDiartRealm.inDiaryReportingDate];
+    
+    cell.inDiaryDaysLabel.text         = [@"DAY " stringByAppendingString:dayStr];
+    cell.inDiaryDateLabel.text         = [DateSource convertWithDate:inDiartRealm.inDiaryReportingDate
+                                                              format:@"yyyy-MM-dd HH:mm:ss"];
     cell.inDiaryContentLabel.text      = inDiartRealm.inDiaryContent;
     
     /* collection view item custom */
     CGFloat collectionViewSize = cell.inDiaryImageCollectionView.frame.size.width;
-    
-//    [cell.inDiaryEmptyImageView setHidden:NO];
-    
+
     cell.inDiaryImageCollectionViewFlowLayout.itemSize = CGSizeMake(collectionViewSize, collectionViewSize * 0.6);
     cell.inDiaryImageCollectionViewFlowLayout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
-    
     
     NSInteger imageCount = [[self.inDiaryResults objectAtIndex:indexPath.row].inDiaryPhotosArray count];
     if(imageCount == 0) {
@@ -149,6 +156,7 @@
     } else {
         [cell.inDiaryEmptyImageView setHidden:YES];
     }
+    
     /*
     if(imageCount == 0) {
         [cell.inDiaryEmptyImageView setHidden:NO];
@@ -228,7 +236,15 @@
         }
     }
     
-    [headerView.googleMapView showGoogleMap];
+    if(self.isLocationLoding) {
+        [headerView.googleMapView showGoogleMap];
+        self.isLocationLoding = NO;
+    }
+    
+//    if(self.inDiaryCount != [self.inDiaryResults count]) {
+//        [headerView.googleMapView showGoogleMap];
+//        self.inDiaryCount = [self.inDiaryResults count];
+//    }
     
     [headerView setDelegate:self];
     
@@ -256,9 +272,12 @@
 //#warning scroll man logic modify
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
+    CGFloat selfWidth  = self.view.frame.size.width;
+    CGFloat selfHeight = (selfWidth * 0.75f) + 60 + (selfWidth * 0.6f) + 65;
+    
     if([scrollView isKindOfClass:[UITableView class]]) {
         
-        [self.inDIaryTopSlider setMinimumValue:((660+self.view.frame.size.height)/scrollView.contentSize.height) * 100];
+        [self.inDIaryTopSlider setMinimumValue:((selfHeight+self.view.frame.size.height)/scrollView.contentSize.height) * 100];
         
         [self.inDIaryTopSlider setValue:((scrollView.contentOffset.y+self.view.frame.size.height)/scrollView.contentSize.height) * 100 animated:YES];
     }
@@ -332,6 +351,13 @@
     [self presentViewController:optionAlert animated:YES completion:nil];
 }
 
+- (void)changeTopSlider:(UISlider *)sender {
+    
+//    CGFloat offsetY = ((self.inDiaryListTableView.contentOffset.y + self.view.frame.size.height) / self.inDiaryListTableView.contentSize.height) * sender.value;
+//    
+//    [self.inDiaryListTableView setContentOffset:CGPointMake(0, offsetY)];
+}
+
 #pragma mark - segue method
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
@@ -371,7 +397,10 @@
             
             RCInDiaryLocationViewController *locationVC = [segue destinationViewController];
             
+            locationVC.inDiartRealm = [self.inDiaryResults objectAtIndex:((NSIndexPath*)sender).row];
+            
 //            locationVC.inDiaryData = diaryData;
+//            locationVC.inDia
             locationVC.indexPath   = (NSIndexPath*)sender;
         }
         
@@ -392,8 +421,11 @@
 //        }
 //    }];
     
+    if([sender.identifier isEqualToString:@"unwindDiaryList"]) {
+        self.isLocationLoding = YES;
+    }
+    
     [self.inDiaryListTableView reloadData];
-    NSLog(@"unwindForInDiaryList");
 }
 
 @end

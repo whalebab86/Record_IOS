@@ -33,6 +33,27 @@
     return result;
 }
 
++ (UIImage*)setResizeImage:(UIImage *)imageToResize onImageView:(UIImageView *)imageView {
+    CGFloat width = imageToResize.size.width;
+    CGFloat height = imageToResize.size.height;
+    float scaleFactor;
+    if(width > height)
+    {
+        scaleFactor = imageView.frame.size.height / height;
+    }
+    else
+    {
+        scaleFactor = imageView.frame.size.width / width;
+    }
+    
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(width * scaleFactor, height * scaleFactor), NO, 0.0);
+    [imageToResize drawInRect:CGRectMake(0, 0, width * scaleFactor, height * scaleFactor)];
+    UIImage *resizedImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return resizedImage;
+}
+
 
 
 @end

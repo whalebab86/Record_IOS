@@ -63,6 +63,19 @@
     return result;
 }
 
++ (NSString *)componentsWithFromDate:(NSDate *)fromDate withToDate:(NSDate *)toDate {
+    
+    NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    
+    /* from day - to day */
+    NSDateComponents *components = [gregorianCalendar components:NSCalendarUnitDay
+                                                        fromDate:fromDate
+                                                          toDate:toDate
+                                                         options:0];
+    
+    return [NSString stringWithFormat:@"%ld", components.day+1];
+}
+
 + (NSString *)calculateWithFromDate:(NSDate *)fromDate withToDate:(NSDate *)toDate {
     
     NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];

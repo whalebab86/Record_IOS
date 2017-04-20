@@ -25,6 +25,9 @@
 #import <Realm.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 
+/* util import */
+#import "RCUtilyValidation.h"
+
 @interface RCDiaryListViewController ()
 <UITableViewDataSource, UITableViewDelegate, RCDiaryTableViewFooterDelegate, UIScrollViewDelegate, UISearchBarDelegate>
 
@@ -35,6 +38,7 @@
 @property (nonatomic) NSMutableArray *diaryListArray;
 
 @property (nonatomic) RCDiaryManager *manager;
+
 //@property (nonatomic) RLMResults<RCDiaryRealm *>   *diaryResults;
 
 @end
@@ -47,6 +51,7 @@
     
     [self.diaryTableView reloadData];
 }
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -76,6 +81,11 @@
             NSLog(@"%@", URL);
         }
     }
+    
+    [self.navigationController.navigationBar setBackgroundColor:[UIColor clearColor]];
+    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
+                                                  forBarMetrics:UIBarMetricsDefault];
     
     self.manager = [RCDiaryManager diaryManager];
     
@@ -118,7 +128,10 @@
     
     RCDiaryRealm *diaryData = [self.manager.diaryResults objectAtIndex:indexPath.row];
     
-    cell.diaryMainImageView.image  = [UIImage imageWithData:diaryData.diaryCoverImage];
+    UIImage *resizeImage = [RCUtilyValidation setResizeImage:[UIImage imageWithData:diaryData.diaryCoverImage]
+                                                 onImageView:cell.diaryMainImageView];
+    
+    cell.diaryMainImageView.image  = resizeImage;
     
     cell.diaryTitleLabel.text      = diaryData.diaryName;
     cell.diaryYearLabel.text       = [DateSource convertWithDate:diaryData.diaryStartDate format:@"YYYY"];
@@ -261,18 +274,28 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
     if(scrollView.contentOffset.y < 80) {
-        if(self.searchBar.isHidden) {
-            NSLog(@"no");
-            [UIView animateWithDuration:2 animations:^{
-                [self.searchBar setHidden:NO];
-            }];
+        if(self.searchBar.alpha == 0) {
+            
+            [UIView animateWithDuration:0.6f
+                                  delay:0.0f
+                                options:UIViewAnimationOptionBeginFromCurrentState
+                             animations:^{
+                                [self.searchBar setAlpha:1];
+//                                [self.diaryTableView setBounces:YES];
+                             }
+                             completion:nil];
         }
     } else {
-        if(!self.searchBar.isHidden) {
-            NSLog(@"yes");
-            [UIView animateWithDuration:2 animations:^{
-                [self.searchBar setHidden:YES];
-            }];
+        if(self.searchBar.alpha != 0) {
+            
+            [UIView animateWithDuration:0.6f
+                                  delay:0.0f
+                                options:UIViewAnimationOptionBeginFromCurrentState
+                             animations:^{
+                                 [self.searchBar setAlpha:0];
+//                                [self.diaryTableView setBounces:NO];
+                             }
+                             completion:nil];
         }
     }
 }

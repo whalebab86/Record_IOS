@@ -15,6 +15,7 @@
 + (NSString *)convertDateToString:(NSDate *)date;
 + (NSDate *)convertStringToDate:(NSString *)dateString;
 + (NSComparisonResult)comparWithFromDate:(NSDate *)fromDate withToDate:(NSDate *)toDate;
++ (NSString *)componentsWithFromDate:(NSDate *)fromDate withToDate:(NSDate *)toDate;
 + (NSString *)calculateWithFromDate:(NSDate *)fromDate withToDate:(NSDate *)toDate;
 + (NSString *)formattedDateToMonth:(NSString *)date;
 

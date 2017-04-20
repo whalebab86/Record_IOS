@@ -45,9 +45,9 @@
 
 - (void)googleMapViewDidLoad:(GMSMapView *)mapView {
     
-    if(self.inDiaryData != nil) {
+    if(self.inDiartRealm != nil) {
         
-//        [self.googleMapView googleMapCameraChangedAtIndex:self.indexPath whtiData:self.inDiaryData];
+        [self.googleMapView googleMapCameraChangedAtIndex:self.indexPath whtiData:self.inDiartRealm];
         
     } else {
         

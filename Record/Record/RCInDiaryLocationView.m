@@ -54,6 +54,8 @@
     
     [self.googleMapView removeFromSuperview];
     
+    self.isChangeAnimation = YES;
+    
     CGFloat dafualtLatitude  = 38;
     CGFloat dafualtlongitude = 128;
     
@@ -80,7 +82,10 @@
     GMSMarker *marker;
     
     [self.googleMarkerArray removeAllObjects];
-    for (RCInDiaryRealm* data in self.manager.inDiaryResults) {
+    
+    RLMResults<RCInDiaryRealm*> *result = [self.manager.inDiaryResults sortedResultsUsingKeyPath:@"inDiaryReportingDate"
+                                                                                       ascending:NO];
+    for (RCInDiaryRealm* data in result) {
         
         marker = [self drawMarkerViewWithInDiary:data];
         marker.groundAnchor = CGPointMake(0.5, 0.5);
@@ -115,7 +120,7 @@
     [markerView.layer setBorderColor:[UIColor whiteColor].CGColor];
     [markerView.layer setBorderWidth:2];
     
-    [markerView setBackgroundColor:[UIColor blackColor]];
+    [markerView setBackgroundColor:[UIColor whiteColor]];
     [markerView setClipsToBounds:YES];
     
     [marker setTitle:[DateSource convertWithDate:data.inDiaryReportingDate format:@"yyyy-MM-dd"]];
@@ -139,15 +144,15 @@
     return marker;
 }
 
-- (void)googleMapCameraChangedAtIndex:(NSIndexPath *)indexPath whtiData:(RCInDiaryData *)data {
+- (void)googleMapCameraChangedAtIndex:(NSIndexPath *)indexPath whtiData:(RCInDiaryRealm *)data {
     
-    CLLocationCoordinate2D locationCoordinate = CLLocationCoordinate2DMake([data.inDiarylongitude doubleValue],
-                                                                  [data.inDiaryLatitude doubleValue]);
+    CLLocationCoordinate2D locationCoordinate = CLLocationCoordinate2DMake([data.inDiaryLocationLatitude doubleValue],
+                                                                  [data.inDiaryLocationLongitude doubleValue]);
     
-    GMSCameraUpdate *locationCam = [GMSCameraUpdate setTarget:locationCoordinate zoom:8];
+    GMSCameraUpdate *locationCam = [GMSCameraUpdate setTarget:locationCoordinate zoom:15];
     
     [CATransaction begin];
-    [CATransaction setValue:[NSNumber numberWithFloat: 2.0f] forKey:kCATransactionAnimationDuration];
+    [CATransaction setValue:[NSNumber numberWithFloat: 1.5f] forKey:kCATransactionAnimationDuration];
 
     [self.googleMapView animateWithCameraUpdate:locationCam];
     [self.googleMapView setSelectedMarker:[self.googleMarkerArray objectAtIndex:indexPath.row]];
@@ -193,7 +198,7 @@
     
     
     [CATransaction begin];
-    [CATransaction setValue:[NSNumber numberWithFloat: 2.0f] forKey:kCATransactionAnimationDuration];
+    [CATransaction setValue:[NSNumber numberWithFloat: 1.5f] forKey:kCATransactionAnimationDuration];
 
     [self.googleMapView animateToCameraPosition:camera];
     
@@ -208,7 +213,7 @@
         
         [self.delegate googleMapViewDidLoad:mapView];
         
-//        self.isChangeAnimation = NO;
+        self.isChangeAnimation = NO;
     }
 }
 

@@ -7,11 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface RCUtilyValidation : NSObject
 
 + (BOOL)isValidEmail:(NSString *)email;
 + (BOOL)isValidPW:(NSString *)userPW;
-
++ (UIImage*)setResizeImage:(UIImage *)imageToResize onImageView:(UIImageView *)imageView;
 
 @end

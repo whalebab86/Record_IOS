@@ -26,7 +26,7 @@
 
 - (void)showGoogleMap;
 
-- (void)googleMapCameraChangedAtIndex:(NSIndexPath *)indexPath whtiData:(RCInDiaryData *)data;
+- (void)googleMapCameraChangedAtIndex:(NSIndexPath *)indexPath whtiData:(RCInDiaryRealm *)data;
 - (void)googleMapCameraChangedDefault;
 
 @end

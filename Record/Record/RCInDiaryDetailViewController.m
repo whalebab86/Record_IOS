@@ -335,7 +335,8 @@ CLLocationManagerDelegate, QBImagePickerControllerDelegate>
             
 //            [self.inDiaryRealm.inDiaryPhotosArray addObjects:self.inDiaryImageArray];
 
-            [self dismissViewControllerAnimated:YES completion:nil];
+//            [self dismissViewControllerAnimated:YES completion:nil];
+            [self performSegueWithIdentifier:@"unwindDiaryList" sender:nil];
         }];
         
     } else if(self.inDiaryStatusMode == RCInDiaryStatusModeUpdate) {
@@ -370,7 +371,8 @@ CLLocationManagerDelegate, QBImagePickerControllerDelegate>
             self.inDiaryRealm.inDiaryContent = self.inDiaryContentTextView.text;
             self.inDiaryRealm.inDiaryReportingDate = self.inDiaryDatePicker.date;
             
-            [self dismissViewControllerAnimated:YES completion:nil];
+//            [self dismissViewControllerAnimated:YES completion:nil];
+            [self performSegueWithIdentifier:@"unwindDiaryList" sender:nil];
         }];
         
     }
@@ -390,7 +392,8 @@ CLLocationManagerDelegate, QBImagePickerControllerDelegate>
                                                              
                                                              [self.manager.realm deleteObject:self.inDiaryRealm];
                                                              
-                                                             [self dismissViewControllerAnimated:YES completion:nil];
+//                                                             [self dismissViewControllerAnimated:YES completion:nil];
+                                                             [self performSegueWithIdentifier:@"unwindDiaryList" sender:nil];
                                                          }];
                                                      }];
     
@@ -500,13 +503,21 @@ CLLocationManagerDelegate, QBImagePickerControllerDelegate>
 /* search location */
 - (void)findSearchLocation {
     
-    CLLocationCoordinate2D center = CLLocationCoordinate2DMake(self.locationPlace.coordinate.latitude,
-                                                               self.locationPlace.coordinate.longitude);
+    CGFloat latitude  = self.locationPlace.coordinate.latitude;
+    CGFloat longitude = self.locationPlace.coordinate.longitude;
+    
+    if(self.locationPlace == nil) {
+        latitude  = [self.inDiaryRealm.inDiaryLocationLatitude doubleValue];
+        longitude = [self.inDiaryRealm.inDiaryLocationLongitude doubleValue];
+    }
+    
+    CLLocationCoordinate2D center = CLLocationCoordinate2DMake(latitude, longitude);
     
     GMSCoordinateBounds *viewport = [[GMSCoordinateBounds alloc] initWithCoordinate:center
                                                                          coordinate:center];
     
     GMSPlacePickerConfig *config = [[GMSPlacePickerConfig alloc] initWithViewport:viewport];
+    
     self.placePicker = [[GMSPlacePicker alloc] initWithConfig:config];
     
     [self.placePicker pickPlaceWithCallback:^(GMSPlace *place, NSError *error) {
