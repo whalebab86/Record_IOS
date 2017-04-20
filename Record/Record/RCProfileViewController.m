@@ -50,11 +50,6 @@
     /* text field delegate */
     self.nickNameTextField.delegate = self;
     
-    /* text view place holder */
-    if(![self.shortStoryTextView hasText]) {
-        self.textViewplaceHolderLB.hidden = NO;
-    }
-    
     /* text view delegate */
     self.shortStoryTextView.delegate = self;
     
@@ -114,6 +109,10 @@
     self.homTownLabel.text = personalInfo.homeTown;
     self.shortStoryTextView.text = personalInfo.introduction;
     
+    /* text view place holder */
+    if([self.shortStoryTextView hasText]) {
+        self.textViewplaceHolderLB.hidden = YES;
+    }
 }
 
 #pragma mark - text field delegate
