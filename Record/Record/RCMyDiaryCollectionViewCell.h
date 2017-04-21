@@ -15,5 +15,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *fromStartDateToEndDateLB;
 @property (weak, nonatomic) IBOutlet UILabel *totalPostNumberLB;
 @property (weak, nonatomic) IBOutlet UILabel *totalTravelDateNumberLB;
+//@property (weak, nonatomic) IBOutlet UIView *contentView;
 
 @end

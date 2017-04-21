@@ -20,21 +20,29 @@
 @property NSMutableArray *latitudes;
 @property NSMutableArray *longitudes;
 @property NSIndexPath *recivedIndexPath;
+@property (weak, nonatomic) IBOutlet UILabel *pageNumberLB;
+@property (weak, nonatomic) IBOutlet UILabel *totalPageLB;
 
 @end
 
 @interface RCMyTravelBookSecondPageView : UIView
+
 @property (weak, nonatomic) IBOutlet UIView *mapViewOfGoogleMap;
 @property (weak, nonatomic) IBOutlet UILabel *contentsOfPostingLB;
 @property NSString *latitude;
 @property NSString *longitude;
 @property NSIndexPath *recivedIndexPath;
 @property NSInteger inDiaryArrayNumber;
+@property (weak, nonatomic) IBOutlet UILabel *pageNumberLB;
+@property (weak, nonatomic) IBOutlet UILabel *totalPageLB;
 
 @end
 
 @interface RCMyTravelBookRemainPhotoPageView : UIView
 @property (weak, nonatomic) IBOutlet UIImageView *firstPhotoImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *secondPhotoImageView;
+@property (weak, nonatomic) IBOutlet UILabel *pageNumberLB;
+@property (weak, nonatomic) IBOutlet UILabel *totalPageLB;
+
 
 @end
