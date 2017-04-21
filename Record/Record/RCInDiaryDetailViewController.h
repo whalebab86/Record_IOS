@@ -30,8 +30,18 @@
 @end
 
 
+@protocol RCInDiaryListViewCollectionViewCellDelegate <NSObject>
+
+- (void)clickDeleteButton:(UIButton *)button indexPath:(NSIndexPath *)indexPath;
+
+@end
+
 @interface RCInDiaryListViewCollectionViewCell : UICollectionViewCell
 
-@property (nonatomic) IBOutlet UIImageView *inDiaryCollectionImageView;
+@property (nonatomic) id<RCInDiaryListViewCollectionViewCellDelegate> delegate;
+
+@property (nonatomic) IBOutlet UIImageView  *inDiaryCollectionImageView;
+@property (weak, nonatomic) IBOutlet UIView *inDiaryDeleteView;
+@property (nonatomic) NSIndexPath *indexPath;
 
 @end

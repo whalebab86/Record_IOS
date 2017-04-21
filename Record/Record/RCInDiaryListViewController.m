@@ -22,6 +22,7 @@
 /* Record source import */
 #import "RCDiaryManager.h"
 #import "DateSource.h"
+#import "RCMemberInfo.h"
 
 /* library import */
 #import <SDWebImage/UIImageView+WebCache.h>
@@ -41,6 +42,8 @@
 /* data */
 @property (nonatomic) RLMResults<RCInDiaryRealm *>   *inDiaryResults;
 @property (nonatomic) RCDiaryManager *manager;
+
+@property (nonatomic) RCMemberInfo *memberInfo;
 
 @property (nonatomic) BOOL isLocationLoding;
 
@@ -71,6 +74,8 @@
     self.inDiaryResults = [self.diaryRealm.inDiaryArray sortedResultsUsingKeyPath:@"inDiaryReportingDate" ascending:NO];
     
     self.isLocationLoding = YES;
+    
+    self.memberInfo = [[RCMemberInfo alloc] init];
 
     // Do any additional setup after loading the view.
     UINib *headerViewNib = [UINib nibWithNibName:@"RCInDiaryTableViewHeaderView" bundle:nil];
@@ -110,6 +115,14 @@
     }];
      */
     
+    /* collection view item custom
+    //CGFloat collectionViewSize = cell.inDiaryImageCollectionView.frame.size.width;
+    CGFloat collectionViewSize = self.view.frame.size.width;
+    
+    cell.inDiaryImageCollectionViewFlowLayout.itemSize = CGSizeMake(collectionViewSize, collectionViewSize * 0.6);
+    cell.inDiaryImageCollectionViewFlowLayout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    */
+    
     [self.inDiaryListTableView reloadData];
 }
 
@@ -140,12 +153,6 @@
                                                               format:@"yyyy-MM-dd HH:mm:ss"];
     cell.inDiaryContentLabel.text      = inDiartRealm.inDiaryContent;
     
-    /* collection view item custom */
-    CGFloat collectionViewSize = cell.inDiaryImageCollectionView.frame.size.width;
-
-    cell.inDiaryImageCollectionViewFlowLayout.itemSize = CGSizeMake(collectionViewSize, collectionViewSize * 0.6);
-    cell.inDiaryImageCollectionViewFlowLayout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
-    
     NSInteger imageCount = [[self.inDiaryResults objectAtIndex:indexPath.row].inDiaryPhotosArray count];
     if(imageCount == 0) {
         [cell.inDiaryEmptyImageView setHidden:NO];
@@ -156,7 +163,7 @@
     [cell setDelegate:self];
 
     [cell.inDiaryImageCollectionView reloadData];
-
+    
     return cell;
 }
 
@@ -172,6 +179,11 @@
     RCInDiaryTableViewHeaderView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"RCInDiaryTableViewHeaderView"];
     
     self.inDiaryHeaderView = headerView;
+    
+    [headerView.coverProfieImageView sd_setImageWithURL:[NSURL URLWithString:self.memberInfo.profileImageURL]
+                                       placeholderImage:[UIImage imageNamed:@"RCSignInUpTopImage"]];
+    
+    headerView.coverProfileNameLabel.text = self.memberInfo.nickName;
     
     if(self.diaryRealm != nil) {
         headerView.diaryCoverImageView.image = [UIImage imageWithData:self.diaryRealm.diaryCoverImage];

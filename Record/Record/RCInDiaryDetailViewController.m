@@ -26,7 +26,7 @@ typedef NS_ENUM(NSInteger, RCInDiaryStatusMode) {
 
 @interface RCInDiaryDetailViewController ()
 <UITextViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,
-CLLocationManagerDelegate, QBImagePickerControllerDelegate>
+CLLocationManagerDelegate, QBImagePickerControllerDelegate, RCInDiaryListViewCollectionViewCellDelegate>
 
 /* view */
 @property (weak, nonatomic) IBOutlet UIDatePicker     *inDiaryDatePicker;
@@ -169,7 +169,14 @@ CLLocationManagerDelegate, QBImagePickerControllerDelegate>
     
     NSData *imageData = [self.inDiaryImageArray objectAtIndex:indexPath.row];
     
+    [cell.inDiaryDeleteView.layer setCornerRadius:cell.inDiaryDeleteView.frame.size.height / 2];
+    [cell.inDiaryDeleteView setClipsToBounds:YES];
+    
     [cell.inDiaryCollectionImageView setImage:[UIImage imageWithData:imageData]];
+    
+    cell.indexPath = indexPath;
+    
+    [cell setDelegate:self];
     
     return cell;
 }
@@ -207,7 +214,7 @@ CLLocationManagerDelegate, QBImagePickerControllerDelegate>
         // Do something with the asset
         NSLog(@"%@", asset.localIdentifier);
         
-        CGSize targetSize = CGSizeMake(1000, 800);
+        CGSize targetSize = CGSizeMake(1400, 1400);
         
         PHImageRequestOptions * imageRequestOptions = [[PHImageRequestOptions alloc] init];
         imageRequestOptions.synchronous = YES;
@@ -407,6 +414,33 @@ CLLocationManagerDelegate, QBImagePickerControllerDelegate>
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
+#pragma mark - RCInDiaryDetailCollectionView Method
+- (void)clickDeleteButton:(UIButton *)button indexPath:(NSIndexPath *)indexPath {
+
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Delete in diary photo"
+                                                                             message:nil
+                                                                      preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok"
+                                                       style:UIAlertActionStyleDefault
+                                                     handler:^(UIAlertAction * _Nonnull action) {
+                                                         
+                                                         [self.inDiaryImageArray removeObjectAtIndex:indexPath.row];
+                                                         [self.inDiaryCollectionView reloadData];
+                                                         
+                                                     }];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
+                                                           style:UIAlertActionStyleCancel
+                                                         handler:nil];
+    
+    [alertController addAction:okAction];
+    [alertController addAction:cancelAction];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
 #pragma mark - Custom value change Method
 - (IBAction)changeInDiaryDatePicker:(UIDatePicker *)sender forEvent:(UIEvent *)event {
     
@@ -563,12 +597,14 @@ CLLocationManagerDelegate, QBImagePickerControllerDelegate>
         self.inDiaryScrollViewBottomConstraints.constant += (keyboardInfo.size.height + scrollViewBottom);
         self.inDiaryPhotoButtonBottomConstraints.constant = (keyboardInfo.size.height + 5);
         self.inDiaryDeleteViewBottomConstraints.constant  = (keyboardInfo.size.height + 5);
+        [self.inDiaryCollectionView setAlpha:0];
         
     } else if([notification.name isEqualToString:UIKeyboardWillHideNotification]  && bottomConstant != 0) {
         
         self.inDiaryScrollViewBottomConstraints.constant  = 0;
         self.inDiaryPhotoButtonBottomConstraints.constant = 10;
         self.inDiaryDeleteViewBottomConstraints.constant  = 10;
+        [self.inDiaryCollectionView setAlpha:1];
     }
     
     [UIView animateWithDuration:1 animations:^{
@@ -581,6 +617,10 @@ CLLocationManagerDelegate, QBImagePickerControllerDelegate>
 
 
 @implementation RCInDiaryListViewCollectionViewCell
+
+- (IBAction)clickDeleteButton:(UIButton *)sender {
+    [self.delegate clickDeleteButton:sender indexPath:self.indexPath];
+}
 
 @end
 

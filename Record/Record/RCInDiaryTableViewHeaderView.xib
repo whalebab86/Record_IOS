@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,7 +23,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" restorationIdentifier="RCInDiaryTableViewHeaderView" id="iN0-l3-epB" userLabel="In Diary Table View Header View" customClass="RCInDiaryTableViewHeaderView">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" userLabel="In Diary Table View Header View" customClass="RCInDiaryTableViewHeaderView">
             <rect key="frame" x="0.0" y="0.0" width="375" height="632"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -140,43 +140,8 @@
                                 <constraint firstItem="4RP-M8-2Ac" firstAttribute="centerX" secondItem="yks-gL-ecV" secondAttribute="centerX" id="ove-yu-7fc"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FBh-k9-Z5j" userLabel="Diary map view">
-                            <rect key="frame" x="0.0" y="281.5" width="375" height="225"/>
-                            <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S9n-8l-tol" userLabel="Diary map view">
-                                    <rect key="frame" x="-0.5" y="0.5" width="375" height="225"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </view>
-                                <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="81f-SM-bLd">
-                                    <rect key="frame" x="-0.5" y="0.5" width="375" height="225"/>
-                                    <color key="backgroundColor" red="0.16862745098039217" green="0.18823529411764706" blue="0.23137254901960785" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </view>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lii-LI-eag" userLabel="Diary mask button">
-                                    <rect key="frame" x="-0.5" y="0.5" width="375" height="225"/>
-                                    <connections>
-                                        <action selector="clickLocationMaskButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="7c9-i9-3ra"/>
-                                    </connections>
-                                </button>
-                            </subviews>
-                            <color key="backgroundColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <constraints>
-                                <constraint firstItem="S9n-8l-tol" firstAttribute="centerX" secondItem="FBh-k9-Z5j" secondAttribute="centerX" id="2Ih-Zk-6sh"/>
-                                <constraint firstItem="lii-LI-eag" firstAttribute="centerX" secondItem="FBh-k9-Z5j" secondAttribute="centerX" id="8QD-jv-jCO"/>
-                                <constraint firstAttribute="width" secondItem="FBh-k9-Z5j" secondAttribute="height" multiplier="1:0.6" id="D6v-iM-Rcr"/>
-                                <constraint firstItem="81f-SM-bLd" firstAttribute="width" secondItem="S9n-8l-tol" secondAttribute="width" id="ErN-7D-3b0"/>
-                                <constraint firstItem="81f-SM-bLd" firstAttribute="height" secondItem="S9n-8l-tol" secondAttribute="height" id="V2h-Zc-6Hl"/>
-                                <constraint firstItem="lii-LI-eag" firstAttribute="width" secondItem="FBh-k9-Z5j" secondAttribute="width" id="dae-SS-QbY"/>
-                                <constraint firstItem="81f-SM-bLd" firstAttribute="centerY" secondItem="S9n-8l-tol" secondAttribute="centerY" id="ffu-hE-DTH"/>
-                                <constraint firstItem="S9n-8l-tol" firstAttribute="width" secondItem="FBh-k9-Z5j" secondAttribute="width" id="iBD-ri-lzE"/>
-                                <constraint firstItem="S9n-8l-tol" firstAttribute="height" secondItem="FBh-k9-Z5j" secondAttribute="height" id="iVR-Tu-N0N"/>
-                                <constraint firstItem="S9n-8l-tol" firstAttribute="centerY" secondItem="FBh-k9-Z5j" secondAttribute="centerY" id="m4X-5m-z0f"/>
-                                <constraint firstItem="81f-SM-bLd" firstAttribute="centerX" secondItem="S9n-8l-tol" secondAttribute="centerX" id="mcZ-OH-dW7"/>
-                                <constraint firstItem="lii-LI-eag" firstAttribute="height" secondItem="FBh-k9-Z5j" secondAttribute="height" id="vtn-yw-ghW"/>
-                                <constraint firstItem="lii-LI-eag" firstAttribute="centerY" secondItem="FBh-k9-Z5j" secondAttribute="centerY" id="zsL-wh-hhx"/>
-                            </constraints>
-                        </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lTn-XE-b6U" userLabel="Diary info view">
-                            <rect key="frame" x="0.0" y="506.5" width="375" height="60"/>
+                            <rect key="frame" x="0.0" y="281.5" width="375" height="60"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="3g8-iJ-CnB">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
@@ -303,11 +268,45 @@
                             <color key="backgroundColor" red="0.16862745098039217" green="0.18823529411764706" blue="0.23137254901960785" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="60" id="2M2-Uw-toS"/>
-                                <constraint firstAttribute="width" constant="375" id="UOS-p0-3Iw"/>
                                 <constraint firstItem="3g8-iJ-CnB" firstAttribute="width" secondItem="lTn-XE-b6U" secondAttribute="width" id="aNc-Uy-ihU"/>
                                 <constraint firstItem="3g8-iJ-CnB" firstAttribute="top" secondItem="lTn-XE-b6U" secondAttribute="top" id="cor-aX-WVp"/>
                                 <constraint firstItem="3g8-iJ-CnB" firstAttribute="leading" secondItem="lTn-XE-b6U" secondAttribute="leading" id="wxx-mD-Fol"/>
                                 <constraint firstItem="3g8-iJ-CnB" firstAttribute="height" secondItem="lTn-XE-b6U" secondAttribute="height" id="y3i-JL-VsG"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FBh-k9-Z5j" userLabel="Diary map view">
+                            <rect key="frame" x="0.0" y="341.5" width="375" height="225"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S9n-8l-tol" userLabel="Diary map view">
+                                    <rect key="frame" x="-0.5" y="0.5" width="375" height="225"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </view>
+                                <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="81f-SM-bLd">
+                                    <rect key="frame" x="-0.5" y="0.5" width="375" height="225"/>
+                                    <color key="backgroundColor" red="0.16862745098039217" green="0.18823529411764706" blue="0.23137254901960785" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </view>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lii-LI-eag" userLabel="Diary mask button">
+                                    <rect key="frame" x="-0.5" y="0.5" width="375" height="225"/>
+                                    <connections>
+                                        <action selector="clickLocationMaskButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="7c9-i9-3ra"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstItem="S9n-8l-tol" firstAttribute="centerX" secondItem="FBh-k9-Z5j" secondAttribute="centerX" id="2Ih-Zk-6sh"/>
+                                <constraint firstItem="lii-LI-eag" firstAttribute="centerX" secondItem="FBh-k9-Z5j" secondAttribute="centerX" id="8QD-jv-jCO"/>
+                                <constraint firstAttribute="width" secondItem="FBh-k9-Z5j" secondAttribute="height" multiplier="1:0.6" id="D6v-iM-Rcr"/>
+                                <constraint firstItem="81f-SM-bLd" firstAttribute="width" secondItem="S9n-8l-tol" secondAttribute="width" id="ErN-7D-3b0"/>
+                                <constraint firstItem="81f-SM-bLd" firstAttribute="height" secondItem="S9n-8l-tol" secondAttribute="height" id="V2h-Zc-6Hl"/>
+                                <constraint firstItem="lii-LI-eag" firstAttribute="width" secondItem="FBh-k9-Z5j" secondAttribute="width" id="dae-SS-QbY"/>
+                                <constraint firstItem="81f-SM-bLd" firstAttribute="centerY" secondItem="S9n-8l-tol" secondAttribute="centerY" id="ffu-hE-DTH"/>
+                                <constraint firstItem="S9n-8l-tol" firstAttribute="width" secondItem="FBh-k9-Z5j" secondAttribute="width" id="iBD-ri-lzE"/>
+                                <constraint firstItem="S9n-8l-tol" firstAttribute="height" secondItem="FBh-k9-Z5j" secondAttribute="height" id="iVR-Tu-N0N"/>
+                                <constraint firstItem="S9n-8l-tol" firstAttribute="centerY" secondItem="FBh-k9-Z5j" secondAttribute="centerY" id="m4X-5m-z0f"/>
+                                <constraint firstItem="81f-SM-bLd" firstAttribute="centerX" secondItem="S9n-8l-tol" secondAttribute="centerX" id="mcZ-OH-dW7"/>
+                                <constraint firstItem="lii-LI-eag" firstAttribute="height" secondItem="FBh-k9-Z5j" secondAttribute="height" id="vtn-yw-ghW"/>
+                                <constraint firstItem="lii-LI-eag" firstAttribute="centerY" secondItem="FBh-k9-Z5j" secondAttribute="centerY" id="zsL-wh-hhx"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Brk-Cm-wbp" userLabel="Diary bottom view">
@@ -358,15 +357,15 @@
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="FBh-k9-Z5j" firstAttribute="width" secondItem="0jn-0q-dNr" secondAttribute="width" id="1Uu-eC-Hea"/>
-                        <constraint firstItem="FBh-k9-Z5j" firstAttribute="top" secondItem="yks-gL-ecV" secondAttribute="bottom" id="29o-Oc-scW"/>
                         <constraint firstItem="yks-gL-ecV" firstAttribute="top" secondItem="0jn-0q-dNr" secondAttribute="top" id="8Xn-wt-mUf"/>
                         <constraint firstItem="FBh-k9-Z5j" firstAttribute="leading" secondItem="0jn-0q-dNr" secondAttribute="leading" id="Cgx-JB-AE6"/>
-                        <constraint firstItem="FBh-k9-Z5j" firstAttribute="bottom" secondItem="lTn-XE-b6U" secondAttribute="top" id="Fb0-dJ-to2"/>
                         <constraint firstItem="lTn-XE-b6U" firstAttribute="width" secondItem="yks-gL-ecV" secondAttribute="width" id="HeQ-lu-Rc3"/>
                         <constraint firstItem="lTn-XE-b6U" firstAttribute="leading" secondItem="yks-gL-ecV" secondAttribute="leading" id="VUc-JL-HSU"/>
+                        <constraint firstItem="FBh-k9-Z5j" firstAttribute="top" secondItem="lTn-XE-b6U" secondAttribute="bottom" id="acB-iX-YGi"/>
+                        <constraint firstItem="FBh-k9-Z5j" firstAttribute="bottom" secondItem="Brk-Cm-wbp" secondAttribute="top" id="bQW-J0-Pia"/>
                         <constraint firstItem="Brk-Cm-wbp" firstAttribute="leading" secondItem="0jn-0q-dNr" secondAttribute="leading" id="ea6-OO-BUD"/>
                         <constraint firstItem="yks-gL-ecV" firstAttribute="leading" secondItem="0jn-0q-dNr" secondAttribute="leading" id="hVS-aL-nkd"/>
-                        <constraint firstItem="Brk-Cm-wbp" firstAttribute="top" secondItem="lTn-XE-b6U" secondAttribute="bottom" id="l0z-x1-bcb"/>
+                        <constraint firstItem="lTn-XE-b6U" firstAttribute="top" secondItem="yks-gL-ecV" secondAttribute="bottom" id="oMJ-Hv-sW9"/>
                         <constraint firstItem="Brk-Cm-wbp" firstAttribute="width" secondItem="0jn-0q-dNr" secondAttribute="width" id="rCM-D8-uJX"/>
                         <constraint firstItem="yks-gL-ecV" firstAttribute="width" secondItem="0jn-0q-dNr" secondAttribute="width" id="tF3-1f-8UX"/>
                     </constraints>

@@ -10,6 +10,8 @@
 
 #import "RCLoginManager.h"
 
+#import <Realm.h>
+
 @interface RCMainTabBarController ()
 
 @end
@@ -22,6 +24,7 @@
     
     [[RCLoginManager loginManager] checkValidTokenWithComplition:^(BOOL isSucceess, NSInteger code) {
         if(!isSucceess) {
+            
             [self performSegueWithIdentifier:@"RecordLoginSegue" sender:self];
         }
     }];

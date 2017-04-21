@@ -7,6 +7,7 @@
 //
 
 #import "RCInDiaryLocationView.h"
+#import "RCInDiaryInfoView.h"
 
 /* library import */
 #import <SDWebImage/UIImageView+WebCache.h>
@@ -85,12 +86,16 @@
     
     RLMResults<RCInDiaryRealm*> *result = [self.manager.inDiaryResults sortedResultsUsingKeyPath:@"inDiaryReportingDate"
                                                                                        ascending:NO];
+    
+    NSInteger index = 0;
     for (RCInDiaryRealm* data in result) {
         
-        marker = [self drawMarkerViewWithInDiary:data];
+        marker = [self drawMarkerViewWithInDiary:data index:index];
         marker.groundAnchor = CGPointMake(0.5, 0.5);
         
         [self.googleMarkerArray addObject:marker];
+        
+        index += 1;
     }
     
     self.marker = marker;
@@ -103,7 +108,7 @@
     [self addSubview:mapView];
 }
 
-- (GMSMarker *)drawMarkerViewWithInDiary:(RCInDiaryRealm *) data {
+- (GMSMarker *)drawMarkerViewWithInDiary:(RCInDiaryRealm *) data index:(NSUInteger)index{
     
     CLLocationCoordinate2D position = CLLocationCoordinate2DMake([data.inDiaryLocationLatitude doubleValue],
                                                                  [data.inDiaryLocationLongitude doubleValue]);
@@ -123,7 +128,8 @@
     [markerView setBackgroundColor:[UIColor whiteColor]];
     [markerView setClipsToBounds:YES];
     
-    [marker setTitle:[DateSource convertWithDate:data.inDiaryReportingDate format:@"yyyy-MM-dd"]];
+    //[marker setTitle:[DateSource convertWithDate:data.inDiaryReportingDate format:@"yyyy-MM-dd"]];
+    [marker setTitle:[NSString stringWithFormat:@"%ld", index]];
     
     UIImageView *markerImageView = [[UIImageView alloc] initWithFrame:markerView.bounds];
     [markerView addSubview:markerImageView];
@@ -219,24 +225,23 @@
 
 - (UIView *)mapView:(GMSMapView *)mapView markerInfoWindow:(GMSMarker *)marker {
     
-    UIView *markerInfoView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width - 80, 75)];
-    [markerInfoView setBackgroundColor:[UIColor clearColor]];
     
-    UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width - 80, 30)];
-    [titleView setBackgroundColor:[UIColor darkGrayColor]];
-    [markerInfoView addSubview:titleView];
+    RCInDiaryInfoView *info = [[[NSBundle mainBundle] loadNibNamed:@"RCInDiaryInfoView" owner:self options:nil] objectAtIndex:0];
+
+    RLMResults<RCInDiaryRealm*> *result = [self.manager.inDiaryResults sortedResultsUsingKeyPath:@"inDiaryReportingDate"
+                                                                                       ascending:NO];
     
-    UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 30, self.frame.size.width - 80, 40)];
-    [contentView setBackgroundColor:[UIColor whiteColor]];
-    [contentView setAlpha:0.9];
-    [markerInfoView addSubview:contentView];
+    RCInDiaryRealm* data = [result objectAtIndex:[marker.title integerValue]];
     
-    UIView *temp = [[UIView alloc] initWithFrame:CGRectMake((markerInfoView.frame.size.width / 2.0f) - 2.5f, 70, 5, 5)];
-    [temp setBackgroundColor:[UIColor darkGrayColor]];
-    [temp setAlpha:0.9];
-    [markerInfoView addSubview:temp];
+    if([data.inDiaryPhotosArray count] > 0) {
+        [info.inDiaryCoverImageView setImage:[UIImage imageWithData:[data.inDiaryPhotosArray objectAtIndex:0].inDiaryPhoto]];
+    }
     
-    return markerInfoView;
+    info.inDiaryLocationLabel.text = data.inDiaryLocationName;
+    info.inDiaryDateLabel.text     = [DateSource convertWithDate:data.inDiaryReportingDate format:@"yyyy-MM-dd HH:mm"];
+    info.inDiaryContentLabel.text  = data.inDiaryContent;
+    
+    return info;
 }
 
 @end

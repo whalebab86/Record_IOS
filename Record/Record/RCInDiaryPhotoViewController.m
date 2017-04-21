@@ -11,7 +11,8 @@
 @interface RCInDiaryPhotoViewController ()
 <UICollectionViewDelegate, UICollectionViewDataSource>
 
-@property (weak, nonatomic) IBOutlet UICollectionView *inDiaryPhotoCollectionView;
+@property (weak, nonatomic) IBOutlet UICollectionView           *inDiaryPhotoCollectionView;
+@property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *inDiaryPhotoFlowLayout;
 
 @end
 
@@ -20,6 +21,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    
+    [self.inDiaryPhotoCollectionView selectItemAtIndexPath:self.photoIndexPath
+                                                  animated:YES
+                                            scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
+    
 }
 
 #pragma mark - UICollectionView Delegate
@@ -36,18 +43,21 @@
     [cell.inDiaryPhotoImageView setImage:[UIImage imageWithData:[self.inDiaryPhoto
                                                                  objectAtIndex:indexPath.item].inDiaryPhoto]];
     
-    cell.inDiaryPhotoCountLabel.text = [NSString stringWithFormat:@"%ld / %ld", indexPath.item + 1,
-                                        [self.inDiaryPhoto count]];
+    [self.inDiaryPhotoFlowLayout setItemSize:CGSizeMake(self.inDiaryPhotoCollectionView.frame.size.width,
+                                                        self.inDiaryPhotoCollectionView.frame.size.height)];
     
-    //[self.inDiaryPhotoCollectionView setContentOffset:CGPointMake(self.view.frame.size.width * self.photoIndexPath.row, 0)];
+    cell.inDiaryPhotoCountLabel.text = [NSString stringWithFormat:@"%ld / %ld", indexPath.item + 1
+                                        ,[self.inDiaryPhoto count]];
     
     return cell;
 }
 
+#pragma mark - Custom method
 - (IBAction)clickCloseButton:(UIButton *)sender {
     
     [self performSegueWithIdentifier:@"unwindInDiaryList" sender:nil];
 }
+
 
 @end
 

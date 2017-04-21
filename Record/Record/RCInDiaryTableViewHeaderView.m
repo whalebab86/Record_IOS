@@ -39,6 +39,9 @@
     
     UIColor *color = [UIColor colorWithRed:255/228.0f green:255/228.0f blue:255/230.0f alpha:0.7];
     
+    [self.coverProfieImageView.layer setCornerRadius:self.coverProfieImageView.frame.size.height/2];
+    [self.coverProfieImageView setClipsToBounds:YES];
+    
     [self.inDiaryTripStartView.layer setCornerRadius:self.inDiaryTripStartView.frame.size.height/2];
     [self.inDiaryTripStartView.layer setBorderColor:color.CGColor];
     [self.inDiaryTripStartView.layer setBorderWidth:1];

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -48,7 +48,7 @@
                                         <color key="backgroundColor" red="0.13271617890000001" green="0.14825978879999999" blue="0.18977418539999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UhX-gV-Kvm">
-                                        <rect key="frame" x="10.5" y="4.5" width="9" height="21.5"/>
+                                        <rect key="frame" x="11" y="5" width="9" height="21.5"/>
                                         <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -67,7 +67,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Traveled for a bit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Uf-27-083">
-                                <rect key="frame" x="75" y="20.5" width="105" height="19"/>
+                                <rect key="frame" x="75" y="21" width="105" height="19"/>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -114,7 +114,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="South korea" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="59d-BS-0eg">
-                                        <rect key="frame" x="36" y="33" width="71" height="18"/>
+                                        <rect key="frame" x="36" y="32.5" width="71" height="18"/>
                                         <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="14"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -132,11 +132,14 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pxd-fS-Si5" userLabel="image view">
-                                <rect key="frame" x="0.0" y="60" width="334" height="200"/>
+                                <rect key="frame" x="0.0" y="60" width="334" height="200.5"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="QpX-ad-lCS">
-                                        <rect key="frame" x="-0.5" y="-0.5" width="334" height="200"/>
+                                        <rect key="frame" x="-0.5" y="-0.5" width="334" height="200.5"/>
                                         <color key="backgroundColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="QpX-ad-lCS" secondAttribute="height" multiplier="1:0.6" id="kD2-Kt-O2v"/>
+                                        </constraints>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="WaG-So-9wR">
                                             <size key="itemSize" width="50" height="50"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -145,28 +148,27 @@
                                         </collectionViewFlowLayout>
                                     </collectionView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RecordLogoWithoutWord" translatesAutoresizingMaskIntoConstraints="NO" id="aLp-fV-lO8">
-                                        <rect key="frame" x="-0.5" y="-0.5" width="334" height="200"/>
+                                        <rect key="frame" x="-0.5" y="-0.5" width="334" height="200.5"/>
                                         <color key="backgroundColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="aLp-fV-lO8" firstAttribute="width" secondItem="Pxd-fS-Si5" secondAttribute="width" id="AFK-md-Bk7"/>
-                                    <constraint firstItem="QpX-ad-lCS" firstAttribute="height" secondItem="Pxd-fS-Si5" secondAttribute="height" id="C8I-fp-KyG"/>
                                     <constraint firstItem="QpX-ad-lCS" firstAttribute="centerX" secondItem="Pxd-fS-Si5" secondAttribute="centerX" id="Fke-g6-bV3"/>
-                                    <constraint firstItem="aLp-fV-lO8" firstAttribute="height" secondItem="Pxd-fS-Si5" secondAttribute="height" id="Htu-ws-VXZ"/>
+                                    <constraint firstItem="aLp-fV-lO8" firstAttribute="height" secondItem="QpX-ad-lCS" secondAttribute="height" id="FnG-DE-Pue"/>
                                     <constraint firstItem="QpX-ad-lCS" firstAttribute="width" secondItem="Pxd-fS-Si5" secondAttribute="width" id="UV9-zk-s4F"/>
-                                    <constraint firstAttribute="width" secondItem="Pxd-fS-Si5" secondAttribute="height" multiplier="1:0.6" id="asZ-lr-boQ"/>
-                                    <constraint firstItem="aLp-fV-lO8" firstAttribute="centerX" secondItem="Pxd-fS-Si5" secondAttribute="centerX" id="iJ4-Eu-MmS"/>
-                                    <constraint firstItem="aLp-fV-lO8" firstAttribute="centerY" secondItem="Pxd-fS-Si5" secondAttribute="centerY" id="kGs-5k-3xF"/>
+                                    <constraint firstItem="aLp-fV-lO8" firstAttribute="width" secondItem="QpX-ad-lCS" secondAttribute="width" id="bAv-z5-PwY"/>
+                                    <constraint firstItem="aLp-fV-lO8" firstAttribute="centerY" secondItem="QpX-ad-lCS" secondAttribute="centerY" id="mVk-iK-Dz2"/>
+                                    <constraint firstItem="aLp-fV-lO8" firstAttribute="centerX" secondItem="QpX-ad-lCS" secondAttribute="centerX" id="tfb-1T-ACG"/>
                                     <constraint firstItem="QpX-ad-lCS" firstAttribute="centerY" secondItem="Pxd-fS-Si5" secondAttribute="centerY" id="woX-dj-Q86"/>
+                                    <constraint firstAttribute="height" secondItem="QpX-ad-lCS" secondAttribute="height" id="zFj-Oi-aBv"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JMD-Nb-r4z" userLabel="Days view">
-                                <rect key="frame" x="0.0" y="260" width="334" height="50"/>
+                                <rect key="frame" x="0.0" y="260.5" width="334" height="50"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d6V-Rb-RQj">
-                                        <rect key="frame" x="10" y="11.5" width="51.5" height="27"/>
+                                        <rect key="frame" x="10" y="12" width="51.5" height="27"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DAY 23" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h22-Hw-Lrg">
                                                 <rect key="frame" x="4" y="4.5" width="43.5" height="19"/>
@@ -184,7 +186,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 week ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zfh-Ap-4Ig">
-                                        <rect key="frame" x="71.5" y="16" width="70" height="19"/>
+                                        <rect key="frame" x="71.5" y="16.5" width="70" height="19"/>
                                         <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -200,10 +202,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7s0-ZS-5zX" userLabel="Contents view">
-                                <rect key="frame" x="0.0" y="310" width="334" height="102.5"/>
+                                <rect key="frame" x="0.0" y="310.5" width="334" height="102"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s5s-2m-Jhb">
-                                        <rect key="frame" x="10" y="0.0" width="314" height="92.5"/>
+                                        <rect key="frame" x="10" y="0.0" width="314" height="92"/>
                                         <string key="text">In diary content asjhdk ajhsdkj ahsdkj ahsdk ajshdk ajhsdk ajhsdk ajhsdk ajhsdkajhsdka asd asd asd asd asd asd asd asd asd asd asd asd asd asd a</string>
                                         <fontDescription key="fontDescription" name="SourceSansPro-Semibold" family="Source Sans Pro" pointSize="16"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

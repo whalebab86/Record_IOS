@@ -52,4 +52,6 @@ typedef NS_ENUM(NSInteger, RCInDiaryButton) {
 @property (weak, nonatomic) IBOutlet UIView *inDiaryShareButtonView;
 @property (weak, nonatomic) IBOutlet UIView *inDiaryWriteButtonView;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *inDiaryCollectionViewConstraints;
+
 @end
