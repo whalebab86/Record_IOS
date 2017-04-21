@@ -18,6 +18,9 @@
 @import GooglePlacePicker;
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <QBImagePickerController/QBImagePickerController.h>
+#import "DGActivityIndicatorView.h"
+
+#import "RCIndicatorUtil.h"
 
 typedef NS_ENUM(NSInteger, RCInDiaryStatusMode) {
     RCInDiaryStatusModeInsert,
@@ -44,6 +47,8 @@ CLLocationManagerDelegate, QBImagePickerControllerDelegate, RCInDiaryListViewCol
 
 @property (weak, nonatomic) IBOutlet UIButton         *inDiaryLocationButton;
 @property (weak, nonatomic) IBOutlet UIButton         *inDiaryCurrentLocationButton;
+
+@property (nonatomic) RCIndicatorUtil                 *activityIndicatorView;
 
 /* Constraint */
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *inDiaryScrollViewBottomConstraints;
@@ -79,6 +84,9 @@ CLLocationManagerDelegate, QBImagePickerControllerDelegate, RCInDiaryListViewCol
     self.diaryRealm     = [self.manager.diaryResults objectAtIndex:self.diaryIndexPath.row];
     self.inDiaryResults = [self.diaryRealm.inDiaryArray sortedResultsUsingKeyPath:@"inDiaryReportingDate" ascending:NO];
     
+    /* indicator */
+    self.activityIndicatorView = [[RCIndicatorUtil alloc] initWithTargetView:self.view isMask:YES];
+    //self.activityIndicatorView = indicator;
     
     /* Google Map place */
     self.placesClient = [GMSPlacesClient sharedClient];
@@ -210,6 +218,8 @@ CLLocationManagerDelegate, QBImagePickerControllerDelegate, RCInDiaryListViewCol
 
 //    [self.inDiaryImageArray removeAllObjects];
     
+    [self.activityIndicatorView startIndicator];
+    
     for (PHAsset *asset in assets) {
         // Do something with the asset
         NSLog(@"%@", asset.localIdentifier);
@@ -226,6 +236,7 @@ CLLocationManagerDelegate, QBImagePickerControllerDelegate, RCInDiaryListViewCol
         }];
     }
     
+    [self.activityIndicatorView stopIndicator];
     [self.inDiaryCollectionView reloadData];
     
     [self dismissViewControllerAnimated:YES completion:NULL];
@@ -512,6 +523,8 @@ CLLocationManagerDelegate, QBImagePickerControllerDelegate, RCInDiaryListViewCol
     
     self.inDiaryLocationLabel.text = @"current location loading....";
     
+    [self.activityIndicatorView startIndicator];
+    
     [self.placesClient currentPlaceWithCallback:^(GMSPlaceLikelihoodList *placeLikelihoodList, NSError *error){
         if (error != nil) {
             self.locationPlace = nil;
@@ -529,6 +542,8 @@ CLLocationManagerDelegate, QBImagePickerControllerDelegate, RCInDiaryListViewCol
                                           componentsJoinedByString:@"\n"];
                 
                 self.inDiaryLocationLabel.text = locationInfo;
+                
+                [self.activityIndicatorView stopIndicator];
             }
         }
     }];
