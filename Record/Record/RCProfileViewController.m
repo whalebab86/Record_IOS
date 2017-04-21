@@ -187,7 +187,7 @@
     NSLog(@"%@", noti.userInfo);
     /* get keyboard bounds and setting toolbar offset */
     CGRect willShowKeyboardBounds = [[noti.userInfo objectForKey:@"UIKeyboardFrameEndUserInfoKey"] CGRectValue];
-    self.mainScrollView.frame = CGRectMake(0,64,self.mainScrollView.frame.size.width, willShowKeyboardBounds.size.height*1.5);
+    self.mainScrollView.frame = CGRectMake(0,64,self.mainScrollView.frame.size.width, willShowKeyboardBounds.size.height*2);
 }
 
 /*  action of keyboard hide notification */

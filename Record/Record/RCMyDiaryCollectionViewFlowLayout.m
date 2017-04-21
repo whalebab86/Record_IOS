@@ -52,7 +52,7 @@
     
     CGFloat ratio = (maxDistance - distance) / maxDistance;
     
-    CGFloat scale = (ratio * 0.5f) + 1.0f;
+    CGFloat scale = (ratio * 0.2f) + 1.0f;
     
     CGFloat alpha = (ratio * 0.5f) + 0.5f;
     

@@ -17,8 +17,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *totalDaysLB;
 @property (weak, nonatomic) IBOutlet UILabel *totalPostsLB;
 @property (weak, nonatomic) IBOutlet UILabel *totalPhotosLB;
-@property NSString *latitude;
-@property NSString *longitude;
+@property NSMutableArray *latitudes;
+@property NSMutableArray *longitudes;
+@property NSIndexPath *recivedIndexPath;
 
 @end
 
@@ -27,6 +28,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *contentsOfPostingLB;
 @property NSString *latitude;
 @property NSString *longitude;
+@property NSIndexPath *recivedIndexPath;
+@property NSInteger inDiaryArrayNumber;
 
 @end
 

@@ -21,16 +21,24 @@
 
     
 }
+
+- (IBAction)connetRecordProjectGitAction:(UIButton *)sender {
+    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://github.com/whalebab86/Record_IOS"] options:@{} completionHandler:nil];
+    
+}
+
+
 - (IBAction)teamMemberYunseoConnetGitButtonAction:(UIButton *)sender {
     
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://github.com/KimYunseo"] options:@{} completionHandler:nil];
-    NSLog(@"teamMemberYunseoConnetGitButtonAction");
+    
 }
 
 - (IBAction)teamMemberBongkiConnetGitButtonAction:(UIButton *)sender {
     
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://github.com/whalebab86"] options:@{} completionHandler:nil];
-    NSLog(@"teamMemberBongkiConnetGitButtonAction");
+    
 }
 
 - (IBAction)cancelBarButtonAction:(UIBarButtonItem *)sender {

@@ -13,7 +13,7 @@
 #import "RCMyTravelDiaryBookViewController.h"
 
 @interface RCMyDiaryViewController ()
-<UICollectionViewDataSource,UICollectionViewDelegate, UICollectionViewDataSourcePrefetching>
+<UICollectionViewDataSource,UICollectionViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *rcMyDiaryCollectionView;
 @property (weak, nonatomic) IBOutlet RCMyDiaryCollectionViewFlowLayout *rcMyDiaryCollectionViewCellLayout;
@@ -28,9 +28,16 @@
     
     self.rcMyDiaryCollectionView.delegate = self;
     self.rcMyDiaryCollectionView.dataSource = self;
-    self.rcMyDiaryCollectionView.prefetchDataSource = self;
+//    self.rcMyDiaryCollectionView.prefetchDataSource = self;
     
 }
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    
+}
+
+
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     
     return 1;
@@ -51,10 +58,10 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setCalendar:[NSCalendar currentCalendar]];
     [dateFormatter setTimeZone:[NSTimeZone defaultTimeZone]];
-    [dateFormatter setDateFormat:@"yy-MMM-dd"];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     NSString *startDate = [dateFormatter stringFromDate:[RCDiaryManager diaryManager].diaryResults[indexPath.item].diaryStartDate];
     NSString *endDate = [dateFormatter stringFromDate:[RCDiaryManager diaryManager].diaryResults[indexPath.item].diaryEndDate];
-    cell.fromStartDateToEndDateLB.text = [startDate stringByAppendingString:endDate];
+    cell.fromStartDateToEndDateLB.text = [startDate stringByAppendingString:[NSString stringWithFormat:@" ~\n%@", endDate]];
     
     NSDateComponents *components;
     components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay fromDate:[RCDiaryManager diaryManager].diaryResults[indexPath.item].diaryStartDate toDate:[RCDiaryManager diaryManager].diaryResults[indexPath.item].diaryEndDate options:0];
@@ -71,17 +78,16 @@
     return CGSizeMake(self.rcMyDiaryCollectionView.frame.size.width*0.6, self.rcMyDiaryCollectionView.frame.size.height*0.6);
 }
 
-- (void)collectionView:(UICollectionView *)collectionView prefetchItemsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths{
-    
-}
+//- (void)collectionView:(UICollectionView *)collectionView prefetchItemsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths{
+//    
+//}
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
 
     UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout *)collectionViewLayout;
-    CGFloat leftInsetValue = (collectionView.frame.size.width - flowLayout.itemSize.width)/2.0f;
-    
+    CGFloat leftInsetValue = (collectionView.bounds.size.width - flowLayout.itemSize.width)/2.0f;
+
     UIEdgeInsets inset = UIEdgeInsetsMake(0, leftInsetValue, 0, leftInsetValue);
-    
     return inset;
 }
 
