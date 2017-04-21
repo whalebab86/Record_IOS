@@ -31,7 +31,7 @@
             </objects>
             <point key="canvasLocation" x="470" y="87"/>
         </scene>
-        <!--Title-->
+        <!--My Travel Diary Book View Controller-->
         <scene sceneID="Eri-Kz-iBO">
             <objects>
                 <viewController storyboardIdentifier="RCMyTravelDiaryBookViewController" id="de9-jZ-3Fu" customClass="RCMyTravelDiaryBookViewController" sceneMemberID="viewController">
@@ -49,7 +49,7 @@
                             <outletCollection property="gestureRecognizers" destination="OmQ-HR-lBd" appends="YES" id="C1d-qd-dd0"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="Ky4-0V-rhG">
+                    <navigationItem key="navigationItem" id="Ky4-0V-rhG">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Qk6-Vu-u43">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
