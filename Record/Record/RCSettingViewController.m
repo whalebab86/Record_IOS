@@ -94,6 +94,10 @@
     return 50.0f;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 60.0f;
+}
+
 /* custom header in section */
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     RCSettingHeaderView *headerView =[tableView dequeueReusableHeaderFooterViewWithIdentifier:@"RCSettingHeaderView"];

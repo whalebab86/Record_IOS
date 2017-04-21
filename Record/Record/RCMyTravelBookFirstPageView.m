@@ -20,11 +20,12 @@
 }
 */
 
+
 - (void)drawRect:(CGRect)rect {
     // Drawing code
     
     // Sets the zoom level to 4.
-
+//    self.frame = CGRectMake(0, 64.0f, rect.size.width, rect.size.height-30.0f);
     
     GMSCameraPosition *camera;
     if ([RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray.count == 0) {
@@ -57,8 +58,12 @@
         GMSMarker *marker = [GMSMarker markerWithPosition:location2D];
         UIView *viewInMarker = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
         viewInMarker.backgroundColor = [UIColor clearColor];
+        
         UIImageView *imageViewInMarker = [[UIImageView alloc] initWithFrame:viewInMarker.frame];
+        imageViewInMarker.layer.borderWidth = 2.0f;
+        imageViewInMarker.layer.borderColor = [UIColor whiteColor].CGColor;
         imageViewInMarker.clipsToBounds = YES;
+        marker.groundAnchor = CGPointMake(0.5, 0.5);
         imageViewInMarker.layer.cornerRadius = imageViewInMarker.frame.size.height/2.0f;
         if ([RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray[latArrayCount].inDiaryPhotosArray.count != 0) {
             imageViewInMarker.image = [UIImage imageWithData:[RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray[latArrayCount].inDiaryPhotosArray[0].inDiaryPhoto];
@@ -68,6 +73,7 @@
         
         [viewInMarker addSubview:imageViewInMarker];
         marker.iconView = imageViewInMarker;
+        marker.tracksViewChanges = NO;
         
         marker.map = mapView;
         [markerArray addObject:marker];
@@ -116,13 +122,12 @@
     // The current zoom, 4, is outside of the range. The zoom will change to 10.
     [mapView setMinZoom:4 maxZoom:15];
     
-    mapView.mapType = kGMSTypeHybrid;
-    
     mapView.accessibilityElementsHidden = NO;
    
     polyline.map = mapView;
 
     [self.mapViewOfGoogleMap addSubview:mapView];
+    
     
 }
 
@@ -130,14 +135,13 @@
 
 @implementation RCMyTravelBookSecondPageView
 
-
 - (void)drawRect:(CGRect)rect {
     // Drawing code
+//    self.frame = CGRectMake(0, 64.0f, rect.size.width, rect.size.height-30.0f);
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:self.latitude.floatValue
                                                             longitude:self.longitude.floatValue
-                                                                 zoom:10];
+                                                                 zoom:13];
     GMSMapView *mapView = [GMSMapView mapWithFrame:self.mapViewOfGoogleMap.bounds camera:camera];
-    mapView.mapType = kGMSTypeHybrid;
     
     mapView.accessibilityElementsHidden = NO;
     CLLocationCoordinate2D position = CLLocationCoordinate2DMake(self.latitude.floatValue, self.longitude.floatValue);
@@ -147,7 +151,9 @@
     UIImageView *imageViewInMarker = [[UIImageView alloc] initWithFrame:viewInMarker.frame];
     imageViewInMarker.clipsToBounds = YES;
     imageViewInMarker.layer.cornerRadius = imageViewInMarker.frame.size.height/2.0f;
-
+    imageViewInMarker.layer.borderWidth = 2.0f;
+    imageViewInMarker.layer.borderColor = [UIColor whiteColor].CGColor;
+    
     if ([RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray[self.inDiaryArrayNumber].inDiaryPhotosArray.count != 0) {
         imageViewInMarker.image = [UIImage imageWithData:[RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray[self.inDiaryArrayNumber].inDiaryPhotosArray[0].inDiaryPhoto];
     } else {
@@ -156,18 +162,16 @@
     
     [viewInMarker addSubview:imageViewInMarker];
     marker.iconView = viewInMarker;
+    marker.tracksViewChanges = NO;
+    
     marker.map = mapView;
-    
     [self.mapViewOfGoogleMap addSubview:mapView];
-//    GMSMarker *marker = [GMSMarker markerWithPosition:position];
-    
     
 }
 
 @end
 
 @implementation RCMyTravelBookRemainPhotoPageView
-
 /*
  // Only override drawRect: if you perform custom drawing.
  // An empty implementation adversely affects performance during animation.

@@ -19,6 +19,7 @@
 //@property (weak, nonatomic) UIImageView *snapshotImageView;
 @property (nonatomic) NSMutableArray *viewArray;
 @property NSInteger number;
+
 @end
 
 @implementation RCMyTravelDiaryBookViewController
@@ -28,11 +29,30 @@
     
     NSMutableArray *viewArray = [[NSMutableArray alloc] init];
 #pragma mark - In viewDidLoad first page
+    
+    NSInteger totalPageNumber = 1;
+    NSInteger countOfinDiaryForTotalPage = [RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray.count;
+    for (NSInteger j = 0; j < countOfinDiaryForTotalPage ; j++) {
+        NSInteger countOfinDiaryPhoto = [RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray[j].inDiaryPhotosArray.count;
+        totalPageNumber += 1;
+        if (countOfinDiaryPhoto != 0) {
+            for (NSInteger k = 0; k < countOfinDiaryPhoto; k++) {
+                if (!(k == countOfinDiaryPhoto - 1 && countOfinDiaryPhoto % 2 == 1)) {
+                }
+                k += 1;
+                totalPageNumber += 1;
+            }
+        }
+    }
+    
+    
     /* load nib file */
     RCMyTravelBookFirstPageView *firstPageView = [[[NSBundle mainBundle] loadNibNamed:@"RCMyTravelBookFirstPageView" owner:self options:nil] objectAtIndex:0];
     /* insert title */
     firstPageView.titleLB.text = [RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].diaryName;
-    
+    NSInteger pageNum = 1;
+    firstPageView.pageNumberLB.text = [NSString stringWithFormat:@"%ld", pageNum];
+    firstPageView.totalPageLB.text = [NSString stringWithFormat:@"%ld", totalPageNumber];;
     /* inserted between dates */
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setCalendar:[NSCalendar currentCalendar]];
@@ -41,6 +61,7 @@
     NSString *startDate = [dateFormatter stringFromDate:[RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].diaryStartDate];
     NSString *endDate = [dateFormatter stringFromDate:[RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].diaryEndDate];
     firstPageView.fromFirstDayToLastDayLB.text = [startDate stringByAppendingString:[NSString stringWithFormat:@" ~ %@", endDate]];
+    
     
     /* inserted total days */
     NSDateComponents *components;
@@ -92,14 +113,19 @@
     
     for (NSInteger j = 0; j < countOfinDiary ; j++) {
         RCMyTravelBookSecondPageView *secondPageView = [[[NSBundle mainBundle] loadNibNamed:@"RCMyTravelBookSecondPageView" owner:self options:nil] objectAtIndex:0];
+        
+//        secondPageView.pageNumberLB.text = [];
         secondPageView.contentsOfPostingLB.text = [RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray[j].inDiaryContent;
         secondPageView.latitude = [RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray[j].inDiaryLocationLatitude.stringValue;
         secondPageView.longitude = [RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray[j].inDiaryLocationLongitude.stringValue;
         secondPageView.inDiaryArrayNumber = j;
         secondPageView.recivedIndexPath = self.recivedIndexPath;
+        
         [viewArray addObject:secondPageView];
         NSInteger countOfinDiaryPhoto = [RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray[j].inDiaryPhotosArray.count;
-        
+        pageNum += 1;
+        secondPageView.pageNumberLB.text = [NSString stringWithFormat:@"%ld", pageNum];
+        secondPageView.totalPageLB.text = [NSString stringWithFormat:@"%ld", totalPageNumber];
         if (countOfinDiaryPhoto != 0) {
             for (NSInteger k = 0; k < countOfinDiaryPhoto; k++) {
                 RCMyTravelBookRemainPhotoPageView *remainPageView = [[[NSBundle mainBundle] loadNibNamed:@"RCMyTravelBookRemainPhotoPageView" owner:self options:nil] objectAtIndex:0];
@@ -110,6 +136,9 @@
                 }
                 [viewArray addObject:remainPageView];
                 k += 1;
+                pageNum += 1;
+                remainPageView.pageNumberLB.text = [NSString stringWithFormat:@"%ld", pageNum];
+                remainPageView.totalPageLB.text = [NSString stringWithFormat:@"%ld", totalPageNumber];
             }
         }
         
@@ -118,6 +147,7 @@
     self.number = 0;
     self.viewArray = viewArray;
     for (NSInteger i = self.viewArray.count -1; i >= 0; i--) {
+        
         [self.view addSubview:self.viewArray[i]];
     }
     
