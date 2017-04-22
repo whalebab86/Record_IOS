@@ -120,7 +120,7 @@
 
 /* google sign-in flow has finished and was successful if |error| is |nil|. */
 - (void)signIn:(GIDSignIn *)signIn didSignInForUser:(GIDGoogleUser *)user withError:(NSError *)error {
-    [[RCLoginManager loginManager] recivedGoogleUserInfo:user complition:^(BOOL isSucceess, NSInteger code) {
+    [[RCLoginManager loginManager] recivedForGoogleLoginWithUserInfo:user complition:^(BOOL isSucceess, NSInteger code) {
         if (isSucceess) {
             NSLog(@"googleSuccess");
             [self performSegueWithIdentifier:@"ProfileSettingSegueFromSignin" sender:nil];

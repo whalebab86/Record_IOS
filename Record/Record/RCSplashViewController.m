@@ -191,10 +191,10 @@
     
     if(sender == self.facebookBtn) {
         NSLog(@"facebookLoginButtonAction");
-        [[RCLoginManager loginManager] confirmFacebookLoginfromViewController:self complition:^(BOOL isSucceess, NSInteger code) {
+        [[RCLoginManager loginManager] confirmFacebookSignupfromViewController:self complition:^(BOOL isSucceess, NSInteger code) {
             if (isSucceess) {
                 [self performSegueWithIdentifier:@"ProfileSettingSegueFromSplash" sender:nil];
-                NSLog(@"confirmFacebookLoginfromViewController");
+                NSLog(@"confirmFacebookSignfromViewController");
             } else {
                 NSString *alertTitle = [@"facebook login error (code " stringByAppendingString:[NSString stringWithFormat:@"%ld )", code]];
                 [self addAlertViewWithTile:alertTitle actionTitle:@"Done" handler:nil];
@@ -224,7 +224,7 @@
      withError:(NSError *)error {
     //user signed in
     //get user data in "user" (GIDGoogleUser object)
-    [[RCLoginManager loginManager] recivedGoogleUserInfo:user complition:^(BOOL isSucceess, NSInteger code) {
+    [[RCLoginManager loginManager] recivedForGoogleSignupUserInfo:user complition:^(BOOL isSucceess, NSInteger code) {
         if (isSucceess) {
             NSLog(@"googleSuccess");
             [self performSegueWithIdentifier:@"SettingSegueFromSplash" sender:nil];

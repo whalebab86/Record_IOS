@@ -23,8 +23,13 @@ typedef  void (^SuccessStateBlock) (BOOL isSucceess, NSInteger code);
 
 + (instancetype)loginManager;
 
-- (void)recivedGoogleUserInfo:(GIDGoogleUser *)user
+- (void)recivedForGoogleSignupUserInfo:(GIDGoogleUser *)user
                    complition:(SuccessStateBlock)complition;
+
+- (void)recivedForGoogleLoginWithUserInfo:(GIDGoogleUser *)user complition:(SuccessStateBlock)complition;
+
+- (void)confirmFacebookSignupfromViewController:(UIViewController *)fromViewController
+                                     complition:(SuccessStateBlock)complition;
 
 - (void)confirmFacebookLoginfromViewController:(UIViewController *)fromViewController
                                     complition:(SuccessStateBlock)complition;

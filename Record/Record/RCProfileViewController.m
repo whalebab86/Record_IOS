@@ -103,7 +103,7 @@
     
     /* profile image */
     RCMemberInfo *personalInfo = [[RCMemberInfo alloc] init];
-    [self.profileImage sd_setImageWithURL:[NSURL URLWithString:personalInfo.profileImageURL] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+    [self.profileImage sd_setImageWithURL:[NSURL URLWithString:personalInfo.profileImageURL] placeholderImage:[UIImage imageNamed:@"RC_profile_placehold_icon"]];
     
     self.nickNameTextField.text = personalInfo.nickName;
     self.homTownLabel.text = personalInfo.homeTown;
@@ -264,6 +264,12 @@
     [self.view endEditing:YES];
     self.mainScrollView.contentOffset = CGPointMake(0, 0);
     
+    
+            if (![self.homTownLabel.text isKindOfClass:[NSString class]]) {
+                self.homTownLabel.text = @"";
+            }
+    
+    
     [[RCLoginManager loginManager] uploadProfilePersonalInformationWithNickname:self.nickNameTextField.text hometown:self.homTownLabel.text selfIntroduction:self.shortStoryTextView.text complition:^(BOOL isSucceess, NSInteger code) {
         if (!isSucceess) {
             
@@ -359,6 +365,10 @@
 - (IBAction)saveProfileSetButtonAction:(UIButton *)sender {
     if (sender == self.saveProfileButtonFromMemberStoryboard) {
         
+//        if (![self.homTownLabel.text isKindOfClass:[NSString class]]) {
+//            self.homTownLabel.text = @"";
+//        }
+        /* hometown 에 아무것도 안들어갈 경우 문제가 생김*/
         [[RCLoginManager loginManager] uploadProfilePersonalInformationWithNickname:self.nickNameTextField.text hometown:self.homTownLabel.text selfIntroduction:self.shortStoryTextView.text complition:^(BOOL isSucceess, NSInteger code) {
             if (!isSucceess) {
                 

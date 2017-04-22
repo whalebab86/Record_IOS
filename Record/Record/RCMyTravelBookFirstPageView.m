@@ -10,22 +10,18 @@
 #import "RCDiaryManager.h"
 @import GoogleMaps;
 
+
+@interface RCMyTravelBookFirstPageView()
+<GMSMapViewDelegate>
+@property (weak, nonatomic) GMSMapView *mapView;
+
+
+@end
+
 @implementation RCMyTravelBookFirstPageView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect {
     // Drawing code
-}
-*/
-
-
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-    
-    // Sets the zoom level to 4.
-//    self.frame = CGRectMake(0, 64.0f, rect.size.width, rect.size.height-30.0f);
     
     GMSCameraPosition *camera;
     if ([RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray.count == 0) {
@@ -125,19 +121,40 @@
     mapView.accessibilityElementsHidden = NO;
    
     polyline.map = mapView;
-
-    [self.mapViewOfGoogleMap addSubview:mapView];
+    mapView.delegate = self;
+    self.mapView = mapView;
     
+    [self.mapViewOfGoogleMap addSubview:self.mapView];
     
 }
 
+- (void)mapViewDidFinishTileRendering:(GMSMapView *)mapView {
+    UIGraphicsBeginImageContextWithOptions(self.frame.size, YES, 0.0f);
+    [self.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *snapShotImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    UIImageView *snapShotImageView = [[UIImageView alloc] initWithImage:snapShotImage];
+    snapShotImageView.frame = self.frame;
+    while (self.subviews.count > 0) {
+        [self.subviews[0] removeFromSuperview];
+    }
+    
+    [self addSubview:snapShotImageView];
+    
+}
+
+@end
+
+@interface RCMyTravelBookSecondPageView()
+<GMSMapViewDelegate>
+@property (weak, nonatomic) GMSMapView *mapView;
 @end
 
 @implementation RCMyTravelBookSecondPageView
 
 - (void)drawRect:(CGRect)rect {
     // Drawing code
-//    self.frame = CGRectMake(0, 64.0f, rect.size.width, rect.size.height-30.0f);
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:self.latitude.floatValue
                                                             longitude:self.longitude.floatValue
                                                                  zoom:13];
@@ -165,19 +182,52 @@
     marker.tracksViewChanges = NO;
     
     marker.map = mapView;
-    [self.mapViewOfGoogleMap addSubview:mapView];
+    mapView.delegate = self;
+    self.mapView = mapView;
+    [self.mapViewOfGoogleMap addSubview:self.mapView];
     
+}
+
+
+- (void)mapViewDidFinishTileRendering:(GMSMapView *)mapView {
+    UIGraphicsBeginImageContextWithOptions(self.frame.size, YES, 0.0f);
+    [self.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *snapShotImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    UIImageView *snapShotImageView = [[UIImageView alloc] initWithImage:snapShotImage];
+    snapShotImageView.frame = self.frame;
+    while (self.subviews.count > 0) {
+        [self.subviews[0] removeFromSuperview];
+    }
+    
+    [self addSubview:snapShotImageView];
 }
 
 @end
 
 @implementation RCMyTravelBookRemainPhotoPageView
-/*
- // Only override drawRect: if you perform custom drawing.
- // An empty implementation adversely affects performance during animation.
+
  - (void)drawRect:(CGRect)rect {
  // Drawing code
+     
+     
  }
- */
+
+- (void)layoutSubviews {
+    
+    UIGraphicsBeginImageContextWithOptions(self.frame.size, YES, 0.0f);
+    [self.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *snapShotImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    UIImageView *snapShotImageView = [[UIImageView alloc] initWithImage:snapShotImage];
+    snapShotImageView.frame = self.frame;
+    while (self.subviews.count > 0) {
+        [self.subviews[0] removeFromSuperview];
+    }
+    
+    [self addSubview:snapShotImageView];
+}
 
 @end

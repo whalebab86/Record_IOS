@@ -27,6 +27,7 @@ static NSString * const _RECORD_SIGNUP_USER_TYPE_KEY = @"user_type";
 static NSString * const _RECORD_SIGNUP_USER_TYPE_NORMAL = @"NORMAL";
 static NSString * const _RECORD_SIGNUP_USER_TYPE_FACEBOOK = @"FACEBOOK";
 static NSString * const _RECORD_SIGNUP_USER_TYPE_GOOGLE = @"GOOGLE";
+static NSString * const _RECORD_SOCIAL_LOGIN_ACCESS_TOKEN_KEY = @"access_token";
 static NSString * const _RECORD_LOGOUT_PARAMETER_KEY = @"Authorization";
 static NSString * const _RECORD_PROFILECHANGE_PARAMETER_KEY = @"Authorization";
 static NSString * const _RECORD_CHANGE_PROFILE_IMAGE_URL = @"profile_img";

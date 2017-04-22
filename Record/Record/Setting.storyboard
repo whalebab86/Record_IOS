@@ -801,7 +801,7 @@
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xrG-tB-lVq">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="xrG-tB-lVq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.1803921568627451" green="0.63137254901960782" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

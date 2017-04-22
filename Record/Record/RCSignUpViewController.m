@@ -135,7 +135,7 @@
 /* facebook sign up */
 - (IBAction)signUpFacebookButtonAction:(UIButton *)sender {
     if (sender == self.signUpFacebookBtn) {
-        [[RCLoginManager loginManager] confirmFacebookLoginfromViewController:self complition:^(BOOL isSucceess, NSInteger code) {
+        [[RCLoginManager loginManager] confirmFacebookSignupfromViewController:self complition:^(BOOL isSucceess, NSInteger code) {
             if (isSucceess) {
                 NSLog(@"로그인 되었습닌다.");
                 [self performSegueWithIdentifier:@"ProfileSettingSegueFromSignin" sender:nil];
@@ -157,7 +157,7 @@
 
 /* google sign-in flow has finished and was successful if |error| is |nil|. */
 - (void)signIn:(GIDSignIn *)signIn didSignInForUser:(GIDGoogleUser *)user withError:(NSError *)error {
-    [[RCLoginManager loginManager] recivedGoogleUserInfo:user complition:^(BOOL isSucceess, NSInteger code) {
+    [[RCLoginManager loginManager] recivedForGoogleSignupUserInfo:user complition:^(BOOL isSucceess, NSInteger code) {
         if (isSucceess) {
             NSLog(@"googleSuccess");
             [self performSegueWithIdentifier:@"ProfileSettingSegueFromSignup" sender:nil];

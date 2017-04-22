@@ -78,9 +78,6 @@
     return CGSizeMake(self.rcMyDiaryCollectionView.frame.size.width*0.6, self.rcMyDiaryCollectionView.frame.size.height*0.6);
 }
 
-//- (void)collectionView:(UICollectionView *)collectionView prefetchItemsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths{
-//    
-//}
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
 

@@ -149,8 +149,19 @@
     for (NSInteger i = self.viewArray.count -1; i >= 0; i--) {
         
         [self.view addSubview:self.viewArray[i]];
+        
     }
     
+}
+
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
 }
 
 - (IBAction)cancelButtonAction:(UIBarButtonItem *)sender {
@@ -190,12 +201,6 @@
         }
     }
     
-}
-
-
-- (UIView * )addSubviewWithIndex:(NSInteger)index {
-    [self.view addSubview:self.viewArray[index]];
-    return self.viewArray[index];
 }
 
 - (void)didReceiveMemoryWarning {
