@@ -389,7 +389,7 @@
                                 </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3VA-DA-E4o">
-                                <rect key="frame" x="327" y="570" width="40" height="40"/>
+                                <rect key="frame" x="327" y="619" width="40" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y5l-uO-lst">
                                         <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
@@ -1111,7 +1111,7 @@
                 <navigationController title="Main navigation" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="sEL-GO-uMh" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="Pda-IQ-yGl">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Pda-IQ-yGl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1134,7 +1134,7 @@
             <objects>
                 <navigationController title="Diary detail navigation" automaticallyAdjustsScrollViewInsets="NO" id="zQf-H5-dsh" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="h2a-h1-ayv">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="h2a-h1-ayv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1157,7 +1157,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nWU-4a-YU7" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="a8w-fG-lkd">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="a8w-fG-lkd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

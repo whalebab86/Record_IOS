@@ -106,15 +106,15 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RCSignInUpTopImage" translatesAutoresizingMaskIntoConstraints="NO" id="Ol8-uk-zdF">
-                                        <rect key="frame" x="10" y="34.5" width="20" height="13.5"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RC_nation_icon" translatesAutoresizingMaskIntoConstraints="NO" id="Ol8-uk-zdF">
+                                        <rect key="frame" x="10" y="34.5" width="20" height="16.5"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="Ol8-uk-zdF" secondAttribute="height" multiplier="12:8" id="5uc-30-l1t"/>
+                                            <constraint firstAttribute="width" secondItem="Ol8-uk-zdF" secondAttribute="height" multiplier="12:10" id="5uc-30-l1t"/>
                                             <constraint firstAttribute="width" constant="20" id="qSE-CJ-pPg"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="South korea" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="59d-BS-0eg">
-                                        <rect key="frame" x="36" y="32.5" width="71" height="18"/>
+                                        <rect key="frame" x="36" y="34" width="71" height="18"/>
                                         <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="14"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -388,8 +388,8 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="RCSignInUpTopImage" width="374" height="241"/>
         <image name="RC_like_icon" width="32" height="30"/>
+        <image name="RC_nation_icon" width="64" height="64"/>
         <image name="RC_placeholder_icon" width="24" height="32"/>
         <image name="RC_share_icon" width="30" height="32"/>
         <image name="RC_write_icon" width="32" height="32"/>

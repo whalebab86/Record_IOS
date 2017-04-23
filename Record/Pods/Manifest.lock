@@ -20,6 +20,7 @@ PODS:
   - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
+  - DGActivityIndicatorView (2.1.1)
   - FBSDKCoreKit (4.20.2):
     - Bolts (~> 1.7)
   - FBSDKLoginKit (4.20.2):
@@ -80,10 +81,10 @@ PODS:
   - SDWebImage/GIF (4.0.0):
     - FLAnimatedImage (~> 1.0)
     - SDWebImage/Core
-  - VCTransitionsLibrary (1.5.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
+  - DGActivityIndicatorView
   - FBSDKCoreKit
   - FBSDKLoginKit
   - FBSDKShareKit
@@ -96,11 +97,11 @@ DEPENDENCIES:
   - QBImagePickerController
   - Realm
   - SDWebImage/GIF
-  - VCTransitionsLibrary
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  DGActivityIndicatorView: ff2c76073d79692f724863c8dd38685866a03cb6
   FBSDKCoreKit: 82eac696eb6157da5f4266c3a241f00e9bd72471
   FBSDKLoginKit: 2211bede07c83391349eacc1fd86cf6d9289ce38
   FBSDKShareKit: ca9b22264ea49a896dafb2467c1a4f72aa41996f
@@ -120,8 +121,7 @@ SPEC CHECKSUMS:
   QBImagePickerController: d54cf93db6decf26baf6ed3472f336ef35cae022
   Realm: 32f86104d37c8521f864d4274050b38ba6190733
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
-  VCTransitionsLibrary: d61fd9b7b6721942f0d583bcc0e7f8c31ec9271b
 
-PODFILE CHECKSUM: d9f541880c02adc5326c797cd011db1ae035b49b
+PODFILE CHECKSUM: c013aec957a1985a9f2c3be45812133206ed4fa6
 
 COCOAPODS: 1.1.1

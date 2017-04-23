@@ -32,6 +32,7 @@
 		399401AA1EA872F70021CE6A /* RCInDiaryPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 399401A91EA872F70021CE6A /* RCInDiaryPhotoViewController.m */; };
 		399401AD1EA9BF4C0021CE6A /* RCInDiaryInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 399401AC1EA9BF4C0021CE6A /* RCInDiaryInfoView.m */; };
 		399401AF1EA9BF580021CE6A /* RCInDiaryInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 399401AE1EA9BF580021CE6A /* RCInDiaryInfoView.xib */; };
+		399401B21EA9F2550021CE6A /* RCIndicatorUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 399401B11EA9F2550021CE6A /* RCIndicatorUtil.m */; };
 		39959FC51E891C91006ACF7A /* RCDiaryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39959FC41E891C91006ACF7A /* RCDiaryListViewController.m */; };
 		39959FEA1E8A0B36006ACF7A /* RCDiaryTableViewFooterEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39959FE31E8A0B36006ACF7A /* RCDiaryTableViewFooterEmptyView.xib */; };
 		39959FEB1E8A0B36006ACF7A /* RCDiaryTableViewFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39959FE51E8A0B36006ACF7A /* RCDiaryTableViewFooterView.m */; };
@@ -132,6 +133,8 @@
 		399401AB1EA9BF4C0021CE6A /* RCInDiaryInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCInDiaryInfoView.h; sourceTree = "<group>"; };
 		399401AC1EA9BF4C0021CE6A /* RCInDiaryInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCInDiaryInfoView.m; sourceTree = "<group>"; };
 		399401AE1EA9BF580021CE6A /* RCInDiaryInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RCInDiaryInfoView.xib; sourceTree = "<group>"; };
+		399401B01EA9F2550021CE6A /* RCIndicatorUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCIndicatorUtil.h; sourceTree = "<group>"; };
+		399401B11EA9F2550021CE6A /* RCIndicatorUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCIndicatorUtil.m; sourceTree = "<group>"; };
 		39959FC31E891C91006ACF7A /* RCDiaryListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCDiaryListViewController.h; sourceTree = "<group>"; };
 		39959FC41E891C91006ACF7A /* RCDiaryListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCDiaryListViewController.m; sourceTree = "<group>"; };
 		39959FE31E8A0B36006ACF7A /* RCDiaryTableViewFooterEmptyView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RCDiaryTableViewFooterEmptyView.xib; sourceTree = "<group>"; };
@@ -452,6 +455,8 @@
 			children = (
 				442A62CB1E94D85700B727C7 /* RCUtilyValidation.h */,
 				442A62CC1E94D85700B727C7 /* RCUtilyValidation.m */,
+				399401B01EA9F2550021CE6A /* RCIndicatorUtil.h */,
+				399401B11EA9F2550021CE6A /* RCIndicatorUtil.m */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -760,6 +765,7 @@
 				3903FAA41E92914F00C5B792 /* RCInDiaryTableViewCell.m in Sources */,
 				4470464C1E9CEA5C001D0DB4 /* RCSplashTutorialCollectionViewCell.m in Sources */,
 				3995A0101E8CCE61006ACF7A /* RCDiaryManager.m in Sources */,
+				399401B21EA9F2550021CE6A /* RCIndicatorUtil.m in Sources */,
 				3903FA971E927DC100C5B792 /* RCInDiaryTableViewHeaderView.m in Sources */,
 				44929F471E8CD700005B6C3B /* RCLoginManager.m in Sources */,
 				3903FAAE1E936F5300C5B792 /* RCInDiaryCollectionViewCell.m in Sources */,
