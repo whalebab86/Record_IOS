@@ -33,6 +33,7 @@
     /* Default alpha of signin contrainer */
     self.signInContrainer.alpha = 1;
     self.signUpContrainer.alpha = 0;
+    
 }
 
 #pragma mark - Transition of reverse triangle UIImageView

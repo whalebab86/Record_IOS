@@ -339,7 +339,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Dqd-dQ-t3Z" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7SX-8y-cEF">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="7SX-8y-cEF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -734,7 +734,7 @@
                                         <rect key="frame" x="0.0" y="50" width="375" height="547"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8id-Xh-DKD" userLabel="content view">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="545"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="543"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ti7-Gh-dPc">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
@@ -750,7 +750,7 @@
                                                                         </constraints>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to change your picture" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="toZ-7t-qvS">
-                                                                        <rect key="frame" x="100" y="45" width="255" height="20"/>
+                                                                        <rect key="frame" x="100" y="44.5" width="255" height="21.5"/>
                                                                         <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
                                                                         <color key="textColor" red="0.21960784310000001" green="0.23921568630000001" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <nil key="highlightedColor"/>
@@ -794,13 +794,13 @@
                                                                 <rect key="frame" x="10" y="0.0" width="355" height="49"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nick name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yob-Vt-sc0">
-                                                                        <rect key="frame" x="0.0" y="14.5" width="81" height="20"/>
+                                                                        <rect key="frame" x="0.0" y="14" width="75.5" height="21.5"/>
                                                                         <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
                                                                         <color key="textColor" red="0.7725490196" green="0.81568627449999997" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VQU-dd-E0i">
-                                                                        <rect key="frame" x="101" y="0.0" width="254" height="49"/>
+                                                                        <rect key="frame" x="95.5" y="0.0" width="259.5" height="49"/>
                                                                         <color key="textColor" red="0.7725490196" green="0.81568627449999997" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
                                                                         <textInputTraits key="textInputTraits"/>
@@ -835,13 +835,13 @@
                                                                 <rect key="frame" x="10" y="0.0" width="355" height="49.5"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hometown" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFB-Jl-wau">
-                                                                        <rect key="frame" x="0.0" y="15" width="83.5" height="20"/>
+                                                                        <rect key="frame" x="0.0" y="14" width="79" height="21.5"/>
                                                                         <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
                                                                         <color key="textColor" red="0.7725490196" green="0.81568627449999997" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pQ3-du-eLe">
-                                                                        <rect key="frame" x="103.5" y="0.0" width="198.5" height="49.5"/>
+                                                                        <rect key="frame" x="99" y="0.0" width="198.5" height="49.5"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Touch here or icon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vzK-UJ-cFH">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="198.5" height="49.5"/>
@@ -899,14 +899,14 @@
                                                         </constraints>
                                                     </view>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="jES-07-jQu">
-                                                        <rect key="frame" x="10" y="211" width="355" height="334"/>
+                                                        <rect key="frame" x="10" y="211" width="355" height="332"/>
                                                         <color key="backgroundColor" red="0.10980392160000001" green="0.1215686275" blue="0.1529411765" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="textColor" red="0.7725490196" green="0.81568627449999997" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="twitter"/>
                                                     </textView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write a short story about yourself..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fsL-tZ-wa2">
-                                                        <rect key="frame" x="15" y="221" width="266.5" height="20"/>
+                                                        <rect key="frame" x="15" y="221" width="247" height="21.5"/>
                                                         <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
                                                         <color key="textColor" red="0.21960784310000001" green="0.23921568630000001" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -971,10 +971,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qaZ-rN-neH">
-                                        <rect key="frame" x="0.0" y="595" width="375" height="52"/>
+                                        <rect key="frame" x="0.0" y="593" width="375" height="54"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H1e-A4-b1l">
-                                                <rect key="frame" x="5" y="10" width="365" height="32"/>
+                                                <rect key="frame" x="5" y="10" width="365" height="34"/>
                                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
                                                 <state key="normal" title="Thanks! Record your journey!">
                                                     <color key="titleColor" red="0.7725490196" green="0.81568627449999997" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
