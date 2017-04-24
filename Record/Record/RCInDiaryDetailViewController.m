@@ -224,7 +224,7 @@ CLLocationManagerDelegate, QBImagePickerControllerDelegate, RCInDiaryListViewCol
         // Do something with the asset
         NSLog(@"%@", asset.localIdentifier);
         
-        CGSize targetSize = CGSizeMake(1400, 1400);
+        CGSize targetSize = CGSizeMake(1200, 1200);
         
         PHImageRequestOptions * imageRequestOptions = [[PHImageRequestOptions alloc] init];
         imageRequestOptions.synchronous = YES;
