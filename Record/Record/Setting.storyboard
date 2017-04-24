@@ -543,11 +543,39 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lB0-Fp-0RD">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RC_diary_cover" translatesAutoresizingMaskIntoConstraints="NO" id="5QF-zU-V7D">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please write your diary!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kgs-Qz-hnp">
+                                        <rect key="frame" x="40" y="90" width="295" height="24"/>
+                                        <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="19"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="kgs-Qz-hnp" secondAttribute="trailing" constant="40" id="4Vn-ma-moi"/>
+                                    <constraint firstItem="kgs-Qz-hnp" firstAttribute="top" secondItem="lB0-Fp-0RD" secondAttribute="top" constant="90" id="B2Z-87-hmm"/>
+                                    <constraint firstItem="kgs-Qz-hnp" firstAttribute="leading" secondItem="lB0-Fp-0RD" secondAttribute="leading" constant="40" id="CMb-id-6yt"/>
+                                    <constraint firstAttribute="bottom" secondItem="5QF-zU-V7D" secondAttribute="bottom" id="R1e-LD-zEP"/>
+                                    <constraint firstItem="5QF-zU-V7D" firstAttribute="leading" secondItem="lB0-Fp-0RD" secondAttribute="leading" id="aBl-Sv-fDk"/>
+                                    <constraint firstItem="5QF-zU-V7D" firstAttribute="top" secondItem="lB0-Fp-0RD" secondAttribute="top" id="heP-dP-dsu"/>
+                                    <constraint firstAttribute="trailing" secondItem="5QF-zU-V7D" secondAttribute="trailing" id="iN4-Sn-0FL"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="lB0-Fp-0RD" secondAttribute="trailing" id="1YX-At-Fbh"/>
                             <constraint firstItem="uxx-fi-EQt" firstAttribute="leading" secondItem="PCJ-uO-YwY" secondAttribute="leading" id="3BQ-dE-zcr"/>
+                            <constraint firstItem="lB0-Fp-0RD" firstAttribute="top" secondItem="0wB-9g-Z8h" secondAttribute="bottom" id="dvv-2D-PAM"/>
+                            <constraint firstItem="lB0-Fp-0RD" firstAttribute="leading" secondItem="PCJ-uO-YwY" secondAttribute="leading" id="g51-JE-YZV"/>
                             <constraint firstItem="uxx-fi-EQt" firstAttribute="top" secondItem="PCJ-uO-YwY" secondAttribute="top" id="glD-Xd-uXr"/>
+                            <constraint firstItem="WHb-c7-SeN" firstAttribute="top" secondItem="lB0-Fp-0RD" secondAttribute="bottom" id="haY-X9-syX"/>
                             <constraint firstAttribute="trailing" secondItem="uxx-fi-EQt" secondAttribute="trailing" id="if9-vi-ZbZ"/>
                             <constraint firstItem="WHb-c7-SeN" firstAttribute="top" secondItem="uxx-fi-EQt" secondAttribute="bottom" id="iq8-Sf-kcZ"/>
                         </constraints>
@@ -561,6 +589,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="coverViewForEmptyDiary" destination="lB0-Fp-0RD" id="eGd-hE-bzj"/>
                         <outlet property="rcMyDiaryCollectionView" destination="uxx-fi-EQt" id="XRn-Bb-Zso"/>
                         <outlet property="rcMyDiaryCollectionViewCellLayout" destination="h0V-XA-QbS" id="iIA-Fx-M6x"/>
                         <segue destination="P98-di-Tt1" kind="presentation" identifier="RCMyTravelDiaryBookViewControllerSegue" id="oLA-vY-Icp"/>

@@ -18,6 +18,10 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *rcMyDiaryCollectionView;
 @property (weak, nonatomic) IBOutlet RCMyDiaryCollectionViewFlowLayout *rcMyDiaryCollectionViewCellLayout;
 
+@property (weak, nonatomic) IBOutlet UIView *coverViewForEmptyDiary;
+
+
+
 @end
 
 @implementation RCMyDiaryViewController
@@ -30,6 +34,12 @@
     self.rcMyDiaryCollectionView.dataSource = self;
 //    self.rcMyDiaryCollectionView.prefetchDataSource = self;
     
+    
+    if ([RCDiaryManager diaryManager].diaryResults.count == 0) {
+        self.coverViewForEmptyDiary.hidden = NO;
+    } else {
+        self.coverViewForEmptyDiary.hidden = YES;
+    }
 }
 
 - (void)viewDidLayoutSubviews {

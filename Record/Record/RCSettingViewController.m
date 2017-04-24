@@ -117,6 +117,7 @@
         if (indexPath.row == 0) {
             [self performSegueWithIdentifier:@"ProfileChangeSegue" sender:tableView];
         } else if (indexPath.row == 1) {
+            
             [self performSegueWithIdentifier:@"MyDairySegue" sender:tableView];
         }
     } else if (indexPath.section == 1) {
