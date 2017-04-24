@@ -61,7 +61,7 @@
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     NSString *startDate = [dateFormatter stringFromDate:[RCDiaryManager diaryManager].diaryResults[indexPath.item].diaryStartDate];
     NSString *endDate = [dateFormatter stringFromDate:[RCDiaryManager diaryManager].diaryResults[indexPath.item].diaryEndDate];
-    cell.fromStartDateToEndDateLB.text = [startDate stringByAppendingString:[NSString stringWithFormat:@" ~\n%@", endDate]];
+    cell.fromStartDateToEndDateLB.text = [startDate stringByAppendingString:[NSString stringWithFormat:@" ~ %@", endDate]];
     
     NSDateComponents *components;
     components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay fromDate:[RCDiaryManager diaryManager].diaryResults[indexPath.item].diaryStartDate toDate:[RCDiaryManager diaryManager].diaryResults[indexPath.item].diaryEndDate options:0];
@@ -75,7 +75,7 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    return CGSizeMake(self.rcMyDiaryCollectionView.frame.size.width*0.6, self.rcMyDiaryCollectionView.frame.size.height*0.6);
+    return CGSizeMake(self.rcMyDiaryCollectionView.frame.size.width*0.7, self.rcMyDiaryCollectionView.frame.size.height*0.6);
 }
 
 

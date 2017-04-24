@@ -10,16 +10,6 @@
 
 @implementation RCSettingHeaderView
 
-
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-//        NSArray *nibPath = [[NSBundle mainBundle] loadNibNamed:@"RCSettingHeaderView" owner:self options:nil];
-//        self = [nibPath objectAtIndex:0];
-    }
-    return self;
-}
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

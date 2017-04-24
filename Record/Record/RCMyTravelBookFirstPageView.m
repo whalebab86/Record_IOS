@@ -25,15 +25,11 @@
     
     GMSCameraPosition *camera;
     if ([RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray.count == 0) {
-        camera = [GMSCameraPosition cameraWithLatitude:37.5653203
-                                                                longitude:126.9745883
-                                                                     zoom:10];
+        
+        camera = [GMSCameraPosition cameraWithLatitude:37.5653203 longitude:126.9745883 zoom:10];
     } else {
-        camera = [GMSCameraPosition cameraWithLatitude:[RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray[0].inDiaryLocationLatitude.floatValue
-                                                                longitude:[RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray[0].inDiaryLocationLongitude.floatValue
-                                                                     zoom:10];
+        camera = [GMSCameraPosition cameraWithLatitude:[RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray[0].inDiaryLocationLatitude.floatValue longitude:[RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray[0].inDiaryLocationLongitude.floatValue zoom:10];
     }
-    
     
     NSInteger  gpsNum = [RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray.count;
     GMSMutablePath *path = [GMSMutablePath path];
@@ -123,7 +119,7 @@
     polyline.map = mapView;
     mapView.delegate = self;
     self.mapView = mapView;
-    
+    self.mapViewOfGoogleMap.layer.cornerRadius = 3.0f;
     [self.mapViewOfGoogleMap addSubview:self.mapView];
     
 }
@@ -171,10 +167,16 @@
     imageViewInMarker.layer.borderWidth = 2.0f;
     imageViewInMarker.layer.borderColor = [UIColor whiteColor].CGColor;
     
-    if ([RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray[self.inDiaryArrayNumber].inDiaryPhotosArray.count != 0) {
+    
+    NSUInteger inDiaryPhotosCount = [RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray[self.inDiaryArrayNumber].inDiaryPhotosArray.count;
+    if (inDiaryPhotosCount != 0) {
         imageViewInMarker.image = [UIImage imageWithData:[RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray[self.inDiaryArrayNumber].inDiaryPhotosArray[0].inDiaryPhoto];
+        
+        /**/
+        self.totalPhotoOfThisPost.text = [NSString stringWithFormat:@"%lu", inDiaryPhotosCount];
     } else {
         imageViewInMarker.image = [UIImage imageNamed:@"RecordLogoWithoutWord"];
+        self.totalPhotoOfThisPost.text = @"0";
     }
     
     [viewInMarker addSubview:imageViewInMarker];
@@ -184,6 +186,7 @@
     marker.map = mapView;
     mapView.delegate = self;
     self.mapView = mapView;
+    self.mapViewOfGoogleMap.layer.cornerRadius = 3.0f;
     [self.mapViewOfGoogleMap addSubview:self.mapView];
     
 }
@@ -210,8 +213,9 @@
 
  - (void)drawRect:(CGRect)rect {
  // Drawing code
+     self.firstPhotoImageView.layer.cornerRadius = 3.0f;
      
-     
+     self.secondPhotoImageView.layer.cornerRadius = 3.0f;
  }
 
 - (void)layoutSubviews {

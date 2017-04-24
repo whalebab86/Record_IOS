@@ -264,11 +264,16 @@
     [self.view endEditing:YES];
     self.mainScrollView.contentOffset = CGPointMake(0, 0);
     
-    
-            if (![self.homTownLabel.text isKindOfClass:[NSString class]]) {
-                self.homTownLabel.text = @"";
-            }
-    
+    /**
+     * 자신의 홈타운을 설정하지 않은 경우, homTownLabel.text의 class를 확인하면 nil로 표시 된다(po [self.homTownLabel.text class] // nil).
+     * 하지만 다른 UITextfield와 UITextView의 text는 __NSCFConstantString로 확인 된다.
+     * 문제는 homTownLabel.text가 NSString 타입이 아닐 때 AFNetworking의 메소드에 들어갔을 때 오류가 발생하였다.
+     * 추가로 loginManager의  uploadProfilePersonalInformationWithNickname 메소드에서, UITextfield와 UITextView의 text  <object returned empty description> 형태로 출력 되지만(po nickname), homTownLabel.text(po hometown)는 nil로 나타났다.
+     * 따라서, self.homTownLabel.text의 class를 확인하여 NSString이 아닌 경우에 빈값을 넣어 해당 오류를 잡았다.
+     */
+    if (![self.homTownLabel.text isKindOfClass:[NSString class]]) {
+        self.homTownLabel.text = @"";
+    }
     
     [[RCLoginManager loginManager] uploadProfilePersonalInformationWithNickname:self.nickNameTextField.text hometown:self.homTownLabel.text selfIntroduction:self.shortStoryTextView.text complition:^(BOOL isSucceess, NSInteger code) {
         if (!isSucceess) {
@@ -364,10 +369,11 @@
 #pragma mark - save button action
 - (IBAction)saveProfileSetButtonAction:(UIButton *)sender {
     if (sender == self.saveProfileButtonFromMemberStoryboard) {
+        /* #pragma mark - right bar button item 부분의 saveBarButtonAction 메소드 참조  */
+        if (![self.homTownLabel.text isKindOfClass:[NSString class]]) {
+            self.homTownLabel.text = @"";
+        }
         
-//        if (![self.homTownLabel.text isKindOfClass:[NSString class]]) {
-//            self.homTownLabel.text = @"";
-//        }
         /* hometown 에 아무것도 안들어갈 경우 문제가 생김*/
         [[RCLoginManager loginManager] uploadProfilePersonalInformationWithNickname:self.nickNameTextField.text hometown:self.homTownLabel.text selfIntroduction:self.shortStoryTextView.text complition:^(BOOL isSucceess, NSInteger code) {
             if (!isSucceess) {

@@ -25,10 +25,12 @@ static NSString * const _SETTING_SUPPORT_CONTENT_KEY = @"SupportContent";
 {
     self = [super init];
     if (self) {
+        
         [self settingRootDictionary];
         [self setDefaultWithSettingRootDic];
         [self accountSectionWithSettingRootDic];
         [self supportSectionWithSettingRootDic];
+        
     }
     return self;
 }

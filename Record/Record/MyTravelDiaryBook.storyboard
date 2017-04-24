@@ -57,6 +57,10 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="downSwipeGesture" destination="OmQ-HR-lBd" id="Agc-NW-YTr"/>
+                        <outlet property="upSwipeGesture" destination="OYR-eU-5Vi" id="UxB-Ec-kZ6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PuD-In-XrG" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <swipeGestureRecognizer direction="up" id="OYR-eU-5Vi">

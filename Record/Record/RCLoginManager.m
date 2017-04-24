@@ -14,7 +14,6 @@
 <GIDSignInUIDelegate, GIDSignInUIDelegate>
 
 @property NSString *serverAccessKey;
-@property (nonatomic) NSURLSessionDataTask *dataTask;
 @property (nonatomic) AFHTTPRequestSerializer *serializer;
 @property (nonatomic) AFHTTPSessionManager *manager;
 @property (nonatomic) KeychainItemWrapper *keyChainWrapperInLoginManager;
@@ -47,8 +46,7 @@
 
 #pragma mark - Google Sign up Method
 /* recived user info from google and return status code */
-- (void)recivedForGoogleSignupUserInfo:(GIDGoogleUser *)user
-                    complition:(SuccessStateBlock)complition {
+- (void)recivedForGoogleSignupUserInfo:(GIDGoogleUser *)user complition:(SuccessStateBlock)complition {
     // For client-side use only!
     NSDictionary *parameters = @{_RECORD_SIGNUP_NAME_KEY:user.profile.email,
                                  @"password":@"",
@@ -79,8 +77,9 @@
 
 #pragma mark - Google Login Method
 - (void)recivedForGoogleLoginWithUserInfo:(GIDGoogleUser *)user complition:(SuccessStateBlock)complition {
-    NSDictionary *parameters = @{_RECORD_SIGNUP_NAME_KEY:user.profile.email,
-                                 _RECORD_SOCIAL_LOGIN_ACCESS_TOKEN_KEY:user.authentication.idToken};
+    NSDictionary *parameters = @{_RECORD_SIGNUP_NAME_KEY:user.authentication.clientID,
+                                 _RECORD_SOCIAL_LOGIN_ACCESS_TOKEN_KEY:user.authentication.idToken,
+                                 _RECORD_SIGNUP_USER_TYPE_KEY:_RECORD_SIGNUP_USER_TYPE_GOOGLE};
     
     NSString *urlString = [_RECORD_ADDRESS stringByAppendingString:_RECORD_SIGNIN_API];
     [self.manager POST:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -97,11 +96,10 @@
 
 #pragma mark - Facebook Login Logout Method
 /* facebook sign up */
-- (void)confirmFacebookSignupfromViewController:(UIViewController *)fromViewController
-                                    complition:(SuccessStateBlock)complition {
+- (void)confirmFacebookSignupfromViewController:(UIViewController *)fromViewController complition:(SuccessStateBlock)complition {
     
     if ([FBSDKAccessToken currentAccessToken]) {
-        NSLog(@"FBSDKAccessToken currentAccessToken");
+
         [self dispatchUserInfoFormFacebookForSignUp:complition];
         
     } else {
@@ -111,13 +109,13 @@
          fromViewController:fromViewController
          handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
              if (error) {
-                 NSLog(@"Process error");
+
                  complition(NO, error.code);
              } else if (result.isCancelled) {
-                 NSLog(@"Cancelled");
+
                  complition(NO, error.code);
              } else {
-                 NSLog(@"Facebook Logged in");
+
                  [self dispatchUserInfoFormFacebookForSignUp:complition];
              }
          }];
@@ -125,11 +123,10 @@
 }
 
 /* facebook login */
-- (void)confirmFacebookLoginfromViewController:(UIViewController *)fromViewController
-                                     complition:(SuccessStateBlock)complition {
+- (void)confirmFacebookLoginfromViewController:(UIViewController *)fromViewController complition:(SuccessStateBlock)complition {
     
     if ([FBSDKAccessToken currentAccessToken]) {
-        NSLog(@"FBSDKAccessToken currentAccessToken");
+
         [self dispatchUserInfoFormFacebookForSignUp:complition];
         
     } else {
@@ -139,13 +136,13 @@
          fromViewController:fromViewController
          handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
              if (error) {
-                 NSLog(@"Process error");
+                 
                  complition(NO, error.code);
              } else if (result.isCancelled) {
-                 NSLog(@"Cancelled");
+                 
                  complition(NO, error.code);
              } else {
-                 NSLog(@"Facebook Logged in");
+                 
                  [self dispatchUserInfoFormFacebookForLogin:complition];
              }
          }];
@@ -161,7 +158,7 @@
     [manger logOut];
     
     if ([FBSDKAccessToken currentAccessToken] == nil) {
-        NSLog(@"facebook log out success");
+        
     }
 }
 
@@ -172,9 +169,10 @@
     [connection addRequest:requestMe completionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
         if(result)
         {
+            //[result objectForKey:@"email"]
 //            [FBSDKAccessToken currentAccessToken].userID
-            NSDictionary *parameters = @{_RECORD_SIGNUP_NAME_KEY:[result objectForKey:@"email"],
-                                         _RECORD_SIGNUP_NICKNAME_KEY:[result objectForKey:@"name"],
+            NSDictionary *parameters = @{_RECORD_SIGNUP_NAME_KEY:[FBSDKAccessToken currentAccessToken].userID,
+                                         _RECORD_SIGNUP_NICKNAME_KEY:@"",
                                          _RECORD_SIGNUP_USER_TYPE_KEY:_RECORD_SIGNUP_USER_TYPE_FACEBOOK};
             
             NSString *urlString = [_RECORD_ADDRESS stringByAppendingString:_RECORD_SIGNUP_API];
@@ -204,7 +202,8 @@
         {
             //
             NSDictionary *parameters = @{_RECORD_SIGNUP_NAME_KEY:[FBSDKAccessToken currentAccessToken].userID,
-                                         _RECORD_SOCIAL_LOGIN_ACCESS_TOKEN_KEY:@""};
+                                         _RECORD_SOCIAL_LOGIN_ACCESS_TOKEN_KEY:@"",
+                                         _RECORD_SIGNUP_USER_TYPE_KEY:_RECORD_SIGNUP_USER_TYPE_FACEBOOK};
             
             NSString *urlString = [_RECORD_ADDRESS stringByAppendingString:_RECORD_SIGNIN_API];
             [self.manager POST:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -230,13 +229,14 @@
                          inputPassword:(NSString *)password
                     isSucessComplition:(SuccessStateBlock)complition
 {
-//    [self.manager.requestSerializer clearAuthorizationHeader];
+
     NSDictionary *parameters = @{@"username":email,
                                  @"password":password};
     
     NSString *urlString = [_RECORD_ADDRESS stringByAppendingString:_RECORD_SIGNIN_API];
     [self.manager POST:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [self insertUserInfoWithToken:[responseObject objectForKey:_RECORD_ACCESSTOKEN_KEY]];
+        
         /* 수정 필요 */
         [[NSUserDefaults standardUserDefaults] setValue:[[responseObject objectForKey:@"user"] objectForKey:_RECORD_CHANGE_PROFILE_IMAGE_URL] forKey:_RECORD_CHANGE_PROFILE_IMAGE_URL];
         [[NSUserDefaults standardUserDefaults] setObject:[[responseObject objectForKey:@"user"] objectForKey:_RECORD_CHANGE_PROFILE_INFORMATION_HOMETOWN_KEY] forKey:_RECORD_CHANGE_PROFILE_INFORMATION_HOMETOWN_KEY];
@@ -244,8 +244,11 @@
         [[NSUserDefaults standardUserDefaults] setObject:[[responseObject objectForKey:@"user"] objectForKey:_RECORD_CHANGE_PROFILE_INFORMATION_INTRODUCTION_KEY] forKey:_RECORD_CHANGE_PROFILE_INFORMATION_INTRODUCTION_KEY];
         
         complition(YES, ((NSHTTPURLResponse *)task.response).statusCode);
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
         complition(NO, ((NSHTTPURLResponse *)task.response).statusCode);
+        
     }];
 
 }
@@ -264,15 +267,20 @@
     
     NSString *urlString = [_RECORD_ADDRESS stringByAppendingString:_RECORD_SIGNUP_API];
     [self.manager POST:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
         [self insertUserInfoWithToken:[responseObject objectForKey:_RECORD_ACCESSTOKEN_KEY]];
+        
         [[NSUserDefaults standardUserDefaults] setValue:[[responseObject objectForKey:@"user"] objectForKey:_RECORD_CHANGE_PROFILE_IMAGE_URL] forKey:_RECORD_CHANGE_PROFILE_IMAGE_URL];
         [[NSUserDefaults standardUserDefaults] setObject:[[responseObject objectForKey:@"user"] objectForKey:_RECORD_CHANGE_PROFILE_INFORMATION_HOMETOWN_KEY] forKey:_RECORD_CHANGE_PROFILE_INFORMATION_HOMETOWN_KEY];
         [[NSUserDefaults standardUserDefaults] setObject:[[responseObject objectForKey:@"user"] objectForKey:_RECORD_CHANGE_PROFILE_INFORMATION_NICKNAME_KEY] forKey:_RECORD_CHANGE_PROFILE_INFORMATION_NICKNAME_KEY];
         [[NSUserDefaults standardUserDefaults] setObject:[[responseObject objectForKey:@"user"] objectForKey:_RECORD_CHANGE_PROFILE_INFORMATION_INTRODUCTION_KEY] forKey:_RECORD_CHANGE_PROFILE_INFORMATION_INTRODUCTION_KEY];
         
         complition(YES, ((NSHTTPURLResponse *)task.response).statusCode);
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
         complition(NO, ((NSHTTPURLResponse *)task.response).statusCode);
+        
     }];
 }
 
@@ -283,16 +291,21 @@
     
     NSString *urlString = [_RECORD_ADDRESS stringByAppendingString:_RECORD_LOGOUT_API];
     
-//    self.manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    
     [self.manager.requestSerializer setValue:[@"Token " stringByAppendingString:[self.keyChainWrapperInLoginManager objectForKey:(__bridge id)kSecValueData]] forHTTPHeaderField:_RECORD_LOGOUT_PARAMETER_KEY];
+    
     [self.manager POST:urlString parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
         [self delectUserInfoToken];
         [self.manager.requestSerializer clearAuthorizationHeader];
+        
         complition(YES, ((NSHTTPURLResponse *)task.response).statusCode);
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
         [self.manager.requestSerializer clearAuthorizationHeader];
+        
         complition(NO, ((NSHTTPURLResponse *)task.response).statusCode);
+        
     }];
     
 }
@@ -330,13 +343,21 @@
     
     [self.manager.requestSerializer setValue:[@"Token " stringByAppendingString:[self.keyChainWrapperInLoginManager objectForKey:(__bridge id)kSecValueData]] forHTTPHeaderField:_RECORD_PROFILECHANGE_PARAMETER_KEY];
     [self.manager POST:urlString parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        
         [formData appendPartWithFileData:profileImageData name:@"photo" fileName:@"profile.jpg" mimeType:@"image/jpeg"];
+        
     } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
         [[NSUserDefaults standardUserDefaults] setValue:[[responseObject objectForKey:@"user"] objectForKey:_RECORD_CHANGE_PROFILE_IMAGE_URL] forKey:_RECORD_CHANGE_PROFILE_IMAGE_URL];
+        
         [self.manager.requestSerializer clearAuthorizationHeader ];
+        
         complition(YES, ((NSHTTPURLResponse *)task.response).statusCode);
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
         [self.manager.requestSerializer clearAuthorizationHeader ];
+        
         complition(NO, ((NSHTTPURLResponse *)task.response).statusCode);
         
     }];
@@ -347,32 +368,29 @@
 - (void)uploadProfilePersonalInformationWithNickname:(NSString *)nickname hometown:(NSString *)hometown selfIntroduction:(NSString *)introdution complition:(SuccessStateBlock)complition {
     
     NSString *urlString = [_RECORD_ADDRESS stringByAppendingString:_RECORD_CHANGE_PROFILE_INFORMATION];
-    
-//    self.manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    
+
     [self.manager.requestSerializer setValue:[@"Token " stringByAppendingString:[self.keyChainWrapperInLoginManager objectForKey:(__bridge id)kSecValueData]] forHTTPHeaderField:_RECORD_PROFILECHANGE_PARAMETER_KEY];
    
-
-    
     [self.manager POST:urlString parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        
         [formData appendPartWithFormData:[nickname dataUsingEncoding:NSUTF8StringEncoding] name:@"nickname"];
         [formData appendPartWithFormData:[hometown dataUsingEncoding:NSUTF8StringEncoding] name:@"hometown"];
         [formData appendPartWithFormData:[introdution dataUsingEncoding:NSUTF8StringEncoding] name:@"introduction"];
         
     } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
         [[NSUserDefaults standardUserDefaults] setObject:hometown forKey:_RECORD_CHANGE_PROFILE_INFORMATION_HOMETOWN_KEY];
         [[NSUserDefaults standardUserDefaults] setObject:nickname forKey:_RECORD_CHANGE_PROFILE_INFORMATION_NICKNAME_KEY];
         [[NSUserDefaults standardUserDefaults] setObject:introdution forKey:_RECORD_CHANGE_PROFILE_INFORMATION_INTRODUCTION_KEY];
+        
         complition(YES, ((NSHTTPURLResponse *)task.response).statusCode);
-//        [self.manager.requestSerializer clearAuthorizationHeader ];
-//        self.manager.requestSerializer = [AFJSONRequestSerializer serializer];
+
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
         complition(NO, ((NSHTTPURLResponse *)task.response).statusCode);
-//        self.manager.requestSerializer = [AFJSONRequestSerializer serializer];
-//        [self.manager.requestSerializer clearAuthorizationHeader ];
+        
     }];
 }
-
 
 #pragma mark - valid token check
 /* valid token check */
@@ -383,14 +401,19 @@
     NSString *urlString = [_RECORD_ADDRESS stringByAppendingString:_RECORD_CHECK_VALID_TOKEN_API] ;
     
     [self.manager POST:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
         [self copyUserInfoTokenIntoLoginManager];
         [self.manager.requestSerializer clearAuthorizationHeader];
+        
         complition(YES, ((NSHTTPURLResponse *)task.response).statusCode);
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
         [self delectUserInfoToken];
         [self.manager.requestSerializer clearAuthorizationHeader];
+        
         complition(NO, ((NSHTTPURLResponse *)task.response).statusCode);
+        
     }];
 
 }

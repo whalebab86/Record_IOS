@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+/* */
 @interface RCMyTravelBookFirstPageView : UIView
 
 @property (weak, nonatomic) IBOutlet UIView *mapViewOfGoogleMap;
@@ -25,6 +26,8 @@
 
 @end
 
+
+/* */
 @interface RCMyTravelBookSecondPageView : UIView
 
 @property (weak, nonatomic) IBOutlet UIView *mapViewOfGoogleMap;
@@ -33,11 +36,16 @@
 @property NSString *longitude;
 @property NSIndexPath *recivedIndexPath;
 @property NSInteger inDiaryArrayNumber;
+
+@property (weak, nonatomic) IBOutlet UILabel *currentDayOfThisPostLB;
+@property (weak, nonatomic) IBOutlet UILabel *totalPhotoOfThisPost;
+
 @property (weak, nonatomic) IBOutlet UILabel *pageNumberLB;
 @property (weak, nonatomic) IBOutlet UILabel *totalPageLB;
 
 @end
 
+/* */
 @interface RCMyTravelBookRemainPhotoPageView : UIView
 @property (weak, nonatomic) IBOutlet UIImageView *firstPhotoImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *secondPhotoImageView;
