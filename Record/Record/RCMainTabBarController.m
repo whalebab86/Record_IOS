@@ -18,9 +18,9 @@
 
 @implementation RCMainTabBarController
 
-- (void)viewDidAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated {
     
-    [super viewDidAppear:YES];
+    [super viewWillAppear:YES];
     
     [[RCLoginManager loginManager] checkValidTokenWithComplition:^(BOOL isSucceess, NSInteger code) {
         if(!isSucceess) {
