@@ -87,7 +87,7 @@
                     <rect key="frame" x="290" y="79" width="80" height="259"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8RB-qD-5Fp">
-                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                            <rect key="frame" x="0.0" y="10" width="80" height="80"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RC_calendar_icon" translatesAutoresizingMaskIntoConstraints="NO" id="SEU-xB-aMj">
                                     <rect key="frame" x="24" y="0.0" width="32" height="32"/>
@@ -97,7 +97,7 @@
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bff-FR-xgO">
-                                    <rect key="frame" x="26" y="38" width="28" height="20"/>
+                                    <rect key="frame" x="26.5" y="38" width="28" height="20"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="20" id="yyC-3i-sRp"/>
                                     </constraints>
@@ -128,7 +128,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HzS-Go-CS7">
-                            <rect key="frame" x="0.0" y="85" width="80" height="80"/>
+                            <rect key="frame" x="0.0" y="169" width="80" height="80"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RC_camera_gray_color_icon" translatesAutoresizingMaskIntoConstraints="NO" id="oha-mb-qZD">
                                     <rect key="frame" x="24" y="0.0" width="32" height="32"/>
@@ -138,7 +138,7 @@
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QtW-ZG-tXK">
-                                    <rect key="frame" x="26" y="38" width="28" height="20"/>
+                                    <rect key="frame" x="26.5" y="38" width="28" height="20"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="20" id="60w-Ep-UZ5"/>
                                     </constraints>
@@ -174,10 +174,10 @@
                         <constraint firstAttribute="trailing" secondItem="8RB-qD-5Fp" secondAttribute="trailing" id="6sj-yl-oSw"/>
                         <constraint firstItem="HzS-Go-CS7" firstAttribute="leading" secondItem="tVf-Gv-7gh" secondAttribute="leading" id="Dyh-3P-C88"/>
                         <constraint firstAttribute="trailing" secondItem="HzS-Go-CS7" secondAttribute="trailing" id="G2F-oa-BYX"/>
-                        <constraint firstItem="HzS-Go-CS7" firstAttribute="top" secondItem="8RB-qD-5Fp" secondAttribute="bottom" constant="5" id="TTH-Vn-I5a"/>
                         <constraint firstItem="8RB-qD-5Fp" firstAttribute="leading" secondItem="tVf-Gv-7gh" secondAttribute="leading" id="fxp-0s-B7A"/>
+                        <constraint firstAttribute="bottom" secondItem="HzS-Go-CS7" secondAttribute="bottom" constant="10" id="h9z-pv-vCj"/>
                         <constraint firstAttribute="width" constant="80" id="oR4-Ec-8cU"/>
-                        <constraint firstItem="8RB-qD-5Fp" firstAttribute="top" secondItem="tVf-Gv-7gh" secondAttribute="top" id="qKX-hC-Vfb"/>
+                        <constraint firstItem="8RB-qD-5Fp" firstAttribute="top" secondItem="tVf-Gv-7gh" secondAttribute="top" constant="10" id="qKX-hC-Vfb"/>
                     </constraints>
                 </view>
             </subviews>

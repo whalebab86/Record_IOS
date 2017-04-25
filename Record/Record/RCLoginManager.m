@@ -51,11 +51,14 @@
     NSDictionary *parameters = @{_RECORD_SIGNUP_NAME_KEY:user.profile.email,
                                  @"password":@"",
                                  _RECORD_SIGNUP_NICKNAME_KEY:@"",
+                                 _RECORD_SOCIAL_LOGIN_ACCESS_TOKEN_KEY:user.authentication.accessToken,
                                  _RECORD_SIGNUP_USER_TYPE_KEY:_RECORD_SIGNUP_USER_TYPE_GOOGLE};
     
     NSString *urlString = [_RECORD_ADDRESS stringByAppendingString:_RECORD_SIGNUP_API];
     [self.manager POST:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [self insertUserInfoWithToken:[responseObject objectForKey:_RECORD_ACCESSTOKEN_KEY]];
+        
+        
         complition(YES, ((NSHTTPURLResponse *)task.response).statusCode);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         complition(NO, ((NSHTTPURLResponse *)task.response).statusCode);
@@ -78,12 +81,16 @@
 #pragma mark - Google Login Method
 - (void)recivedForGoogleLoginWithUserInfo:(GIDGoogleUser *)user complition:(SuccessStateBlock)complition {
     NSDictionary *parameters = @{_RECORD_SIGNUP_NAME_KEY:user.authentication.clientID,
-                                 _RECORD_SOCIAL_LOGIN_ACCESS_TOKEN_KEY:user.authentication.idToken,
+                                 _RECORD_SOCIAL_LOGIN_ACCESS_TOKEN_KEY:user.authentication.accessToken,
                                  _RECORD_SIGNUP_USER_TYPE_KEY:_RECORD_SIGNUP_USER_TYPE_GOOGLE};
     
     NSString *urlString = [_RECORD_ADDRESS stringByAppendingString:_RECORD_SIGNIN_API];
     [self.manager POST:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [self insertUserInfoWithToken:[responseObject objectForKey:_RECORD_ACCESSTOKEN_KEY]];
+        [[NSUserDefaults standardUserDefaults] setValue:[[responseObject objectForKey:@"user"] objectForKey:_RECORD_CHANGE_PROFILE_IMAGE_URL] forKey:_RECORD_CHANGE_PROFILE_IMAGE_URL];
+        [[NSUserDefaults standardUserDefaults] setObject:[[responseObject objectForKey:@"user"] objectForKey:_RECORD_CHANGE_PROFILE_INFORMATION_HOMETOWN_KEY] forKey:_RECORD_CHANGE_PROFILE_INFORMATION_HOMETOWN_KEY];
+        [[NSUserDefaults standardUserDefaults] setObject:[[responseObject objectForKey:@"user"] objectForKey:_RECORD_CHANGE_PROFILE_INFORMATION_NICKNAME_KEY] forKey:_RECORD_CHANGE_PROFILE_INFORMATION_NICKNAME_KEY];
+        [[NSUserDefaults standardUserDefaults] setObject:[[responseObject objectForKey:@"user"] objectForKey:_RECORD_CHANGE_PROFILE_INFORMATION_INTRODUCTION_KEY] forKey:_RECORD_CHANGE_PROFILE_INFORMATION_INTRODUCTION_KEY];
         complition(YES, ((NSHTTPURLResponse *)task.response).statusCode);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         complition(NO, ((NSHTTPURLResponse *)task.response).statusCode);
@@ -112,8 +119,8 @@
 
                  complition(NO, error.code);
              } else if (result.isCancelled) {
-
-                 complition(NO, error.code);
+                 [self dispatchUserInfoFormFacebookForSignUp:complition];
+//                 complition(NO, error.code);
              } else {
 
                  [self dispatchUserInfoFormFacebookForSignUp:complition];
@@ -167,12 +174,17 @@
     FBSDKGraphRequest *requestMe = [[FBSDKGraphRequest alloc]initWithGraphPath:@"me" parameters:@{@"fields": @"id, name, email"}];
     FBSDKGraphRequestConnection *connection = [[FBSDKGraphRequestConnection alloc] init];
     [connection addRequest:requestMe completionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+//        FBSDKLoginManager *manger = [[FBSDKLoginManager alloc] init];
+//        
+//        [manger logOut];
         if(result)
         {
             //[result objectForKey:@"email"]
 //            [FBSDKAccessToken currentAccessToken].userID
             NSDictionary *parameters = @{_RECORD_SIGNUP_NAME_KEY:[FBSDKAccessToken currentAccessToken].userID,
+                                         @"password":@"",
                                          _RECORD_SIGNUP_NICKNAME_KEY:@"",
+                                         _RECORD_SOCIAL_LOGIN_ACCESS_TOKEN_KEY:[FBSDKAccessToken currentAccessToken].tokenString,
                                          _RECORD_SIGNUP_USER_TYPE_KEY:_RECORD_SIGNUP_USER_TYPE_FACEBOOK};
             
             NSString *urlString = [_RECORD_ADDRESS stringByAppendingString:_RECORD_SIGNUP_API];
@@ -202,23 +214,24 @@
         {
             //
             NSDictionary *parameters = @{_RECORD_SIGNUP_NAME_KEY:[FBSDKAccessToken currentAccessToken].userID,
-                                         _RECORD_SOCIAL_LOGIN_ACCESS_TOKEN_KEY:@"",
+                                         _RECORD_SOCIAL_LOGIN_ACCESS_TOKEN_KEY:[FBSDKAccessToken currentAccessToken].tokenString,
                                          _RECORD_SIGNUP_USER_TYPE_KEY:_RECORD_SIGNUP_USER_TYPE_FACEBOOK};
             
             NSString *urlString = [_RECORD_ADDRESS stringByAppendingString:_RECORD_SIGNIN_API];
             [self.manager POST:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 [self insertUserInfoWithToken:[responseObject objectForKey:_RECORD_ACCESSTOKEN_KEY]];
+                
+                [[NSUserDefaults standardUserDefaults] setValue:[[responseObject objectForKey:@"user"] objectForKey:_RECORD_CHANGE_PROFILE_IMAGE_URL] forKey:_RECORD_CHANGE_PROFILE_IMAGE_URL];
+                [[NSUserDefaults standardUserDefaults] setObject:[[responseObject objectForKey:@"user"] objectForKey:_RECORD_CHANGE_PROFILE_INFORMATION_HOMETOWN_KEY] forKey:_RECORD_CHANGE_PROFILE_INFORMATION_HOMETOWN_KEY];
+                [[NSUserDefaults standardUserDefaults] setObject:[[responseObject objectForKey:@"user"] objectForKey:_RECORD_CHANGE_PROFILE_INFORMATION_NICKNAME_KEY] forKey:_RECORD_CHANGE_PROFILE_INFORMATION_NICKNAME_KEY];
+                [[NSUserDefaults standardUserDefaults] setObject:[[responseObject objectForKey:@"user"] objectForKey:_RECORD_CHANGE_PROFILE_INFORMATION_INTRODUCTION_KEY] forKey:_RECORD_CHANGE_PROFILE_INFORMATION_INTRODUCTION_KEY];
+                
                 complition(YES, ((NSHTTPURLResponse *)task.response).statusCode);
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                
                 complition(NO, ((NSHTTPURLResponse *)task.response).statusCode);
+                
             }];
-            //
-            //            if ([result objectForKey:@"name"]) {
-            //                NSLog(@"First Name : %@",[result objectForKey:@"name"]);
-            //            }
-            //            if ([result objectForKey:@"id"]) {
-            //                NSLog(@"User id : %@",[result objectForKey:@"id"]);
-            //            }
         }
     }];
     [connection start];
@@ -231,7 +244,8 @@
 {
 
     NSDictionary *parameters = @{@"username":email,
-                                 @"password":password};
+                                 @"password":password,
+                                 _RECORD_SIGNUP_USER_TYPE_KEY:_RECORD_SIGNUP_USER_TYPE_NORMAL};
     
     NSString *urlString = [_RECORD_ADDRESS stringByAppendingString:_RECORD_SIGNIN_API];
     [self.manager POST:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -382,11 +396,11 @@
         [[NSUserDefaults standardUserDefaults] setObject:hometown forKey:_RECORD_CHANGE_PROFILE_INFORMATION_HOMETOWN_KEY];
         [[NSUserDefaults standardUserDefaults] setObject:nickname forKey:_RECORD_CHANGE_PROFILE_INFORMATION_NICKNAME_KEY];
         [[NSUserDefaults standardUserDefaults] setObject:introdution forKey:_RECORD_CHANGE_PROFILE_INFORMATION_INTRODUCTION_KEY];
-        
+        [self.manager.requestSerializer clearAuthorizationHeader ];
         complition(YES, ((NSHTTPURLResponse *)task.response).statusCode);
 
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
+        [self.manager.requestSerializer clearAuthorizationHeader ];
         complition(NO, ((NSHTTPURLResponse *)task.response).statusCode);
         
     }];

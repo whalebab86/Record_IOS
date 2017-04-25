@@ -24,20 +24,20 @@
 
 - (IBAction)connetRecordProjectGitAction:(UIButton *)sender {
     
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://github.com/whalebab86/Record_IOS"] options:@{} completionHandler:nil];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://github.com/whalebab86/Record_IOS/blob/master/README.md"] options:@{} completionHandler:nil];
     
 }
 
 
 - (IBAction)teamMemberYunseoConnetGitButtonAction:(UIButton *)sender {
     
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://github.com/KimYunseo"] options:@{} completionHandler:nil];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://github.com/KimYunseo"] options:@{} completionHandler:nil];
     
 }
 
 - (IBAction)teamMemberBongkiConnetGitButtonAction:(UIButton *)sender {
     
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://github.com/whalebab86"] options:@{} completionHandler:nil];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://github.com/whalebab86"] options:@{} completionHandler:nil];
     
 }
 

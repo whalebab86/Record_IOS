@@ -123,6 +123,9 @@
     [self.mapViewOfGoogleMap addSubview:self.mapView];
     
 }
+- (void)layoutSubviews {
+    [super layoutSubviews];
+}
 
 - (void)mapViewDidFinishTileRendering:(GMSMapView *)mapView {
     UIGraphicsBeginImageContextWithOptions(self.frame.size, YES, 0.0f);
@@ -191,6 +194,10 @@
     
 }
 
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    [self reloadInputViews];
+}
 
 - (void)mapViewDidFinishTileRendering:(GMSMapView *)mapView {
     UIGraphicsBeginImageContextWithOptions(self.frame.size, YES, 0.0f);
@@ -219,6 +226,8 @@
  }
 
 - (void)layoutSubviews {
+    [super layoutSubviews];
+    [self reloadInputViews];
     
     UIGraphicsBeginImageContextWithOptions(self.frame.size, YES, 0.0f);
     [self.layer renderInContext:UIGraphicsGetCurrentContext()];
