@@ -24,7 +24,7 @@
 
 ## - Record App Menu Configuration And App Scenario
 
-![Senario]()
+![Senario](https://github.com/whalebab86/Record_IOS/blob/master/App_Manual_Document/image/senario.png)
 
 ## - App Requirements
 
