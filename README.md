@@ -3,7 +3,9 @@
 **- FastCampus Project(IOS & AOS & Frontend & Backend)**
 
 ## - Play Record
-영상
+![Record gif](https://github.com/whalebab86/Record_IOS/blob/master/App_Manual_Document/image/record_cover_01.gif)
+[Record youtube](https://www.youtube.com/watch?v=A0ARKpXVC1A "Record")  
+
 
 ## - Record Intention of the plan (기획 의도)
 **- 여행 중의 행복했던 기억과 특별한 순간들은 새로운 순간들을 만나며 잊혀져 간다. 결국 남은 것은 정리 안된 사진들과 희미해진 여행의 기억... 내가 여행한 곳을 기록하고 정리하고 싶지만 생각만큼 쉽지가 않다. 사진을 통해 쉽고 간편하게 나만의 여행 다이어리를 만들 수 있도록 이 앱을 기획했다.** 
