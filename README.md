@@ -4,7 +4,8 @@
 
 ## - Play Record
 ![Record gif](https://github.com/whalebab86/Record_IOS/blob/master/App_Manual_Document/image/record_cover_01.gif)
-[Record youtube](https://www.youtube.com/watch?v=A0ARKpXVC1A "Record")  
+<br/>
+[[Record youtube](https://www.youtube.com/watch?v=A0ARKpXVC1A "Record")]
 
 
 ## - Record Intention of the plan (기획 의도)
