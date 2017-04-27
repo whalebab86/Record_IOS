@@ -11,8 +11,8 @@
 #ifndef RCLoginStaticHeader_h
 #define RCLoginStaticHeader_h
 
-static NSString * const _RECORD_ADDRESS = @"https://studydev.kr";
-static NSString * const _RECORD_SIGNUP_API = @"/api/users/";
+static NSString * const _RECORD_ADDRESS = @"https://api.studydev.kr";
+static NSString * const _RECORD_SIGNUP_API = @"/users/";
 static NSString * const _RECORD_SIGNIN_API = @"/user/login/";
 static NSString * const _RECORD_LOGOUT_API = @"/user/logout/";
 static NSString * const _RECORD_PROFILECHANGE_API = @"/user/changeprofile/";

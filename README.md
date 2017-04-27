@@ -48,7 +48,7 @@
 |FBSDKLoginKit|Facebook 회원가입을 사용하기 위한 라이브러리|
 |KeychainItemWrapper|중요 키값을 암호화하기 위한 라이브러리|
 |QBImagePickerController|Custom Image Picker를 사용하기 위한 라이브러리|
-|VCTransitionsLibrary|Flip Animation을 사용하기 위한 라이브러리|
+|MPFoldTrasition|Flip Animation을 사용하기 위한 라이브러리|
 
 ## - Team members
 

@@ -49,9 +49,9 @@
     
 }
 
-#pragma mark - Switching Contrainer View
-/* Show signInContrainer view at signInButton */
-- (IBAction)showSignInContrainer:(UIButton *)sender {
+#pragma mark - Switching Container View
+/* Show signInContainer view at signInButton */
+- (IBAction)showSignInContainer:(UIButton *)sender {
     if (sender == self.signInButton) {
         [UIView animateWithDuration:0.3f animations:^{
             self.signInContrainer.alpha = 1;
@@ -61,12 +61,10 @@
         }];
         [self.view endEditing:YES];
     }
-    
-    
 }
 
-/* Show signUpContrainer view at signUpButton */
-- (IBAction)showSignUpContrainer:(UIButton *)sender {
+/* Show signUpContainer view at signUpButton */
+- (IBAction)showSignUpContainer:(UIButton *)sender {
     if (sender == self.signUpButton) {
         [UIView animateWithDuration:0.3f animations:^{
             self.signInContrainer.alpha = 0;

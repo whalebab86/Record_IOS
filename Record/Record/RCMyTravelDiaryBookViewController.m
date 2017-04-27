@@ -33,10 +33,7 @@
     self.navigationItem.title = [RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].diaryName;
     
     /* set alertcontroller  */
-//    DGActivityIndicatorView *activityIndicatorView = [[DGActivityIndicatorView alloc] initWithType:DGActivityIndicatorAnimationTypeBallClipRotate tintColor:[UIColor blackColor] size:40.0f];
-//    activityIndicatorView.frame = self.view.frame;
-//    [self.view addSubview:activityIndicatorView];
-//    [activityIndicatorView startAnimating];
+
     RCIndicatorUtil *activityIndicatorView = [[RCIndicatorUtil alloc] initWithTargetView:self.view isMask:YES];
     [activityIndicatorView startIndicator];
     
@@ -66,35 +63,34 @@
         /* load nib file */
         RCMyTravelBookFirstPageView *firstPageView = [[[NSBundle mainBundle] loadNibNamed:@"RCMyTravelBookFirstPageView" owner:self options:nil] objectAtIndex:0];
         /* insert title */
-        firstPageView.titleLB.text = [RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].diaryName;
+//        firstPageView.titleLB.text = [RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].diaryName;
         NSInteger pageNum = 1;
         firstPageView.pageNumberLB.text = [NSString stringWithFormat:@"%ld", pageNum];
         firstPageView.totalPageLB.text = [NSString stringWithFormat:@"%ld", totalPageNumber];;
         /* inserted between dates */
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setCalendar:[NSCalendar currentCalendar]];
-        [dateFormatter setTimeZone:[NSTimeZone defaultTimeZone]];
-        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-        NSString *startDate = [dateFormatter stringFromDate:[RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].diaryStartDate];
-        NSString *endDate = [dateFormatter stringFromDate:[RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].diaryEndDate];
-        firstPageView.fromFirstDayToLastDayLB.text = [startDate stringByAppendingString:[NSString stringWithFormat:@" ~ %@", endDate]];
+//        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+//        [dateFormatter setCalendar:[NSCalendar currentCalendar]];
+//        [dateFormatter setTimeZone:[NSTimeZone defaultTimeZone]];
+//        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+//        NSString *startDate = [dateFormatter stringFromDate:[RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].diaryStartDate];
+//        NSString *endDate = [dateFormatter stringFromDate:[RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].diaryEndDate];
+//        firstPageView.fromFirstDayToLastDayLB.text = [startDate stringByAppendingString:[NSString stringWithFormat:@" ~ %@", endDate]];
         
         
         /* inserted total days */
-        NSDateComponents *components;
-        components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay fromDate:[RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].diaryStartDate toDate:[RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].diaryEndDate options:0];
-        firstPageView.totalDaysLB.text = [NSString stringWithFormat:@"%ld", [components day]];
+//        NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay fromDate:[RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].diaryStartDate toDate:[RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].diaryEndDate options:NSCalendarWrapComponents];
+//        firstPageView.totalDaysLB.text = [NSString stringWithFormat:@"%ld", [components day]+1];
         
         /* post number */
-        NSInteger inDiaryPostNumber = [RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray.count;
-        firstPageView.totalPostsLB.text = [NSString stringWithFormat:@"%ld", inDiaryPostNumber];
+//        NSInteger inDiaryPostNumber = [RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray.count;
+//        firstPageView.totalPostsLB.text = [NSString stringWithFormat:@"%ld", inDiaryPostNumber];
         
         /* photo number */
-        NSInteger inDiaryPhotoNumber = 0;
-        for (NSInteger i = 0; i < inDiaryPostNumber ; i++) {
-            inDiaryPhotoNumber += [RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray[i].inDiaryPhotosArray.count;
-        }
-        firstPageView.totalPhotosLB.text = [NSString stringWithFormat:@"%ld", inDiaryPhotoNumber];
+//        NSInteger inDiaryPhotoNumber = 0;
+//        for (NSInteger i = 0; i < inDiaryPostNumber ; i++) {
+//            inDiaryPhotoNumber += [RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray[i].inDiaryPhotosArray.count;
+//        }
+//        firstPageView.totalPhotosLB.text = [NSString stringWithFormat:@"%ld", inDiaryPhotoNumber];
         
         /* GPS */
         firstPageView.recivedIndexPath = self.recivedIndexPath;
@@ -102,22 +98,22 @@
         
         
         NSInteger countOfinDiary = [RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray.count;
-        CGFloat totalDistanceMeter = 0;
-        /* distance */
-        for (NSInteger i = 0 ; i < countOfinDiary - 1 ; i++) {
-            CLLocationDegrees startLatitude = [RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray[i].inDiaryLocationLatitude.floatValue;
-            CLLocationDegrees startLongitude = [RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray[i].inDiaryLocationLongitude.floatValue;
-            CLLocation *startLocation = [[CLLocation alloc] initWithLatitude:startLatitude longitude:startLongitude];
-            
-            CLLocationDegrees endtLatitude = [RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray[i+1].inDiaryLocationLatitude.floatValue;
-            CLLocationDegrees endLongitude = [RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray[i+1].inDiaryLocationLongitude.floatValue;
-            CLLocation *endLocation = [[CLLocation alloc] initWithLatitude:endtLatitude longitude:endLongitude];
-            
-            CLLocationDistance distance = [endLocation distanceFromLocation:startLocation];
-            totalDistanceMeter += distance;
-            
-        }
-        firstPageView.totalDistanceLB.text = [NSString stringWithFormat:@"%.2lf", totalDistanceMeter/1000];
+//        CGFloat totalDistanceMeter = 0;
+//        /* distance */
+//        for (NSInteger i = 0 ; i < countOfinDiary - 1 ; i++) {
+//            CLLocationDegrees startLatitude = [RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray[i].inDiaryLocationLatitude.floatValue;
+//            CLLocationDegrees startLongitude = [RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray[i].inDiaryLocationLongitude.floatValue;
+//            CLLocation *startLocation = [[CLLocation alloc] initWithLatitude:startLatitude longitude:startLongitude];
+//            
+//            CLLocationDegrees endtLatitude = [RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray[i+1].inDiaryLocationLatitude.floatValue;
+//            CLLocationDegrees endLongitude = [RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray[i+1].inDiaryLocationLongitude.floatValue;
+//            CLLocation *endLocation = [[CLLocation alloc] initWithLatitude:endtLatitude longitude:endLongitude];
+//            
+//            CLLocationDistance distance = [endLocation distanceFromLocation:startLocation];
+//            totalDistanceMeter += distance;
+//            
+//        }
+//        firstPageView.totalDistanceLB.text = [NSString stringWithFormat:@"%.2lf", totalDistanceMeter/1000];
         [viewArray addObject:firstPageView];
         
         
@@ -125,12 +121,12 @@
         
         for (NSInteger j = 0; j < countOfinDiary ; j++) {
             RCMyTravelBookSecondPageView *secondPageView = [[[NSBundle mainBundle] loadNibNamed:@"RCMyTravelBookSecondPageView" owner:self options:nil] objectAtIndex:0];
-            secondPageView.contentsOfPostingLB.text = [RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray[j].inDiaryContent;
-            secondPageView.latitude = [RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray[j].inDiaryLocationLatitude.stringValue;
-            secondPageView.longitude = [RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray[j].inDiaryLocationLongitude.stringValue;
+//            secondPageView.contentsOfPostingLB.text = [RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray[j].inDiaryContent;
+//            secondPageView.latitude = [RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray[j].inDiaryLocationLatitude.stringValue;
+//            secondPageView.longitude = [RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray[j].inDiaryLocationLongitude.stringValue;
             secondPageView.inDiaryArrayNumber = j;
             secondPageView.recivedIndexPath = self.recivedIndexPath;
-            secondPageView.currentDayOfThisPostLB.text = [NSString stringWithFormat:@"%ld", j + 1];
+//            secondPageView.currentDayOfThisPostLB.text = [NSString stringWithFormat:@"%ld", j + 1];
             
             [viewArray addObject:secondPageView];
             NSInteger countOfinDiaryPhoto = [RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray[j].inDiaryPhotosArray.count;
@@ -140,8 +136,10 @@
             if (countOfinDiaryPhoto != 0) {
                 for (NSInteger k = 0; k < countOfinDiaryPhoto; k++) {
                     RCMyTravelBookRemainPhotoPageView *remainPageView = [[[NSBundle mainBundle] loadNibNamed:@"RCMyTravelBookRemainPhotoPageView" owner:self options:nil] objectAtIndex:0];
-                    remainPageView.firstPhotoImageView.image = [UIImage imageWithData:[RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray[j].inDiaryPhotosArray[k].inDiaryPhoto];
-                    
+//                    remainPageView.firstPhotoImageView.image = [UIImage imageWithData:[RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray[j].inDiaryPhotosArray[k].inDiaryPhoto];
+                    remainPageView.recivedIndexPath = self.recivedIndexPath;
+                    remainPageView.inDiaryArrayNumber = j;
+                    remainPageView.inDiaryPhotosArrayCount = k;
                     if (!(k == countOfinDiaryPhoto - 1 && countOfinDiaryPhoto % 2 == 1)) {
                         remainPageView.secondPhotoImageView.image = [UIImage imageWithData:[RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray[j].inDiaryPhotosArray[k + 1].inDiaryPhoto];
                     }
@@ -154,8 +152,6 @@
             }
             
         }
-        
-        
         self.number = 0;
         self.viewArray = viewArray;
         for (NSInteger i = self.viewArray.count -1; i >= 0; i--) {
