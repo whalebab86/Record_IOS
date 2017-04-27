@@ -51,7 +51,7 @@
     NSDictionary *parameters = @{_RECORD_SIGNUP_NAME_KEY:user.profile.email,
                                  @"password":@"",
                                  _RECORD_SIGNUP_NICKNAME_KEY:@"",
-                                 _RECORD_SOCIAL_LOGIN_ACCESS_TOKEN_KEY:user.authentication.accessToken,
+                                 _RECORD_SOCIAL_LOGIN_ACCESS_TOKEN_KEY:user.authentication.clientID,
                                  _RECORD_SIGNUP_USER_TYPE_KEY:_RECORD_SIGNUP_USER_TYPE_GOOGLE};
     
     NSString *urlString = [_RECORD_ADDRESS stringByAppendingString:_RECORD_SIGNUP_API];
