@@ -71,7 +71,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vad-VI-jQX">
-                                                            <rect key="frame" x="26" y="38" width="28" height="20"/>
+                                                            <rect key="frame" x="26.5" y="38" width="28" height="20"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="20" id="6dI-BO-NYQ"/>
                                                             </constraints>
@@ -121,7 +121,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bV9-5y-jNR">
-                                                            <rect key="frame" x="26" y="38" width="28" height="20"/>
+                                                            <rect key="frame" x="26.5" y="38" width="28" height="20"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="20" id="Ood-mI-9ms"/>
                                                             </constraints>
@@ -176,7 +176,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gys-8c-ZLZ">
-                                                            <rect key="frame" x="26" y="38" width="28" height="20"/>
+                                                            <rect key="frame" x="26.5" y="38" width="28" height="20"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="20" id="2Ow-aI-xK3"/>
                                                             </constraints>
@@ -226,7 +226,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iNm-Og-g0X">
-                                                            <rect key="frame" x="26" y="38" width="28" height="20"/>
+                                                            <rect key="frame" x="26.5" y="38" width="28" height="20"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="20" id="C2P-Yp-mFp"/>
                                                             </constraints>

@@ -216,7 +216,7 @@
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="showSignInContrainer:" destination="acZ-aG-Q24" eventType="touchUpInside" id="AlS-Tb-Nv3"/>
+                                            <action selector="showSignInContainer:" destination="acZ-aG-Q24" eventType="touchUpInside" id="gEg-4k-OgB"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wqc-9t-k17">
@@ -230,7 +230,7 @@
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="showSignUpContrainer:" destination="acZ-aG-Q24" eventType="touchUpInside" id="OYB-80-tdh"/>
+                                            <action selector="showSignUpContainer:" destination="acZ-aG-Q24" eventType="touchUpInside" id="pcJ-DE-vo2"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WeF-SE-akr">
@@ -318,7 +318,7 @@
                     </view>
                     <connections>
                         <outlet property="signHeaderView" destination="I8b-yC-iay" id="aSH-Nd-pnc"/>
-                        <outlet property="signInButton" destination="CKW-lL-N1z" id="sXx-si-buU"/>
+                        <outlet property="signInButton" destination="CKW-lL-N1z" id="JML-Vm-doy"/>
                         <outlet property="signInContrainer" destination="8be-95-tHy" id="Rt0-aS-eyo"/>
                         <outlet property="signMarkImageView" destination="CUn-aB-NfP" id="fBh-Gr-EIA"/>
                         <outlet property="signUpButton" destination="wqc-9t-k17" id="RGs-Io-J7T"/>
@@ -332,14 +332,14 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2954" y="-66"/>
+            <point key="canvasLocation" x="2952.8000000000002" y="-66.11694152923539"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fZg-Xj-YcA">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Dqd-dQ-t3Z" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7SX-8y-cEF">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="7SX-8y-cEF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

@@ -23,6 +23,50 @@
 - (void)drawRect:(CGRect)rect {
     // Drawing code
     
+    self.titleLB.text = [RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].diaryName;
+    
+    /* inserted between dates */
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setCalendar:[NSCalendar currentCalendar]];
+    [dateFormatter setTimeZone:[NSTimeZone defaultTimeZone]];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *startDate = [dateFormatter stringFromDate:[RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].diaryStartDate];
+    NSString *endDate = [dateFormatter stringFromDate:[RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].diaryEndDate];
+    self.fromFirstDayToLastDayLB.text = [startDate stringByAppendingString:[NSString stringWithFormat:@" ~ %@", endDate]];
+    
+    /* inserted total days */
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay fromDate:[RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].diaryStartDate toDate:[RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].diaryEndDate options:NSCalendarWrapComponents];
+    self.totalDaysLB.text = [NSString stringWithFormat:@"%ld", [components day]+1];
+    
+    /* post number */
+    NSInteger inDiaryPostNumber = [RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray.count;
+    self.totalPostsLB.text = [NSString stringWithFormat:@"%ld", inDiaryPostNumber];
+    
+    /* photo number */
+    NSInteger inDiaryPhotoNumber = 0;
+    for (NSInteger i = 0; i < inDiaryPostNumber ; i++) {
+        inDiaryPhotoNumber += [RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray[i].inDiaryPhotosArray.count;
+    }
+    self.totalPhotosLB.text = [NSString stringWithFormat:@"%ld", inDiaryPhotoNumber];
+    
+    NSInteger countOfinDiary = [RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray.count;
+    CGFloat totalDistanceMeter = 0;
+    /* distance */
+    for (NSInteger i = 0 ; i < countOfinDiary - 1 ; i++) {
+        CLLocationDegrees startLatitude = [RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray[i].inDiaryLocationLatitude.floatValue;
+        CLLocationDegrees startLongitude = [RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray[i].inDiaryLocationLongitude.floatValue;
+        CLLocation *startLocation = [[CLLocation alloc] initWithLatitude:startLatitude longitude:startLongitude];
+        
+        CLLocationDegrees endtLatitude = [RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray[i+1].inDiaryLocationLatitude.floatValue;
+        CLLocationDegrees endLongitude = [RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray[i+1].inDiaryLocationLongitude.floatValue;
+        CLLocation *endLocation = [[CLLocation alloc] initWithLatitude:endtLatitude longitude:endLongitude];
+        
+        CLLocationDistance distance = [endLocation distanceFromLocation:startLocation];
+        totalDistanceMeter += distance;
+        
+    }
+    self.totalDistanceLB.text = [NSString stringWithFormat:@"%.2lf", totalDistanceMeter/1000];
+    
     GMSCameraPosition *camera;
     if ([RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray.count == 0) {
         
@@ -103,6 +147,7 @@
             }
         }
     }
+    
     CLLocationCoordinate2D vancouver = CLLocationCoordinate2DMake(minLatitude, minLongitude);
     CLLocationCoordinate2D calgary = CLLocationCoordinate2DMake(maxLatitude, maxLongitude);
     
@@ -138,9 +183,7 @@
     while (self.subviews.count > 0) {
         [self.subviews[0] removeFromSuperview];
     }
-    
     [self addSubview:snapShotImageView];
-    
 }
 
 @end
@@ -154,6 +197,14 @@
 
 - (void)drawRect:(CGRect)rect {
     // Drawing code
+    
+    self.contentsOfPostingLB.text = [RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray[self.inDiaryArrayNumber].inDiaryContent;
+    self.latitude = [RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray[self.inDiaryArrayNumber].inDiaryLocationLatitude.stringValue;
+    self.longitude = [RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray[self.inDiaryArrayNumber].inDiaryLocationLongitude.stringValue;
+    
+    
+    self.currentDayOfThisPostLB.text = [NSString stringWithFormat:@"%ld", self.inDiaryArrayNumber + 1];
+    
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:self.latitude.floatValue
                                                             longitude:self.longitude.floatValue
                                                                  zoom:13];
@@ -221,8 +272,11 @@
  - (void)drawRect:(CGRect)rect {
  // Drawing code
      self.firstPhotoImageView.layer.cornerRadius = 3.0f;
-     
      self.secondPhotoImageView.layer.cornerRadius = 3.0f;
+//     UIImage *image = [UIImage imageWithData:<#(nonnull NSData *)#>];
+     
+//     [UIImage imageWithCGImage:[image CGImage] scale:compression orientation:UIImageOrientationUp]
+     self.firstPhotoImageView.image = [UIImage imageWithData:[RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray[self.inDiaryArrayNumber].inDiaryPhotosArray[self.inDiaryPhotosArrayCount].inDiaryPhoto];
  }
 
 - (void)layoutSubviews {

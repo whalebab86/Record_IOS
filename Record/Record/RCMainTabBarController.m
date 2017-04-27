@@ -19,12 +19,10 @@
 @implementation RCMainTabBarController
 
 - (void)viewDidAppear:(BOOL)animated {
-    
     [super viewDidAppear:YES];
-    
     [[RCLoginManager loginManager] checkValidTokenWithComplition:^(BOOL isSucceess, NSInteger code) {
         if(!isSucceess) {
-            
+
             [self performSegueWithIdentifier:@"RecordLoginSegue" sender:self];
         }
     }];

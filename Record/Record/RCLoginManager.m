@@ -264,7 +264,6 @@
         complition(NO, ((NSHTTPURLResponse *)task.response).statusCode);
         
     }];
-
 }
 
 #pragma mark - Eamil Sign up Method
