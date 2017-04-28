@@ -66,6 +66,16 @@
                success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                    
                    [self insertUserInfoWithToken:[responseObject objectForKey:_RECORD_ACCESSTOKEN_KEY]];
+                   
+                   [[NSUserDefaults standardUserDefaults] setValue:[[responseObject objectForKey:_RECORD_CHANGE_PROFILE_RESPONSEOBJECT_KEY] objectForKey:_RECORD_CHANGE_PROFILE_IMAGE_URL]
+                                                            forKey:_RECORD_CHANGE_PROFILE_IMAGE_URL];
+                   [[NSUserDefaults standardUserDefaults] setObject:[[responseObject objectForKey:_RECORD_CHANGE_PROFILE_RESPONSEOBJECT_KEY] objectForKey:_RECORD_CHANGE_PROFILE_INFORMATION_HOMETOWN_KEY]
+                                                             forKey:_RECORD_CHANGE_PROFILE_INFORMATION_HOMETOWN_KEY];
+                   [[NSUserDefaults standardUserDefaults] setObject:[[responseObject objectForKey:_RECORD_CHANGE_PROFILE_RESPONSEOBJECT_KEY] objectForKey:_RECORD_CHANGE_PROFILE_INFORMATION_NICKNAME_KEY]
+                                                             forKey:_RECORD_CHANGE_PROFILE_INFORMATION_NICKNAME_KEY];
+                   [[NSUserDefaults standardUserDefaults] setObject:[[responseObject objectForKey:_RECORD_CHANGE_PROFILE_RESPONSEOBJECT_KEY] objectForKey:_RECORD_CHANGE_PROFILE_INFORMATION_INTRODUCTION_KEY]
+                                                             forKey:_RECORD_CHANGE_PROFILE_INFORMATION_INTRODUCTION_KEY];
+                   
                    complition(YES, ((NSHTTPURLResponse *)task.response).statusCode);
                    
                } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -91,13 +101,13 @@
                success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                    
                    [self insertUserInfoWithToken:[responseObject objectForKey:_RECORD_ACCESSTOKEN_KEY]];
-                   [[NSUserDefaults standardUserDefaults] setValue:[[responseObject objectForKey:@"user"] objectForKey:_RECORD_CHANGE_PROFILE_IMAGE_URL]
+                   [[NSUserDefaults standardUserDefaults] setValue:[[responseObject objectForKey:_RECORD_CHANGE_PROFILE_RESPONSEOBJECT_KEY] objectForKey:_RECORD_CHANGE_PROFILE_IMAGE_URL]
                                                             forKey:_RECORD_CHANGE_PROFILE_IMAGE_URL];
-                   [[NSUserDefaults standardUserDefaults] setObject:[[responseObject objectForKey:@"user"] objectForKey:_RECORD_CHANGE_PROFILE_INFORMATION_HOMETOWN_KEY]
+                   [[NSUserDefaults standardUserDefaults] setObject:[[responseObject objectForKey:_RECORD_CHANGE_PROFILE_RESPONSEOBJECT_KEY] objectForKey:_RECORD_CHANGE_PROFILE_INFORMATION_HOMETOWN_KEY]
                                                              forKey:_RECORD_CHANGE_PROFILE_INFORMATION_HOMETOWN_KEY];
-                   [[NSUserDefaults standardUserDefaults] setObject:[[responseObject objectForKey:@"user"] objectForKey:_RECORD_CHANGE_PROFILE_INFORMATION_NICKNAME_KEY]
+                   [[NSUserDefaults standardUserDefaults] setObject:[[responseObject objectForKey:_RECORD_CHANGE_PROFILE_RESPONSEOBJECT_KEY] objectForKey:_RECORD_CHANGE_PROFILE_INFORMATION_NICKNAME_KEY]
                                                              forKey:_RECORD_CHANGE_PROFILE_INFORMATION_NICKNAME_KEY];
-                   [[NSUserDefaults standardUserDefaults] setObject:[[responseObject objectForKey:@"user"] objectForKey:_RECORD_CHANGE_PROFILE_INFORMATION_INTRODUCTION_KEY]
+                   [[NSUserDefaults standardUserDefaults] setObject:[[responseObject objectForKey:_RECORD_CHANGE_PROFILE_RESPONSEOBJECT_KEY] objectForKey:_RECORD_CHANGE_PROFILE_INFORMATION_INTRODUCTION_KEY]
                                                              forKey:_RECORD_CHANGE_PROFILE_INFORMATION_INTRODUCTION_KEY];
                    
                    complition(YES, ((NSHTTPURLResponse *)task.response).statusCode);
@@ -220,13 +230,13 @@
                      
                      
                      [self insertUserInfoWithToken:[responseObject objectForKey:_RECORD_ACCESSTOKEN_KEY]];
-                     [[NSUserDefaults standardUserDefaults] setValue:[[responseObject objectForKey:@"user"] objectForKey:_RECORD_CHANGE_PROFILE_IMAGE_URL]
+                     [[NSUserDefaults standardUserDefaults] setValue:[[responseObject objectForKey:_RECORD_CHANGE_PROFILE_RESPONSEOBJECT_KEY] objectForKey:_RECORD_CHANGE_PROFILE_IMAGE_URL]
                                                               forKey:_RECORD_CHANGE_PROFILE_IMAGE_URL];
-                     [[NSUserDefaults standardUserDefaults] setObject:[[responseObject objectForKey:@"user"] objectForKey:_RECORD_CHANGE_PROFILE_INFORMATION_HOMETOWN_KEY]
+                     [[NSUserDefaults standardUserDefaults] setObject:[[responseObject objectForKey:_RECORD_CHANGE_PROFILE_RESPONSEOBJECT_KEY] objectForKey:_RECORD_CHANGE_PROFILE_INFORMATION_HOMETOWN_KEY]
                                                                forKey:_RECORD_CHANGE_PROFILE_INFORMATION_HOMETOWN_KEY];
-                     [[NSUserDefaults standardUserDefaults] setObject:[[responseObject objectForKey:@"user"] objectForKey:_RECORD_CHANGE_PROFILE_INFORMATION_NICKNAME_KEY]
+                     [[NSUserDefaults standardUserDefaults] setObject:[[responseObject objectForKey:_RECORD_CHANGE_PROFILE_RESPONSEOBJECT_KEY] objectForKey:_RECORD_CHANGE_PROFILE_INFORMATION_NICKNAME_KEY]
                                                                forKey:_RECORD_CHANGE_PROFILE_INFORMATION_NICKNAME_KEY];
-                     [[NSUserDefaults standardUserDefaults] setObject:[[responseObject objectForKey:@"user"] objectForKey:_RECORD_CHANGE_PROFILE_INFORMATION_INTRODUCTION_KEY]
+                     [[NSUserDefaults standardUserDefaults] setObject:[[responseObject objectForKey:_RECORD_CHANGE_PROFILE_RESPONSEOBJECT_KEY] objectForKey:_RECORD_CHANGE_PROFILE_INFORMATION_INTRODUCTION_KEY]
                                                                forKey:_RECORD_CHANGE_PROFILE_INFORMATION_INTRODUCTION_KEY];
                      complition(YES, ((NSHTTPURLResponse *)task.response).statusCode);
                      
@@ -256,13 +266,13 @@
               progress:nil
                success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [self insertUserInfoWithToken:[responseObject objectForKey:_RECORD_ACCESSTOKEN_KEY]];
-                   [[NSUserDefaults standardUserDefaults] setValue:[[responseObject objectForKey:@"user"] objectForKey:_RECORD_CHANGE_PROFILE_IMAGE_URL]
+                   [[NSUserDefaults standardUserDefaults] setValue:[[responseObject objectForKey:_RECORD_CHANGE_PROFILE_RESPONSEOBJECT_KEY] objectForKey:_RECORD_CHANGE_PROFILE_IMAGE_URL]
                                                             forKey:_RECORD_CHANGE_PROFILE_IMAGE_URL];
-                   [[NSUserDefaults standardUserDefaults] setObject:[[responseObject objectForKey:@"user"] objectForKey:_RECORD_CHANGE_PROFILE_INFORMATION_HOMETOWN_KEY]
+                   [[NSUserDefaults standardUserDefaults] setObject:[[responseObject objectForKey:_RECORD_CHANGE_PROFILE_RESPONSEOBJECT_KEY] objectForKey:_RECORD_CHANGE_PROFILE_INFORMATION_HOMETOWN_KEY]
                                                              forKey:_RECORD_CHANGE_PROFILE_INFORMATION_HOMETOWN_KEY];
-                   [[NSUserDefaults standardUserDefaults] setObject:[[responseObject objectForKey:@"user"] objectForKey:_RECORD_CHANGE_PROFILE_INFORMATION_NICKNAME_KEY]
+                   [[NSUserDefaults standardUserDefaults] setObject:[[responseObject objectForKey:_RECORD_CHANGE_PROFILE_RESPONSEOBJECT_KEY] objectForKey:_RECORD_CHANGE_PROFILE_INFORMATION_NICKNAME_KEY]
                                                              forKey:_RECORD_CHANGE_PROFILE_INFORMATION_NICKNAME_KEY];
-                   [[NSUserDefaults standardUserDefaults] setObject:[[responseObject objectForKey:@"user"] objectForKey:_RECORD_CHANGE_PROFILE_INFORMATION_INTRODUCTION_KEY]
+                   [[NSUserDefaults standardUserDefaults] setObject:[[responseObject objectForKey:_RECORD_CHANGE_PROFILE_RESPONSEOBJECT_KEY] objectForKey:_RECORD_CHANGE_PROFILE_INFORMATION_INTRODUCTION_KEY]
                                                              forKey:_RECORD_CHANGE_PROFILE_INFORMATION_INTRODUCTION_KEY];
                    
                    complition(YES, ((NSHTTPURLResponse *)task.response).statusCode);
@@ -293,10 +303,10 @@
                    
                    [self insertUserInfoWithToken:[responseObject objectForKey:_RECORD_ACCESSTOKEN_KEY]];
                    
-                   [[NSUserDefaults standardUserDefaults] setValue:[[responseObject objectForKey:@"user"] objectForKey:_RECORD_CHANGE_PROFILE_IMAGE_URL] forKey:_RECORD_CHANGE_PROFILE_IMAGE_URL];
-                   [[NSUserDefaults standardUserDefaults] setObject:[[responseObject objectForKey:@"user"] objectForKey:_RECORD_CHANGE_PROFILE_INFORMATION_HOMETOWN_KEY] forKey:_RECORD_CHANGE_PROFILE_INFORMATION_HOMETOWN_KEY];
-                   [[NSUserDefaults standardUserDefaults] setObject:[[responseObject objectForKey:@"user"] objectForKey:_RECORD_CHANGE_PROFILE_INFORMATION_NICKNAME_KEY] forKey:_RECORD_CHANGE_PROFILE_INFORMATION_NICKNAME_KEY];
-                   [[NSUserDefaults standardUserDefaults] setObject:[[responseObject objectForKey:@"user"] objectForKey:_RECORD_CHANGE_PROFILE_INFORMATION_INTRODUCTION_KEY] forKey:_RECORD_CHANGE_PROFILE_INFORMATION_INTRODUCTION_KEY];
+                   [[NSUserDefaults standardUserDefaults] setValue:[[responseObject objectForKey:_RECORD_CHANGE_PROFILE_RESPONSEOBJECT_KEY] objectForKey:_RECORD_CHANGE_PROFILE_IMAGE_URL] forKey:_RECORD_CHANGE_PROFILE_IMAGE_URL];
+                   [[NSUserDefaults standardUserDefaults] setObject:[[responseObject objectForKey:_RECORD_CHANGE_PROFILE_RESPONSEOBJECT_KEY] objectForKey:_RECORD_CHANGE_PROFILE_INFORMATION_HOMETOWN_KEY] forKey:_RECORD_CHANGE_PROFILE_INFORMATION_HOMETOWN_KEY];
+                   [[NSUserDefaults standardUserDefaults] setObject:[[responseObject objectForKey:_RECORD_CHANGE_PROFILE_RESPONSEOBJECT_KEY] objectForKey:_RECORD_CHANGE_PROFILE_INFORMATION_NICKNAME_KEY] forKey:_RECORD_CHANGE_PROFILE_INFORMATION_NICKNAME_KEY];
+                   [[NSUserDefaults standardUserDefaults] setObject:[[responseObject objectForKey:_RECORD_CHANGE_PROFILE_RESPONSEOBJECT_KEY] objectForKey:_RECORD_CHANGE_PROFILE_INFORMATION_INTRODUCTION_KEY] forKey:_RECORD_CHANGE_PROFILE_INFORMATION_INTRODUCTION_KEY];
                    
                    complition(YES, ((NSHTTPURLResponse *)task.response).statusCode);
         
@@ -323,6 +333,11 @@
                    [self delectUserInfoToken];
                    [[GIDSignIn sharedInstance] signOut];
                    [self.manager.requestSerializer clearAuthorizationHeader];
+                   
+                   [[NSUserDefaults standardUserDefaults] setValue:nil forKey:_RECORD_CHANGE_PROFILE_IMAGE_URL];
+                   [[NSUserDefaults standardUserDefaults] setObject:nil forKey:_RECORD_CHANGE_PROFILE_INFORMATION_HOMETOWN_KEY];
+                   [[NSUserDefaults standardUserDefaults] setObject:nil forKey:_RECORD_CHANGE_PROFILE_INFORMATION_NICKNAME_KEY];
+                   [[NSUserDefaults standardUserDefaults] setObject:nil forKey:_RECORD_CHANGE_PROFILE_INFORMATION_INTRODUCTION_KEY];
                    
                    complition(YES, ((NSHTTPURLResponse *)task.response).statusCode);
                    
@@ -379,7 +394,7 @@
      
  } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
      
-     [[NSUserDefaults standardUserDefaults] setValue:[[responseObject objectForKey:@"user"] objectForKey:_RECORD_CHANGE_PROFILE_IMAGE_URL] forKey:_RECORD_CHANGE_PROFILE_IMAGE_URL];
+     [[NSUserDefaults standardUserDefaults] setValue:[[responseObject objectForKey:_RECORD_CHANGE_PROFILE_RESPONSEOBJECT_KEY] objectForKey:_RECORD_CHANGE_PROFILE_IMAGE_URL] forKey:_RECORD_CHANGE_PROFILE_IMAGE_URL];
      
      [self.manager.requestSerializer clearAuthorizationHeader ];
      
@@ -469,13 +484,13 @@
 #pragma mark - insert user infomation with responseObject in userdefault
 - (void)insertUserInfoWithResponseObject:(id  _Nullable)responseObject {
     
-    [[NSUserDefaults standardUserDefaults] setValue:[[responseObject objectForKey:@"user"] objectForKey:_RECORD_CHANGE_PROFILE_IMAGE_URL]
+    [[NSUserDefaults standardUserDefaults] setValue:[[responseObject objectForKey:_RECORD_CHANGE_PROFILE_RESPONSEOBJECT_KEY] objectForKey:_RECORD_CHANGE_PROFILE_IMAGE_URL]
                                              forKey:_RECORD_CHANGE_PROFILE_IMAGE_URL];
-    [[NSUserDefaults standardUserDefaults] setObject:[[responseObject objectForKey:@"user"] objectForKey:_RECORD_CHANGE_PROFILE_INFORMATION_HOMETOWN_KEY]
+    [[NSUserDefaults standardUserDefaults] setObject:[[responseObject objectForKey:_RECORD_CHANGE_PROFILE_RESPONSEOBJECT_KEY] objectForKey:_RECORD_CHANGE_PROFILE_INFORMATION_HOMETOWN_KEY]
                                               forKey:_RECORD_CHANGE_PROFILE_INFORMATION_HOMETOWN_KEY];
-    [[NSUserDefaults standardUserDefaults] setObject:[[responseObject objectForKey:@"user"] objectForKey:_RECORD_CHANGE_PROFILE_INFORMATION_NICKNAME_KEY]
+    [[NSUserDefaults standardUserDefaults] setObject:[[responseObject objectForKey:_RECORD_CHANGE_PROFILE_RESPONSEOBJECT_KEY] objectForKey:_RECORD_CHANGE_PROFILE_INFORMATION_NICKNAME_KEY]
                                               forKey:_RECORD_CHANGE_PROFILE_INFORMATION_NICKNAME_KEY];
-    [[NSUserDefaults standardUserDefaults] setObject:[[responseObject objectForKey:@"user"] objectForKey:_RECORD_CHANGE_PROFILE_INFORMATION_INTRODUCTION_KEY]
+    [[NSUserDefaults standardUserDefaults] setObject:[[responseObject objectForKey:_RECORD_CHANGE_PROFILE_RESPONSEOBJECT_KEY] objectForKey:_RECORD_CHANGE_PROFILE_INFORMATION_INTRODUCTION_KEY]
                                               forKey:_RECORD_CHANGE_PROFILE_INFORMATION_INTRODUCTION_KEY];
     
 }

@@ -30,6 +30,7 @@ static NSString * const _RECORD_SIGNUP_USER_TYPE_GOOGLE = @"GOOGLE";
 static NSString * const _RECORD_SOCIAL_LOGIN_ACCESS_TOKEN_KEY = @"access_token";
 static NSString * const _RECORD_LOGOUT_PARAMETER_KEY = @"Authorization";
 static NSString * const _RECORD_PROFILECHANGE_PARAMETER_KEY = @"Authorization";
+static NSString * const _RECORD_CHANGE_PROFILE_RESPONSEOBJECT_KEY = @"user";
 static NSString * const _RECORD_CHANGE_PROFILE_IMAGE_URL = @"profile_img";
 static NSString * const _RECORD_CHANGE_PROFILE_INFORMATION_HOMETOWN_KEY = @"hometown";
 static NSString * const _RECORD_CHANGE_PROFILE_INFORMATION_NICKNAME_KEY = @"nickname";
