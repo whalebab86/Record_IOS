@@ -152,8 +152,6 @@
     
 }
 
-
-
 #pragma mark - Create account with Facebook
 /* create account with facebook */
 - (IBAction)facebookLoginButtonAction:(UIButton *)sender {
@@ -180,28 +178,33 @@
     }
 }
 
-
-/**
- *로그인 이후 뷰컨트롤러 연결은 다음 setting page 이후 만들것임.
- */
-- (void)signInWillDispatch:(GIDSignIn *)signIn error:(NSError *)error {
-//    NSLog(@"signInWillDispatch signIn %@", signIn);
-    
-}
-
-- (void)signIn:(GIDSignIn *)signIn didSignInForUser:(GIDGoogleUser *)user
-     withError:(NSError *)error {
-    //user signed in
-    //get user data in "user" (GIDGoogleUser object)
+- (void)signIn:(GIDSignIn *)signIn didSignInForUser:(GIDGoogleUser *)user withError:(NSError *)error {
     [[RCLoginManager loginManager] recivedForGoogleSignupUserInfo:user complition:^(BOOL isSucceess, NSInteger code) {
         if (isSucceess) {
-            NSLog(@"googleSuccess");
-            [self performSegueWithIdentifier:@"SettingSegueFromSplash" sender:nil];
-        } else {
-            NSString *alertTitle = [@"google login error recivedForGoogleSignupUserInfo (code " stringByAppendingString:[NSString stringWithFormat:@"%ld )", code]];
+            [self performSegueWithIdentifier:@"ProfileSettingSegueFromSplash" sender:nil];
+        } else if (code == 400) {
+            
+            [[RCLoginManager loginManager] recivedForGoogleLoginWithUserInfo:user complition:^(BOOL isSucceess, NSInteger code) {
+                if (isSucceess) {
+                    [self performSegueWithIdentifier:@"ProfileSettingSegueFromSplash" sender:nil];
+                } else {
+                    NSString *alertTitle = [@"google login error (code " stringByAppendingString:[NSString stringWithFormat:@"%ld )", code]];
+                    [self addAlertViewWithTile:alertTitle actionTitle:@"Done" handler:nil];
+                }
+            }];
+        }
+        else {
+            NSString *alertTitle = [@"google login error (code " stringByAppendingString:[NSString stringWithFormat:@"%ld )", code]];
             [self addAlertViewWithTile:alertTitle actionTitle:@"Done" handler:nil];
         }
     }];
+}
+
+- (void)signInWillDispatch:(GIDSignIn *)signIn error:(NSError *)error {
+    //    NSLog(@"signInWillDispatch signIn %@", signIn);
+}
+
+- (void)signIn:(GIDSignIn *)signIn didDisconnectWithUser:(GIDGoogleUser *)user withError:(NSError *)error {
     
 }
 

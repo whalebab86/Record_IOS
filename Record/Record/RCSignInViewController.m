@@ -120,12 +120,22 @@
 
 /* google sign-in flow has finished and was successful if |error| is |nil|. */
 - (void)signIn:(GIDSignIn *)signIn didSignInForUser:(GIDGoogleUser *)user withError:(NSError *)error {
-    [[RCLoginManager loginManager] recivedForGoogleLoginWithUserInfo:user complition:^(BOOL isSucceess, NSInteger code) {
+    [[RCLoginManager loginManager] recivedForGoogleSignupUserInfo:user complition:^(BOOL isSucceess, NSInteger code) {
         if (isSucceess) {
-            NSLog(@"googleSuccess");
-            [self performSegueWithIdentifier:@"ProfileSettingSegueFromSignin" sender:nil];
-        } else {
-            NSString *alertTitle = [@"google login error googleLoginButtonAction (code " stringByAppendingString:[NSString stringWithFormat:@"%ld )", code]];
+            [self performSegueWithIdentifier:@"ProfileSettingSegueFromSignup" sender:nil];
+        } else if (code == 400) {
+            
+            [[RCLoginManager loginManager] recivedForGoogleLoginWithUserInfo:user complition:^(BOOL isSucceess, NSInteger code) {
+                if (isSucceess) {
+                    [self performSegueWithIdentifier:@"ProfileSettingSegueFromSignup" sender:nil];
+                } else {
+                    NSString *alertTitle = [@"google login error (code " stringByAppendingString:[NSString stringWithFormat:@"%ld )", code]];
+                    [self addAlertViewWithTile:alertTitle actionTitle:@"Done" handler:nil];
+                }
+            }];
+        }
+        else {
+            NSString *alertTitle = [@"google login error (code " stringByAppendingString:[NSString stringWithFormat:@"%ld )", code]];
             [self addAlertViewWithTile:alertTitle actionTitle:@"Done" handler:nil];
         }
     }];
@@ -136,6 +146,10 @@
  */
 - (void)signInWillDispatch:(GIDSignIn *)signIn error:(NSError *)error {
     //    NSLog(@"signInWillDispatch signIn %@", signIn);
+}
+
+- (void)signIn:(GIDSignIn *)signIn didDisconnectWithUser:(GIDGoogleUser *)user withError:(NSError *)error {
+    
 }
 
 #pragma mark - alert method

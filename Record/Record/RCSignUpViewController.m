@@ -167,13 +167,13 @@
                 if (isSucceess) {
                     [self performSegueWithIdentifier:@"ProfileSettingSegueFromSignup" sender:nil];
                 } else {
-                    NSString *alertTitle = [@"google login error recivedForGoogleLoginWithUserInfo(code " stringByAppendingString:[NSString stringWithFormat:@"%ld )", code]];
+                    NSString *alertTitle = [@"google login error (code " stringByAppendingString:[NSString stringWithFormat:@"%ld )", code]];
                     [self addAlertViewWithTile:alertTitle actionTitle:@"Done" handler:nil];
                 }
             }];
         }
         else {
-            NSString *alertTitle = [@"google login error recivedForGoogleSignupUserInfo(code " stringByAppendingString:[NSString stringWithFormat:@"%ld )", code]];
+            NSString *alertTitle = [@"google login error (code " stringByAppendingString:[NSString stringWithFormat:@"%ld )", code]];
             [self addAlertViewWithTile:alertTitle actionTitle:@"Done" handler:nil];
         }
     }];
