@@ -10,8 +10,6 @@
 
 @interface RCSignUpViewController : UIViewController
 
-@property NSInteger testDestinationInt;
-
 - (void)resetOffset;
 
 @end

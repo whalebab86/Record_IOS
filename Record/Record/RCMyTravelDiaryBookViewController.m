@@ -108,6 +108,7 @@
         }
         self.number = 0;
         self.viewArray = viewArray;
+
         for (NSInteger i = self.viewArray.count -1; i >= 0; i--) {
             
             [self.view addSubview:self.viewArray[i]];
@@ -116,6 +117,7 @@
                 [activityIndicatorView stopIndicator];
             }
         }
+        
     });
 
 }

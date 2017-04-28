@@ -79,9 +79,9 @@
             return NSOrderedAscending;
             
         } else {
-            
-            
+        
             return NSOrderedSame;
+            
         }
     }];
     

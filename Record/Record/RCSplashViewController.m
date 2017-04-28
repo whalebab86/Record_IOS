@@ -57,6 +57,7 @@
 - (void)viewDidLayoutSubviews {
     
     self.tutorialCollectioViewFlowLayout.itemSize = self.tutorialCollectionView.frame.size;
+    
 }
 
 
@@ -65,11 +66,8 @@
     // Create the original set of data
     NSArray *originalArray = @[@"RC_splash_main_img_two", @"RC_splash_main_img_three", @"gifFile"];
     
-    // Grab references to the first and last items
-    // They're typed as id so you don't need to worry about what kind
-    // of objects the originalArray is holding
-    id firstItem = [originalArray firstObject];
-    id lastItem = [originalArray lastObject];
+    NSString *firstItem = [originalArray firstObject];
+    NSString *lastItem = [originalArray lastObject];
     
     NSMutableArray *workingArray = [originalArray mutableCopy];
     
@@ -90,13 +88,10 @@
 }
 
 -(void)scrollViewDidEndDecelerating:(UICollectionView *)scrollview {
-//scrollview.frame.size.width
-    CGFloat contentOffsetWhenFullyScrolledRight = self.tutorialCollectioViewFlowLayout.itemSize.width * ([self.mainCollectionviewDataArray count] -1);
+    
+    CGFloat contentOffsetWhenFullyScrolledRight = self.tutorialCollectioViewFlowLayout.itemSize.width * (self.mainCollectionviewDataArray.count - 1);
 
-    if (scrollview.contentOffset.x == contentOffsetWhenFullyScrolledRight) {
-        
-        // user is scrolling to the right from the last item to the 'fake' item 1.
-        // reposition offset to show the 'real' item 1 at the left-hand end of the collection view
+    if (scrollview.contentOffset.x >= contentOffsetWhenFullyScrolledRight) {
         
         NSIndexPath *newIndexPath = [NSIndexPath indexPathForItem:1 inSection:0];
         
@@ -104,70 +99,53 @@
         
     } else if (scrollview.contentOffset.x == 0)  {
         
-        // user is scrolling to the left from the first item to the fake 'item N'.
-        // reposition offset to show the 'real' item N at the right end end of the collection view
-        
-        NSIndexPath *newIndexPath = [NSIndexPath indexPathForItem:([self.mainCollectionviewDataArray count] -2) inSection:0];
+        NSIndexPath *newIndexPath = [NSIndexPath indexPathForItem:3 inSection:0];
         
         [self.tutorialCollectionView scrollToItemAtIndexPath:newIndexPath atScrollPosition:UICollectionViewScrollPositionLeft animated:NO];
         
     }
+    
+    if (scrollview.contentOffset.x == 0) {
+        self.tutorialCollectionViewPageControl.currentPage = 0;
+    } else if (scrollview.contentOffset.x == self.tutorialCollectioViewFlowLayout.itemSize.width) {
+        self.tutorialCollectionViewPageControl.currentPage = 1;
+        
+    } else if (scrollview.contentOffset.x == self.tutorialCollectioViewFlowLayout.itemSize.width * 2) {
+        self.tutorialCollectionViewPageControl.currentPage = 2;
+    } else if (scrollview.contentOffset.x == self.tutorialCollectioViewFlowLayout.itemSize.width * 3) {
+        self.tutorialCollectionViewPageControl.currentPage = 0;
+    } else if (scrollview.contentOffset.x == self.tutorialCollectioViewFlowLayout.itemSize.width * 4) {
+        self.tutorialCollectionViewPageControl.currentPage = 1;
+    }
+    
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-   
-    NSLog(@"indexPath.item %ld", indexPath.item);
-//    if (indexPath.item <= 2) {
-//        self.tutorialCollectionViewPageControl.currentPage = indexPath.item;
-//    } else if (indexPath.item == 3) {
-//        
-//        self.tutorialCollectionViewPageControl.currentPage = indexPath.item -3;
-//    } else if (indexPath.item == 4) {
-//        self.tutorialCollectionViewPageControl.currentPage = indexPath.item -4;
-//    }
-    
     RCSplashTutorialCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"RCSplashTutorialCollectionViewCell" forIndexPath:indexPath];
-
-//    if (indexPath.item == 0 || indexPath.item == 3) {
-//        //@"splash_main_img.gif"
-//        NSData *gifImageData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"splash_main_img" ofType:@"gif"]];
-//        cell.cellItemImageView.animatedImage = [FLAnimatedImage animatedImageWithGIFData:gifImageData];
-//        return cell;
-//    } else {
-//        cell.cellItemImageView.image = [UIImage imageNamed:self.mainCollectionviewDataArray[indexPath.item]];
-//        return cell;
-//    }
-    
     NSData *gifImageData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"splash_main_img" ofType:@"gif"]];
     switch (indexPath.item) {
         case 0:
             cell.cellItemImageView.animatedImage = [FLAnimatedImage animatedImageWithGIFData:gifImageData];
-            self.tutorialCollectionViewPageControl.currentPage = 0;
             return cell;
             break;
         case 1:
             cell.cellItemImageView.image = [UIImage imageNamed:self.mainCollectionviewDataArray[indexPath.item]];
-            self.tutorialCollectionViewPageControl.currentPage = 1;
             return cell;
             break;
         case 2:
             cell.cellItemImageView.image = [UIImage imageNamed:self.mainCollectionviewDataArray[indexPath.item]];
-            self.tutorialCollectionViewPageControl.currentPage = 2;
             return cell;
             break;
         case 3:
             cell.cellItemImageView.animatedImage = [FLAnimatedImage animatedImageWithGIFData:gifImageData];
-            self.tutorialCollectionViewPageControl.currentPage = 3;
             return cell;
             break;
         case 4:
             cell.cellItemImageView.image = [UIImage imageNamed:self.mainCollectionviewDataArray[indexPath.item]];
-            self.tutorialCollectionViewPageControl.currentPage = 0;
             return cell;
             break;
         default:
             cell.cellItemImageView.animatedImage = [FLAnimatedImage animatedImageWithGIFData:gifImageData];
-            self.tutorialCollectionViewPageControl.currentPage = 1;
             return cell;
             break;
     }
@@ -220,7 +198,7 @@
             NSLog(@"googleSuccess");
             [self performSegueWithIdentifier:@"SettingSegueFromSplash" sender:nil];
         } else {
-            NSString *alertTitle = [@"google login error (code " stringByAppendingString:[NSString stringWithFormat:@"%ld )", code]];
+            NSString *alertTitle = [@"google login error recivedForGoogleSignupUserInfo (code " stringByAppendingString:[NSString stringWithFormat:@"%ld )", code]];
             [self addAlertViewWithTile:alertTitle actionTitle:@"Done" handler:nil];
         }
     }];
@@ -236,7 +214,6 @@
 }
 
 #pragma mark - etc
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

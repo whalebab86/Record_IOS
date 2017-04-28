@@ -339,7 +339,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Dqd-dQ-t3Z" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7SX-8y-cEF">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="7SX-8y-cEF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -462,7 +462,7 @@
                                             <action selector="facebookLoginButtonAction:" destination="I6E-Ya-cl6" eventType="touchUpInside" id="2ZV-Uk-aDB"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xVm-lS-BuB">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xVm-lS-BuB">
                                         <rect key="frame" x="20" y="312" width="345" height="44"/>
                                         <color key="backgroundColor" red="0.86666666670000003" green="0.29411764709999999" blue="0.22352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -656,7 +656,7 @@
                                             <action selector="signUpFacebookButtonAction:" destination="zWH-lN-D2I" eventType="touchUpInside" id="vv9-fF-LEq"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0C0-Uw-t8Y">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0C0-Uw-t8Y">
                                         <rect key="frame" x="20" y="312" width="345" height="44"/>
                                         <color key="backgroundColor" red="0.86666666670000003" green="0.29411764709999999" blue="0.22352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -724,17 +724,17 @@
                         <viewControllerLayoutGuide type="bottom" id="bKx-E4-tzy"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="WMk-gl-Hxz">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yOO-zQ-IC1">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="600"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Aa-Vq-tKz">
-                                        <rect key="frame" x="0.0" y="50" width="375" height="500"/>
+                                        <rect key="frame" x="0.0" y="50" width="375" height="547"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8id-Xh-DKD" userLabel="content view">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="496"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="543"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ti7-Gh-dPc">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
@@ -899,7 +899,7 @@
                                                         </constraints>
                                                     </view>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="jES-07-jQu">
-                                                        <rect key="frame" x="10" y="211" width="355" height="285"/>
+                                                        <rect key="frame" x="10" y="211" width="355" height="332"/>
                                                         <color key="backgroundColor" red="0.10980392160000001" green="0.1215686275" blue="0.1529411765" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="textColor" red="0.7725490196" green="0.81568627449999997" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
@@ -971,7 +971,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qaZ-rN-neH">
-                                        <rect key="frame" x="0.0" y="546" width="375" height="54"/>
+                                        <rect key="frame" x="0.0" y="593" width="375" height="54"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H1e-A4-b1l">
                                                 <rect key="frame" x="5" y="10" width="365" height="34"/>
@@ -1044,6 +1044,6 @@
         <image name="SignInMark" width="22" height="12"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ag5-EM-Tl1"/>
+        <segue reference="dkg-FX-XwW"/>
     </inferredMetricsTieBreakers>
 </document>

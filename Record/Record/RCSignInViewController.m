@@ -125,7 +125,7 @@
             NSLog(@"googleSuccess");
             [self performSegueWithIdentifier:@"ProfileSettingSegueFromSignin" sender:nil];
         } else {
-            NSString *alertTitle = [@"google login error (code " stringByAppendingString:[NSString stringWithFormat:@"%ld )", code]];
+            NSString *alertTitle = [@"google login error googleLoginButtonAction (code " stringByAppendingString:[NSString stringWithFormat:@"%ld )", code]];
             [self addAlertViewWithTile:alertTitle actionTitle:@"Done" handler:nil];
         }
     }];
@@ -151,8 +151,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
 
 
 /*

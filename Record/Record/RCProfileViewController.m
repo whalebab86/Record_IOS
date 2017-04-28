@@ -13,6 +13,7 @@
 #import "RCProfileViewController.h"
 #import "RCLoginManager.h"
 #import "RCMemberInfo.h"
+#import "RCIndicatorUtil.h"
 
 @import GooglePlaces;
 @import GooglePlacePicker;
@@ -125,27 +126,21 @@
 #pragma mark - google place
 /* current place */
 - (IBAction)googleCurrentPlaceButtonAction:(UIButton *)sender {
-    NSLog(@"googleCurrentPlaceAction");
     if (sender == self.googleCurrentPlaceBtn) {
+        
+        RCIndicatorUtil *activityIndicatorView = [[RCIndicatorUtil alloc] initWithTargetView:self.view isMask:YES];
+        [activityIndicatorView startIndicator];
+        
         [self.locationManiger requestWhenInUseAuthorization];
         [self.placesClient currentPlaceWithCallback:^(GMSPlaceLikelihoodList *placeLikelihoodList, NSError *error){
             if (error != nil) {
-                NSLog(@"Current Place error %@", [error localizedDescription]);
+                [self addAlertViewWithTile:@"위치를 가져오지 못하였습니다. 다시한번 실행해 주세요!" actionTitle:@"done" handler:nil];
                 return;
             }
-            
             /* 0번째 인덱스에 가까울수록 likelihoods(자신이 현재 있는곳과 가장 비슷함을 나타냄)가 높다 */
             GMSPlace* place = placeLikelihoodList.likelihoods[0].place;
             self.homTownLabel.text = place.formattedAddress;
-            
-            for (GMSPlaceLikelihood *likelihood in placeLikelihoodList.likelihoods) {
-                GMSPlace* place = likelihood.place;
-//                self.homTownLabel.text = place.formattedAddress;
-                NSLog(@"Current Place name %@ at likelihood %g", place.name, likelihood.likelihood);
-                NSLog(@"Current Place address %@", place.formattedAddress);
-                NSLog(@"Current Place attributions %@", place.attributions);
-                NSLog(@"Current PlaceID %@", place.placeID);
-            }
+            [activityIndicatorView stopIndicator];
         }];
     }
     
@@ -157,18 +152,13 @@
     
     [self.placePicker pickPlaceWithCallback:^(GMSPlace *place, NSError *error) {
         if (error != nil) {
-            NSLog(@"Pick Place error %@", [error localizedDescription]);
+            [self addAlertViewWithTile:@"위치를 가져오지 못하였습니다. 다시한번 실행해 주세요!" actionTitle:@"done" handler:nil];
             return;
         }
-        
         if (place != nil) {
-            
             self.homTownLabel.text = place.name;
-            NSLog(@"Place name %@", place.name);
-            NSLog(@"Place address %@", place.formattedAddress);
-            NSLog(@"Place attributions %@", place.attributions.string);
         } else {
-            NSLog(@"No place selected");
+            [self addAlertViewWithTile:@"선택된 장소가 없습니다." actionTitle:@"done" handler:nil];
         }
     }];
     
@@ -184,7 +174,6 @@
 #pragma mark - keyboard notification action
 /* action of keyboard show notification */
 - (void)keyboardWillShowNotification:(NSNotification *)noti {
-    NSLog(@"%@", noti.userInfo);
     /* get keyboard bounds and setting toolbar offset */
     CGRect willShowKeyboardBounds = [[noti.userInfo objectForKey:@"UIKeyboardFrameEndUserInfoKey"] CGRectValue];
     self.mainScrollView.frame = CGRectMake(0,64,self.mainScrollView.frame.size.width, willShowKeyboardBounds.size.height*2);
@@ -199,17 +188,14 @@
 /* image change button action */
 - (IBAction)profileImageChangeButtonAction:(UIButton *)sender {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-    
     UIAlertAction *takePhoto = [UIAlertAction actionWithTitle:@"Take a photo" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
         UIImagePickerController *picker  = [[UIImagePickerController alloc] init];
-        
         picker.delegate = self;
-        
         picker.allowsEditing = YES;
         picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-        
         [self presentViewController:picker animated:YES completion:NULL];
+        
     }];
     
     UIAlertAction *chooseLibrary = [UIAlertAction actionWithTitle:@"Take a photo library" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -218,12 +204,14 @@
         picker.delegate = self;
         picker.allowsEditing = YES;
         picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        
         [self presentViewController:picker animated:YES completion:NULL];
+        
     }];
     
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
         [alertController dismissViewControllerAnimated:YES completion:nil];
+        
     }];
     
     [alertController addAction:takePhoto];
@@ -240,27 +228,27 @@
     self.profileImage.image = image;
     
     [picker dismissViewControllerAnimated:YES completion:nil];
+    /* 위경도 값을 얻기 위한 메소드
+     NSURL *referenceURL = [info objectForKey:UIImagePickerControllerReferenceURL];
+     NSLog(@"info %@", info);
+     NSLog(@"referenceURL %@", referenceURL);
     
-    NSURL *referenceURL = [info objectForKey:UIImagePickerControllerReferenceURL];
-    NSLog(@"info %@", info);
-    NSLog(@"referenceURL %@", referenceURL);
+     PHAsset *asset = [[PHAsset fetchAssetsWithALAssetURLs:@[referenceURL] options:nil] lastObject];
+     PHContentEditingInputRequestOptions *options = [[PHContentEditingInputRequestOptions alloc] init];
+     options.networkAccessAllowed = YES; //download asset metadata from iCloud if needed
     
-    PHAsset *asset = [[PHAsset fetchAssetsWithALAssetURLs:@[referenceURL] options:nil] lastObject];
-    PHContentEditingInputRequestOptions *options = [[PHContentEditingInputRequestOptions alloc] init];
-    options.networkAccessAllowed = YES; //download asset metadata from iCloud if needed
-    
-    [asset requestContentEditingInputWithOptions:options completionHandler:^(PHContentEditingInput *contentEditingInput, NSDictionary *info) {
-        CIImage *fullImage = [CIImage imageWithContentsOfURL:contentEditingInput.fullSizeImageURL];
+     [asset requestContentEditingInputWithOptions:options completionHandler:^(PHContentEditingInput *contentEditingInput, NSDictionary *info) {
+            CIImage *fullImage = [CIImage imageWithContentsOfURL:contentEditingInput.fullSizeImageURL];
         
-        NSLog(@"%@", fullImage.properties.description);
-        NSLog(@"%@", [[fullImage.properties objectForKey:@"{GPS}"] objectForKey:@"Latitude"]);
-        NSLog(@"%@", [[fullImage.properties objectForKey:@"{GPS}"] objectForKey:@"Longitude"]);
-    }];
+            NSLog(@"%@", fullImage.properties.description);
+            NSLog(@"%@", [[fullImage.properties objectForKey:@"{GPS}"] objectForKey:@"Latitude"]);
+            NSLog(@"%@", [[fullImage.properties objectForKey:@"{GPS}"] objectForKey:@"Longitude"]);
+     }];
+     */
 }
 
 #pragma mark - right bar button item
 - (IBAction)saveBarButtonAction:(UIBarButtonItem *)sender {
-    NSLog(@"saveBarButtonAction");
     [self.view endEditing:YES];
     self.mainScrollView.contentOffset = CGPointMake(0, 0);
     
@@ -277,8 +265,9 @@
     
     [[RCLoginManager loginManager] uploadProfilePersonalInformationWithNickname:self.nickNameTextField.text hometown:self.homTownLabel.text selfIntroduction:self.shortStoryTextView.text complition:^(BOOL isSucceess, NSInteger code) {
         if (!isSucceess) {
-            
-            [self addAlertViewWithTile:[@"프로필 저장 오류" stringByAppendingString:[NSString stringWithFormat:@"%ld", code]] actionTitle:@"done" handler:nil];
+            if (code == 400) {
+                [self addAlertViewWithTile:@"동일한 닉네임이 있습니다. 다른 닉네임을 사용해 주세요." actionTitle:@"done" handler:nil];
+            }
         } else {
             [[RCLoginManager loginManager] uploadProfileImageWithUIImage:self.profileImage.image complition:^(BOOL isSucceess, NSInteger code) {
                 if (!isSucceess) {
@@ -301,10 +290,8 @@
 /* textview should begin editing and keboad show notification */
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView {
     if (textView == self.shortStoryTextView) {
-        
-        
         /* 다시 사용한 이유 : 글을 쓴 후 다시 입력하려 하면 남은 글자가 아니라 140이라는 초기 글자가 나타났기 때문에 */
-//        self.toolbarView.numberOfCharcterLB.text = [NSString stringWithFormat:@"%ld", 140 - textView.selectedRange.location];
+        self.countCharcterLabelInKeyboard.text = [NSString stringWithFormat:@"%ld", 140 - textView.selectedRange.location];
     }
     return YES;
 }
@@ -377,8 +364,10 @@
         /* hometown 에 아무것도 안들어갈 경우 문제가 생김*/
         [[RCLoginManager loginManager] uploadProfilePersonalInformationWithNickname:self.nickNameTextField.text hometown:self.homTownLabel.text selfIntroduction:self.shortStoryTextView.text complition:^(BOOL isSucceess, NSInteger code) {
             if (!isSucceess) {
+                if (code == 400) {
+                    [self addAlertViewWithTile:@"동일한 닉네임이 있습니다.. 닉네임을 변경해 주세요!" actionTitle:@"done" handler:nil];
+                }
                 
-                [self addAlertViewWithTile:[@"프로필 저장 오류" stringByAppendingString:[NSString stringWithFormat:@"%ld", code]] actionTitle:@"done" handler:nil];
             } else {
                 [[RCLoginManager loginManager] uploadProfileImageWithUIImage:self.profileImage.image complition:^(BOOL isSucceess, NSInteger code) {
                     if (!isSucceess) {

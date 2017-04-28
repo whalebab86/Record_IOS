@@ -67,6 +67,7 @@
     }
     self.totalDistanceLB.text = [NSString stringWithFormat:@"%.2lf", totalDistanceMeter/1000];
     
+    /* google map and marker */
     GMSCameraPosition *camera;
     if ([RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray.count == 0) {
         
@@ -116,6 +117,7 @@
         
     }
     
+    /* google map poly line */
     GMSPolyline *polyline = [GMSPolyline polylineWithPath:path];
     polyline.strokeColor = [UIColor blackColor];
     polyline.strokeWidth = 2.0f;
@@ -168,9 +170,6 @@
     [self.mapViewOfGoogleMap addSubview:self.mapView];
     
 }
-- (void)layoutSubviews {
-    [super layoutSubviews];
-}
 
 - (void)mapViewDidFinishTileRendering:(GMSMapView *)mapView {
     UIGraphicsBeginImageContextWithOptions(self.frame.size, YES, 0.0f);
@@ -180,8 +179,10 @@
     UIGraphicsEndImageContext();
     UIImageView *snapShotImageView = [[UIImageView alloc] initWithImage:snapShotImage];
     snapShotImageView.frame = self.frame;
-    while (self.subviews.count > 0) {
-        [self.subviews[0] removeFromSuperview];
+    NSInteger subViewsNumber = self.subviews.count - 1;
+    while (subViewsNumber > -1) {
+        [self.subviews[subViewsNumber] removeFromSuperview];
+        subViewsNumber -= 1;
     }
     [self addSubview:snapShotImageView];
 }
@@ -258,8 +259,10 @@
     UIGraphicsEndImageContext();
     UIImageView *snapShotImageView = [[UIImageView alloc] initWithImage:snapShotImage];
     snapShotImageView.frame = self.frame;
-    while (self.subviews.count > 0) {
-        [self.subviews[0] removeFromSuperview];
+    NSInteger subViewsNumber = self.subviews.count - 1;
+    while (subViewsNumber > -1) {
+        [self.subviews[subViewsNumber] removeFromSuperview];
+        subViewsNumber -= 1;
     }
     
     [self addSubview:snapShotImageView];
@@ -273,9 +276,6 @@
  // Drawing code
      self.firstPhotoImageView.layer.cornerRadius = 3.0f;
      self.secondPhotoImageView.layer.cornerRadius = 3.0f;
-//     UIImage *image = [UIImage imageWithData:<#(nonnull NSData *)#>];
-     
-//     [UIImage imageWithCGImage:[image CGImage] scale:compression orientation:UIImageOrientationUp]
      self.firstPhotoImageView.image = [UIImage imageWithData:[RCDiaryManager diaryManager].diaryResults[self.recivedIndexPath.item].inDiaryArray[self.inDiaryArrayNumber].inDiaryPhotosArray[self.inDiaryPhotosArrayCount].inDiaryPhoto];
  }
 
@@ -290,10 +290,11 @@
     UIGraphicsEndImageContext();
     UIImageView *snapShotImageView = [[UIImageView alloc] initWithImage:snapShotImage];
     snapShotImageView.frame = self.frame;
-    while (self.subviews.count > 0) {
-        [self.subviews[0] removeFromSuperview];
+    NSInteger subViewsNumber = self.subviews.count - 1;
+    while (subViewsNumber > -1) {
+        [self.subviews[subViewsNumber] removeFromSuperview];
+        subViewsNumber -= 1;
     }
-    
     [self addSubview:snapShotImageView];
 }
 

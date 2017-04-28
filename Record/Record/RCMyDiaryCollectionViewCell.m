@@ -14,9 +14,6 @@
     [super layoutSubviews];
     self.mainImage.layer.cornerRadius =  3.0f;
     self.diaryCoverImage.layer.cornerRadius = 3.0f;
-    
-//    [self reloadInputViews];
-    
 }
 
 @end

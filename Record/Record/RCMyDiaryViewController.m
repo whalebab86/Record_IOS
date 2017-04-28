@@ -32,8 +32,6 @@
     
     self.rcMyDiaryCollectionView.delegate = self;
     self.rcMyDiaryCollectionView.dataSource = self;
-//    self.rcMyDiaryCollectionView.prefetchDataSource = self;
-    
     
     if ([RCDiaryManager diaryManager].diaryResults.count == 0) {
         self.coverViewForEmptyDiary.hidden = NO;
@@ -76,8 +74,6 @@
     NSDateComponents *components;
     components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay fromDate:[RCDiaryManager diaryManager].diaryResults[indexPath.item].diaryStartDate toDate:[RCDiaryManager diaryManager].diaryResults[indexPath.item].diaryEndDate options:0];
     cell.totalTravelDateNumberLB.text = [NSString stringWithFormat:@"%ld", [components day]];
-    
-    
     
     return cell;
 }

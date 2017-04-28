@@ -157,15 +157,30 @@
 
 /* google sign-in flow has finished and was successful if |error| is |nil|. */
 - (void)signIn:(GIDSignIn *)signIn didSignInForUser:(GIDGoogleUser *)user withError:(NSError *)error {
-    [[RCLoginManager loginManager] recivedForGoogleSignupUserInfo:user complition:^(BOOL isSucceess, NSInteger code) {
+
+        [[RCLoginManager loginManager] recivedForGoogleSignupUserInfo:user complition:^(BOOL isSucceess, NSInteger code) {
         if (isSucceess) {
-            NSLog(@"googleSuccess");
             [self performSegueWithIdentifier:@"ProfileSettingSegueFromSignup" sender:nil];
-        } else {
-            NSString *alertTitle = [@"google login error (code " stringByAppendingString:[NSString stringWithFormat:@"%ld )", code]];
+        } else if (code == 400) {
+            
+            [[RCLoginManager loginManager] recivedForGoogleLoginWithUserInfo:user complition:^(BOOL isSucceess, NSInteger code) {
+                if (isSucceess) {
+                    [self performSegueWithIdentifier:@"ProfileSettingSegueFromSignup" sender:nil];
+                } else {
+                    NSString *alertTitle = [@"google login error recivedForGoogleLoginWithUserInfo(code " stringByAppendingString:[NSString stringWithFormat:@"%ld )", code]];
+                    [self addAlertViewWithTile:alertTitle actionTitle:@"Done" handler:nil];
+                }
+            }];
+        }
+        else {
+            NSString *alertTitle = [@"google login error recivedForGoogleSignupUserInfo(code " stringByAppendingString:[NSString stringWithFormat:@"%ld )", code]];
             [self addAlertViewWithTile:alertTitle actionTitle:@"Done" handler:nil];
         }
     }];
+}
+
+- (void)signIn:(GIDSignIn *)signIn didDisconnectWithUser:(GIDGoogleUser *)user withError:(NSError *)error {
+
 }
 
 /**
@@ -188,7 +203,6 @@
 
 - (void)resetOffset {
     self.signUpMainScroll.contentOffset = CGPointMake(0, 0);
-    NSLog(@"testDestinationInt %ld", self.testDestinationInt);
 }
 
 #pragma mark - etc
@@ -196,11 +210,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-//- (void)testDelegateMethod {
-//    
-//    NSLog(@"asdasdasd");
-//}
 
 /*
 #pragma mark - Navigation

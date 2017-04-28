@@ -26,7 +26,8 @@ typedef  void (^SuccessStateBlock) (BOOL isSucceess, NSInteger code);
 - (void)recivedForGoogleSignupUserInfo:(GIDGoogleUser *)user
                    complition:(SuccessStateBlock)complition;
 
-- (void)recivedForGoogleLoginWithUserInfo:(GIDGoogleUser *)user complition:(SuccessStateBlock)complition;
+- (void)recivedForGoogleLoginWithUserInfo:(GIDGoogleUser *)user
+                               complition:(SuccessStateBlock)complition;
 
 - (void)confirmFacebookSignupfromViewController:(UIViewController *)fromViewController
                                      complition:(SuccessStateBlock)complition;
@@ -50,7 +51,11 @@ typedef  void (^SuccessStateBlock) (BOOL isSucceess, NSInteger code);
 
 - (void)checkValidTokenWithComplition:(SuccessStateBlock)complition;
 
-- (void)uploadProfileImageWithUIImage:(UIImage *)image complition:(SuccessStateBlock)complition;
+- (void)uploadProfileImageWithUIImage:(UIImage *)image
+                           complition:(SuccessStateBlock)complition;
 
-- (void)uploadProfilePersonalInformationWithNickname:(NSString *)nickname hometown:(NSString *)hometown selfIntroduction:( NSString *)introdution complition:(SuccessStateBlock)complition;
+- (void)uploadProfilePersonalInformationWithNickname:(NSString *)nickname
+                                            hometown:(NSString *)hometown
+                                    selfIntroduction:(NSString *)introdution
+                                          complition:(SuccessStateBlock)complition;
 @end
